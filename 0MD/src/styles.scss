@@ -51,6 +51,13 @@ p {
     &:last-child {
         padding-right: 0px;
     }
+
+    &:hover,
+    &:active,
+    &:focus{
+        transition: 0.2s;
+        opacity: 75%;
+    }
 }
 
 .header__link {
