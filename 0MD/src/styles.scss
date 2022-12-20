@@ -264,7 +264,7 @@ p {
 
 //product feature text section
 
-.product-feat__text{
+.product-feat__text {
     max-height: 192px;
     display: flex;
     flex-direction: row;
@@ -273,7 +273,7 @@ p {
     margin-bottom: 80px;
 }
 
-.product-feat__text-title{
+.product-feat__text-title {
     max-width: 730px;
     font-weight: 700;
     font-size: 96px;
@@ -281,7 +281,7 @@ p {
     color: #292830;
 }
 
-.product-feat__text-subtitle{
+.product-feat__text-subtitle {
     max-width: 350px;
     font-size: 24px;
     line-height: 39px;
@@ -290,3 +290,131 @@ p {
 
 //product feature cards section 
 
+//cards list
+
+.product-feat-cards-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 265px;
+}
+
+//cards border
+
+.product-feat-cards-item {
+    width: 350px;
+    height: 350px;
+    border-radius: 12px;
+
+    &:hover,
+    &:active,
+    &:focus {
+        cursor: pointer;
+        border: 1px solid rgba(77, 77, 77, 0.233);
+        border-radius: 12px;
+        background-color: #dbdbdb2a;
+    }
+}
+
+//cars ico
+
+.product-feat-card-ico {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 63px 143px 24px 143px;
+
+    &.yel {
+        background: rgba(255, 189, 116, 0.05);
+    }
+
+    &.pink {
+        background: rgba(226, 89, 139, 0.05);
+    }
+
+    &.blue {
+        background: rgba(77, 18, 238, 0.05);
+    }
+}
+
+// cards title
+
+.product-feat-card-title {
+    max-width: 165px;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 100%;
+    padding-left: 93px;
+}
+
+//cards subtitle
+
+.product-feat-card-subtitle {
+    max-width: 220px;
+    font-size: 14px;
+    line-height: 23px;
+    color: #BDBDBD;
+    text-align: center;
+    padding-left: 65px;
+    margin-right: 0;
+}
+
+//plans section
+
+//plans text
+
+.plans__text {
+    margin-bottom: 80px;
+}
+
+.plans-text {
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 100%;
+    text-align: center;
+}
+
+// plans cards
+
+.plans__cards-list {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 245px;
+}
+
+.plans__card-item {
+    width: 350px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+    gap: 24px;
+}
+
+.plans__card-item-ico {
+    margin: 40px 0 24px 0;
+}
+
+.plans__card-item-title {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 52px;
+
+}
+
+.plans__cards-item-list {
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+}
+
+.plans__cards-list-item {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 29px;
+    list-style-image: url(assets/images/ic_baseline-check.png);
+    list-style-position: inside;
+}
