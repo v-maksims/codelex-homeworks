@@ -11,6 +11,10 @@ body {
     margin: 0;
 }
 
+h1, h2, h3, h4, h6, p {
+    margin: 0;
+}
+
 .container {
     width: 1110px;
     margin: 0 auto;
@@ -25,6 +29,7 @@ body {
     align-items: center;
     justify-content: space-between;
     margin-top: 57px;
+    margin-bottom: 105px;
 }
 
 // header list
@@ -35,11 +40,11 @@ body {
 }
 
 .header__item {
-    margin-right: 40px;
+    padding-right: 40px;
     list-style-type: none;
 
     &:last-child {
-        margin-right: 0px;
+        padding-right: 0px;
     }
 }
 
