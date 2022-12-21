@@ -9,12 +9,18 @@ body {
     font-style: normal;
     font-weight: 400;
     margin: 0;
+    color: #292830;
+}
+
+button {
+    padding: 0;
 }
 
 h1,
 h2,
 h3,
 h4,
+h5,
 h6,
 p {
     margin: 0;
@@ -54,7 +60,7 @@ p {
 
     &:hover,
     &:active,
-    &:focus{
+    &:focus {
         transition: 0.2s;
         opacity: 75%;
     }
@@ -399,6 +405,15 @@ p {
     flex-direction: column;
     padding-left: 40px;
     gap: 24px;
+    border: 1px solid rgba(128, 128, 128, 0.158);
+    border-radius: 5px;
+
+    &:hover,
+    &:active,
+    &:focus {
+        transition: 0.2s;
+        border: 0;
+    }
 }
 
 .plans__card-item-ico {
@@ -424,4 +439,273 @@ p {
     line-height: 29px;
     list-style-image: url(assets/images/ic_baseline-check.png);
     list-style-position: inside;
+}
+
+.plans__card-item-price-num {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 39px;
+
+    &::after {
+        content: 'year';
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 32px;
+        color: rgba(189, 189, 189, 1);
+    }
+}
+
+.plans__card-item-price-subtitle {
+    font-size: 12px;
+    line-height: 19px;
+
+    color: #BDBDBD;
+}
+
+.plans__card-item-button {
+    border: 0;
+    background-color: white;
+    width: 136px;
+    height: 50px;
+    border: 1px solid #FF7235;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: #FF7235;
+
+        .plans__card-item-button-text,
+        .plans__card-item-button-arrow {
+            color: white;
+            fill: white;
+        }
+    }
+}
+
+.plans__card-item-button-text {
+    font-size: 16px;
+    line-height: 26px;
+    color: #FF7235;
+    padding: 12px 10px 12px 24px;
+}
+
+.plans__card-item-button-arrow {
+    fill: #FF7235;
+}
+
+// Testimonial section
+
+//testimotial top text
+
+.testimonal__text {
+    width: 920px;
+    font-weight: 700;
+    font-size: 96px;
+    line-height: 100%;
+    text-align: center;
+    color: #292830;
+    margin: 0 auto;
+    margin-bottom: 80px;
+}
+
+//testimotial cards
+
+.testimonal__slider-cards-wrap {
+    width: 1870px;
+    margin: 0 auto;
+}
+
+.testimonal__slider-cards-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.testimonal__slider-cards-item {
+    width: 350px;
+    height: 250px;
+    border: 1px solid rgba(128, 128, 128, 0.158);
+    border-radius: 5px;
+}
+
+.content__card-top-line {
+    width: 350px;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 16px;
+
+    &.one {
+        border-top: 10px solid #FF7235;
+    }
+
+    &.two {
+        border-top: 10px solid #FFBE21;
+    }
+
+    &.three {
+        border-top: 10px solid #4756DF;
+    }
+
+    &.four {
+        border-top: 10px solid #3EC1F3;
+    }
+
+    &.five {
+        border-top: 10px solid #BB7259;
+    }
+
+}
+
+.testimonal__slider-cards-item-subtitle {
+    width: 293px;
+    font-size: 18px;
+    line-height: 29px;
+    color: #000000;
+    margin-left: 28px;
+    margin-bottom: 24px;
+}
+
+.testimonal__slider-cards-item-avatar-name {
+    margin-left: 28px;
+    display: flex;
+    align-items: center;
+}
+
+.testimonal__slider-cards-item-avatar {
+    width: 30px;
+    margin-right: 12px;
+}
+
+.testimonal__slider-cards-item-name {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 26px;
+    color: #000000;
+
+    &::after {
+        content: "CEO";
+        font-size: 16px;
+        line-height: 26px;
+        color: #BDBDBD;
+    }
+}
+
+//testimanal slider 
+
+.slider-with-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-item {
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    border: 1px solid #292830;
+    margin-right: 8px;
+    margin-bottom: 121px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        transition: 0.2s;
+        background-color: #292830;
+    }
+}
+
+//Banner section
+
+//banner wrapper
+
+.banner-wrapper {
+    background-color: #FF7235;
+    height: 750px;
+    padding-top: 120px;
+    margin-bottom: 80px;
+}
+
+//banner
+
+.banner__text-wrap {
+    width: 1295px;
+    height: 540px;
+    background: url(assets/images/banner-image-in-bg.png) no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+    display: flex;
+    justify-content: center;
+}
+
+//banner text   
+
+.banner__text-title {
+    max-width: 920px;
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 100%;
+    text-align: center;
+    color: white;
+    margin-bottom: 24px;
+}
+
+.banner__text-subtitle {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 100%;
+    text-align: center;
+    color: white;
+    margin-bottom: 60px;
+}
+
+//banner button
+
+.banner__text-cta{
+    padding-left: 354px;
+}
+
+.banner__text-button {
+    width: 213px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 8px;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: #d65c28;
+        border-color: #d65c28;
+
+        .banner__text-button-text {
+            color: white;
+        }
+
+        .banner__text-button-chevron {
+            stroke: white;
+        }
+    }
+}
+
+.banner__text-button-text {
+    width: 137px;
+    height: 22px;
+    font-size: 22px;
+    line-height: 95%;
+    color: #FF7235;
+    margin-left: 24px;
+}
+
+.banner__text-button-chevron {
+    margin-left: 10px;
+    stroke: #FF7235;
 }
