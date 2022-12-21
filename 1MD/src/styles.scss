@@ -314,7 +314,7 @@ body {
   border-radius: 30px;
 }
 
-.services__cards-image{
+.services__cards-image {
   padding-bottom: 30px;
 }
 
@@ -339,7 +339,25 @@ body {
 
 //services help me
 
-.services__button-helpme{
-margin: 0 auto;
-margin-bottom: 85px;
+.services__button-helpme {
+  margin: 0 auto;
+  margin-bottom: 85px;
+}
+
+// Testymonails section
+
+//testymonial cards
+
+.testymonials__cards-list {
+  display: grid;
+  grid-template-columns: 580px 580px;
+  grid-template-rows: 230px 230px;
+  justify-content:space-between;
+}
+
+.testymonials__cards-item {
+  width: 580px;
+  height: 230px;
+  border: 1px solid #6D91EE;
+  border-radius: 40px;
 }
