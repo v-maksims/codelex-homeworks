@@ -16,6 +16,93 @@ body {
   margin-left: 350px;
 }
 
+// items what can repeat a few time
+
+// button help me blue
+
+.button_help-me {
+  width: 280px;
+  height: 86px;
+  background: #5180F7;
+  border-radius: 71px;
+  padding: 25px 89px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    cursor: pointer;
+    transition: 0.2s;
+    opacity: 80%;
+  }
+}
+
+.button_help-me_text {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  color: white;
+}
+
+//lines near group names and format of group name (Services, Testymonials)
+
+//group positions
+.group-name {
+  margin: 0 auto;
+  position: relative;
+
+  &.services {
+    width: 290px;
+    margin-bottom: 65px;
+  }
+
+  &.testymonials {
+    width: 465px;
+    margin-bottom: 75px;
+  }
+}
+
+//group design
+
+.group-name-text {
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 96px;
+  color: #6D91EE;
+  text-align: center;
+}
+
+//lines position
+
+.title-lines-around {
+  position: absolute;
+  width: 45px;
+  border-top: 2px solid #6D91EE;
+
+  &.first {
+    left: -23px;
+    top: 0px;
+    transform: rotate(315deg);
+  }
+
+  &.second {
+    right: -23px;
+    top: 0px;
+    transform: rotate(45deg);
+  }
+
+  &.third {
+    right: -23px;
+    bottom: 0px;
+    transform: rotate(135deg);
+  }
+
+  &.fourth {
+    bottom: 0px;
+    left: -23px;
+    transform: rotate(225deg);
+  }
+}
+
 //Header
 
 //header image in background
@@ -101,28 +188,9 @@ body {
   color: #4F4F4F;
 }
 
-.button_help-me {
-  width: 280px;
-  height: 86px;
-  background: #5180F7;
-  border-radius: 71px;
-  padding: 25px 89px;
 
-  &:hover,
-  &:active,
-  &:focus {
-    cursor: pointer;
-    transition: 0.2s;
-    opacity: 80%;
-  }
-}
 
-.button_help-me_text {
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 36px;
-  color: white;
-}
+
 
 //main section
 
@@ -231,11 +299,47 @@ body {
 
 //services section
 
-.services__title-text {
+//services cards
+
+.services__cards-list {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.services__cards-item {
+  width: 385px;
+  height: 504px;
+  box-shadow: 0px 10px 30px rgba(16, 51, 30, 0.1);
+  border-radius: 30px;
+}
+
+.services__cards-image{
+  padding-bottom: 30px;
+}
+
+.services__cards-title {
+  padding-left: 30px;
+  margin-bottom: 10px;
   font-weight: 900;
-  font-size: 64px;
-  line-height: 90px;
-  color: #6D91EE;
-  text-align: center;
-  margin-bottom: 65px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #324473;
+}
+
+.services__cards-subtitle {
+  width: 325px;
+  padding-left: 30px;
+  padding-top: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #324473;
+}
+
+//services help me
+
+.services__button-helpme{
+margin: 0 auto;
+margin-bottom: 85px;
 }
