@@ -59,6 +59,11 @@ body {
     width: 465px;
     margin-bottom: 75px;
   }
+
+  &.contact-us {
+    width: 366px;
+    margin-bottom: 65px;
+  }
 }
 
 //group design
@@ -312,6 +317,14 @@ body {
   height: 504px;
   box-shadow: 0px 10px 30px rgba(16, 51, 30, 0.1);
   border-radius: 30px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    transition: 0.2s;
+    box-shadow: none;
+    cursor: pointer;
+  }
 }
 
 .services__cards-image {
@@ -352,7 +365,9 @@ body {
   display: grid;
   grid-template-columns: 580px 580px;
   grid-template-rows: 230px 230px;
-  justify-content:space-between;
+  justify-content: space-between;
+  gap: 45px;
+  margin-bottom: 115px;
 }
 
 .testymonials__cards-item {
@@ -360,4 +375,104 @@ body {
   height: 230px;
   border: 1px solid #6D91EE;
   border-radius: 40px;
+  display: grid;
+  grid-template-columns: 80px 423px;
+  grid-template-rows: 170px 170px;
+  padding: 30px;
+  column-gap: 14px;
+}
+
+.testymonials__cards-item-list {
+  height: 173px;
+}
+
+.testymonials__cards-item-title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  color: #6D91EE;
+}
+
+.testymonials__cards-item-subtitle {
+  width: 425px;
+  font-size: 14px;
+  line-height: 22px;
+  color: #22366A;
+  padding-bottom: 10px;
+}
+
+//Contact us section
+
+.contact-us__input-info {
+  margin: 0 auto;
+  width: 790px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.contact-us__info {
+  width: 336px;
+  display: flex;
+  flex-direction: column;
+}
+
+//contact input area  
+
+.contact-us__input-list {
+  width: 375px;
+  height: 266px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-us__input-item.input-data {
+  width: 374px;
+  height: 56px;
+  background: #CEDCFF;
+  border-radius: 61px;
+  margin-bottom: 14px;
+  padding-left: 20px;
+}
+
+.contact-us__input-item.submit {
+  width: 168px;
+  height: 56px;
+  border: 3px solid #5180F6;
+  border-radius: 61px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    transition: 0.2s;
+    opacity: 75%;
+  }
+}
+
+.contact-us__info-img {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #333333;
+
+  &.mail{
+    padding-top: 35px;
+    padding-bottom: 37px;
+  }
+
+  &.number{
+    padding-bottom: 37px;
+  }
+}
+
+.contact-us__info-ico{
+  margin-right: 20px;
+}
+
+// Footer section
+
+.footer-bg-line{
+  height: 145px;
+  background: #0C1E49;
 }
