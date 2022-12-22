@@ -183,6 +183,12 @@ body {
     margin-bottom: 80px;
 }
 
+.promo__back-wrap{
+    height: 710px;
+    background: url(assets/images/Blob-bg-promo.png) no-repeat center;
+    background-size: 1440px 710px;
+}
+
 .promo-image {
     height: 625px;
     margin-top: 87px;
@@ -321,6 +327,9 @@ body {
     height: 350px;
     border-radius: 12px;
 
+    display: flex;
+    flex-direction: column;
+
     &:hover,
     &:active,
     &:focus {
@@ -328,6 +337,7 @@ body {
         border: 1px solid rgba(77, 77, 77, 0.233);
         border-radius: 12px;
         background-color: #dbdbdb2a;
+        background: url(assets/images/ic_twotone-arrow-right-alt.png) no-repeat 50% 80%;
     }
 }
 
@@ -358,23 +368,26 @@ body {
 // cards title
 
 .product-feat-card-title {
-    max-width: 165px;
+    width: 276px;
     font-weight: 500;
     font-size: 30px;
     line-height: 100%;
-    padding-left: 93px;
+    text-align: center;
+    color: #292830;
+    padding-left: 79px;
+    padding-bottom: 12px;
 }
 
 //cards subtitle
 
 .product-feat-card-subtitle {
-    max-width: 220px;
+    width: 285px;
     font-size: 14px;
     line-height: 23px;
-    color: #BDBDBD;
     text-align: center;
+    color: #BDBDBD;
     padding-left: 65px;
-    margin-right: 0;
+    padding-bottom: 24px;
 }
 
 //plans section
@@ -409,6 +422,7 @@ body {
     gap: 24px;
     border: 1px solid rgba(128, 128, 128, 0.158);
     border-radius: 5px;
+    cursor: default;
 
     &:hover,
     &:active,
@@ -478,6 +492,7 @@ body {
     &:active,
     &:focus {
         background-color: #FF7235;
+        cursor: pointer;
 
         .plans__card-item-button-text,
         .plans__card-item-button-arrow {
@@ -532,6 +547,14 @@ body {
     height: 250px;
     border: 1px solid rgba(128, 128, 128, 0.158);
     border-radius: 5px;
+
+    &:hover,
+    &:active,
+    &:focus {
+        transition: 0.2s;
+        opacity: 80%;
+        cursor: default;
+    }
 }
 
 .content__card-top-line {
@@ -620,32 +643,34 @@ body {
     &:focus {
         transition: 0.2s;
         background-color: #292830;
+        cursor: pointer;
     }
 }
 
 //Banner section
+
+
 
 //banner wrapper
 
 .banner-wrapper {
     background-color: #FF7235;
     height: 750px;
-    padding-top: 120px;
     margin-bottom: 80px;
 }
 
 //banner
 
 .banner__bg-wrap {
-    width: 1295px;
-    height: 540px;
-    background: url(assets/images/banner-image-in-bg.png) no-repeat;
-    background-size: 100%;
-    background-position: bottom;
+    height: 750px;
+    background: url(assets/images/banner-image-in-bg.png) no-repeat 50% 75%,
+    url(assets/images/Blob-bg-banner.png) no-repeat 50% 50%;
+    background-size: 1295px 340px, 1440px 900px;
     margin: 0 auto;
 }
 
 .banner__text-wrap {
+    padding-top: 120px;
     display: flex;
     justify-content: center;
 }
@@ -824,6 +849,14 @@ body {
     color: #FFFFFF;
     position: absolute;
     margin: 7px 6px 7px 241px;
+
+    &:hover,
+    &:active,
+    &:focus {
+        transition: 0.2s;
+        opacity: 80%;
+        cursor: pointer;
+    }
 }
 
 //footer middle
@@ -868,9 +901,9 @@ body {
     line-height: 23px;
 }
 
-.footer-bottom__social-links-list{
+.footer-bottom__social-links-list {
     height: 20px;
     padding-left: 419px;
     display: flex;
-    gap:12px;
+    gap: 12px;
 }
