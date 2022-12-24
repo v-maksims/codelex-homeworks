@@ -38,7 +38,7 @@ body {
     }
 }
 
-//sign up input 
+//form list
 
 .form-list {
     display: flex;
@@ -54,6 +54,7 @@ body {
     border-radius: 5px;
     padding: 12px 14px 12px 12px;
     color: #99969E;
+    cursor: default;
 
     &.--normal {
         width: 100%;
@@ -61,7 +62,142 @@ body {
     }
 }
 
+// sign up form div
+
+.sign-up__form {
+    margin-bottom: 32px;
+}
+
+// subscribe to news
+
+.switch-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
 .sign-up__form-sub-news {
     font-size: 14px;
     line-height: 20px;
+}
+
+.switch {
+    display: none;
+}
+
+.fake-switch {
+    position: relative;
+    display: inline-block;
+    width: 28px;
+    height: 16px;
+    background: #E9E9E9;
+    border-radius: 10px;
+    transition: .3s;
+    
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        display: block;
+        width: 12px;
+        height: 12px;
+        background-color: white;
+        border-radius: 50%;
+        transition: .3s;
+    }
+}
+
+.switch:checked+.fake-switch {
+    transition: .3s;
+    background-color: #FD7918;
+}
+
+.switch:checked+.fake-switch::before {
+    top: 2px;
+    left: 14px;
+    transition: .3s;
+}
+
+.submit-button {
+    height: 48px;
+    background: #651FFF;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+
+    &:hover,
+    &:active,
+    &:focus {
+        transition: .2s;
+        opacity: .85;
+    }
+}
+
+.sing-up__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+}
+
+.forgot-pass {
+    color: #BAB9BD;
+
+    &:hover {
+        opacity: .80;
+    }
+}
+
+.grey-underline {
+    width: 100%;
+    height: 2px;
+    background: #635F6B;
+    border-radius: 11px;
+}
+
+.sing-up__footer-continue-other{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.or-continue-with {
+    color: #5A5761;
+    text-align: center;
+}
+.button-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2E2A36;
+    border: 0;
+    border-radius: 5px;
+
+    &:hover,
+    &:active,
+    &:focus {
+        transition: .2s;
+        opacity: .85;
+    }
+}
+
+.sing-up__footer-button{
+    margin-right: 16px;
+    width: 175px;
+    height: 50px;
+
+    &:last-child{
+        margin: 0;
+    }
+}
+
+.sing-up__footer-continue-other-wrap{
+    display: flex;
+    flex-direction: row;
 }

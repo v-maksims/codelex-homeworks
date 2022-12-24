@@ -13,26 +13,41 @@
 <body>
     <sector class="sign-up">
         <div class="container --large">
-            <div class="sign-up__menu menu-bg --large">
+            <div class="menu-bg sign-up__menu --large">
                 <div class="sign-up__form">
                     <form class="form-list sign-up__form-list">
-                        <label>
+                        <label class="text-label">
                             Name
                             <br>
-                            <input type="text" class="input-area sign-up__form-input --normal" placeholder="Your name" required>
+                            <input type="text" class="input-area sign-up__form-input --normal" placeholder="Your name" required name="userName">
                         </label>
-                        <label>
+                        <label class="password-label">
                             Password
                             <br>
-                            <input type="password" class="input-area sign-up__form-input --normal" placeholder="Password" required>
+                            <input type="password" class="input-area sign-up__form-input --normal" placeholder="Password" required name="password">
                         </label>
-                        <label>
+                        <label class="switch-label">
                             <input type="checkbox" class="switch sign-up__form-switch">
-                            <span class="sign-up__form-sub-news">Subscribe to News</span> 
+                            <span class="fake-switch"></span>
+                            <span class="switch-text">Subscribe to News</span> 
                         </label>
+                        <button class="submit-button" type="submit">Sign in</button>
                     </form>
                 </div>
                 <div class="sing-up__footer">
+                    <a href="#" class="forgot-pass sing-up__footer-link">Forgot your password?</a>
+                    <span class="grey-underline sing-up__footer-underline"></span>
+                    <div class="sing-up__footer-continue-other">
+                        <span class="or-continue-with sing-up__footer-continue-other-text">or continue with</span>
+                        <div class="sing-up__footer-continue-other-wrap">
+                            <button class="button-link sing-up__footer-button --google">
+                                <img src="assets/svg/google-logo.svg" alt="google-logo">
+                            </button>
+                            <button class="button-link sing-up__footer-button --facebook">
+                                <img src="assets/images/facebook-logo.png" alt="facebook-logo" width="24" height="24">
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
