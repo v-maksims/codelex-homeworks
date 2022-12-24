@@ -8,7 +8,6 @@
     <title>2MD-1</title>
     <link rel="icon" href="/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/adaptive.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -53,41 +52,97 @@
     </sector>
     <sector class="contact-us-one">
         <div class="container --extra-large">
-            <div class="menu-bg contact-us-one-menu --extra-large">
+            <div class="menu-bg contact-us-one__menu --extra-large">
                 <span class="contact-us-text">Contact Us</span>
                 <form class="form-list contact-us-one__form-list">
                     <div class="contact-us-one__input-list">
                         <label class="text-label --large">
                             Your first name:
-                        <input type="text" name="firstName" class="input-area contact-us-one__form-input --medium" required placeholder="First name">
+                            <input type="text" name="firstName" class="input-area contact-us-one__form-input --medium" required placeholder="First name">
                         </label>
                         <label class="text-label --large">
                             Your last name:
-                        <input type="text" name="lastName" class="input-area contact-us-one__form-input --medium" required placeholder="Last name">
+                            <input type="text" name="lastName" class="input-area contact-us-one__form-input --medium" required placeholder="Last name">
                         </label>
                     </div>
                     <div class="contact-us-one__input-list">
                         <label class="text-label --large">
                             Your mail adress:
-                        <input type="email" name="mail" class="input-area contact-us-one__form-input --medium" required placeholder="Your mail">
+                            <input type="email" name="mail" class="input-area contact-us-one__form-input --medium" required placeholder="Your mail">
                         </label>
                         <label class="text-label --large">
                             Your phone number:
-                        <input type="tel" name="phoneNumber" class="input-area contact-us-one__form-input --medium" required placeholder="Your phone number">
+                            <input type="tel" name="phoneNumber" class="input-area contact-us-one__form-input --medium" required placeholder="Your phone number">
                         </label>
                     </div>
                     <label class="checkbox-label">
                         <input type="checkbox" class="checkbox contact-us-one__form-checkbox">
-                            <span class="fake-checkbox"></span>
-                            <span class="checkbox-text">Subscribe to News</span> 
+                        <span class="fake-checkbox"></span>
+                        <span class="checkbox-text">Subscribe to News</span> 
                     </label>
                     <label class="text-area-label">
                         Your question:
                         <br>
-                        <textarea class="text-area --large" placeholder="Your question" style="height: 100px;" required></textarea>
+                        <textarea class="text-area --large" placeholder="Your question" required></textarea>
                     </label>
                     <button class="submit-button contact-us-one__form-sumbit --small" type="submit">Submit</button>
                 </form>
+            </div>
+        </div>
+    </sector>
+    <sector class="contact-us-two">
+        <div class="container --extra-large">
+            <div class="menu-bg contact-us-two__menu --extra-large">
+                <div class="contact-us-two__info">
+                    <span class="contact-us-two__info-contact">Contact Information</span>
+                    <p class="contact-us-two__info-subtitle">
+                        Here's some additional support text to help set user expectations. 
+                    </p>
+                    <div class="contact-us-two__info-contacts">
+                        <div class="contact-us-two__info-phone">
+                            <img src="assets/svg/phone-ico.svg" alt="phone-ico" class="contact-us-two-ico">
+                            123-456-7890
+                        </div>
+                        <div class="contact-us-two__info-mail">
+                            <img src="assets/svg/mail-ico.svg" alt="mail-ico" class="contact-us-two-ico">
+                            support@minerva.com
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-us-two__form">
+                    <span class="contact-us-text">Contact Us</span>
+                    <form class="form-list contact-us-two__form-list">
+                        <div class="contact-us-one__input-list">
+                            <label class="text-label --small">
+                                Your first name:
+                                <input type="text" name="firstName" class="input-area contact-us-two__form-input --small" required placeholder="First name">
+                            </label>
+                            <label class="text-label --small">
+                                Your last name:
+                                <input type="text" name="lastName" class="input-area contact-us-two__form-input --small" required placeholder="Last name">
+                            </label>
+                        </div>
+                        <div class="contact-us-one__input-list">
+                            <label class="text-label --small">
+                                Your mail adress:
+                                <input type="email" name="mail" class="input-area contact-us-two__form-input --small" required placeholder="Your mail">
+                            </label>
+                            <label class="text-label --small">
+                                Your phone number:
+                                <input type="tel" name="phoneNumber" class="input-area contact-us-two__form-input --small" required placeholder="Your phone number">
+                            </label>
+                        </div>
+                        <label class="date-label">
+                            <input type="date" name="date" class="input-area --normal" placeholder="Choice date">
+                        </label>
+                        <label class="text-area-label">
+                            Your question:
+                            <br>
+                            <textarea class="text-area --medium" placeholder="Your question" required></textarea>
+                        </label>
+                        <button class="submit-button contact-us-two__form-sumbit --small" type="submit">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </sector>
