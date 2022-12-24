@@ -8,6 +8,7 @@
     <title>2MD-1</title>
     <link rel="icon" href="/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/adaptive.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,12 +19,10 @@
                     <form class="form-list sign-up__form-list">
                         <label class="text-label">
                             Name
-                            <br>
                             <input type="text" class="input-area sign-up__form-input --normal" placeholder="Your name" required name="userName">
                         </label>
                         <label class="password-label">
                             Password
-                            <br>
                             <input type="password" class="input-area sign-up__form-input --normal" placeholder="Password" required name="password">
                         </label>
                         <label class="switch-label">
@@ -49,6 +48,46 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </sector>
+    <sector class="contact-us-one">
+        <div class="container --extra-large">
+            <div class="menu-bg contact-us-one-menu --extra-large">
+                <span class="contact-us-text">Contact Us</span>
+                <form class="form-list contact-us-one__form-list">
+                    <div class="contact-us-one__input-list">
+                        <label class="text-label --large">
+                            Your first name:
+                        <input type="text" name="firstName" class="input-area contact-us-one__form-input --medium" required placeholder="First name">
+                        </label>
+                        <label class="text-label --large">
+                            Your last name:
+                        <input type="text" name="lastName" class="input-area contact-us-one__form-input --medium" required placeholder="Last name">
+                        </label>
+                    </div>
+                    <div class="contact-us-one__input-list">
+                        <label class="text-label --large">
+                            Your mail adress:
+                        <input type="email" name="mail" class="input-area contact-us-one__form-input --medium" required placeholder="Your mail">
+                        </label>
+                        <label class="text-label --large">
+                            Your phone number:
+                        <input type="tel" name="phoneNumber" class="input-area contact-us-one__form-input --medium" required placeholder="Your phone number">
+                        </label>
+                    </div>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="checkbox contact-us-one__form-checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span class="checkbox-text">Subscribe to News</span> 
+                    </label>
+                    <label class="text-area-label">
+                        Your question:
+                        <br>
+                        <textarea class="text-area --large" placeholder="Your question" style="height: 100px;" required></textarea>
+                    </label>
+                    <button class="submit-button contact-us-one__form-sumbit --small" type="submit">Submit</button>
+                </form>
             </div>
         </div>
     </sector>

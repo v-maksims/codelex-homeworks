@@ -13,6 +13,8 @@ body {
     color: #BAB9BD;
 }
 
+//cantainer
+
 .container {
     max-width: 875px;
     margin: 0 auto;
@@ -21,11 +23,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 50px;
 
     &.--large {
         height: 760px;
     }
+
+    &.--extra-large {
+        height: 810px;
+    }
 }
+
+//menu background
 
 .menu-bg {
     background: #1F1B29;
@@ -35,6 +44,11 @@ body {
     &.--large {
         width: 430px;
         height: 555px;
+    }
+
+    &.--extra-large {
+        width: 665px;
+        height: 600px;
     }
 }
 
@@ -46,9 +60,19 @@ body {
     gap: 16px;
 }
 
+//text label
+
+.text-label {
+
+    &.--large {
+        width: 290px;
+    }
+}
+
 //different input areas
 
 .input-area {
+    height: 48px;
     background-color: #2e2a36;
     border: 0;
     border-radius: 5px;
@@ -58,7 +82,10 @@ body {
 
     &.--normal {
         width: 100%;
-        height: 48px;
+    }
+
+    &.--medium {
+        width: 290px;
     }
 }
 
@@ -95,7 +122,7 @@ body {
     background: #E9E9E9;
     border-radius: 10px;
     transition: .3s;
-    
+
 
     &::before {
         content: '';
@@ -122,12 +149,18 @@ body {
     transition: .3s;
 }
 
+// Sumbit button
+
 .submit-button {
     height: 48px;
     background: #651FFF;
     border: 0;
     border-radius: 5px;
     color: white;
+
+    &.--small{
+        width: 140px;
+    }
 
     &:hover,
     &:active,
@@ -136,6 +169,8 @@ body {
         opacity: .85;
     }
 }
+
+//sing up footer
 
 .sing-up__footer {
     display: flex;
@@ -152,6 +187,8 @@ body {
     }
 }
 
+//Grey underline
+
 .grey-underline {
     width: 100%;
     height: 2px;
@@ -159,7 +196,8 @@ body {
     border-radius: 11px;
 }
 
-.sing-up__footer-continue-other{
+
+.sing-up__footer-continue-other {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -167,10 +205,15 @@ body {
     gap: 16px;
 }
 
+//text or continue with
+
 .or-continue-with {
     color: #5A5761;
     text-align: center;
 }
+
+// Other metod to sign up
+
 .button-link {
     display: flex;
     align-items: center;
@@ -187,17 +230,90 @@ body {
     }
 }
 
-.sing-up__footer-button{
+.sing-up__footer-button {
     margin-right: 16px;
     width: 175px;
     height: 50px;
 
-    &:last-child{
+    &:last-child {
         margin: 0;
     }
 }
 
-.sing-up__footer-continue-other-wrap{
+.sing-up__footer-continue-other-wrap {
     display: flex;
     flex-direction: row;
+}
+
+// contact us form list
+
+.contact-us-one__form-list {
+    margin-top: 32px;
+
+}
+
+//Contact Us text
+
+.contact-us-text {
+    font-size: 32px;
+    line-height: 125%;
+    letter-spacing: -0.02em;
+    color: #99969E;
+}
+
+.contact-us-one__input-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+//checkbox label
+
+.checkbox-label {
+    height: 55px;
+    padding-top: 23px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+}
+
+//checkbox 
+
+.checkbox {
+    display: none;
+}
+
+.fake-checkbox {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #D3D3D3;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.checkbox:checked + .fake-checkbox {
+    border: #FD7918;
+    background: url(assets/svg/check-mark.svg) no-repeat center #FD7918;
+}
+
+//text area
+
+.text-area{
+    background-color: #2E2A36;
+    border-radius: 5px;
+    padding: 8px 2px 2px 12px;
+    color: #99969E;
+    border: 0;
+
+    &.--large{
+        width: 100%;
+        max-height: 100px;
+    }
+}
+
+.contact-us-one__form-sumbit{
+    align-self: flex-end;
 }
