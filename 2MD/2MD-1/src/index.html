@@ -55,7 +55,7 @@
             <div class="menu-bg contact-us-one__menu --extra-large">
                 <span class="contact-us-text">Contact Us</span>
                 <form class="form-list contact-us-one__form-list">
-                    <div class="contact-us-one__input-list">
+                    <div class="input-list contact-us-one__input-list">
                         <label class="text-label --large">
                             Your first name:
                             <input type="text" name="firstName" class="input-area contact-us-one__form-input --medium" required placeholder="First name">
@@ -65,7 +65,7 @@
                             <input type="text" name="lastName" class="input-area contact-us-one__form-input --medium" required placeholder="Last name">
                         </label>
                     </div>
-                    <div class="contact-us-one__input-list">
+                    <div class="input-list contact-us-one__input-list">
                         <label class="text-label --large">
                             Your mail adress:
                             <input type="email" name="mail" class="input-area contact-us-one__form-input --medium" required placeholder="Your mail">
@@ -112,7 +112,7 @@
                 <div class="contact-us-two__form">
                     <span class="contact-us-text">Contact Us</span>
                     <form class="form-list contact-us-two__form-list">
-                        <div class="contact-us-one__input-list">
+                        <div class="input-list contact-us-two__input-list">
                             <label class="text-label --small">
                                 Your first name:
                                 <input type="text" name="firstName" class="input-area contact-us-two__form-input --small" required placeholder="First name">
@@ -122,7 +122,7 @@
                                 <input type="text" name="lastName" class="input-area contact-us-two__form-input --small" required placeholder="Last name">
                             </label>
                         </div>
-                        <div class="contact-us-one__input-list">
+                        <div class="input-list contact-us-two__input-list">
                             <label class="text-label --small">
                                 Your mail adress:
                                 <input type="email" name="mail" class="input-area contact-us-two__form-input --small" required placeholder="Your mail">
@@ -142,6 +142,78 @@
                         </label>
                         <button class="submit-button contact-us-two__form-sumbit --small" type="submit">Submit</button>
                     </form>
+                </div>
+            </div>
+        </div>
+    </sector>
+    <sector class="checkout">
+        <div class="container --extra-large">
+            <div class="menu-bg checkout__menu-bg --extra-large">
+                <div class="checkout-wrap">
+                    <span class="checkout-text">
+                        Checkout
+                    </span>
+                    <div class="checkout__details-list">
+                        <div class="checkout__details-order">
+                            <span class="checkout__details-order-text">
+                                Your Order
+                            </span>
+                            <div class="checkout__details-order-list">
+                                <div class="checkout-info-list checkout__details-order-item">
+                                    <span class="order-item-name">Eggshell Plant Pot</span>
+                                    <span class="order-item-size">Size: Medium</span>
+                                    <span class="order-item-quantity">Qty: 1</span>
+                                    <span class="order-item-price">$25.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout__details-delivery">
+                            <span class="checkout__details-delivery-text">Delivery Details</span>
+                            <div class="checkout__details-delivery-info">
+                                <div class="checkout-info-list delivery-info-user">
+                                    <span class="delivery-info-user-name">Adam Sandler</span>
+                                    <span class="delivery-info-user-adress-line-1">1234 Fake St</span>
+                                    <span class="delivery-info-user-adress-line-2">Milwaukee, WI 53203</span>
+                                </div>
+                                <div class="checkout-info-list delivery-info-shiping">
+                                    <span class="delivery-info-shiping-title">Shipping Speed</span>
+                                    <span class="delivery-info-shiping-price">$7.00 No Rush Shipping</span>
+                                    <span class="delivery-info-shiping-date">Arrives by 1/16/22</span>   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout__payment">
+                        <span class="checkout__payment-title">
+                            Payment Method
+                        </span>
+                        <div class="checkout__payment-input-list">
+                            <form class="form-list">
+                                <div class="payment-input-list">
+                                    <label class="text-label payment-text-label">
+                                        Choice payment methode:
+                                        <select name="payment" class="input-area checkout__payment-form-select" required>
+                                            <option disabled selected value="">Select payment</option>
+                                            <option value="method-1">Method 1</option>
+                                            <option value="method-2">Method 2</option>
+                                            <option value="method-3">Method 3</option>
+                                            <option value="method-4">Method 4</option>
+                                            <option value="method-5">Method 5</option>
+                                        </select>
+                                    </label>
+                                    <label class="text-label payment-text-label --extra-small">
+                                        Your first name:
+                                        <input type="text" name="firstName" class="input-area checkout__payment-form-input --extra-small" required placeholder="First name">
+                                    </label>
+                                    <label class="text-label payment-text-label none --extra-small">
+                                        Your last name:
+                                        <input type="text" name="lastName" class="input-area checkout__payment-form-input --extra-small" required placeholder="Last name">
+                                    </label>
+                                </div>
+                                <button class="submit-button checkout__payment-form-sumbit --small" type="submit">Continue</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
