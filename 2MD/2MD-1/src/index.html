@@ -133,7 +133,8 @@
                             </label>
                         </div>
                         <label class="date-label">
-                            <input type="date" name="date" class="input-area --normal" placeholder="Choice date">
+                            Choice date:
+                            <input type="date" name="date" class="input-area --normal" >
                         </label>
                         <label class="text-area-label">
                             Your question:
@@ -160,13 +161,18 @@
                             </span>
                             <div class="checkout__details-order-list">
                                 <div class="checkout-info-list checkout__details-order-item">
-                                    <span class="order-item-name">Eggshell Plant Pot</span>
-                                    <span class="order-item-size">Size: Medium</span>
-                                    <span class="order-item-quantity">Qty: 1</span>
-                                    <span class="order-item-price">$25.00</span>
+                                    <div class="order-item-title">
+                                        <span class="order-item-name">Eggshell Plant Pot</span>
+                                    </div>
+                                    <div class="order-item-prop">
+                                        <span class="order-item-size">Size: Medium</span>
+                                        <span class="order-item-quantity">Qty: 1</span>
+                                        <span class="order-item-price">$25.00</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="grey-underline checkout__details-line"></div>
                         <div class="checkout__details-delivery">
                             <span class="checkout__details-delivery-text">Delivery Details</span>
                             <div class="checkout__details-delivery-info">
@@ -190,7 +196,7 @@
                         <div class="checkout__payment-input-list">
                             <form class="form-list">
                                 <div class="payment-input-list">
-                                    <label class="text-label payment-text-label">
+                                    <label class="text-label payment-text-label payment">
                                         Choice payment methode:
                                         <select name="payment" class="input-area checkout__payment-form-select" required>
                                             <option disabled selected value="">Select payment</option>
@@ -201,16 +207,16 @@
                                             <option value="method-5">Method 5</option>
                                         </select>
                                     </label>
-                                    <label class="text-label payment-text-label --extra-small">
+                                    <label class="text-label payment-text-label fname --extra-small">
                                         Your first name:
                                         <input type="text" name="firstName" class="input-area checkout__payment-form-input --extra-small" required placeholder="First name">
                                     </label>
-                                    <label class="text-label payment-text-label none --extra-small">
+                                    <label class="text-label payment-text-label lname none --extra-small">
                                         Your last name:
                                         <input type="text" name="lastName" class="input-area checkout__payment-form-input --extra-small" required placeholder="Last name">
                                     </label>
                                 </div>
-                                <button class="submit-button checkout__payment-form-sumbit --small" type="submit">Continue</button>
+                                <button class="submit-button checkout__payment-form-sumbit --small --checkout" type="submit">Continue</button>
                             </form>
                         </div>
                     </div>
