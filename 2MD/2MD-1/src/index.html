@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -11,6 +11,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <section class="change-theme">
+        <div class="container">
+            <div class="theme">
+                <label><input type="radio" name="theme" value="dark" checked>Dark</label>
+                <label><input type="radio" name="theme" value="light" >Light</label>
+            </div>
+        </div>
+    </section>
     <section class="sign-up">
         <div class="container --large">
             <div class="menu-bg sign-up__menu --large">
@@ -39,7 +47,7 @@
                         <span class="or-continue-with sing-up__footer-continue-other-text">or continue with</span>
                         <div class="sing-up__footer-continue-other-wrap">
                             <button class="button-link sing-up__footer-button --google">
-                                <img src="assets/svg/google-logo.svg" alt="google-logo">
+                                <img src="assets/svg/google-logo.svg" alt="google-logo" class="button-link-logo">
                             </button>
                             <button class="button-link sing-up__footer-button --facebook">
                                 <img src="assets/images/facebook-logo.png" alt="facebook-logo" width="24" height="24">
