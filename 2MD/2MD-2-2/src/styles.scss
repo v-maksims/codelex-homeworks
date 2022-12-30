@@ -206,16 +206,28 @@ body {
 
 .services {
 
-    &__wrap{
+    &__wrap {
+        position: relative;
         margin-top: 80px;
         margin-bottom: 50px;
+        padding-top: 50px;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            background-color: #4D6BB9;
+            width: 100%;
+            height: 220px;
+            z-index: -1;
+        }
     }
 
     &__title {
         font-weight: 800;
         font-size: 60px;
         line-height: 118.5%;
-        color: #ce0000;
+        color: #ffffff;
         margin-bottom: 40px;
     }
 
@@ -255,7 +267,7 @@ body {
         color: #404C6B;
     }
 
-    &__button{
+    &__button {
         display: flex;
         justify-content: center;
         margin-bottom: 50px;
@@ -265,5 +277,89 @@ body {
         background: #4D6BB9;
         border-radius: 30px;
         color: #ffffff;
+    }
+}
+
+.footer {
+    &__wrap {
+        position: relative;
+        width: 100%;
+        background: #F2F2F2;
+        padding-top: 50px;
+        padding-bottom: 195px;
+
+        &::after{
+            position: absolute;
+            bottom: 0;
+            content: "";
+            width: 100%;
+            height: 145px;
+            background: #2D3751;
+        }
+    }
+
+    &__title {
+        font-weight: 800;
+        font-size: 60px;
+        line-height: 118.5%;
+        color: #4D6BB9;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    &__contact {
+        display: flex;
+        flex-direction: row;
+        gap: 100px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__input-list {
+        width: 375px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
+    }
+
+    &__input {
+        width: 100%;
+        height: 55px;
+        background: #9FB1DE;
+        border: 0;
+        border-radius: 61px;
+    }
+
+    &__btn {
+        width: 170px;
+        height: 55px;
+        background: transparent;
+        border: 3px solid #4D6BB9;
+        border-radius: 61px;
+    }
+
+    &__contact-info-list{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        font-weight: 400;
+        color: #4D6BB9;
+    }
+
+    &__contact-info{
+        height: 20px;
+        padding-left: 44px;
+    }
+
+    &__contact-info--mail{
+        background: url(assets/svg/mail-ico.svg) no-repeat left;
+    }
+
+    &__contact-info--tel{
+        background: url(assets/svg/tel-ico.svg) no-repeat left;
+    }
+    &__contact-info--location{
+        background: url(assets/svg/position-ico.svg) no-repeat left;
     }
 }
