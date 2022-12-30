@@ -95,10 +95,19 @@ body {
         font-size: 14px;
         line-height: 118.5%;
     }
+
+    &:hover,
+    &:active,
+    &:focus {
+        transition: .2s;
+        opacity: .90;
+    }
 }
 
 
 .hero {
+    margin-bottom: 310px;
+
     &-wrap {
         position: relative;
     }
@@ -126,17 +135,41 @@ body {
         margin-bottom: 30px;
     }
 
-    &__card-text{
+    &__card-text {
         max-height: 160px;
         margin-bottom: 50px;
     }
 
-    &__btn{
+    &__btn {
         background-color: #4D6BB9;
         color: #FFFFFF;
     }
 
-    &__btn-text{
+    &__btn-text {
         color: #4D6BB9;
+    }
+}
+
+.about-us {
+    &__wrap {
+        position: relative;
+        height: 445px;
+        background: url(assets/images/about-us-bg.jpg) no-repeat bottom;
+    }
+
+    &__items{
+        position: absolute;
+        top: -115px;
+    }
+
+    &__title {
+        font-weight: 800;
+        font-size: 60px;
+        line-height: 118.5%;
+        color: #4D6BB9;
+    }
+
+    &__text{
+        max-width: 400px;
     }
 }
