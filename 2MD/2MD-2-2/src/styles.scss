@@ -29,6 +29,14 @@ body {
 
 }
 
+.title {
+    font-weight: 800;
+    font-size: 60px;
+    line-height: 118.5%;
+    color: #4D6BB9;
+    margin-bottom: 30px;
+}
+
 .moving-service {
 
     &-wrap {
@@ -127,14 +135,6 @@ body {
         height: 465px;
     }
 
-    &__card-title {
-        font-weight: 800;
-        font-size: 60px;
-        line-height: 71px;
-        color: #4D6BB9;
-        margin-bottom: 30px;
-    }
-
     &__card-text {
         max-height: 160px;
         margin-bottom: 50px;
@@ -157,20 +157,39 @@ body {
         background: url(assets/images/about-us-bg.jpg) no-repeat bottom;
     }
 
-    &__items{
+    &__items {
         position: absolute;
         top: -145px;
     }
 
-    &__title {
-        font-weight: 800;
-        font-size: 60px;
-        line-height: 118.5%;
-        color: #4D6BB9;
-        margin-bottom: 30px;
+    &__text {
+        max-width: 400px;
+    }
+}
+
+.family {
+    &__wrap {
+        width: 620px;
+        position: relative;
+        margin: 0 auto;
+    }
+    
+    &__card {
+        position: absolute;
+        top: -150px;
+        height: 400px;
+        padding: 50px 50px 0 50px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 50px rgba(77, 107, 185, 0.15);
+        border-radius: 30px;
     }
 
-    &__text{
-        max-width: 400px;
+    &__card-title{
+        text-align: center;
+    }
+
+    &__card-text {
+        text-align: center;
+        width: 520px;
     }
 }
