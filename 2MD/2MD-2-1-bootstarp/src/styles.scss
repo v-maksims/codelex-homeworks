@@ -18,21 +18,79 @@ body {
   }
 }
 
-.info {
-  &__bg {
-    margin: 0 auto;
-    max-width: 1900px;
+.gy-4 {
+  --bs-gutter-y: 4rem;
+}
 
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      width: 100%;
-      height: 1085px;
-      background: url(assets/images/top-bg.jpg) no-repeat;
-      z-index: -1;
-    }
+.gy-2 {
+  --bs-gutter-y: 2rem;
+}
+
+.title {
+  font-family: 'Mitr';
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 56px;
+  text-align: center;
+  margin-bottom: 40px;
+
+  &--about-us {
+    color: #2E8CAD;
   }
+
+  &--services {
+    color: #2E8CAD;
+  }
+
+  &--testymonials {
+    color: #FFFFFF;
+  }
+
+}
+
+.btn {
+  position: relative;
+  width: 160px;
+  height: 50px;
+  border: 0;
+  background: #2EBAEB;
+  border-radius: 40px;
+
+  &__wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 160px;
+    height: 50px;
+    background: transparent;
+    border: 1px solid #2EBAEB;
+    border-radius: 40px;
+  }
+}
+
+.info {
+
+  margin: 0 auto;
+  max-width: 1900px;
+  margin-bottom: 355px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 1085px;
+    background: url(assets/images/top-bg.jpg) no-repeat;
+    z-index: -1;
+  }
+
 
   &__title {
     font-family: 'Mitr';
@@ -40,5 +98,198 @@ body {
     font-size: 72px;
     line-height: 80px;
     color: #2E8CAD;
+    margin-bottom: 30px;
+  }
+
+  &__text {
+    max-width: 465px;
+    margin-bottom: 30px;
+  }
+
+  &__services-list {
+    margin-bottom: 30px;
+  }
+
+  &__services-item {
+    margin-bottom: 14px;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__services-item-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__services-item-text {
+    font-weight: 500;
+    color: #2E8CAD;
+  }
+
+  &__contact-us {
+    padding: 60px 53px 0 53px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 480px;
+    height: 465px;
+    background: #FFFFFF;
+    border-radius: 30px;
+  }
+
+  &__contact-us-text {
+    font-family: 'Mitr';
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 56px;
+    text-align: center;
+    color: #2E8CAD;
+  }
+
+  &__contact-us-input-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+  }
+
+  &__input {
+    width: 375px;
+    height: 55px;
+    background: #94D3EA;
+    border-radius: 61px;
+    padding-left: 30px;
+    color: #FFFFFF;
+    font-size: 20px;
+    border: 0;
+
+    &::placeholder {
+      color: #FFFFFF;
+      padding-left: 100px;
+    }
+  }
+
+  &__btn {
+    width: 170px;
+    height: 55px;
+    border: 3px solid #94D3EA;
+    border-radius: 60px;
+    background-color: transparent;
+    color: #94D3EA;
+
+    &:hover,
+    &:active,
+    &:focus {
+      transition: .2s;
+      cursor: pointer;
+      border-color: #5295ad;
+      color: #5295ad;
+      opacity: .90;
+    }
+  }
+}
+
+.about-us {
+  &__wrap {
+    padding: 50px 0;
+    background-color: #FFFFFF;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__number {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #2E8CAD;
+    border-radius: 50%;
+    font-family: 'Poppins';
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #2E8CAD;
+  }
+
+
+}
+
+.services {
+  &__wrap {
+    padding: 50px 0;
+    background-color: #F2F2F2;
+  }
+}
+
+.card {
+  border: 0;
+  border-radius: 30px;
+
+  &-title {
+    font-weight: 900;
+  }
+
+  &-text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.testymonials {
+  &__wrap {
+    padding: 50px 0;
+    background: #95D4EB;
+  }
+
+  &__items {
+    padding: 30px;
+    width: 580px;
+    height: 235px;
+    background: #FFFFFF;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+  }
+
+  &__avatar{
+    width: 80px;
+    height: 80px;
+  }
+
+  &__testymonial {
+    max-width: 425px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__name {
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: #50B2EA;
+  }
+
+  &__text {
+    font-family: 'Poppins';
+    font-size: 14px;
+    line-height: 22px;
+    color: #19435A;
+  }
+}
+
+.footer{
+  &__wrap{
+    padding: 50px 0;
+    background: #47626B;
   }
 }
