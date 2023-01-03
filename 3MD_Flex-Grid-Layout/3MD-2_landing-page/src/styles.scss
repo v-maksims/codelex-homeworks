@@ -108,6 +108,7 @@ body {
     &__wrap {
         padding-top: 55px;
         padding-bottom: 30px;
+        margin-bottom: 35px;
     }
 
     &__top {
@@ -147,22 +148,91 @@ body {
         line-height: 38px;
     }
 
-    &__card-info{
+    &__card-info {
         font-size: 18px;
         line-height: 26px;
         margin-bottom: 10px;
     }
 
-    &__card-info-date{
+    &__card-info-date {
         padding-right: 30px;
         border-right: 1px solid #000000;
     }
 
-    &__card-info-theme{
+    &__card-info-theme {
         padding-left: 25px;
     }
 
-    &__card-text{
+    &__card-text {
         font-size: 16px;
+    }
+}
+
+.works {
+    &__title {
+        display: inline-block;
+        font-size: 22px;
+        margin-bottom: 45px;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-bottom: 85px;
+    }
+
+    &__items {
+        display: flex;
+        gap: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #E0E0E0;
+    }
+
+    &__img {
+        max-width: 245px;
+        max-height: 185px;
+    }
+
+    &__information {
+        display: grid;
+        align-items: center;
+    }
+
+    &__information-title {
+        font-weight: 700;
+        font-size: 30px;
+    }
+
+    &__information-year {
+        width: 62px;
+        height: 25px;
+        background: #142850;
+        border-radius: 16px;
+        font-weight: 900;
+        font-size: 18px;
+        text-align: center;
+        color: #FFFFFF;
+        grid-row: 2;
+        grid-column: 1;
+    }
+
+    &__information-theme{
+        font-size: 20px;
+        color: #8695A4;
+        padding-left: 90px;
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    &__information-text{
+        grid-row: 3;
+    }
+}
+
+.footer{
+    &__wrap{
+        margin: 0 auto;
+        padding: 50px 0;
     }
 }
