@@ -1,4 +1,4 @@
-console.log('ready')
+console.log('ready');
 $(function () {
     $('.header__burger-btn').on('click', function () {
         $('.header__navigation-menu').removeClass('navigation-menu--close')
