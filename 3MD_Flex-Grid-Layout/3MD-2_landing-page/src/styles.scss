@@ -6,6 +6,7 @@ body {
     color: #21243D;
     font-size: 16px;
     line-height: 24px;
+    overflow-x: hidden;
 }
 
 .container {
@@ -25,8 +26,9 @@ body {
         margin-bottom: 165px;
     }
 
-    &__burger{
+    &__burger-btn{
         display: none;
+        cursor: pointer;
     }
 }
 
@@ -269,7 +271,7 @@ body {
             display: flex;
             justify-content: flex-end;
         }
-        &__burger{
+        &__burger-btn{
             display: inline-block;
             width: 30px;
             height: 20px;
@@ -289,6 +291,9 @@ body {
             background-color: #ffffff;
             z-index: 1;
             
+            &.navigation-menu--close{
+                transform: translateX(1000%);
+            }
         }
 
     }
