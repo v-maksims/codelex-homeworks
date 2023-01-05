@@ -45,6 +45,13 @@ body {
         line-height: 29px;
         color: #000000;
         text-decoration: none;
+
+        &:hover,
+        &:active,
+        &:focus{
+           transition: .3s;
+           color: #5f5a5a;
+        }
     }
 }
 
@@ -145,6 +152,14 @@ body {
         padding: 25px 20px;
         background: #FFFFFF;
         border-radius: 4px;
+        cursor: pointer;
+
+        &:hover,
+        &:active,
+        &:focus {
+            transition: .3s;
+            box-shadow: 10px 5px 5px rgba(46, 46, 46, 0.699);
+        }
     }
 
     &__card-title {
@@ -204,11 +219,21 @@ body {
     &__information {
         display: grid;
         align-items: center;
+        
     }
-
+    
     &__information-title {
         font-weight: 700;
         font-size: 30px;
+        cursor: pointer;
+
+        &:hover,
+        &:active,
+        &:focus{
+            transition: .3s;
+            color: #000e8a;
+            text-decoration: underline;
+        }
     }
 
     &__information-year {
@@ -258,6 +283,15 @@ body {
         }
     }
 
+    &__ico{
+        background: transparent;
+        &:hover,
+        &:active,
+        &:focus{
+            transition: .3s;
+            opacity: .80;
+        }
+    }
 }
 
 @media screen and (max-width: 998px) {
