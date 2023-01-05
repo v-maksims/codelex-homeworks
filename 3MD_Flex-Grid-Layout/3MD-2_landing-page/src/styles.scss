@@ -25,11 +25,6 @@ body {
         margin-top: 30px;
         margin-bottom: 165px;
     }
-
-    &__burger-btn{
-        display: none;
-        cursor: pointer;
-    }
 }
 
 .navigation {
@@ -284,7 +279,6 @@ body {
     }
 
     &__ico{
-        background: transparent;
         &:hover,
         &:active,
         &:focus{
@@ -301,42 +295,39 @@ body {
     }
 
     .header{
-        &__burger-wrap{
-            display: flex;
-            justify-content: flex-end;
+        &__navigation-wrap{
+            margin-bottom: 30px;
         }
-        &__burger-btn{
-            display: inline-block;
-            width: 30px;
-            height: 20px;
-            background-color: transparent;
-            border: none;
-            background-image: url(assets/svg/menu-burger.svg);
-            background-repeat: no-repeat;
+    }
 
-        }
-
-        &__navigation-menu{
-            position: absolute;
-            right: 0;
-            padding: 15px;
-            min-width: 40%;
-            height: 100%;
-            background-color: #ffffff;
-            z-index: 1;
+    .navigation{
+        &__list{
+            position: fixed;
+            right: -90px;
+            flex-direction: column;
+            gap: 15px;
+            transition: .2s all;
             
-            &.navigation-menu--close{
-                transform: translateX(1000%);
+            &::before{
+                position: absolute;
+                content: '';
+                background-image: url(assets/svg/menu-burger.svg);
+                width: 30px;
+                height: 20px;
+                top: 0px;
+                left:-40px;
+            }
+
+            &:hover,
+            &:active,
+            &:focus{
+                right: 20px;
             }
         }
 
-    }
-    
-    .navigation__list{
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-        align-items: center;
+        &__item{
+            font-size: 25px;
+        }
     }
 
     .about {
