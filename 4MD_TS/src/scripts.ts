@@ -5,7 +5,7 @@
 
 console.log('-----Task_01-----');
 
-const sumFunction = (a: number, b: number) => a + b;
+const sumFunction = (numOne: number, numTwo: number) => numOne + numTwo;
 
 console.log(sumFunction(1, 2));
 console.log(sumFunction(1, 10));
@@ -17,7 +17,7 @@ console.log(sumFunction(99, 1));
 
 console.log('-----Task_02-----');
 
-const typeOfFunction = (a: any) => typeof a;
+const typeOfFunction = (value: any) => typeof value;
 
 console.log(typeOfFunction(1));
 console.log(typeOfFunction(false));
@@ -276,10 +276,6 @@ console.log('-----Task_20-----');
 
 const function20 = (a: number) => {
     const checkFunc = (num: number) => {
-        if (num <= 1) {
-            return false;
-        }
-
         for (let i = 2; i < num; i++) {
             if (num % i === 0) {
                 return false;
@@ -473,9 +469,9 @@ console.log(function30([4, 3, 2, 1, 0]));
 
 console.log('-----Task_31-----');
 
-const function31 = (a: number[]) => {
+const function31 = (numArr: number[]) => {
     let result: number = 0;
-    a.forEach(num => Math.sign(num) === -1 ? result++ : null);
+    numArr.forEach(num => Math.sign(num) === -1 ? result++ : null);
     return result;
 };
 
@@ -512,7 +508,7 @@ console.log(function33(['z', 'c', 'd', 'a', 'y', 'a', 'w']));
 
 console.log('-----Task_34-----');
 
-const function34 = (a: number[]) => a.reduce((a: number, b: number) => a + b) / a.length;
+const function34 = (numArr: number[]) => numArr.reduce((a: number, b: number) => a + b) / numArr.length;
 
 console.log(function34([10, 100, 40]));
 console.log(function34([10, 100, 1000]));
@@ -524,9 +520,9 @@ console.log(function34([-50, 0, 50, 200]));
 
 console.log('-----Task_35-----');
 
-const function35 = (a: string[]) => {
+const function35 = (arr: string[]) => {
     let result: string = '';
-    a.forEach(word => word.length > result.length ? result = word : null);
+    arr.forEach(word => word.length > result.length ? result = word : null);
     return result;
 };
 
@@ -540,7 +536,7 @@ console.log(function35(['I', 'need', 'candy']));
 
 console.log('-----Task_36-----');
 
-const function36 = (a: (boolean | string | number)[]) => a.every(val => val === a[0]);
+const function36 = (arr: (boolean | string | number)[]) => arr.every(val => val === arr[0]);
 
 console.log(function36([true, true, true, true]));
 console.log(function36(['test', 'test', 'test']));
@@ -555,10 +551,10 @@ console.log(function36(['10', 10, 10, 10]));
 
 console.log('-----Task_37-----');
 
-const function37 = (a: (number | string | boolean)[], b: number[], c?: string[]) => {
-    b.forEach(val => a.push(val));
-    c?.forEach(val => a.push(val));
-    return a;
+const function37 = (arrOne: (number | string | boolean)[], arrTwo: number[], arrThree?: string[]) => {
+    arrTwo.forEach(val => arrOne.push(val));
+    arrThree?.forEach(val => arrOne.push(val));
+    return arrOne;
 };
 
 console.log(function37([1, 2, 3], [4, 5, 6]));
@@ -571,14 +567,114 @@ console.log(function37([true, true], [1, 2], ['a', 'b']));
 // Return the sorted array
 
 type Tobject1 = {
-    a:number,
-    b:number
+    a: number,
+    b: number
 }
 
 console.log('-----Task_38-----');
 
-const function38 = (arr: Tobject1 []) =>  arr.sort((a, b) => a.b - b.b);
+const function38 = (arr: Tobject1[]) => arr.sort((a, b) => a.b - b.b);
 
 console.log(function38([{ a: 1, b: 2 }, { a: 5, b: 4 }]));
 console.log(function38([{ a: 2, b: 10 }, { a: 5, b: 4 }]));
 console.log(function38([{ a: 1, b: 7 }, { a: 2, b: 1 }]));
+
+// Task 39
+// Write a function that takes two arrays as arguments
+// Merge both arrays and remove duplicate values
+// Sort the merge result in ascending order
+// Return the resulting array
+
+console.log('-----Task_39-----');
+
+const function39 = (numArrOne: number[], numArrTwo: number[]) => {
+    numArrTwo.forEach(num => numArrOne.includes(num) ? 0 : numArrOne.push(num));
+
+    return numArrOne.sort((a, b) => a - b)
+};
+
+console.log(function39([1, 2, 3], [3, 4, 5]));
+console.log(function39([-10, 22, 333, 42], [-11, 5, 22, 41, 42]));
+
+// Task 40
+// Write a function that takes an array (a) and a number (b) as arguments
+// Sum up all array elements with a value greater than b
+// Return the sum
+
+console.log('-----Task_40-----');
+
+const function40 = (numArr: number[], number: number) => {
+    let result: number = 0;
+    numArr.forEach(num => num > number ? result += num : 0);
+    return result;
+};
+
+console.log(function40([1, 2, 3, 4, 5, 6, 7], 2));
+console.log(function40([-10, -11, -3, 1, -4], -3));
+console.log(function40([78, 99, 100, 101, 401], 99));
+
+// Task 41
+// Write a function that takes two numbers (min and max) as arguments
+// Return an array of numbers in the range min to max
+
+console.log('-----Task_41-----');
+
+const function41 = (numOne: number, numTwo: number) => {
+    let numArr: number[] = [];
+
+    for (let i = numOne; i <= numTwo; i++) {
+        numArr.push(i)
+    };
+
+    return numArr;
+};
+
+console.log(function41(2, 10));
+console.log(function41(1, 3));
+console.log(function41(-5, 5));
+console.log(function41(2, 7));
+
+// Task 42
+// Write a function that takes an array of strings as argument
+// Group those strings by their first letter
+// Return an object that contains properties with keys representing first letters
+// The values should be arrays of strings containing only the corresponding strings
+// For example, the array ['Alf', 'Alice', 'Ben'] should be transformed to
+// { a: ['Alf', 'Alice'], b: ['Ben']}
+
+console.log('-----Task_42-----');
+
+// type Tobject2 = {
+//     a?: string[],
+//     b?: string[],
+//     p?: string[],
+// }
+
+const function42 = (nameArr: string[]) => {
+    let result: any = {};
+    for(let i = 0; i < nameArr.length; i++){
+        let name: string = nameArr[i];
+        let nameLetter: string = name[0].toLowerCase()
+        let arr:string [] = [];
+        if(result[nameLetter] === undefined){
+            arr.push(name);
+            result[nameLetter] = arr;
+        } else {
+            result[nameLetter].push(name);
+        }
+    }
+    return result;
+}
+
+console.log(function42(['Alf', 'Alice', 'Ben']));
+console.log(function42(['Ant', 'Bear', 'Bird']));
+console.log(function42(['Berlin', 'Paris', 'Prague']));
+
+// Task 43
+// Write a function that takes an array with arbitrary elements and a number as arguments
+// Return a new array, the first element should be either the given number itself
+// or zero if the number is smaller than 6
+// The other elements should be the elements of the original array
+// Try not to mutate the original array
+
+console.log('-----Task_43-----');
