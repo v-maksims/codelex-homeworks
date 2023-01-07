@@ -566,14 +566,14 @@ console.log(function37([true, true], [1, 2], ['a', 'b']));
 // Sort the array by property b in ascending order
 // Return the sorted array
 
-type Tobject1 = {
+type Tobject38 = {
     a: number,
     b: number
 }
 
 console.log('-----Task_38-----');
 
-const function38 = (arr: Tobject1[]) => arr.sort((a, b) => a.b - b.b);
+const function38 = (arr: Tobject38[]) => arr.sort((a, b) => a.b - b.b);
 
 console.log(function38([{ a: 1, b: 2 }, { a: 5, b: 4 }]));
 console.log(function38([{ a: 2, b: 10 }, { a: 5, b: 4 }]));
@@ -644,19 +644,17 @@ console.log(function41(2, 7));
 
 console.log('-----Task_42-----');
 
-// type Tobject2 = {
-//     a?: string[],
-//     b?: string[],
-//     p?: string[],
-// }
+type Tobject42 = {
+    [key: string]: string[]
+}
 
 const function42 = (nameArr: string[]) => {
-    let result: any = {};
-    for(let i = 0; i < nameArr.length; i++){
+    let result: Tobject42 = {};
+    for (let i = 0; i < nameArr.length; i++) {
         let name: string = nameArr[i];
         let nameLetter: string = name[0].toLowerCase()
-        let arr:string [] = [];
-        if(result[nameLetter] === undefined){
+        let arr: string[] = [];
+        if (result[nameLetter] === undefined) {
             arr.push(name);
             result[nameLetter] = arr;
         } else {
@@ -678,3 +676,310 @@ console.log(function42(['Berlin', 'Paris', 'Prague']));
 // Try not to mutate the original array
 
 console.log('-----Task_43-----');
+
+const function43 = (arr: (number | string | boolean)[], num: number) => {
+    let result: (number | string | boolean)[] = [...arr];
+    num >= 6 ? result.unshift(num) : result.unshift(0);
+    return result;
+};
+
+console.log(function43([1, 2, 3], 6));
+console.log(function43(['a', 'b'], 2));
+console.log(function43([null, false], 11));
+
+
+// Task 44
+// Write a function that takes an array (a) and a value (n) as arguments
+// Save every nth element in a new array
+// Return the new array
+
+console.log('-----Task_44-----');
+
+const function44 = (numArr: number[], pos: number) => {
+    let result: number[] = [];
+    const forLoopNum: number = pos - 1;
+    for (let i = forLoopNum; i < numArr.length; i += pos) {
+        result.push(numArr[i]);
+    };
+    return result;
+};
+
+console.log(function44([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
+console.log(function44([10, 9, 8, 7, 6, 5, 4, 3, 2, 1], 5));
+console.log(function44([7, 2, 1, 6, 3, 4, 5, 8, 9, 10], 2));
+
+// Task 45
+// Write a function that takes an object with two properties as argument
+// It should return the value of the property with key country
+
+type Tobject45 = {
+    continent: string,
+    country: string
+};
+
+console.log('-----Task_45-----');
+
+const function45 = (obj: Tobject45) => obj.country;
+
+console.log(function45({ continent: 'Asia', country: 'Japan' }));
+console.log(function45({ country: 'Sweden', continent: 'Europe' }));
+
+// Task 46
+// Write a function that takes an object with two properties as argument
+// It should return the value of the property with key 'prop-2'
+// Tip: you might want to use the square brackets property accessor
+
+type Tobject46 = {
+    [key: string]: (string | number),
+};
+
+console.log('-----Task_46-----');
+
+const function46 = (obj: Tobject46) => obj['prop-2'];
+
+console.log(function46({ one: 1, 'prop-2': 2 }));
+console.log(function46({ 'prop-2': 'two', prop: 'test' }));
+
+// Task 47
+// Write a function that takes an object with two properties and a string as arguments
+// It should return the value of the property with key equal to the value of the string
+
+type Tobject47 = {
+    [key: string]: string
+}
+
+console.log('-----Task_47-----');
+
+const function47 = (obj: Tobject47, key: string) => obj[key];
+
+console.log(function47({ continent: 'Asia', country: 'Japan' }, 'continent'));
+console.log(function47({ country: 'Sweden', continent: 'Europe' }, 'country'));
+
+// Task 48
+// Write a function that takes an object (a) and a string (b) as argument
+// Return true if a has a property with key b
+// Return false otherwise
+
+type Tobject48 = {
+    [key: string]: string | number,
+}
+
+console.log('-----Task_48-----');
+
+const function48 = (obj: Tobject48, prop: string) => Object.keys(obj).some(key => key === prop);
+
+console.log(function48({ a: 1, b: 2, c: 3 }, 'b'));
+console.log(function48({ x: 'a', y: 'b', z: 'c' }, 'a'));
+console.log(function48({ x: 'a', y: 'b', z: 'c' }, 'z'));
+
+// Task 49
+// Write a function that a string (a) as argument
+// Create an object that has a property with key 'key' and a value of a
+// Return the object
+
+type Tobject49 = {
+    key: string,
+}
+
+console.log('-----Task_49-----');
+
+const function49 = (str: string) => {
+    let result: Tobject49 = { key: '' };
+    result.key = str;
+    return result;
+};
+
+console.log(function49('a'));
+console.log(function49('z'));
+console.log(function49('b'));
+
+// Task 50
+// Write a function that takes two strings (a and b) as arguments
+// Create an object that has a property with key 'a' and a value of 'b'
+// Return the object
+
+type Tobject50 = {
+    [key: string]: string,
+}
+
+console.log('-----Task_50-----');
+
+const function50 = (strA: string, strB: string) => {
+    let result: Tobject50 = {};
+    result[strA] = strB;
+    return result;
+};
+
+console.log(function50('a', 'b'));
+console.log(function50('z', 'x'));
+console.log(function50('b', 'w'));
+
+// Task 51
+// Write a function that takes two arrays (a and b) as arguments
+// Create an object that has properties with keys 'a' and corresponding values 'b'
+// Return the object
+
+type TobjecStringsOrNumbers = {
+    [key: (string | number)]: (string | number),
+}
+
+console.log('-----Task_51-----');
+
+const function51 = (arrA: (number | string)[], arrB: (number | string)[]) => {
+    let result: TobjecStringsOrNumbers = {};
+    for (let i = 0; i < arrA.length; i++) {
+        result[arrA[i]] = arrB[i]
+    }
+    return result;
+};
+
+console.log(function51(['a', 'b', 'c'], [1, 2, 3]));
+console.log(function51(['w', 'x', 'y', 'z'], [10, 9, 5, 2]));
+console.log(function51([1, 'b'], ['a', 2]));
+
+// Task 52
+// Write a function that takes an object (a) as argument
+// Return an array with all object keys
+
+type TobjectStringNumber = {
+    [key: string]: number,
+}
+
+console.log('-----Task_52-----');
+
+const function52 = (obj: TobjectStringNumber) => {
+    let result = [];
+    result.push(Object.keys(obj));
+    return result;
+};
+
+console.log(function52({ a: 1, b: 2, c: 3 }));
+console.log(function52({ j: 9, i: 2, x: 3, z: 4 }));
+console.log(function52({ w: 15, x: 22, y: 13 }));
+
+// Task 53
+// Write a function that takes an object (a) as argument
+// Return the sum of all object values
+
+console.log('-----Task_53-----');
+
+const function53 = (obj: TobjectStringNumber) => {
+    let valueArr: number[] = Object.values(obj);
+    let result: number = 0;
+    valueArr.forEach(num => result += num)
+    return result;
+};
+
+console.log(function53({ a: 1, b: 2, c: 3 }));
+console.log(function53({ j: 9, i: 2, x: 3, z: 4 }));
+console.log(function53({ w: 15, x: 22, y: 13 }));
+
+// Task 54
+// Write a function that takes an object as argument
+// It should return an object with all original object properties
+// except for the property with key 'b'
+
+console.log('-----Task_54-----');
+
+const function54 = (obj: TobjectStringNumber) => {
+    delete obj.b;
+    return obj;
+};
+
+console.log(function54({ a: 1, b: 7, c: 3 }));
+console.log(function54({ b: 0, a: 7, d: 8 }));
+console.log(function54({ e: 6, f: 4, b: 5, a: 3 }));
+
+// Task 55
+// Write a function that takes two objects as arguments
+// Unfortunately, the property 'b' in the second object has the wrong key
+// should be named 'd' instead
+// Merge both objects and correct the wrong property name
+// Return the resulting object
+// It should have the properties 'a', 'b', 'c', 'd', and 'e'
+
+console.log('-----Task_55-----');
+
+const function55 = (objOne: TobjectStringNumber, objTwo: TobjectStringNumber) => {
+    objTwo.d = objTwo.b;
+    delete objTwo.b;
+    let newobj: TobjectStringNumber = { ...objOne, ...objTwo };
+    return newobj;
+};
+
+console.log(function55({ a: 1, b: 2 }, { c: 3, b: 4, e: 5 }));
+console.log(function55({ a: 5, b: 4 }, { c: 3, b: 1, e: 2 }));
+
+// Task 56
+// Write a function that takes an object (a) and a number (b) as arguments
+// Multiply all values of 'a' by 'b'
+// Return the resulting object
+
+console.log('-----Task_56-----');
+
+const function56 = (obj: TobjectStringNumber, num: number) => {
+    const objKeys: string[] = Object.keys(obj);
+    objKeys.forEach(key => obj[key] = obj[key] * num);
+    return obj;
+};
+
+console.log(function56({ a: 1, b: 2, c: 3 }, 3));
+console.log(function56({ j: 9, i: 2, x: 3, z: 4 }, 10));
+console.log(function56({ w: 15, x: 22, y: 13 }, 6));
+
+// Task 57
+// Write a function that takes an object as argument
+// Somehow, the properties and keys of the object got mixed up
+// Swap the Javascript object's key with its values and return the resulting object
+
+console.log('-----Task_57-----');
+
+const function57 = (obj: TobjecStringsOrNumbers) => {
+    const objKeys: (string | number)[] = Object.keys(obj);
+    const objValues: (string | number)[] = Object.values(obj);
+    let newObject: TobjecStringsOrNumbers = {};
+    for (let i = 0; i < objKeys.length; i++) {
+        newObject[objValues[i]] = objKeys[i];
+    }
+    return newObject;
+};
+
+console.log(function57({ z: 'a', y: 'b', x: 'c', w: 'd' }));
+console.log(function57({ 2: 'a', 4: 'b', 6: 'c', 8: 'd' }));
+console.log(function57({ a: 1, z: 24 }));
+
+// Task 58
+// Write a function that takes an object as argument
+// Some of the property values contain empty strings
+// Replace empty strings and strings that contain only whitespace with null values
+// Return the resulting object
+
+type TobjectStringString = {
+    [key: string]: string,
+}
+
+console.log('-----Task_58-----');
+
+const function58 = (obj: TobjectStringString) => {
+    const objKeys: string[] = Object.keys(obj);
+    const objValues: string[] = Object.values(obj);
+    for (let i = 0; i < objValues.length; i++) {
+        objValues[i].trim() === '' ? obj[objKeys[i]] = null : obj[objKeys[i]] = objValues[i];
+    }
+    return obj;
+};
+
+console.log(function58({ a: 'a', b: 'b', c: '' }));
+console.log(function58({ a: '', b: 'b', c: ' ', d: 'd' }));
+console.log(function58({ a: 'a', b: 'b ', c: ' ', d: '' }));
+
+// Task 59
+
+
+
+// console.log('-----Task_00-----');
+// const function = () => {};
+// console.log(function);
+// TobjectStringNumber
+// TobjecStringsOrNumbers
+// TobjectStringString
