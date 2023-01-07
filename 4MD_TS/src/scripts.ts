@@ -974,12 +974,181 @@ console.log(function58({ a: '', b: 'b', c: ' ', d: 'd' }));
 console.log(function58({ a: 'a', b: 'b ', c: ' ', d: '' }));
 
 // Task 59
+// Write a function that takes an object as argument containing properties with personal information
+// Extract firstName, lastName, size, and weight if available
+// If size or weight is given transform the value to a string
+// Attach the unit cm to the size
+// Attach the unit kg to the weight
+// Return a new object with all available properties that we are interested in
 
+type TobjectProps = {
+    fn?: string,
+    ln?: string,
+    size?: string,
+    weight?: string,
+}
 
+console.log('-----Task_59-----');
 
-// console.log('-----Task_00-----');
-// const function = () => {};
-// console.log(function);
-// TobjectStringNumber
-// TobjecStringsOrNumbers
-// TobjectStringString
+const function59 = (obj: TobjecStringsOrNumbers) => {
+    let editedObj: TobjectProps = {};
+
+    obj.hasOwnProperty('fn') ? editedObj.fn = String(obj.fn) : 0;
+    obj.hasOwnProperty('ln') ? editedObj.ln = String(obj.ln) : 0;
+    obj.hasOwnProperty('size') ? editedObj.size = obj.size + 'cm' : 0;
+    obj.hasOwnProperty('weight') ? editedObj.weight = obj.weight + 'kg' : 0;
+
+    return editedObj;
+};
+
+console.log(function59({ fn: 'Lisa', ln: 'Müller', age: 17, size: 175, weight: 67 }));
+console.log(function59({ fn: 'Martin', ln: 'Harper', age: 26, email: 'martin.harper@test.de', weight: 102 }));
+console.log(function59({ fn: 'Andrew', ln: 'Harper', age: 81, size: 175, weight: 71 }));
+console.log(function59({ fn: 'Matthew', ln: 'Müller', age: 19, email: 'matthew@mueller.de' })
+);
+
+// Task 60
+// Write a function that takes an array of objects and a string as arguments
+// Add a property with key 'continent' and value equal to the string to each of the objects
+// Return the new array of objects
+// Tip: try not to mutate the original array
+
+console.log('-----Task_60-----');
+
+const function60 = (objectArr: TobjectStringString[], continent: string) => {
+    const objectArrCopy: TobjectStringString[] = [];
+    objectArr.forEach(obj => objectArrCopy.push({ ...obj }))
+    objectArrCopy.forEach(key => key.continent = continent);
+    return objectArrCopy
+};
+
+console.log(function60([{ city: 'Tokyo', country: 'Japan' }, { city: 'Bangkok', country: 'Thailand' }], 'Asia'));
+console.log(function60([{ city: 'Stockholm', country: 'Sweden' }, { city: 'Paris', country: 'France' }], 'Europe'));
+
+// Task 61
+// Write a function that takes an array of numbers as argument
+// Convert the array to an object
+// It should have a key for each unique value of the array
+// The corresponding object value should be the number of times the key occurs within the array
+
+type TobjectNumbersNumber = {
+    [key: number]: number,
+}
+
+console.log('-----Task_61-----');
+
+const function61 = (numArr: number[]) => {
+    let resultObj: TobjectNumbersNumber = {};
+    numArr.forEach(num => resultObj.hasOwnProperty(num) ? resultObj[num]++ : resultObj[num] = 1);
+    return resultObj
+};
+
+console.log(function61([1, 2, 2, 3]));
+console.log(function61([9, 9, 9, 99]));
+console.log(function61([4, 3, 2, 1]));
+
+// Taks 62
+// Write a function that takes two date instances as arguments
+// It should return true if the dates are equal
+// It should return false otherwise
+
+console.log('-----Task_62-----');
+
+const function62 = (dateOne: Date, dateTwo: Date) => dateOne.getTime() === dateTwo.getTime();
+
+console.log(function62(new Date('2000/01/01 08:00:00'), new Date('2000/01/01 08:45:00')));
+console.log(function62(new Date('2000/01/01 08:00:00'), new Date('2000/01/01 08:00:00')));
+console.log(function62(new Date('2001/01/01 08:00:00'), new Date('2000/01/01 08:00:00')));
+
+// Task 63
+// Write a function that takes two date instances as argument
+// It should return the number of days that lies between those dates
+
+console.log('-----Task_63-----');
+
+const function63 = (dateOne: Date, dateTwo: Date) => {
+    const dateOneMsecInDay: number = dateOne.getTime() / 86400000;
+    const dateTwoMsecInDay: number = dateTwo.getTime() / 86400000;
+    if (dateOne > dateTwo) {
+        return dateOneMsecInDay - dateTwoMsecInDay;
+    } else {
+        return dateTwoMsecInDay - dateOneMsecInDay;
+    }
+};
+
+console.log(function63(new Date('2020-06-11'), new Date('2020-06-01')));
+console.log(function63(new Date('2000-01-01'), new Date('2020-06-01')));
+
+// Task 64
+// Write a function that takes two date instances as argument
+// It should return true if they fall on the exact same day
+// It should return false otherwise
+
+console.log('-----Task_64-----');
+
+const function64 = (dateOne: Date, dateTwo: Date) => dateOne.getDay() === dateTwo.getDay();
+
+console.log(function64(new Date('2000/01/01'), new Date('2000/01/01')));
+console.log(function64(new Date('2000/01/01'), new Date('2000/01/02')));
+console.log(function64(new Date('2001/01/01'), new Date('2000/01/01')));
+console.log(function64(new Date('2000/11/01'), new Date('2000/01/01')));
+
+// Task 65
+// Write a function that takes two number arrays as parameters 
+// and return an array which contains elements from both arrays
+
+console.log('-----Task_65-----');
+
+const function65 = (numArrOne: number[], numArrTwo: number[]) => [...numArrOne, ...numArrTwo];
+
+console.log(function65([1, 2], [3, 4]));
+console.log(function65([1, 2], [3, 4, 5, 6]));
+
+// Task 66
+// Write a function that takes an array and a string as parameters 
+// and return an array which contains all elements from the given array
+// and the given string as the last element
+
+console.log('-----Task_66-----');
+
+const function66 = (strArr: string[], str: string) => [...strArr, str];
+
+console.log(function66(['Apple', 'Orange', 'Banana'], 'Kiwi'));
+
+// Task 67
+// Write a function that takes an array and a string as parameters 
+// and return an array which contains all elements from the given array
+// and the given string as the first element
+
+console.log('-----Task_67-----');
+
+const function67 = (strArr: string[], str: string) => [str, ...strArr];
+
+console.log(function67(['Apple', 'Orange', 'Banana'], 'Kiwi'));
+
+// Task 68 
+// Write a function that takes two objects as parameters 
+// and return an object which contains properties from both objects
+
+console.log('-----Task_68-----');
+
+const function68 = (objOne: TobjectStringNumber, objTwo: TobjectStringNumber) => {
+    return { ...objOne, ...objTwo };
+};
+
+console.log(function68({ a: 1, b: 2 }, { c: 3, d: 4 }));
+console.log(function68({ a: 1, b: 2 }, { c: 3, d: 4, e: 5, f: 6 }));
+
+// Task 69
+// Write a function that takes an object and a string as parameters 
+// and return an object which contains properties from the given object
+// and a new property favoriteMovie with the value equal to the given string
+
+console.log('-----Task_69-----');
+
+const function69 = (obj:TobjecStringsOrNumbers, str: string ) => {
+    return {...obj, favoriteMovi: str}
+};
+
+console.log(function69({ eyeColor: 'green', age: 10 }, 'Garfield'));
+console.log(function69({ eyeColor: 'blue', age: 15 }, 'Twilight'));
