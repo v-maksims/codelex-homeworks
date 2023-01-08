@@ -651,14 +651,12 @@ type Tobject42 = {
 const function42 = (nameArr: string[]) => {
     let result: Tobject42 = {};
     for (let i = 0; i < nameArr.length; i++) {
-        let name: string = nameArr[i];
-        let nameLetter: string = name[0].toLowerCase()
-        let arr: string[] = [];
-        if (result[nameLetter] === undefined) {
-            arr.push(name);
-            result[nameLetter] = arr;
+        let nameLetter: string = nameArr[i].toLowerCase().charAt(0)
+        if(result.hasOwnProperty(nameLetter)){
+            result[nameLetter].push(nameArr[i]);
         } else {
-            result[nameLetter].push(name);
+            result[nameLetter] = []
+            result[nameLetter].push(nameArr[i]);
         }
     }
     return result;
