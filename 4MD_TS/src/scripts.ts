@@ -652,7 +652,7 @@ const function42 = (nameArr: string[]) => {
     let result: Tobject42 = {};
     for (let i = 0; i < nameArr.length; i++) {
         let nameLetter: string = nameArr[i].toLowerCase().charAt(0)
-        if(result.hasOwnProperty(nameLetter)){
+        if (result.hasOwnProperty(nameLetter)) {
             result[nameLetter].push(nameArr[i]);
         } else {
             result[nameLetter] = []
@@ -991,10 +991,10 @@ console.log('-----Task_59-----');
 const function59 = (obj: TobjecStringsOrNumbers) => {
     let editedObj: TobjectProps = {};
 
-    obj.hasOwnProperty('fn') ? editedObj.fn = String(obj.fn) : 0;
-    obj.hasOwnProperty('ln') ? editedObj.ln = String(obj.ln) : 0;
-    obj.hasOwnProperty('size') ? editedObj.size = obj.size + 'cm' : 0;
-    obj.hasOwnProperty('weight') ? editedObj.weight = obj.weight + 'kg' : 0;
+    obj.hasOwnProperty('fn') && (editedObj.fn = String(obj.fn));
+    obj.hasOwnProperty('ln') && (editedObj.ln = String(obj.ln));
+    obj.hasOwnProperty('size') && (editedObj.size = obj.size + 'cm');
+    obj.hasOwnProperty('weight') && (editedObj.weight = obj.weight + 'kg');
 
     return editedObj;
 };
@@ -1144,8 +1144,8 @@ console.log(function68({ a: 1, b: 2 }, { c: 3, d: 4, e: 5, f: 6 }));
 
 console.log('-----Task_69-----');
 
-const function69 = (obj:TobjecStringsOrNumbers, str: string ) => {
-    return {...obj, favoriteMovi: str}
+const function69 = (obj: TobjecStringsOrNumbers, str: string) => {
+    return { ...obj, favoriteMovi: str }
 };
 
 console.log(function69({ eyeColor: 'green', age: 10 }, 'Garfield'));
