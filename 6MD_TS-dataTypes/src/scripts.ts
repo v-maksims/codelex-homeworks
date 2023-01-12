@@ -78,7 +78,7 @@ function getTitles(products: Product[]): string[] {
 
 // This two functions just here to check the proper return type in the tests.
 const courses = filterCourses(products)
-// const titles = getTitles(products)
+const titles = getTitles(products)
 
 // Exercise 4,
 // Can I pass a Product object to the format Price function without
@@ -91,7 +91,7 @@ function formatPrice(product: { price: string, currency: string }) {
 
 // passing a product to the function, for tests only.
 
-// const price = formatPrice(products[0])
+const price = formatPrice(products[0])
 
 
 // ----- Everyday types -----
@@ -103,8 +103,8 @@ function formatPrice(product: { price: string, currency: string }) {
 // TODO: remove the "any" type, and add a concerete type for these basic primitives
 // How they are working, if you remove all type definitions? How inference is working here?
 
-let price: number;
-price = 100.5;
+let price1: number;
+price1 = 100.5;
 
 let title: string;
 title = "How to Hack NASA with HTML?";
@@ -115,8 +115,8 @@ option = true;
 let prices: number[];
 prices = [3, 5, 100, 3.5];
 
-let titles: string[];
-titles = ["How to Hack NASA with HTML?", "Cat Taming Masterclass"];
+let titles1: string[];
+titles1 = ["How to Hack NASA with HTML?", "Cat Taming Masterclass"];
 
 let options: boolean[];
 options = [true, true, false];
@@ -293,10 +293,10 @@ const eur: EUR = secondCurrency;
 const someAccount = {
     name: "My Awesome Account",
     currency: "USD" 
-} as {currency : Currency}
+} 
 
 const getSomeCurrency = (account: {currency: Currency}) => account.currency;
-const someCurrency = getSomeCurrency(someAccount);
+const someCurrency = getSomeCurrency(someAccount as {currency: Currency});
 
 
 // Exercise 7) null and undefined
