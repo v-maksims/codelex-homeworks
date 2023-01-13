@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
+
+body{
+    font-family: 'ABeeZee', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.container{
+    max-width: 1140px;
+    width: 100%;
+    padding: 0 10px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+.buttons-wrap{
+    display: flex;
+    gap: 30px
+}
+
+.btn{
+    min-width: 160px;
+    padding: 20px 40px;
+    border-radius: 8px;
+    border: 0;
+    cursor: pointer;
+
+    &--azure{
+        background: #017187;
+    }
+
+    &--violet{
+        background: rgba(92, 1, 135, 0.71);
+    }
+
+    &--pink{
+        background: rgba(135, 17, 1, 0.56);
+    }
+
+    &--green{
+        background: rgba(1, 135, 14, 0.63);
+    }
+
+    &--yellow{
+        background: #E2CF22;
+    }
+
+    &--blue{
+        background: #011E87;
+    }
+
+    &--l-blue{
+        background: #18D5E1;
+    }
+}
+
+.btn__text{
+    font-size: 1.25rem;
+    color: #ffffff;
+}
+
+.squares-wrap{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 110px;
+    row-gap: 90px;
+}
+
+.square{
+    width: 300px;
+    height: 300px;
+    background: #1FC2AE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.square__text{
+    font-size: 3.5rem;
+}
