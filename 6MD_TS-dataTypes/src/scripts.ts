@@ -244,14 +244,8 @@ const accountCurrency = getCurrency(account);
 //  Account type (declared above) to be able to use it as an Account
 //  in the other parts of the application. 
 
-type TAccount = {
-    id: number,
-    name: string,
-    currency:string
-}
-
-const fetchAccount = (id: number): object => ({id: id, name: "Some Account", currency: "USD"});
-const currentAccount = fetchAccount(4) as TAccount;
+const fetchAccount = (id: number): object => ({ id: id, name: "Some Account", currency: "USD" });
+const currentAccount = fetchAccount(4) as Account;
 const currentAccountName = currentAccount.name;
 
 
@@ -292,11 +286,11 @@ const eur: EUR = secondCurrency;
 
 const someAccount = {
     name: "My Awesome Account",
-    currency: "USD" 
-} 
+    currency: "USD"
+}
 
-const getSomeCurrency = (account: {currency: Currency}) => account.currency;
-const someCurrency = getSomeCurrency(someAccount as {currency: Currency});
+const getSomeCurrency = (account: { currency: Currency }) => account.currency;
+const someCurrency = getSomeCurrency(someAccount as { currency: Currency });
 
 
 // Exercise 7) null and undefined
@@ -318,7 +312,7 @@ type AccountWithOrWithoutCurrency = {
     currency: 'USD' | 'EUR' | undefined | null
 }
 const removeCurrency = (account: AccountWithOrWithoutCurrency): AccountWithOrWithoutCurrency => {
-    if(account.currency){
+    if (account.currency) {
         return {
             ...account,
             currency: null
