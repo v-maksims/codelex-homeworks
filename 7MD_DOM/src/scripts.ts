@@ -3,6 +3,8 @@ const squaresElements = document.querySelectorAll('.square');
 const squaresTexts = document.querySelectorAll('.square__text');
 const squaresColors = ['square--yellow', 'square--azure', 'square--violet', 'square--pink', 'square--green'];
 const body = document.querySelector('body');
+const inputElement = document.querySelector('.form__input') as HTMLInputElement;
+const displayElement = document.querySelector('.form__display')
 
 // console.log(btnElements);
 // console.log(squaresElements);
@@ -57,4 +59,28 @@ btnElements[6].addEventListener('click', () => {
     } else {
         body.classList.add('dark')
     }
+})
+
+let timer: NodeJS.Timer;
+let numCount = 0;
+
+squaresElements[4].addEventListener('mouseover', () => {
+    const changeNumSquare = () => {
+        if (numCount <= 10) {
+            squaresTexts[1].innerHTML = `${numCount}`
+            numCount++
+        }
+    }
+
+    timer = setInterval(changeNumSquare, 1500);
+})
+
+squaresElements[4].addEventListener('mouseout', () => {
+    numCount = 0;
+    squaresTexts[1].innerHTML = '0';
+    clearInterval(timer)
+})
+
+inputElement.addEventListener('input', () => {
+    displayElement.innerHTML = inputElement.value;
 })

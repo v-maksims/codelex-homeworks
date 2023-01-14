@@ -3,11 +3,13 @@
 :root {
     --c-background: #fffff;
     --c-squares: #1FC2AE;
+    --c-text: #000000;
 }
 
 .dark {
     --c-background: #000000;
     --c-squares: #18D5E1;
+    --c-text: #ffffff;
 }
 
 body {
@@ -112,6 +114,11 @@ body {
     &--green {
         background: rgba(1, 135, 14, 0.63);
     }
+
+    &:first-child:hover {
+        cursor: pointer;
+        background-color: red;
+    }
 }
 
 .square__text {
@@ -120,4 +127,19 @@ body {
 
 .square--inv {
     opacity: 0;
+}
+
+.form__list{
+    margin-bottom: 5px;
+}
+
+.form__input{
+    border-radius: 8px;
+    font-size: 1.75rem;
+    padding: 10px 15px ;
+}
+
+.form__display{
+    margin-bottom: 70px;
+    color: var(--c-text)
 }
