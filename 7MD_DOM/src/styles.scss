@@ -1,12 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
 
-body{
+:root {
+    --c-background: #fffff;
+    --c-squares: #1FC2AE;
+}
+
+.dark {
+    --c-background: #000000;
+    --c-squares: #18D5E1;
+}
+
+body {
     font-family: 'ABeeZee', sans-serif;
     font-weight: 400;
     font-size: 16px;
+    background-color: var(--c-background);
+    transition: 0.3s all;
 }
 
-.container{
+.container {
     max-width: 1140px;
     width: 100%;
     padding: 0 10px;
@@ -14,68 +26,98 @@ body{
     padding-top: 50px;
 }
 
-.buttons-wrap{
+.buttons-wrap {
     display: flex;
     gap: 30px
 }
 
-.btn{
+.btn {
     min-width: 160px;
     padding: 20px 40px;
     border-radius: 8px;
     border: 0;
     cursor: pointer;
 
-    &--azure{
+    &--azure {
         background: #017187;
     }
 
-    &--violet{
+    &--violet {
         background: rgba(92, 1, 135, 0.71);
     }
 
-    &--pink{
+    &--pink {
         background: rgba(135, 17, 1, 0.56);
     }
 
-    &--green{
+    &--green {
         background: rgba(1, 135, 14, 0.63);
     }
 
-    &--yellow{
+    &--yellow {
         background: #E2CF22;
     }
 
-    &--blue{
+    &--blue {
         background: #011E87;
     }
 
-    &--l-blue{
+    &--l-blue {
         background: #18D5E1;
+    }
+
+    &:hover {
+        transition: .2s;
+        opacity: .80;
     }
 }
 
-.btn__text{
+.btn__text {
     font-size: 1.25rem;
     color: #ffffff;
 }
 
-.squares-wrap{
-    display:grid;
+.squares-wrap {
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 110px;
     row-gap: 90px;
 }
 
-.square{
+.square {
     width: 300px;
     height: 300px;
-    background: #1FC2AE;
+    background: var(--c-squares);
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: .2s all;
+
+    &--yellow {
+        background-color: #E2CF22;
+    }
+
+    &--azure {
+        background-color: #017187;
+    }
+
+    &--violet {
+        background: rgba(92, 1, 135, 0.71);
+    }
+
+    &--pink {
+        background: rgba(135, 17, 1, 0.56);
+    }
+
+    &--green {
+        background: rgba(1, 135, 14, 0.63);
+    }
 }
 
-.square__text{
+.square__text {
     font-size: 3.5rem;
+}
+
+.square--inv {
+    opacity: 0;
 }
