@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(44, 44, 44);
+}
+
+.container {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 25px 15px 0 15px;
+}
+
+// Button start game
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.btn__start-game {}
+
+// Card section
+
+.card__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 50px;
+}
+
+.card__item {
+    width: 200px;
+    height: 250px;
+    border-radius: 20px;
+    border: 3px solid black;
+    cursor: pointer;
+}
