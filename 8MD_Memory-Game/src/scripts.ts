@@ -30,6 +30,7 @@ let previousCards: string[] = [];
 let moveCount = 0;
 let pairCount = 0;
 let winTimes = 0;
+let win = false;
 
 // Loop for gameField
 for (let i = 0; i < btnGameModes.length; i += 1) {
@@ -134,6 +135,7 @@ const checkIfWin = () => {
     winTimes += 1;
     localStorage.winsTime = winTimes;
     winCounter.innerHTML = `Win count: ${winTimes}`;
+    win = true;
   }
 };
 
@@ -141,10 +143,12 @@ const game = () => {
   for (let i = 0; i < gameFieldCount; i += 1) {
     // eslint-disable-next-line no-loop-func
     cardList[i].addEventListener('click', () => {
-      handleCardClick(i);
-      moveCount += 1;
-      moveCounter.innerHTML = `Move count: ${moveCount}`;
-      checkIfWin();
+      if (!win) {
+        handleCardClick(i);
+        moveCount += 1;
+        moveCounter.innerHTML = `Move count: ${moveCount}`;
+        checkIfWin();
+      }
     });
   }
 };
@@ -155,6 +159,7 @@ const resetGameVariables = () => {
   moveCount = 0;
   randomCardIDs = [];
   pairCount = 0;
+  win = false;
 };
 
 btnStart.addEventListener('click', () => {
