@@ -18,7 +18,7 @@ body {
 // Buttons
 
 // All button design
-.btn{
+.btn {
     font-weight: 700;
     font-size: 3rem;
     color: aliceblue;
@@ -27,21 +27,22 @@ body {
     border: 0;
     border-radius: 10px;
     transition: .3s all;
-    &:hover{
+
+    &:hover {
         scale: .85;
     }
 }
 
 // Button wrap 
 
-.btn-wrap{
+.btn-wrap {
     display: flex;
     justify-content: center;
     gap: 25px;
 }
 
-.btn-mode{
-    &--disabled{
+.btn-mode {
+    &--disabled {
         display: none;
     }
 }
@@ -51,13 +52,16 @@ body {
         display: none;
     }
 }
+
 // Button start game
-.btn__start-game--disabled{
+.btn__start-game--disabled {
     display: none;
 }
-.btn__reset-game--disabled{
+
+.btn__reset-game--disabled {
     display: none;
 }
+
 // Card section
 
 .card__list {
@@ -78,25 +82,11 @@ body {
 
 // Bottom of game
 
-.bottom-wrap{
+.bottom-wrap {
     display: flex;
     justify-content: space-between;
 }
 
-// Move
-
-.move{
-
-    &--disabled{
-        display: none;
-    }
-}
-
-//win 
-
-.win {
-
-    &--disabled{
-        display: none;
-    }
+.bottom--disabled{
+    display: none;
 }

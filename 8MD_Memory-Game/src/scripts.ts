@@ -11,6 +11,8 @@ const btnStartReset = document.querySelector('.btn-game');
 const btnModeList = document.querySelector('.btn-mode');
 const moveCounter = document.querySelector('.js-move-counter');
 const winCounter = document.querySelector('.js-win-counter');
+const bottomSection = document.querySelector('.bottom-wrap');
+const timerElement = document.querySelector('.js-timer');
 
 // Card list for creating cards
 const gameField = document.querySelector('.card__list');
@@ -18,7 +20,7 @@ const gameField = document.querySelector('.card__list');
 let cardList: NodeListOf<HTMLElement> = document.querySelectorAll('.card');
 
 // Variables
-const cardColors = ['#D8AE77', '#6B633E', '#CBC195', '#342A69', '#EF2E72', '#005699', 'rgb(32, 32, 32)'];
+const cardColors = ['rgb(216, 174, 119)', 'rgb(107, 99, 62)', 'rgb(203, 193, 149)', 'rgb(52, 42, 105)', 'rgb(239, 46, 114)', 'rgb(0, 86, 153)', 'rgb(32, 32, 32)'];
 const [color1, color2, color3, color4, color5, color6, colorBG] = cardColors;
 const cardIDs: number[] = [];
 
@@ -29,8 +31,12 @@ let previousCard: HTMLElement | null = null;
 let previousCards: string[] = [];
 let moveCount = 0;
 let pairCount = 0;
+let usedCardClasses: string[] = [];
 let winTimes = 0;
 let win = false;
+let timer: NodeJS.Timer;
+let seconds = 0;
+let minutes = 0;
 
 // Loop for gameField
 for (let i = 0; i < btnGameModes.length; i += 1) {
@@ -55,6 +61,19 @@ for (let i = 0; i < btnGameModes.length; i += 1) {
 }
 
 // Functions
+
+const timeCounter = () => {
+  timer = setInterval(() => {
+    if (seconds < 59) {
+      seconds += 1;
+    } else if (seconds === 59) {
+      seconds = 0;
+      minutes += 1;
+    }
+    timerElement.innerHTML = `${minutes >= 10 ? minutes : `0${minutes}`} : ${seconds >= 10 ? seconds : `0${seconds}`}`;
+  }, 1000);
+};
+
 const handleCardClick = (index: number) => {
   const selected = cardList[index].classList[1];
 
@@ -80,6 +99,7 @@ const handleCardClick = (index: number) => {
   }
   if (previousCards.length === 2) {
     if (previousCards[0] === previousCards[1]) {
+      usedCardClasses.push(previousCard.classList[1], cardList[index].classList[1]);
       previousCard = null;
       previousCards = [];
       pairCount += 1;
@@ -136,18 +156,21 @@ const checkIfWin = () => {
     localStorage.winsTime = winTimes;
     winCounter.innerHTML = `Win count: ${winTimes}`;
     win = true;
+    clearInterval(timer);
   }
 };
 
 const game = () => {
-  for (let i = 0; i < gameFieldCount; i += 1) {
+  for (let i = 0; i < cardList.length; i += 1) {
     // eslint-disable-next-line no-loop-func
     cardList[i].addEventListener('click', () => {
-      if (!win) {
-        handleCardClick(i);
-        moveCount += 1;
-        moveCounter.innerHTML = `Move count: ${moveCount}`;
-        checkIfWin();
+      if (!usedCardClasses.includes(cardList[i].classList[1])) {
+        if (!win) {
+          handleCardClick(i);
+          moveCount += 1;
+          moveCounter.innerHTML = `Move count: ${moveCount}`;
+          checkIfWin();
+        }
       }
     });
   }
@@ -160,16 +183,22 @@ const resetGameVariables = () => {
   randomCardIDs = [];
   pairCount = 0;
   win = false;
+  usedCardClasses = [];
+  seconds = 0;
+  minutes = 0;
 };
 
 btnStart.addEventListener('click', () => {
   btnStart.classList.add('btn__start-game--disabled');
   btnReset.classList.remove('btn__reset-game--disabled');
-  moveCounter.classList.remove('move--disabled');
-  winCounter.classList.remove('win--disabled');
+  bottomSection.classList.remove('bottom--disabled');
+
+  timeCounter();
+
   if (localStorage.winsTime) {
     winCounter.innerHTML = `Win total: ${localStorage.winsTime}`;
   }
+
   if (!startBtnClick) {
     initializeGame();
     game();
@@ -181,5 +210,7 @@ btnReset.addEventListener('click', () => {
   removeOldCardsClass();
   addNewCardsClass();
   resetGameVariables();
+  timerElement.innerHTML = '00 : 00';
+  timeCounter();
   moveCounter.innerHTML = `Move count: ${moveCount}`;
 });
