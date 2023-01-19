@@ -32,6 +32,7 @@ let randomCardIDs: number[]; // Randomized cards ID for colors
 let previousCard: HTMLElement | null = null; // previous selected card (1)
 let previousCards: string[] = []; // selected cards (2)
 let usedCardClasses: string[] = []; // Used cards to make cards that were already unclickable
+let currentCardID: string[] = [];
 
 // Win check variables
 let pairCount = 0; // Pair for check win
@@ -89,6 +90,7 @@ const timeCounter = () => {
 const resetPrevCards = () => {
   previousCard = null;
   previousCards = [];
+  currentCardID = [];
 };
 
 // Clicking on the card does the following:
@@ -189,14 +191,19 @@ const game = () => {
   for (let i = 0; i < cardList.length; i += 1) {
     // eslint-disable-next-line no-loop-func
     cardList[i].addEventListener('click', () => {
+      const currentCard = cardList[i].classList[1];
+
       // Checking if the card has already been flipped
-      if (!usedCardClasses.includes(cardList[i].classList[1])) {
-        // Checking if the game is over
-        if (!win) {
-          handleCardClick(i);
-          moveCount += 1;
-          moveCounter.innerHTML = `Move count: ${moveCount}`;
-          checkIfWin();
+      if (!currentCardID.includes(currentCard)) {
+        currentCardID.push(currentCard);
+        if (!usedCardClasses.includes(currentCard)) {
+          // Checking if the game is over
+          if (!win) {
+            handleCardClick(i);
+            moveCount += 1;
+            moveCounter.innerHTML = `Move count: ${moveCount}`;
+            checkIfWin();
+          }
         }
       }
     });
