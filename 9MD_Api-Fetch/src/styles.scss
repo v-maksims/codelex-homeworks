@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 400;
+    background-color: #6D8B74;
+    color: aliceblue;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 15px;
+}
+
+// Disabled class
+
+.alive {
+    color: rgb(10, 177, 10);
+}
+.dead{
+    color: red;
+}
+.unknown{
+    color: yellow;
+}
+.disabled {
+    display: none;
+}
+
+//header 
+
+// header title
+
+.header__title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+// Characters section 
+
+// Button start
+
+.btn-top-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-start {
+    min-height: 80px;
+    padding: 20px;
+}
+
+// Characters list
+
+.characters__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+// Characters item
+
+.characters__item {
+    display: flex;
+    background-color: #48574a;
+    border-radius: 10px;
+    max-width: 600px;
+}
+
+// Character image
+
+.character__image {
+    max-width: 180px;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
+}
+
+// Character main information wrapper
+
+.characters__info-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+// Character main info wrap
+
+.character__main-info {
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    gap: 5px;
+}
+
+// Character name
+
+.character__name {
+    font-size: 1.4rem;
+}
+
+// Character status and specification
+
+.character__status-species {}
+
+// Character last place wrap
+
+.character__second-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+// Character last place text 
+
+.character__last-place-text {
+    font-size: .8rem;
+    font-weight: 700;
+    color: #EFEAD8;
+}
+
+// Character first seen episode
+
+.character__first-seen-text {
+    font-size: .8rem;
+    font-weight: 700;
+    color: #EFEAD8;
+}
+
+// Page slider
+
+// Page slider wrapper
+
+.page-btns-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+// Buttons
+
+.btn {
+    border: 0;
+    padding: 10px;
+    background-color: #4d573c;
+    border-radius: 5px;
+    color: aliceblue;
+    font-size: 1.5rem;
+    transition: .2s all;
+    cursor: pointer;
+    font-family: 'Roboto Mono', monospace;
+
+    &:hover {
+        scale: .9;
+    }
+}
+
+// Pages counter
+
+.page-btns__current {
+    font-size: 2.5rem;
+
+}
+
+
+// Adaptive 
+
+@media screen and (max-width: 869px) {
+    .container {
+        padding: 10px 15px;
+    }
+
+    .characters__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .characters__item {
+        max-width: 600px;
+        width: 100%;
+    }
+
+    .character__image {
+        max-width: 150px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .header__title {
+        font-size: 2.5rem;
+    }
+
+    .character__image {
+        max-width: 150px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .character__image {
+        max-width: 120px;
+    }
+}
+
+@media screen and (max-width: 100px) {}
