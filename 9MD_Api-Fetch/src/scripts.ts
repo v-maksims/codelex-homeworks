@@ -1,3 +1,5 @@
+import swal from 'sweetalert';
+
 type TcharactersProp = {
   id: number,
   image: string,
@@ -12,34 +14,17 @@ type TcharactersProp = {
 
 const loadCharactersBtn = document.querySelector('.js-btn-start');
 const charactersSection = document.querySelector('.js-characters-section');
-const pageBtnsSection = document.querySelector('.js-page-btns');
+const pageBtnSection = document.querySelector('.js-page-btn');
 const characterList = document.querySelector('.js-characters-list');
-const prevPageBtn = document.querySelector('.js-btn-prev');
-const nextPageBtn = document.querySelector('.js-btn-next');
-const pageCounter = document.querySelector('.js-page-count');
+const loadMoreBtn = document.querySelector('.js-load-more');
 
 let pageNumber = 1;
+let html = '';
 
 const removeFromMainClassDisabled = () => {
   charactersSection.classList.remove('disabled');
-  pageBtnsSection.classList.remove('disabled');
+  pageBtnSection.classList.remove('disabled');
   loadCharactersBtn.classList.add('disabled');
-};
-
-const pageNumberAdd = (pageNum: number) => {
-  if (pageNum >= 1 && pageNum < 20) {
-    pageNumber += 1;
-    pageCounter.innerHTML = `${pageNumber}`;
-    // console.log(pageNumber);
-  }
-};
-
-const pageNumberSubstract = (pageNum: number) => {
-  if (pageNum >= 2) {
-    pageNumber -= 1;
-    pageCounter.innerHTML = `${pageNumber}`;
-    // console.log(pageNumber);
-  }
 };
 
 const checkIfAlive = (status: string) => {
@@ -56,7 +41,6 @@ const charactersLoad = () => {
     .then((response) => response.json())
     .then((data) => {
       const characters = data.results;
-      let html = '';
       characters.forEach((character: TcharactersProp) => {
         fetch(character.episode[0])
           .then((response) => response.json())
@@ -86,17 +70,20 @@ const charactersLoad = () => {
     });
 };
 
+const loadMoreFunction = (num: number) => {
+  if (num < 20) {
+    pageNumber += 1;
+    charactersLoad();
+  } else {
+    swal('Oops', 'You have reached the end', 'error');
+  }
+};
+
 loadCharactersBtn.addEventListener('click', () => {
   removeFromMainClassDisabled();
   charactersLoad();
 });
 
-prevPageBtn.addEventListener('click', () => {
-  pageNumberSubstract(pageNumber);
-  charactersLoad();
-});
-
-nextPageBtn.addEventListener('click', () => {
-  pageNumberAdd(pageNumber);
-  charactersLoad();
+loadMoreBtn.addEventListener('click', () => {
+  loadMoreFunction(pageNumber);
 });
