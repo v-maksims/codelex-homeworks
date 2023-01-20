@@ -71,7 +71,7 @@ const charactersLoad = () => {
 };
 
 const loadMoreFunction = (num: number) => {
-  if (num < 20) {
+  if (num < 42) {
     pageNumber += 1;
     charactersLoad();
   } else {
