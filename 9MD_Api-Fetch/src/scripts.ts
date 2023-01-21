@@ -30,7 +30,8 @@ const removeFromMainClassDisabled = () => {
 const checkIfAlive = (status: string) => {
   if (status === 'Alive') {
     return 'alive';
-  } if (status === 'Dead') {
+  }
+  if (status === 'Dead') {
     return 'dead';
   }
   return 'unknown';
