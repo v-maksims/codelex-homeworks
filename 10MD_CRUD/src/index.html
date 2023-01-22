@@ -7,36 +7,81 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+    <link rel="stylesheet" href="./styles.css">
     <title>10MD_CRUD</title>
 </head>
 
-<body>
-    <header class="header">
-        <div class="container">
-            <h1 class="header__title">Capybara types:</h1>
-        </div>
-    </header>
-    <section class="cards">
-        <div class="container">
-            <div class="cards__list js-cards-list">
-                <div class="card__item">
-                    <img class="card__image" src="assets/images/684faa2951cffa524b6eb599579a1fd0.gif" alt="#">
-                    <h3 class="card__title">Capybara</h3>
-                    <p class="card__info">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis eum eveniet rem dolorem,
-                        dolore voluptate.
-                    </p>
-                    <div class="card__btns">
-                        <button class="card__btns__edit js-btn-edit">Edit</button>
-                        <button class="card__btns__delete js-btn-delete">Delete</button>
-                    </div>
-                </div>
-                
+<body class="teal darken-4">
+    <div class="container">
+        <header class="header">
+            <h1 class="title-weight center-align blue-grey-text text-lighten-5 js-header">Capybara family</h1>
+        </header>
+        <section class="edit green darken-4">
+            <div class="row js-cards-edit-area disabled">
+                <h3 class="title-weight green-text center">Enter changes</h3>
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input class="validate green-text text-lighten-3 js-edit-image-url"
+                                placeholder="Edit image URL" type="text">
+                        </div>
+                        <div class="input-field col s6">
+                            <input class="validate green-text text-lighten-3 js-edit-name"
+                                placeholder="Edit name of capybara" type="text">
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea class="materialize-textarea green-text text-lighten-3 js-edit-information"
+                                    placeholder="Edit capybara information"></textarea>
+                            </div>
+                        </div>
+                        <button
+                            class="btn waves-effect waves-light white lighten-3 teal-text text-darken-4 js-edit-information-btn"
+                            type="submit" name="action">Edit
+                            <i class="material-icons right">create</i>
+                        </button>
+                </form>
             </div>
-        </div>
-    </section>
+        </section>
+        <section class="cards-list">
+            <h3 class="title-weight blue-grey-text text-lighten-5">
+                All created cards:
+            </h3>
+            <div class="row js-cards-list">
+
+            </div>
+        </section>
+        <section class="create">
+            <h4 class="title-weight blue-grey-text text-lighten-5">Add new card</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input class="validate green-text text-lighten-3 js-image-url" placeholder="Image URL"
+                                id="imageURL" type="text" required="required">
+                        </div>
+                        <div class="input-field col s6">
+                            <input class="validate green-text text-lighten-3 js-name" placeholder="Name for capybara"
+                                id="name" type="text" required="required">
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea class="materialize-textarea green-text text-lighten-3 js-information"
+                                    placeholder="Information about capybara" required="required"></textarea>
+                            </div>
+                        </div>
+                        <button
+                            class="btn waves-effect waves-light green lighten-3 teal-text text-darken-4 js-create-btn"
+                            type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                </form>
+            </div>
+        </section>
+    </div>
     <script src="/scripts.js"></script>
 </body>
 
