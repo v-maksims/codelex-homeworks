@@ -1,4 +1,5 @@
 import axios from 'axios';
+import swal from 'sweetalert';
 
 // Type for API
 type TCapybaraAPI = {
@@ -9,6 +10,9 @@ type TCapybaraAPI = {
 }
 
 const createCardBtn = document.querySelector('.js-create-btn'); // Create new card button
+const editCardbtn = document.querySelector('.js-edit-information-btn');
+
+let clickedCardID: number | null;
 
 // Function for creating card
 const createCapybaraCard = (capybara: TCapybaraAPI) => {
@@ -18,16 +22,16 @@ const createCapybaraCard = (capybara: TCapybaraAPI) => {
     <div class="col s12 m6 l4 " id="${capybara.id}">
         <div class="card hoverable green lighten-3 js-card">
             <div class="card-image" >
-                <img src="${capybara.image}"
+                <img src="${capybara.image || 'https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg'}"
                     alt="#" height="200" style="object-fit: cover;">
-                <a class="btn-floating pulse halfway-fab waves-effect waves-light red js-halfway"><i class="material-icons">add</i></a>
+                <a class="btn-floating pulse halfway-fab waves-effect waves-light red js-halfway" id="halfway-${capybara.id}"><i class="material-icons">add</i></a>
             </div>
             <div class="card-content ">
                 <span class="card-title teal-text text-darken-4 center">
-                    ${capybara.name}
+                    ${capybara.name || 'Capybara'}
                 </span>
                 <p class="center">
-                    ${capybara.info}
+                    ${capybara.info || 'Inkognito'}
                 </p>
             </div>
             <div class="card-action">
@@ -49,123 +53,185 @@ const createCapybaraCard = (capybara: TCapybaraAPI) => {
   `);
 };
 
-// Check if create new card button is active
-createCardBtn.addEventListener('click', async () => {
-  // Constant with input areas
-  const cardCreateImage: HTMLInputElement = document.querySelector('.js-image-url');
-  const cardCreateName: HTMLInputElement = document.querySelector('.js-name');
-  const cardCreateInformation: HTMLTextAreaElement = document.querySelector('.js-information');
-
-  // Default value if user didn't insert url of image
-  cardCreateImage.defaultValue = 'https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg';
-
-  // Save values from inputs areas
-  const capybaraImageValue = cardCreateImage.value;
-  const capybaraNameValue = cardCreateName.value;
-  const capybaraInformationValue = cardCreateInformation.value;
-
-  // Check if all inputs entered
-  if (capybaraImageValue && capybaraNameValue && capybaraInformationValue) {
-    axios.post<TCapybaraAPI>('http://localhost:3004/capybaras', {
-      image: capybaraImageValue,
-      name: capybaraNameValue,
-      info: capybaraInformationValue,
-    });
-  }
-});
-
 // Function for loading cards whet page started
-const loadCapybarasCards = async () => {
+const loadAllCapybarasCards = async () => {
   const res = await axios.get<TCapybaraAPI[]>('http://localhost:3004/capybaras');
   const capybarasData = res.data;
   capybarasData.forEach((capybara) => createCapybaraCard(capybara));
 };
 
-// Function for edit button
-const editBtnClick = async () => {
-  const res = await axios.get<TCapybaraAPI[]>('http://localhost:3004/capybaras');
-  const capybarasData = res.data;
-  const headerOfHTML = document.querySelector('.js-header');
-  const cardEditBtns = document.querySelectorAll('.js-edit-card-btn');
-  const cardInfoEditBtn = document.querySelector('.js-edit-information-btn');
+// Function for create new card in bottom of page
+const createCardBtnFn = async () => {
+  // Input elements for create new card
+  const imageCreateInput: HTMLInputElement = document.querySelector('.js-image-url');
+  const nameCreateInput: HTMLInputElement = document.querySelector('.js-name');
+  const infoCreateInput: HTMLInputElement = document.querySelector('.js-information');
+
+  // Save value whice entred user
+  const imageValue = imageCreateInput.value;
+  const nameValue = nameCreateInput.value;
+  const infoValue = infoCreateInput.value;
+
+  // Create new card in base and save in variable
+  const newCardRes = await axios.post<TCapybaraAPI>('http://localhost:3004/capybaras', {
+    image: imageValue,
+    name: nameValue,
+    info: infoValue,
+  });
+  // Save data about card
+  const newCardData = newCardRes.data;
+
+  // Create new card without refreshing page
+  createCapybaraCard(newCardData);
+
+  // Clear input after adding new card
+  imageCreateInput.value = '';
+  nameCreateInput.value = '';
+  infoCreateInput.value = '';
+};
+
+// Function for editing card in top of page
+const editCardBtnFn = async () => {
+  // Editing area - area (for hide)
   const capybaraCardEditArea = document.querySelector('.js-cards-edit-area');
+  // Clicked card ID fom variable out of function
+  const laterClickedCard = document.getElementById(`${clickedCardID}`);
+  // Editing area - image URL input
+  const editImageUrl:HTMLInputElement = document.querySelector('.js-edit-image-url');
+  // Editing area - name input
+  const editName:HTMLInputElement = document.querySelector('.js-edit-name');
+  // Editing area - information input
+  const editInformation:HTMLInputElement = document.querySelector('.js-edit-information');
 
-  cardEditBtns.forEach((some, i) => {
-    cardEditBtns[i].addEventListener('click', async () => {
-      capybaraCardEditArea.classList.remove('disabled');
-      const capybaraEditImage: HTMLInputElement = document.querySelector('.js-edit-image-url');
-      const capybaraEditName: HTMLInputElement = document.querySelector('.js-edit-name');
-      const capybaraEditInformation: HTMLTextAreaElement = document.querySelector('.js-edit-information');
-
-      // Scroll up to edit form
-      headerOfHTML.scrollIntoView({
-        block: 'nearest',
-        behavior: 'smooth',
-      });
-
-      // Old values in input for change
-      capybaraEditImage.value = capybarasData[i].image;
-      capybaraEditName.value = capybarasData[i].name;
-      capybaraEditInformation.value = capybarasData[i].info;
-
-      // Finish editing
-      cardInfoEditBtn.addEventListener('click', async () => {
-        const capybaraEditedImage = capybaraEditImage.value;
-        const capybaraEditedName = capybaraEditName.value;
-        const capybaraEditedInformation = capybaraEditInformation.value;
-
-        // Check if all values is entered
-        if (capybaraEditedImage && capybaraEditedName && capybaraEditedInformation) {
-          const selectedCardID = +cardEditBtns[i].parentElement.parentElement.parentElement.id;
-          axios.put<TCapybaraAPI>(`http://localhost:3004/capybaras/${selectedCardID}`, {
-            image: capybaraEditedImage,
-            name: capybaraEditedName,
-            info: capybaraEditedInformation,
-          });
-        }
-      });
-    });
+  // Value from input to edit save in base
+  const newDataRes = await axios.patch<TCapybaraAPI>(`http://localhost:3004/capybaras/${clickedCardID}`, {
+    image: editImageUrl.value,
+    name: editName.value,
+    info: editInformation.value,
   });
+  const newData = newDataRes.data;
+
+  // Delete old card
+  laterClickedCard.remove();
+
+  // Add new card in the end (after refreshing page will fall into place)
+  createCapybaraCard(newData);
+
+  // New card select by id
+  const editedNewCard = document.getElementById(`${clickedCardID}`);
+
+  // Alert for succes update
+  swal('Yep!', 'Card edited!', 'success');
+
+  // Hide edit area
+  capybaraCardEditArea.classList.add('disabled');
+
+  // Scroll to new card
+  editedNewCard.scrollIntoView({
+    block: 'center',
+    behavior: 'smooth',
+  });
+
+  // Set null for variable
+  clickedCardID = null;
 };
 
-// Delete card button
-const deleteBtnClick = () => {
-  const cardDeleteBtns = document.querySelectorAll('.js-delete-card-btn');
-  const capybaraCardList = document.querySelectorAll('.js-card');
+// Halway decor between image and text in the card
+const halfway = (id: number) => {
+  // Choise halway for changing
+  const halfways = document.getElementById(`halfway-${id}`);
 
-  cardDeleteBtns.forEach((some, i) => {
-    cardDeleteBtns[i].addEventListener('click', () => {
-      const selectedCardID = +cardDeleteBtns[i].parentElement.parentElement.parentElement.id;
-      axios.delete<TCapybaraAPI>(`http://localhost:3004/capybaras/${selectedCardID}`);
-      capybaraCardList[i].parentElement.remove();
-    });
-  });
+  // Get class to no repeat in if else statement
+  const halwayClass = halfways.classList;
+
+  // Check if child in halway is done or other (add)
+  if (halfways.childNodes[0].textContent !== 'done') {
+    halwayClass.remove('red');
+    halwayClass.add('green');
+    halfways.childNodes[0].textContent = 'done';
+  } else {
+    halwayClass.remove('green');
+    halwayClass.add('red');
+    halfways.childNodes[0].textContent = 'add';
+  }
 };
 
-// Round icon next to the image
-const halfway = () => {
-  const halfways = document.querySelectorAll('.js-halfway');
+// Function for delete btn
+const deleteBtnClick = (id: number) => {
+  // Find card by ID
+  const capybaraCard = document.getElementById(`${id}`);
 
-  halfways.forEach((item, i) => {
-    halfways[i].addEventListener('click', () => {
-      const halwayClass = halfways[i].classList;
-      if (halfways[i].childNodes[0].textContent !== 'done') {
-        halwayClass.remove('red');
-        halwayClass.add('green');
-        halfways[i].childNodes[0].textContent = 'done';
-      } else {
-        halwayClass.remove('green');
-        halwayClass.add('red');
-        halfways[i].childNodes[0].textContent = 'add';
-      }
-    });
-  });
+  // Delete from database
+  axios.delete<TCapybaraAPI>(`http://localhost:3004/capybaras/${id}`);
+
+  // remove card from card list
+  capybaraCard.remove();
+
+  // Alert for succes card delete
+  swal('Yep!', 'Card deleted!', 'success');
 };
 
-// When page loading do this:
-window.addEventListener('DOMContentLoaded', async () => {
-  await loadCapybarasCards();
-  editBtnClick();
-  deleteBtnClick();
-  halfway();
+// Function for edit btn
+const editBtnClick = async (id: number) => {
+  // Editing area - area
+  const capybaraCardEditArea = document.querySelector('.js-cards-edit-area');
+  // Editing area - image input
+  const capybaraEditImage: HTMLInputElement = document.querySelector('.js-edit-image-url');
+  // Editing area - name input
+  const capybaraEditName: HTMLInputElement = document.querySelector('.js-edit-name');
+  // Editing area - information input
+  const capybaraEditInformation: HTMLTextAreaElement = document.querySelector('.js-edit-information');
+
+  // Remove class from editing area
+  capybaraCardEditArea.classList.remove('disabled');
+
+  // Scroll up to edit area
+  capybaraCardEditArea.scrollIntoView({
+    block: 'center',
+    behavior: 'smooth',
+  });
+
+  // Get data about selected card
+  const oldRes = await axios.get<TCapybaraAPI>(`http://localhost:3004/capybaras/${id}`);
+  const capybarasOldData = oldRes.data;
+
+  // Old values in input for change
+  // (Known fields are given and the user himself chooses what and where to change)
+  capybaraEditImage.value = capybarasOldData.image;
+  capybaraEditName.value = capybarasOldData.name;
+  capybaraEditInformation.value = capybarasOldData.info;
+
+  clickedCardID = id;
+};
+
+// Load all cards when page are loaded
+window.addEventListener('DOMContentLoaded', loadAllCapybarasCards);
+// Create btn event listener
+createCardBtn.addEventListener('click', createCardBtnFn);
+// Edit choised card btn listener
+editCardbtn.addEventListener('click', editCardBtnFn);
+
+// Window listener for click with target
+window.addEventListener('click', (e) => {
+  const target = e.target as HTMLElement;
+  const cardIDClickedBtn = +target.parentElement.parentElement.parentElement.id;
+
+  // console.log(cardIDClickedBtn);
+  // console.log(target);
+
+  // Check if target is halfway
+  if (target.parentElement.classList.value.match('js-halfway')) {
+    const parentHalfway = target.parentElement.id;
+    halfway(+parentHalfway.slice(8));
+  }
+
+  // Check if target in delete btn
+  if (target.classList.contains('js-delete-card-btn')) {
+    deleteBtnClick(cardIDClickedBtn);
+  }
+
+  // Check if target in edit btn
+  if (target.classList.contains('js-edit-card-btn')) {
+    editBtnClick(cardIDClickedBtn);
+  }
 });

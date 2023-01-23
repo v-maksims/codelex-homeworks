@@ -28,6 +28,7 @@
     "axios": "^1.2.3",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
-    "materialize-css": "^1.0.0-rc.2"
+    "materialize-css": "^1.0.0-rc.2",
+    "sweetalert": "^2.1.2"
   }
 }
