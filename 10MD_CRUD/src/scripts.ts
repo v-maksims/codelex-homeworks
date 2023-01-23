@@ -10,14 +10,15 @@ type TCapybaraAPI = {
 }
 
 const createCardBtn = document.querySelector('.js-create-btn'); // Create new card button
-const editCardbtn = document.querySelector('.js-edit-information-btn');
+const editCardbtn = document.querySelector('.js-edit-information-btn'); // Edit area btn
 
-let clickedCardID: number | null;
+let clickedCardID: number | null; // Save which card is selected (for edit)
 
 // Function for creating card
 const createCapybaraCard = (capybara: TCapybaraAPI) => {
   const cardsList: HTMLElement = document.querySelector('.js-cards-list');
 
+  // Create new card in bottom of cardsList division
   cardsList.insertAdjacentHTML('beforeend', `
     <div class="col s12 m6 l4 " id="${capybara.id}">
         <div class="card hoverable green lighten-3 js-card">
@@ -132,7 +133,7 @@ const editCardBtnFn = async () => {
     behavior: 'smooth',
   });
 
-  // Set null for variable
+  // Set null for variable (clicked card)
   clickedCardID = null;
 };
 
@@ -214,12 +215,13 @@ editCardbtn.addEventListener('click', editCardBtnFn);
 // Window listener for click with target
 window.addEventListener('click', (e) => {
   const target = e.target as HTMLElement;
+  // Constant for edit and delete buttons selected card
   const cardIDClickedBtn = +target.parentElement.parentElement.parentElement.id;
 
   // console.log(cardIDClickedBtn);
   // console.log(target);
 
-  // Check if target is halfway
+  // Check if target in halfway
   if (target.parentElement.classList.value.match('js-halfway')) {
     const parentHalfway = target.parentElement.id;
     halfway(+parentHalfway.slice(8));
