@@ -45,7 +45,7 @@
     {
       "image": "https://i.ibb.co/Fmx0Htj/DALL-E-2023-01-22-20-43-42-capybara-in-computer-club-digital-art.png",
       "name": "Programmer",
-      "info": "Capybara programmer, something amazing",
+      "info": "Capybara programmer, something amazing!",
       "id": 8
     },
     {
@@ -65,6 +65,18 @@
       "name": "Anonymous",
       "info": "This capybara hasn't uploaded its photo",
       "id": 11
+    },
+    {
+      "image": "",
+      "name": "sdfsdf",
+      "info": "sdfsdf",
+      "id": 12
+    },
+    {
+      "image": "",
+      "name": "",
+      "info": "",
+      "id": 14
     }
   ]
 }

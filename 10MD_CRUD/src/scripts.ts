@@ -11,7 +11,7 @@ type TCapybaraAPI = {
 
 const createCardBtn = document.querySelector('.js-create-btn'); // Create new card button
 const editCardbtn = document.querySelector('.js-edit-information-btn'); // Edit area btn
-
+const dataBaseMainLink = 'http://localhost:3004/capybaras';
 let clickedCardID: number | null; // Save which card is selected (for edit)
 
 // Function for creating card
@@ -56,9 +56,8 @@ const createCapybaraCard = (capybara: TCapybaraAPI) => {
 
 // Function for loading cards whet page started
 const loadAllCapybarasCards = async () => {
-  const res = await axios.get<TCapybaraAPI[]>('http://localhost:3004/capybaras');
-  const capybarasData = res.data;
-  capybarasData.forEach((capybara) => createCapybaraCard(capybara));
+  const { data: capybaraBaseData } = await axios.get<TCapybaraAPI[]>(dataBaseMainLink);
+  capybaraBaseData.forEach((capybara) => createCapybaraCard(capybara));
 };
 
 // Function for create new card in bottom of page
@@ -74,7 +73,7 @@ const createCardBtnFn = async () => {
   const infoValue = infoCreateInput.value;
 
   // Create new card in base and save in variable
-  const newCardRes = await axios.post<TCapybaraAPI>('http://localhost:3004/capybaras', {
+  const newCardRes = await axios.post<TCapybaraAPI>(dataBaseMainLink, {
     image: imageValue,
     name: nameValue,
     info: infoValue,
@@ -84,6 +83,9 @@ const createCardBtnFn = async () => {
 
   // Create new card without refreshing page
   createCapybaraCard(newCardData);
+
+  // Alert when card succes added
+  swal('Yep!', 'Card Added!', 'success');
 
   // Clear input after adding new card
   imageCreateInput.value = '';
@@ -105,18 +107,17 @@ const editCardBtnFn = async () => {
   const editInformation:HTMLInputElement = document.querySelector('.js-edit-information');
 
   // Value from input to edit save in base
-  const newDataRes = await axios.patch<TCapybaraAPI>(`http://localhost:3004/capybaras/${clickedCardID}`, {
+  const { data: newDataCard } = await axios.patch<TCapybaraAPI>(`http://localhost:3004/capybaras/${clickedCardID}`, {
     image: editImageUrl.value,
     name: editName.value,
     info: editInformation.value,
   });
-  const newData = newDataRes.data;
 
   // Delete old card
   laterClickedCard.remove();
 
   // Add new card in the end (after refreshing page will fall into place)
-  createCapybaraCard(newData);
+  createCapybaraCard(newDataCard);
 
   // New card select by id
   const editedNewCard = document.getElementById(`${clickedCardID}`);
@@ -175,7 +176,7 @@ const deleteBtnClick = (id: number) => {
 // Function for edit btn
 const editBtnClick = async (id: number) => {
   // Editing area - area
-  const capybaraCardEditArea = document.querySelector('.js-cards-edit-area');
+  const capybaraCardEditArea: HTMLDivElement = document.querySelector('.js-cards-edit-area');
   // Editing area - image input
   const capybaraEditImage: HTMLInputElement = document.querySelector('.js-edit-image-url');
   // Editing area - name input
@@ -193,8 +194,7 @@ const editBtnClick = async (id: number) => {
   });
 
   // Get data about selected card
-  const oldRes = await axios.get<TCapybaraAPI>(`http://localhost:3004/capybaras/${id}`);
-  const capybarasOldData = oldRes.data;
+  const { data: capybarasOldData } = await axios.get<TCapybaraAPI>(`http://localhost:3004/capybaras/${id}`);
 
   // Old values in input for change
   // (Known fields are given and the user himself chooses what and where to change)
@@ -214,7 +214,7 @@ editCardbtn.addEventListener('click', editCardBtnFn);
 
 // Window listener for click with target
 window.addEventListener('click', (e) => {
-  const target = e.target as HTMLElement;
+  const target = <HTMLElement>e.target;
   // Constant for edit and delete buttons selected card
   const cardIDClickedBtn = +target.parentElement.parentElement.parentElement.id;
 
