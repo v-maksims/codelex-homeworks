@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html class="has-background-success-dark" lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -7,12 +7,68 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="/styles.css">
     <title>name</title>
 </head>
 
 <body>
+    <div class="container px-2 is-family-code ">
+        <header class="header">
+            <h1 class="is-size-1 has-text-centered has-text-weight-bold has-text-info-light">Country list</h1>
+        </header>
+        <section class="form pb-6">
+            <form>
+                <div class="columns is-justify-content-center">
+                    <div class="name column is-3 is-flex is-flex-direction-column px-3">
+                        <h5 class="has-text-centered is-size-5 has-text-weight-medium has-text-info-light">Name</h5>
+                        <input class="input is-medium is-primary has-background-success-light js-input-name" type="text"
+                            placeholder="Name">
+                    </div>
+                    <div class="capital column is-3 is-flex is-flex-direction-column px-3 has-text-info-light">
+                        <h5 class="has-text-centered is-size-5 has-text-weight-medium">Capital</h5>
+                        <input class="input is-medium is-primary has-background-success-light js-input-capital"
+                            type="text" placeholder="Capital">
+                    </div>
+                    <div class="currency column is-3 is-flex is-flex-direction-column px-3 has-text-info-light">
+                        <h5 class="has-text-centered is-size-5 has-text-weight-medium">Currency</h5>
+                        <input class="input is-medium is-primary has-background-success-light js-input-currency"
+                            type="text" placeholder="Currency">
+                    </div>
+                    <div class="language column is-3 is-flex is-flex-direction-column px-3 has-text-info-light">
+                        <h5 class="has-text-centered is-size-5 has-text-weight-medium">Language</h5>
+                        <input class="input is-medium is-primary has-background-success-light js-input-language"
+                            type="text" placeholder="Language">
+                    </div>
+                </div>
+                <div class="columns">
+                    <button class="button is-medium column is-2 is-offset-5 js-search-btn" type="button">Search</button>
+                </div>
+            </form>
+        </section>
+        <section class="pb-6">
+            <table class="table is-fullwidth is-hoverable">
+                <thead class="has-text-weight-bold">
+                    <tr>
+                        <th>Name</th>
+                        <th>Capital</th>
+                        <th>Currency</th>
+                        <th>Language</th>
+                    </tr>
+                </thead>
+                <tbody class="js-table-body">
+                    <!-- Country table data -->
+                </tbody>
+            </table>
+            <nav class="pagination" role="navigation" aria-label="pagination">
+                <ul class="pagination-list js-pagination-list">
+                    <!-- Pagination buttons -->
+                </ul>
+            </nav>
+        </section>
+    </div>
     <script src="/scripts.js"></script>
 </body>
 
