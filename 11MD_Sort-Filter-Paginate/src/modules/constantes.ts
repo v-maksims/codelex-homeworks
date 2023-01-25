@@ -1,5 +1,5 @@
 // ---------------HTML parent Elements ---------------
-// Table body for couyntries
+// Table body for countries
 const countriesTableBody: HTMLElement = document.querySelector('.js-table-body');
 const paginationList: HTMLElement = document.querySelector('.js-pagination-list');
 

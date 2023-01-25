@@ -1,4 +1,4 @@
-//  Type for await
+//  Type for countries API
 export type TCountriesApi = {
     name: string,
     capital: string,

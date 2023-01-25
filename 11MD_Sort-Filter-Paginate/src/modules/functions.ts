@@ -2,13 +2,13 @@
 /* eslint-disable import/extensions */
 import axios from 'axios';
 import { TCountriesApi } from './types';
+//! import Constant
 import {
   countriesTableBody,
   countryNameInput,
   countryCapitalInput,
   countryCurrencyInput,
   countryLanguageInput,
-  firstList,
   paginationList,
 } from './constantes';
 
@@ -39,10 +39,13 @@ const clearInputValues = () => {
 
 // Load pagination
 const loadTablePagination = async (link: string) => {
+  // Calculation of the total number of countries depending on various factors (no limits)
   const pageLinkWithoutLimits = link.replace('_page=1&_limit=20&', '');
   const { data: countryBaseData } = await axios.get<TCountriesApi[]>(pageLinkWithoutLimits);
   const pageCount = +(countryBaseData.length / 20).toFixed(0);
+  // Clear old pagination
   paginationList.innerHTML = '';
+  // Create pagination
   for (let i = 1; i <= pageCount; i += 1) {
     paginationList.innerHTML += `
     <li>
@@ -52,63 +55,20 @@ const loadTablePagination = async (link: string) => {
   }
 };
 
-// Current page
-
-const currentPagePagination = async (previous: number, current: number) => {
-  const previousPage = document.getElementById(`${previous}`);
-  const currentPage = document.getElementById(`${current}`);
-
-  previousPage.classList.remove('is-current');
-  currentPage.classList.add('is-current');
+// Input to Lowercase and first up
+const editInputValue = (value: string) => {
+  const valueLower = value.toLowerCase();
+  return valueLower.charAt(0).toUpperCase() + valueLower.slice(1);
 };
 
-// Function create table
-const loadCountriesNewTable = async (linkGet: string) => {
-  const { data: countryBaseData } = await axios.get<TCountriesApi[]>(linkGet);
-  countryBaseData.forEach((country) => createCoutriesTable(country));
-};
-
-// Function for searc button
-const searchByProps = async () => {
-  // Input values
-  const nameValue = countryNameInput.value;
-  const capitalValue = countryCapitalInput.value;
-  const currencyValue = countryCurrencyInput.value;
-  const languageValue = countryLanguageInput.value;
-  // Link for serching after click on search btn
-  let searchLinkFirst = `${firstList}`;
-
-  // Check if exist name value
-  if (nameValue) {
-    searchLinkFirst += `name=${nameValue}&`;
-  }
-
-  // Check if exist capital value
-  if (capitalValue) {
-    searchLinkFirst += `capital=${capitalValue}&`;
-  }
-
-  // Check if exist currency value
-  if (currencyValue) {
-    searchLinkFirst += `currency.name=${currencyValue}&`;
-  }
-
-  // Check if exist language value
-  if (languageValue) {
-    searchLinkFirst += `language.name=${languageValue}&`;
-  }
-  // Some page cleaning
-  clearCountriesTable();
-  clearInputValues();
-
-  // Load new table
-  await loadCountriesNewTable(searchLinkFirst);
-  loadTablePagination(searchLinkFirst);
-};
+// Check if string includes '_sort'
+const checkLink = (oldLink: string) => (oldLink.includes('_sort') ? oldLink.slice(0, oldLink.indexOf('_sort')) : oldLink);
 
 export {
-  loadCountriesNewTable,
-  searchByProps,
+  createCoutriesTable,
+  clearCountriesTable,
+  clearInputValues,
   loadTablePagination,
-  currentPagePagination,
+  editInputValue,
+  checkLink,
 };
