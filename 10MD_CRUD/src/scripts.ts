@@ -3,10 +3,10 @@ import swal from 'sweetalert';
 
 // Type for API
 type TCapybaraAPI = {
-    id: number,
-    name: string,
-    image: string,
-    info: string,
+  id: number,
+  name: string,
+  image: string,
+  info: string,
 }
 
 const createCardBtn = document.querySelector('.js-create-btn'); // Create new card button
@@ -100,11 +100,11 @@ const editCardBtnFn = async () => {
   // Clicked card ID fom variable out of function
   const laterClickedCard = document.getElementById(`${clickedCardID}`);
   // Editing area - image URL input
-  const editImageUrl:HTMLInputElement = document.querySelector('.js-edit-image-url');
+  const editImageUrl: HTMLInputElement = document.querySelector('.js-edit-image-url');
   // Editing area - name input
-  const editName:HTMLInputElement = document.querySelector('.js-edit-name');
+  const editName: HTMLInputElement = document.querySelector('.js-edit-name');
   // Editing area - information input
-  const editInformation:HTMLInputElement = document.querySelector('.js-edit-information');
+  const editInformation: HTMLInputElement = document.querySelector('.js-edit-information');
 
   // Value from input to edit save in base
   const { data: newDataCard } = await axios.patch<TCapybaraAPI>(`http://localhost:3004/capybaras/${clickedCardID}`, {
