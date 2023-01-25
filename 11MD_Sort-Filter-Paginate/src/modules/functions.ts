@@ -40,8 +40,7 @@ const clearInputValues = () => {
 // Load pagination
 const loadTablePagination = async (link: string) => {
   // Calculation of the total number of countries depending on various factors (no limits)
-  const pageLinkWithoutLimits = link.replace('_page=1&_limit=20&', '');
-  const { data: countryBaseData } = await axios.get<TCountriesApi[]>(pageLinkWithoutLimits);
+  const { data: countryBaseData } = await axios.get<TCountriesApi[]>(link.replace('_page=1&_limit=20&', ''));
   const pageCount = +(countryBaseData.length / 20).toFixed(0);
   // Clear old pagination
   paginationList.innerHTML = '';

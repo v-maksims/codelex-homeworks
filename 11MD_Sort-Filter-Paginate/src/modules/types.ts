@@ -1,4 +1,4 @@
-//  Type for countries API
+//  Type for countries API used key-value
 export type TCountriesApi = {
     name: string,
     capital: string,
