@@ -9,7 +9,6 @@ import {
   clearInputValues,
   clearCountriesTable,
   loadTablePagination,
-  editInputValue,
   checkLink,
   nothingAlert,
 } from './modules/functions';
@@ -91,7 +90,7 @@ const searchByProps = async () => {
   // check if value exist
   Object.entries(inputObject).forEach((input) => {
     if (input[1]) {
-      searchLink += `${input[0]}=${editInputValue(input[1])}&`;
+      searchLink += `${input[0]}_like=${input[1]}&`;
     }
   });
 

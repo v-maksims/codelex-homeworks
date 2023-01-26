@@ -56,12 +56,6 @@ const loadTablePagination = async (link: string) => {
   }
 };
 
-// Input to Lowercase and first up
-const editInputValue = (value: string) => {
-  const valueLower = value.toLowerCase();
-  return valueLower.charAt(0).toUpperCase() + valueLower.slice(1);
-};
-
 // Check if string includes '_sort'
 const checkLink = (oldLink: string) => (oldLink.includes('_sort') ? oldLink.slice(0, oldLink.indexOf('_sort')) : oldLink);
 
@@ -77,7 +71,6 @@ export {
   clearCountriesTable,
   clearInputValues,
   loadTablePagination,
-  editInputValue,
   checkLink,
   nothingAlert,
 };
