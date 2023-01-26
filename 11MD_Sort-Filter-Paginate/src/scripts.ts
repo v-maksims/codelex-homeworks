@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 import axios from 'axios';
-import { TCountriesApi } from './modules/types';
+import { TCountriesApi, TInputValues } from './modules/types';
 
 //! Import Functions
 import {
@@ -11,6 +11,7 @@ import {
   loadTablePagination,
   editInputValue,
   checkLink,
+  nothingAlert,
 } from './modules/functions';
 
 //! Import Constant
@@ -36,6 +37,7 @@ const loadCountriesNewTable = async (linkGet: string) => {
   clearCountriesTable();
   const { data: countryBaseData } = await axios.get<TCountriesApi[]>(linkGet);
   countryBaseData.forEach((country) => createCoutriesTable(country));
+  nothingAlert(countryBaseData);
   // Save edited link (for correct work)
   editedLink = linkGet;
 };
@@ -57,7 +59,7 @@ const currentPagePagination = async (previous: number, current: number, link: st
   // Remove old class
   previousPage.classList.remove('is-current');
 
-  // Add class
+  // Add new class
   currentPage.classList.add('is-current');
 
   // New selected page in variable
@@ -75,42 +77,32 @@ const currentPagePagination = async (previous: number, current: number, link: st
 
 // Function for searc button
 const searchByProps = async () => {
-  // Input values
-  const nameValue = countryNameInput.value;
-  const capitalValue = countryCapitalInput.value;
-  const currencyValue = countryCurrencyInput.value;
-  const languageValue = countryLanguageInput.value;
-
   // Link for serching after click on search btn
-  let searchLinkFirst = `${firstList}`;
+  let searchLink = `${firstList}`;
 
-  // Check if exist name value
-  if (nameValue) {
-    searchLinkFirst += `name=${editInputValue(nameValue)}&`;
-  }
+  // Object of input values
+  const inputObject: TInputValues = {
+    name: countryNameInput.value,
+    capital: countryCapitalInput.value,
+    'currency.name': countryCurrencyInput.value,
+    'language.name': countryLanguageInput.value,
+  };
 
-  // Check if exist capital value
-  if (capitalValue) {
-    searchLinkFirst += `capital=${editInputValue(capitalValue)}&`;
-  }
+  // check if value exist
+  Object.entries(inputObject).forEach((input) => {
+    if (input[1]) {
+      searchLink += `${input[0]}=${editInputValue(input[1])}&`;
+    }
+  });
 
-  // Check if exist currency value
-  if (currencyValue) {
-    searchLinkFirst += `currency.name=${editInputValue(currencyValue)}&`;
-  }
-
-  // Check if exist language value
-  if (languageValue) {
-    searchLinkFirst += `language.name=${editInputValue(languageValue)}&`;
-  }
   // Some page cleaning
   clearCountriesTable();
   clearInputValues();
 
   // Load new table
-  await loadCountriesNewTable(searchLinkFirst);
-  loadTablePagination(searchLinkFirst);
-  editedLink = searchLinkFirst;
+  await loadCountriesNewTable(searchLink);
+  loadTablePagination(searchLink);
+  editedLink = searchLink;
   paginationID = 1;
 };
 

@@ -1,5 +1,5 @@
 //  Type for countries API used key-value
-export type TCountriesApi = {
+type TCountriesApi = {
     name: string,
     capital: string,
     currency: {
@@ -9,3 +9,15 @@ export type TCountriesApi = {
         name: string
     }
 }
+
+type TInputValues = {
+    name: string,
+    capital: string,
+    'currency.name': string,
+    'language.name': string
+}
+
+export {
+  TCountriesApi,
+  TInputValues,
+};

@@ -1,7 +1,9 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 import axios from 'axios';
+import swal from 'sweetalert';
 import { TCountriesApi } from './types';
+
 //! import Constant
 import {
   countriesTableBody,
@@ -63,6 +65,13 @@ const editInputValue = (value: string) => {
 // Check if string includes '_sort'
 const checkLink = (oldLink: string) => (oldLink.includes('_sort') ? oldLink.slice(0, oldLink.indexOf('_sort')) : oldLink);
 
+// Check if nothing found
+const nothingAlert = (data: TCountriesApi[]) => {
+  if (!data.length) {
+    swal('Oops...', 'Nothing was found', 'error');
+  }
+};
+
 export {
   createCoutriesTable,
   clearCountriesTable,
@@ -70,4 +79,5 @@ export {
   loadTablePagination,
   editInputValue,
   checkLink,
+  nothingAlert,
 };
