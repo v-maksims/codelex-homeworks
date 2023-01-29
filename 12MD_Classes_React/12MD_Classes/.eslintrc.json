@@ -23,6 +23,7 @@
         "no-param-reassign": "off",
         "no-undef": "off",
         "class-methods-use-this": "off",
-        "no-useless-constructor": "off"
+        "no-useless-constructor": "off",
+        "consistent-return": "off"
     }
 }

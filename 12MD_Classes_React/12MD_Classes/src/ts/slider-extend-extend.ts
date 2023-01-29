@@ -16,9 +16,15 @@ export default class SliderExtendExtend extends SliderExtend {
   createSamllImg() {
     for (let i = 0; i < this.totalImages; i += 1) {
       this.smallImages.innerHTML += `
-        <img class="slider__image-small ${i !== this.count ? 'slider__image-small--opacity' : ''} js-image-small" src="${this.sliderImages[i].src}" 
+        <img class="slider__image-small ${this.checkCountSmall(i)} js-image-small" src="${this.sliderImages[i].src}" 
             alt="BMW #${i + 1}" >
         `;
+    }
+  }
+
+  checkCountSmall(id: number) {
+    if (id !== this.count) {
+      return 'slider__image-small--opacity';
     }
   }
 
@@ -28,9 +34,7 @@ export default class SliderExtendExtend extends SliderExtend {
         this.sliderImages.forEach((bigImg) => {
           if (bigImg.alt === img.alt) {
             this.count = +img.alt.slice(img.alt.indexOf('#') + 1) - 1;
-            this.removeAddOpacity();
-            this.changeDotBg();
-            this.setClass();
+            this.setClassOpacity();
           }
         });
       });

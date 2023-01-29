@@ -26,8 +26,14 @@ export default class SliderExtend extends Slider {
   createDots() {
     for (let i = 0; i < this.totalImages; i += 1) {
       this.dotElement.innerHTML += `
-        <div class="dot js-dot ${i === this.startnum ? 'dot-active' : ''}" id="${i}"></div>
+        <div class="dot js-dot ${this.checkCountDot(i)}" id="${i}"></div>
         `;
+    }
+  }
+
+  checkCountDot(id: number) {
+    if (id === this.startnum) {
+      return 'dot-active';
     }
   }
 
