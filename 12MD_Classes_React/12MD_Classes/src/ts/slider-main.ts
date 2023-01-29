@@ -19,7 +19,7 @@ export default class Slider {
     this.totalImages = this.sliderImages.length;
     this.count = this.startnum;
     this.prevImg = this.startnum;
-    this.setClass(this.zero, this.count);
+    this.setClass();
     this.initEvents();
   }
 
@@ -53,18 +53,18 @@ export default class Slider {
     this.count -= 1;
   }
 
-  setClass(previos: number, current: number) {
-    this.sliderImages[previos].classList.add('slider__image-opacity');
-    this.sliderImages[current].classList.remove('slider__image-opacity');
-    this.prevImg = current;
+  setClass() {
+    this.sliderImages[this.prevImg].classList.add('slider__image-opacity');
+    this.sliderImages[this.count].classList.remove('slider__image-opacity');
+    this.prevImg = this.count;
   }
 
   nextBtnCheck() {
     if (this.count !== this.totalImages) {
-      this.setClass(this.prevImg, this.count);
+      this.setClass();
     } else {
       this.count = this.zero;
-      this.setClass(this.prevImg, this.count);
+      this.setClass();
     }
   }
 
@@ -72,10 +72,10 @@ export default class Slider {
     if (this.count === this.zero) {
       this.count = this.totalImages;
       this.setCountSub();
-      this.setClass(this.prevImg, this.count);
+      this.setClass();
     } else {
       this.setCountSub();
-      this.setClass(this.prevImg, this.count);
+      this.setClass();
     }
   }
 }

@@ -11,7 +11,6 @@ export default class SliderExtend extends Slider {
     this.createDots();
     this.dotsElements = this.rootElement.querySelectorAll('.js-dot');
     this.initEventsDots();
-    this.previousId = this.startnum;
   }
 
   initEventsDots() {
@@ -19,8 +18,7 @@ export default class SliderExtend extends Slider {
       dot.addEventListener('click', (e) => {
         const target = e.target as HTMLDivElement;
         this.count = +target.id;
-        this.changeDotBg();
-        this.setClass(this.prevImg, this.count);
+        this.setClassDots();
       });
     });
   }
@@ -38,27 +36,28 @@ export default class SliderExtend extends Slider {
     this.dotsElements[this.count].classList.add('dot-active');
   }
 
+  setClassDots() {
+    this.changeDotBg();
+    super.setClass();
+  }
+
   nextBtnCheck() {
     if (this.count !== this.totalImages) {
-      this.changeDotBg();
-      this.setClass(this.prevImg, this.count);
+      this.setClassDots();
     } else {
       this.count = this.startnum;
-      this.changeDotBg();
-      this.setClass(this.prevImg, this.count);
+      this.setClassDots();
     }
   }
 
   prevBtnCheck() {
-    if (this.count === this.startnum) {
+    if (this.count === this.zero) {
       this.count = this.totalImages;
       this.setCountSub();
-      this.changeDotBg();
-      this.setClass(this.prevImg, this.count);
+      this.setClassDots();
     } else {
       this.setCountSub();
-      this.changeDotBg();
-      this.setClass(this.prevImg, this.count);
+      this.setClassDots();
     }
   }
 }

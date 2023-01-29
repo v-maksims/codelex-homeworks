@@ -30,7 +30,7 @@ export default class SliderExtendExtend extends SliderExtend {
             this.count = +img.alt.slice(img.alt.indexOf('#') + 1) - 1;
             this.removeAddOpacity();
             this.changeDotBg();
-            this.setClass(this.prevImg, this.count);
+            this.setClass();
           }
         });
       });
@@ -42,16 +42,16 @@ export default class SliderExtendExtend extends SliderExtend {
     this.smallImagesAll[this.count].classList.remove('slider__image-small--opacity');
   }
 
+  setClassOpacity() {
+    this.removeAddOpacity();
+    super.setClassDots();
+  }
   nextBtnCheck() {
     if (this.count !== this.totalImages) {
-      this.changeDotBg();
-      this.removeAddOpacity();
-      this.setClass(this.prevImg, this.count);
+      this.setClassOpacity();
     } else {
       this.count = this.zero;
-      this.changeDotBg();
-      this.removeAddOpacity();
-      this.setClass(this.prevImg, this.count);
+      this.setClassOpacity();
     }
   }
 
@@ -59,14 +59,10 @@ export default class SliderExtendExtend extends SliderExtend {
     if (this.count === this.zero) {
       this.count = this.totalImages;
       this.setCountSub();
-      this.removeAddOpacity();
-      this.changeDotBg();
-      this.setClass(this.prevImg, this.count);
+      this.setClassOpacity();
     } else {
       this.setCountSub();
-      this.removeAddOpacity();
-      this.changeDotBg();
-      this.setClass(this.prevImg, this.count);
+      this.setClassOpacity();
     }
   }
 
@@ -75,9 +71,7 @@ export default class SliderExtendExtend extends SliderExtend {
       dot.addEventListener('click', (e) => {
         const target = e.target as HTMLDivElement;
         this.count = +target.id;
-        this.removeAddOpacity();
-        this.changeDotBg();
-        this.setClass(this.prevImg, this.count);
+        this.setClassOpacity();
       });
     });
   }
