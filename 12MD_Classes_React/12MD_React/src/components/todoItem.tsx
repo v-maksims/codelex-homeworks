@@ -1,18 +1,22 @@
 import { TTodo } from "../types/data"
 
-
 interface ITodoItem extends TTodo {
-    toggleTodo: (id:number) => void;
-    removeTodo: (id:number) => void;
+    removeTodo: (id: number) => void;
+    toggleTodo: (id: number) => void;
+    editTodo: (id: number) => void;
+    disabled: boolean;
 }
 
-export const TodoItem = (props: ITodoItem) => {
-    const { id, title, complete, removeTodo, toggleTodo } = props
+export function TodoItem(props: ITodoItem) {
+
+    const { id, title, complete, removeTodo, toggleTodo, editTodo , disabled} = props
+
     return (
-        <div className="todo-list">
-            <input className="todo-list__checkBox" type="checkbox" checked={complete} onChange={()=> toggleTodo(id)}/>
-            <span className="todo-list__text">{title}</span>
-            <button type="button" onClick={() => removeTodo(id)}>X</button>
+        <div className="todo mt-2 ml-5">
+            <input className="mr-4 todo-check" type="checkbox" checked={complete} onChange={() => toggleTodo(id)} />
+            <span className="is-size-5 has-text-weight-medium mr-2 has-text-white">{title}</span>
+            <button className="btn" type="button" onClick={() => removeTodo(id)}>X</button>
+            <button className="btn" type="button" onClick={() => editTodo(id)} disabled={disabled}> <span className={disabled ? 'grey' : 'green'}>Edit</span></button>
         </div>
     )
 }

@@ -6,74 +6,57 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  // font-synthesis: none;
-  // text-rendering: optimizeLegibility;
-  // -webkit-font-smoothing: antialiased;
-  // -moz-osx-font-smoothing: grayscale;
-  // -webkit-text-size-adjust: 100%;
+  background-color: #33382e;
 }
 
-.container {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 15px;
+.title--green {
+  color: #829460;
 }
 
-// Header
-.title {
-  text-align: center;
-  font-size: 4rem;
-
-  &--green {
-    color: #829460;
+.input {
+  width: 50%;
+  background-color: #829460;
+  
+  &::placeholder {
+    color: aliceblue;
+  }
+  
+  &:disabled{
+    background-color: #829460;
   }
 }
 
-// Input section
+.input-edit{
+  width: 20%;
+}
 
-.todo-input {
+.button {
+  background-color: #829460;
+}
+
+.todo {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  flex-direction: row;
+  align-items: center;
 }
 
-.todo-input__text {
-  font-size: 2rem;
-  font-weight: bold;
+.btn {
+  background-color: transparent;
+  border: 0;
+  color: red;
+  font-size: 1.3rem;
+  cursor: pointer;
 }
 
-.todo-input__form {
-  display: flex;
-  gap: 20px;
+.todo-check{
+  scale: 180%
 }
 
-.todo-input__input {
-  width: 300px;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 1.5rem;
+.grey{
+  color: grey;
+  cursor: not-allowed;
 }
 
-.todo-input__btn {
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 1.5rem;
-}
-
-.todo-list {
-  padding: 15px;
-  display: flex;
-  gap: 10px;
-}
-
-.todo-list__checkBox{
-  width: 30px;
-  scale: 150%;
-}
-
-.todo-list__text{
-  font-size: 2rem;
+.green {
+  color: green;
 }
