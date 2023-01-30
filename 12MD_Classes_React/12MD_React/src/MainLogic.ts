@@ -1,14 +1,17 @@
 import { useState } from "react"
 import { TTodo } from "./types/data"
 
-
 export function MainLogic() {
-
     const [value, setValue] = useState('')
     const [editValue, setEditValue] = useState('')
     const [todos, setTodos] = useState<TTodo[]>([])
     const [disabled, setDisabled] = useState(true)
     const [error, setError] = useState('')
+    const [about, setAbout] = useState(false)
+
+    const changeAbout = () => {
+        setAbout(!about)
+    }
 
     const addTask = () => {
         if (value.trim()) {
@@ -38,6 +41,7 @@ export function MainLogic() {
             if (todo.id !== id) {
                 return todo
             }
+
             return {
                 ...todo,
                 complete: !todo.complete
@@ -71,5 +75,25 @@ export function MainLogic() {
         setEditValue('');
     }
 
-    return { enableEdit, editTodo, toggleTodo, handleEdit, handleChange, removeTodo, disabled, value, editValue, todos, addTask, error }
+    const deleteAllTodos = () => {
+        setTodos([])
+    }
+
+    return {
+        enableEdit,
+        editTodo,
+        toggleTodo,
+        handleEdit,
+        handleChange,
+        removeTodo,
+        disabled,
+        value,
+        editValue,
+        todos,
+        addTask,
+        error,
+        about,
+        changeAbout,
+        deleteAllTodos
+    }
 }
