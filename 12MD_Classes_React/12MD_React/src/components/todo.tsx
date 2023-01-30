@@ -30,7 +30,7 @@ export function Todo() {
                 <span className="is-size-3 has-text-weight-semibold	has-text-white-bis is-family-code">Input yours todos:</span>
                 <form className="columns mt-3">
                     <input className="input is-medium mr-3 has-text-white column is-half" type="text" placeholder="Your new todo.." value={value} onChange={handleChange} />
-                    <button className="button is-medium has-text-white" type="button" onClick={() => addTask()}>ADD</button>
+                    <button className="button is-medium has-text-white" type="button" onClick={() => addTask()} title="Create new task">ADD</button>
                 </form>
                 <form className="mt-4 mb-3 columns">
                     <input type="text" className="input input-edit is-medium mr-3 has-text-white column is-one-quarter" placeholder="Enter edit" value={editValue} onChange={handleEdit} disabled={disabled} />
@@ -44,10 +44,10 @@ export function Todo() {
             </div>
             {about && <About changeAbout={changeAbout} />}
             <div className="about-sec">
-                <button className="custom-btn btn" onClick={changeAbout}><span className="custom-btn__span">About Todo APP</span></button>
+                <button className="custom-btn btn" onClick={changeAbout} title="Open information"><span className="custom-btn__span">About Todo APP</span></button>
             </div>
             {todos.length && <div className="delete-sec">
-                <button className="custom-btn btn" onClick={deleteAllTodos} ><span className="custom-btn__span">Delete All Tasks</span></button>
+                <button className="custom-btn btn" onClick={deleteAllTodos} title="Delete all tasks"><span className="custom-btn__span">Delete All Tasks</span></button>
             </div>}
         </div>
     )

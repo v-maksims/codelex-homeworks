@@ -15,13 +15,13 @@ export function TodoItem(props: ITodoItem) {
 
     return (
         <div className="todo mt-2 ml-2">
-            <label className="switch mr-3">
+            <label className="switch mr-3" title="Mark as completed">
                 <input type="checkbox" checked={complete} onChange={() => toggleTodo(id)}/>
                 <span className="slider"></span>
             </label>
             <span className={todoTextClasses.join(' ')}>{title}</span>
-            <button className="btns" type="button" onClick={() => removeTodo(id)}>X</button>
-            <button className="btns" type="button" onClick={() => !complete && editTodo(id)} disabled={disabled}> <span className={disabled || complete ? 'grey' : 'green'}>Edit</span></button>
+            <button className="btns" type="button" onClick={() => removeTodo(id)} title="Delete task">X</button>
+            <button className="btns" type="button" onClick={() => !complete && editTodo(id)} disabled={disabled} title="Edit task"> <span className={disabled || complete ? 'grey' : 'green'}>Edit</span></button>
         </div>
     )
 }
