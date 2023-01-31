@@ -7,12 +7,6 @@
       "id": 1
     },
     {
-      "image": "https://cs8.pikabu.ru/post_img/2016/01/24/5/145361799719568731.gif",
-      "name": "Water connoisseurs",
-      "info": "Will sell everything for the pool",
-      "id": 2
-    },
-    {
       "image": "https://cdnn11.img.sputnik.by/img/07e5/09/01/1056115789_136:0:2867:2048_1920x0_80_0_0_ace5fe8ad699e1c61f1c1f92e59fc88f.jpg",
       "name": "Model",
       "info": "Capybara posing for the camera",
@@ -65,18 +59,6 @@
       "name": "Anonymous",
       "info": "This capybara hasn't uploaded its photo",
       "id": 11
-    },
-    {
-      "image": "",
-      "name": "sdfsdf",
-      "info": "sdfsdf",
-      "id": 12
-    },
-    {
-      "image": "",
-      "name": "",
-      "info": "",
-      "id": 14
     }
   ]
 }
