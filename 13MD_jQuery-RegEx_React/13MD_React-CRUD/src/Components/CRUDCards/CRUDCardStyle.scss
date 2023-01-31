@@ -1,0 +1,59 @@
+// Card List
+.card-list {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  
+  //Card item
+  
+  .card-item {
+    max-width: 400px;
+    min-height: 450px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-color: #829460;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .card-item__image {
+    max-width: 380px;
+    max-height: 280px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  
+  .card-item__name {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 900;
+  }
+  
+  .card-item__info {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  
+  .card-item__edit{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .card-item__btn{
+    background-color: transparent;
+    border: 0;
+    font-size: 1.4rem;
+    color: red;
+    cursor: pointer;
+  
+    &:last-child{
+      left: -300px;
+    }
+  }

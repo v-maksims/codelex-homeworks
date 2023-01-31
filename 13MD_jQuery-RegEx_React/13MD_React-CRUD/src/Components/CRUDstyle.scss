@@ -1,0 +1,28 @@
+.title {
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 900;
+  }
+  
+  // Open form
+  .open-form-btn{
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 1.4rem;
+    border-radius: 50%;
+    border: 2px solid #C84361;
+    background-color: #C84361;
+    scale: 150%;
+    cursor: pointer;
+    transition: .2s all;
+  
+    &:hover{
+      background-color: transparent;
+      border: 2px solid #F46060;
+      color: #F46060;
+    }
+  
+  }

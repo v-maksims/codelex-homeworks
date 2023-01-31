@@ -67,16 +67,10 @@
       "id": 11
     },
     {
-      "image": "",
-      "name": "sdfsdf",
-      "info": "sdfsdf",
-      "id": 12
-    },
-    {
-      "image": "",
-      "name": "",
-      "info": "",
-      "id": 14
+      "name": "Anonymous",
+      "info": "Information is classified",
+      "image": "https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg",
+      "id": 13
     }
   ]
 }
