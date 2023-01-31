@@ -7,12 +7,6 @@
       "id": 1
     },
     {
-      "image": "https://cs8.pikabu.ru/post_img/2016/01/24/5/145361799719568731.gif",
-      "name": "Water connoisseurs",
-      "info": "Will sell everything for the pool",
-      "id": 2
-    },
-    {
       "image": "https://cdnn11.img.sputnik.by/img/07e5/09/01/1056115789_136:0:2867:2048_1920x0_80_0_0_ace5fe8ad699e1c61f1c1f92e59fc88f.jpg",
       "name": "Model",
       "info": "Capybara posing for the camera",
@@ -70,7 +64,7 @@
       "name": "Anonymous",
       "info": "Information is classified",
       "image": "https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg",
-      "id": 13
+      "id": 12
     }
   ]
 }
