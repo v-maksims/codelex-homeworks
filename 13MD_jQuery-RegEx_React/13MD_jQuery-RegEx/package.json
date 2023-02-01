@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack build",
     "start": "webpack serve",
-    "test": "jest",
+    "test": "jest --watch",
     "db": "json-server --watch db.json --port 3004"
   },
   "author": "",
