@@ -1,5 +1,3 @@
-// import * as $ from 'jquery';
-// const $ = require('jquery');
 import { validateEmail, validatePassword, validateUsername } from './utils/validation/validation';
 
 $(document).ready(() => {
@@ -91,21 +89,24 @@ $(document).ready(() => {
     const emailVal = $('.form__input-email').val();
     const passVal = $('.form__input-password').val();
 
+    // css styles display
+    const displayNone = { display: 'none' };
+    const displayInlineBlock = { display: 'inline-block' };
     // check input validation
     if (!validateUsername(nameVal)) {
-      $('.form__input--error.username').css({ display: 'inline-block' });
+      $('.form__input--error.username').css(displayInlineBlock);
     } else {
-      $('.form__input--error.username').css({ display: 'none' });
+      $('.form__input--error.username').css(displayNone);
     }
     if (!validateEmail(emailVal)) {
-      $('.form__input--error.email').css({ display: 'inline-block' });
+      $('.form__input--error.email').css(displayInlineBlock);
     } else {
-      $('.form__input--error.email').css({ display: 'none' });
+      $('.form__input--error.email').css(displayNone);
     }
     if (!validatePassword(passVal)) {
-      $('.form__input--error.password').css({ display: 'inline-block' });
+      $('.form__input--error.password').css(displayInlineBlock);
     } else {
-      $('.form__input--error.password').css({ display: 'none' });
+      $('.form__input--error.password').css(displayNone);
     }
 
     // check if all inputs is valid
@@ -115,7 +116,5 @@ $(document).ready(() => {
       $('.form__input-password').val('');
       alert('Form completed correctly');
     }
-
-    // console.log(nameVal, emailVal, passVal);
   });
 });

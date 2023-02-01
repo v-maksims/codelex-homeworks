@@ -107,6 +107,10 @@ describe('ValidateEmails', () => {
     const result = validateEmail('test123@gmail.com');
     expect(result).toBeTruthy();
   });
+  it('should return true if has correct email and dot', () => {
+    const result = validateEmail('test.123@gmail.com');
+    expect(result).toBeTruthy();
+  });
 });
 
 describe('validatePassword', () => {
