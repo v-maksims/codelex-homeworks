@@ -12,9 +12,7 @@ export default function CrudBackForm(props: TCrudBackFormProps) {
 
     return (
         <>
-            <div className="black-back" onClick={() => {
-                backHandler();
-            }} >
+            <div className="black-back" onClick={backHandler} >
             </div >
             {children}
         </>

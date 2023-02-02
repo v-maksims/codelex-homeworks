@@ -1,6 +1,6 @@
 import axios from "axios"
 import { TCapybarasData } from "../../Types/Data"
-import {UseCrud} from "../../Hooks/UseCrud"
+import { UseCrud } from "../../Hooks/UseCrud"
 
 
 type TEditFormProps = {
@@ -8,12 +8,9 @@ type TEditFormProps = {
     onEdit: (card: TCapybarasData, id: number) => void,
 }
 
-// TODO: old values in input areas
 export default function CrudEditForm(props: TEditFormProps) {
     const { id, onEdit } = props
-    const { image, imageHandler, info, infoHandler, name, nameHandler, checkInputImage, checkInputInfo, checkInputName} = UseCrud()
-
-    
+    const { image, imageHandler, info, infoHandler, name, nameHandler, checkInputImage, checkInputInfo, checkInputName } = UseCrud()
 
     const submitHandler = async (event: React.FormEvent) => {
         event.preventDefault()
@@ -31,11 +28,11 @@ export default function CrudEditForm(props: TEditFormProps) {
             <h4 className="form__title">EDIT CARD</h4>
             <form onSubmit={submitHandler}>
                 <h5 className="form__input-text">Capybara name:</h5>
-                <input className="form__input" type="text" placeholder="Capybara name" value={name} onChange={nameHandler}/>
+                <input className="form__input" type="text" placeholder="Capybara name" value={name} onChange={nameHandler} />
                 <h5 className="form__input-text">About capybara:</h5>
-                <input className="form__input" type="text" placeholder="Capybara information" value={info} onChange={infoHandler}/>
+                <input className="form__input" type="text" placeholder="Capybara information" value={info} onChange={infoHandler} />
                 <h5 className="form__input-text">Capybara image:</h5>
-                <input className="form__input" type="text" placeholder="Capybara image" value={image} onChange={imageHandler}/>
+                <input className="form__input" type="text" placeholder="Capybara image" value={image} onChange={imageHandler} />
                 <button className="form__btn">Edit</button>
             </form>
         </div>
