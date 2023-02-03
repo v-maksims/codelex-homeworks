@@ -1,0 +1,14 @@
+.counter-input-wrap {
+    margin-top: 20px;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid aliceblue;
+    padding: 10px;
+  }
+  
+  .counter-input__text {
+    font-size: 1.5rem;
+  }
+  
