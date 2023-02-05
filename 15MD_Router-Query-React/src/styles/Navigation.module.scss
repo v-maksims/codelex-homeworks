@@ -1,5 +1,6 @@
 .navigation {
     position: fixed;
+    top: 0;
     max-width: 1200px;
     width: 100%;
     left: 50%;
@@ -9,11 +10,16 @@
     justify-content: space-between;
     align-items: center;
     z-index: 10;
+    background-color: #242424;
+
 }
 
 .text {
     font-weight: 700;
     font-size: 2.5rem;
+    cursor: pointer;
+    color: aliceblue;
+    text-decoration: none;
 }
 
 .navList {
@@ -27,8 +33,20 @@
     text-transform: capitalize;
     cursor: pointer;
     transition: .2s color;
+    color: aliceblue;
+    text-decoration: none;
 
     &:hover {
         color: grey;
+        text-decoration: overline;
     }
+}
+
+.navItemActive {
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: .2s color;
+    color: grey;
+    text-decoration: overline;
+    scale: 85%;
 }

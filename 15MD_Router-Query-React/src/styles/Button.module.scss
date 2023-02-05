@@ -1,0 +1,17 @@
+.button {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #820000;
+    color: aliceblue;
+    border: 0;
+    transition: all .2s;
+
+    &:hover {
+        scale: 90%;
+        color: #820000;
+        background-color: aliceblue;
+    }
+}
