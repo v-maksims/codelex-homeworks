@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import { episodeDetails } from '../api/API';
+import { episodesApi } from '../../api/API';
 
 
-export default function useUrlApi(url:string, id: number){
+export default function useEpisodeDetailsURL(url:string, id: number){
     
     const {data, status} = useQuery({
         queryKey: ['url api', {id}],
-        queryFn: () => episodeDetails.getByUrl(url)
+        queryFn: () => episodesApi.getByUrl(url)
     });
 
     return {

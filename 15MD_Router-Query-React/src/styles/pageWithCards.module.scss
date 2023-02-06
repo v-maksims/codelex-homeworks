@@ -12,3 +12,16 @@
     gap: 10px;
     margin-bottom: 20px;
 }
+
+.searchText{
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.search{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}

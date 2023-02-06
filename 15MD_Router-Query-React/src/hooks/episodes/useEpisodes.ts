@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { charactersAPI } from '../api/API';
+import { episodesApi } from '../../api/API';
 
-export default function useCharactersPage() {
+export default function useEpisodes() {
     const [page, setPage] = useState(1);
 
-    const { data: cards, isLoading, error, status } = useQuery({
-        queryKey: ['characters list', { page }],
-        queryFn: () => charactersAPI.getAll(page),
+    const { data: episodes, isLoading, error } = useQuery({
+        queryKey: ['episodes list', { page }],
+        queryFn: () => episodesApi.getAll(page),
     });
 
     const pageCountAddHandler = () => {
@@ -16,13 +16,16 @@ export default function useCharactersPage() {
     const pageCountSubHandler = () => {
         setPage(page - 1);
     };
+
+    const pages = episodes?.data.info.pages;
+    const results = episodes?.data.results;
     return {
         isLoading,
         error,
-        status,
-        cards,
         pageCountAddHandler,
         pageCountSubHandler,
-        page
+        page,
+        pages,
+        results
     };
 }

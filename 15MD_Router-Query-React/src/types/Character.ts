@@ -6,6 +6,7 @@ export type TCharacter = {
     location: {
         name: string
     },
+    episode: string[],
     species: string,
     status: string,
     type: string

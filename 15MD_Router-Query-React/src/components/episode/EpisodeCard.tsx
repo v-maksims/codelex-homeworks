@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
-import style from '../styles/Card.module.scss';
-import { TEpisode } from '../types/Episode';
+
+import { TEpisode } from '../../types/Episode';
+
+import style from '../../styles/Card.module.scss';
 
 type TEpisodeCardProps = {
     card: TEpisode

@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom';
+
+import useNavigationBar from '../hooks/navigation/useNavigationBar';
+
 import style from '../styles/Navigation.module.scss';
-import useNavigationBar from '../hooks/useNavigation';
 
 export default function Navigation() {
-    const {checkByCurrentId,clickHandler, setCurrentHandler} = useNavigationBar();
+    const {checkByCurrentId,clickHandler,logoClickHandler} = useNavigationBar();
     return(
         <div className={style.navigation}>
             <span>
                 <Link to='/'
                     className={style.text}
-                    onClick={setCurrentHandler}
+                    onClick={logoClickHandler}
                 >
                 MD15
                 </Link>

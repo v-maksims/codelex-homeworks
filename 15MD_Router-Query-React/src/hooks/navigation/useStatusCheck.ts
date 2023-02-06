@@ -1,4 +1,4 @@
-import style from '../styles/characterCard.module.scss';
+import style from '../../styles/Card.module.scss';
 
 export default function useStatusCheck(status: string) {
     if(status === 'Alive'){

@@ -3,4 +3,5 @@ export type TEpisode = {
     name: string,
     'air_date': string,
     episode: string
+    characters: string[]
 }
