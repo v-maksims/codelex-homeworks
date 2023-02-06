@@ -1,4 +1,4 @@
-*{
+* {
     text-decoration: none;
     color: aliceblue;
 }
@@ -14,8 +14,10 @@
     max-width: 320px;
     width: 100%;
     transition: all .3s;
+    background-color: rgb(41, 0, 0);
 
-    &:hover{
+
+    &:hover {
         scale: 90%;
     }
 }
@@ -58,6 +60,7 @@
     border-radius: 50%;
     background-color: green;
 }
+
 .dotD {
     width: 10px;
     height: 10px;
