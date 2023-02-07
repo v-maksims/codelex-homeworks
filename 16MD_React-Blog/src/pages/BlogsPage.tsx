@@ -1,27 +1,31 @@
 import { useQuery } from '@tanstack/react-query';
 import BlogApi from '../api/BlogApi';
 import BlogCard from '../components/BlogCard';
-
+import style from '../styles/BlogsPage.module.scss';
+import { TBlogs } from '../types/Blogs';
 
 export default function BlogsPage () {
     const { blogAll } = BlogApi();
-    const { data: blogs, isLoading, error }= useQuery({
-        queryKey:['blogs'],
-        queryFn: () => blogAll()
-    });
-    // console.log(blogs?.data[0].content);
+    const { data, isLoading }= useQuery<TBlogs[]>(['blogs'], blogAll);
+    console.log(data);
 
     if(isLoading){
         return <h1>Loading..</h1>;
     }
 
-    if(error){
+    if(!data){
         return <h1>Error..</h1>;
     }
 
     return(
-        <div>
-            {blogs?.data.map(blog => <BlogCard key={blog.id} />)}
+        <div className={style.cardsWrap}>
+            {data.map(({id, image, title,content}) => <BlogCard 
+                key={id} 
+                id={id} 
+                image={image} 
+                title={title}
+                content={content}
+            />)}
         </div>
     );
 }

@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import Button from './components/Button';
 import Navigation from './components/Navigation';
 import BlogPage from './pages/BlogPage';
 import BlogsPage from './pages/BlogsPage';
@@ -10,14 +11,19 @@ function App() {
         <div className='container'>
             <nav className='navigation'>
                 <Navigation 
+                    className='navigation__item'
                     to='/' 
                     label='home'
-                    className='navigation__item'
                 />
                 <Navigation 
+                    className='navigation__item'
                     to='/blogs' 
                     label='blog'
-                    className='navigation__item'
+                />
+                <Button 
+                    label='add'
+                    onClick={() => console.log('yes')}
+                    type='button'
                 />
             </nav>
             <Routes>

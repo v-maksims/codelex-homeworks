@@ -6,10 +6,17 @@ export default function BlogApi (){
     axios.defaults.baseURL = dbURL;
 
     const blogAll = async () =>{
-        return await axios.get<TBlogs[]>('');
+        const{data} = await axios.get('');
+        return data;
+    };
+
+    const blogId = async (id: string) =>{
+        const{data} = await axios.get<TBlogs>(`/${id}`);
+        return data;
     };
 
     return {
-        blogAll
+        blogAll,
+        blogId
     };
 }
