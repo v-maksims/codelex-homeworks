@@ -1,47 +1,23 @@
-import { useState } from 'react';
-import Form from '../components/Form';
+import Form from './FormCreateBlog';
 import Input from '../components/Input';
 import Modal from '../components/Modal';
 import TextArea from '../components/TextArea';
-import { TBlogs } from '../types/Blogs';
+import useNewBlogValues from '../hooks/useNewBlogValues';
 
 type TFormAddPostProps = {
     modal: boolean,
     onClick: () => void
 }
 
-export type TValues = {
-    name: string,
-    value: string
-}
-
 export default function FormAddPost(props:TFormAddPostProps){
     const { modal, onClick } = props;
-
-    const [data, setData] = useState<TBlogs>({
-        comments:[],
-        content:'',
-        image: '',
-        title: ''
-    });
-    const contentHandler = (value: string) => {
-        setData({
-            ...data,
-            content: value
-        });
-    };
-    const imageHandler = (value: string) => {
-        setData({
-            ...data,
-            image: value
-        });
-    };
-    const titleHandler = (value: string) => {
-        setData({
-            ...data,
-            title: value
-        });
-    };
+    const {
+        contentHandler,
+        imageHandler,
+        titleHandler,
+        data
+    } = useNewBlogValues();
+   
 
 
     return(

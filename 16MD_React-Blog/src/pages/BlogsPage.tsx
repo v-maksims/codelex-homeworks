@@ -20,7 +20,7 @@ export default function BlogsPage () {
         <div className={style.cardsWrap}>
             {data.map(({id, image, title,content}) => <BlogCard 
                 key={id} 
-                id={id} 
+                id={id!} 
                 image={image} 
                 title={title}
                 content={content}
