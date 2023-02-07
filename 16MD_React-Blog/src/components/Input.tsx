@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import useInput from '../hooks/useInput';
 import style from '../styles/Input.module.scss';
 
@@ -8,7 +7,7 @@ type TInputProps = {
     required: boolean,
     label: string,
     name: string,
-    inputHandler:(name:string, value: string) => void
+    inputHandler:( value: string) => void
 }
 
 export default function Input(props: TInputProps) {
@@ -33,7 +32,7 @@ export default function Input(props: TInputProps) {
                 value={value} 
                 onChange={(e) => {
                     changeHandler(e);
-                    inputHandler(name, e.target.value);
+                    inputHandler(e.target.value);
                 }} 
                 required={required}
                 name={name}

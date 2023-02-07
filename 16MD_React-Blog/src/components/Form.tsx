@@ -1,18 +1,30 @@
 import React from 'react';
 import Button from './Button';
 import style from '../styles/Form.module.scss';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import { TBlogs } from '../types/Blogs';
+
 type TFormProps = {
     children: React.ReactNode,
-    label: string
+    label: string,
+    newData: TBlogs,
+    onSubmit:() => void
 }
 
-export default function Form({children,label}:TFormProps){
+export default function Form({children,label,newData , onSubmit}:TFormProps){
+    const {mutate} = useMutation({
+        mutationFn: (data:TBlogs) => {
+            return axios.post('http://localhost:3004/blogs',data);
+        }
+    });
     return(
         <form 
             className={style.form}
             onSubmit={(e) => {
                 e.preventDefault();
-                // console.log(e.currentTarget.);
+                mutate(newData);
+                onSubmit();
             }}
         >
             <span className={style.title}>{label}</span>

@@ -2,7 +2,7 @@ import { TComments } from './Comments';
 
 
 export type TBlogs = {
-    id: number,
+    id?: number,
     title: string,
     content: string,
     image: string,

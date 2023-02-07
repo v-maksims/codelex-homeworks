@@ -3,13 +3,14 @@ import Form from '../components/Form';
 import Input from '../components/Input';
 import Modal from '../components/Modal';
 import TextArea from '../components/TextArea';
+import { TBlogs } from '../types/Blogs';
 
 type TFormAddPostProps = {
     modal: boolean,
     onClick: () => void
 }
 
-type TValues = {
+export type TValues = {
     name: string,
     value: string
 }
@@ -17,14 +18,29 @@ type TValues = {
 export default function FormAddPost(props:TFormAddPostProps){
     const { modal, onClick } = props;
 
-    const [values, setValues] = useState<TValues[]>([]);
-    const inputHandler = (name:string, value: string) =>{
-        // console.log(values);
-        setValues(
-            values.find(item => item.name === name) 
-                ? values.map(item => item.name === name ? {name,value} : item) 
-                : [...values, {name,value}]
-        );
+    const [data, setData] = useState<TBlogs>({
+        comments:[],
+        content:'',
+        image: '',
+        title: ''
+    });
+    const contentHandler = (value: string) => {
+        setData({
+            ...data,
+            content: value
+        });
+    };
+    const imageHandler = (value: string) => {
+        setData({
+            ...data,
+            image: value
+        });
+    };
+    const titleHandler = (value: string) => {
+        setData({
+            ...data,
+            title: value
+        });
     };
 
 
@@ -35,6 +51,8 @@ export default function FormAddPost(props:TFormAddPostProps){
             >
                 <Form
                     label='Add new blog'
+                    newData={data}
+                    onSubmit={onClick}
                 >
                     <Input
                         name='image'
@@ -42,7 +60,7 @@ export default function FormAddPost(props:TFormAddPostProps){
                         placeholder='Enter image url'
                         required={true}
                         type='text'
-                        inputHandler={inputHandler}
+                        inputHandler={imageHandler}
                     />
                     <Input
                         name='title'
@@ -50,10 +68,13 @@ export default function FormAddPost(props:TFormAddPostProps){
                         placeholder='Enter post title'
                         required={true}
                         type='text'
-                        inputHandler={inputHandler}
+                        inputHandler={titleHandler}
                     />
                     <TextArea
                         label='blog content'
+                        name='content'
+                        required={true}
+                        inputHandler={contentHandler}
                     />
                 </Form>
             </Modal>}
