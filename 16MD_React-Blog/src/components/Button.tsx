@@ -1,6 +1,8 @@
+import style from '../styles/Button.module.scss';
+
 type TButtonsProps = {
     label: string,
-    onClick:() => void,
+    onClick?:() => void,
     type: 'submit' | 'button', 
 }
 
@@ -13,6 +15,7 @@ export default function Button (props: TButtonsProps) {
 
     return(
         <button
+            className={style.button}
             onClick={onClick}
             type={type}
         >

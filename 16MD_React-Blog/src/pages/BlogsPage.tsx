@@ -7,7 +7,6 @@ import { TBlogs } from '../types/Blogs';
 export default function BlogsPage () {
     const { blogAll } = BlogApi();
     const { data, isLoading }= useQuery<TBlogs[]>(['blogs'], blogAll);
-    console.log(data);
 
     if(isLoading){
         return <h1>Loading..</h1>;

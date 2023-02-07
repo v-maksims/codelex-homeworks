@@ -18,9 +18,18 @@
 }
 
 .navigation {
-  display: flex;
+  display: grid;
   justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
   gap: 20px;
+}
+
+.navigation__items {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px
 }
 
 .navigation__item {
@@ -30,9 +39,14 @@
   font-size: 2.5rem;
   text-transform: capitalize;
   transition: all .2s;
-  
+
   &.active {
     color: #820000;
     scale: 90%;
   }
+}
+
+.navigation__btn {
+  display: flex;
+  justify-content: flex-end;
 }
