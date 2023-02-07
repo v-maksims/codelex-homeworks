@@ -1,12 +1,26 @@
 import useTextArea from '../hooks/useTextArea';
+import style from '../styles/TextArea.module.scss';
 
+type TTextAreaProps = {
+    label: string
+}
 
-export default function TextArea(){
+export default function TextArea(props: TTextAreaProps){
+    const {label} = props;
     const {value,changeHandler} = useTextArea();
     
     return(
         <>
-            <textarea value={value} onChange={changeHandler} cols={3} rows={10}></textarea>
+            <span 
+                className={style.text}
+            >
+                {label}:
+            </span>
+            <textarea
+                className={style.area}
+                value={value} 
+                onChange={(e) => changeHandler(e)} 
+            ></textarea>
         </>
     );
 }

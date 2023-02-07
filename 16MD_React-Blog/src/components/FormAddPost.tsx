@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Form from '../components/Form';
 import Input from '../components/Input';
 import Modal from '../components/Modal';
@@ -8,8 +9,25 @@ type TFormAddPostProps = {
     onClick: () => void
 }
 
+type TValues = {
+    name: string,
+    value: string
+}
+
 export default function FormAddPost(props:TFormAddPostProps){
     const { modal, onClick } = props;
+
+    const [values, setValues] = useState<TValues[]>([]);
+    const inputHandler = (name:string, value: string) =>{
+        // console.log(values);
+        setValues(
+            values.find(item => item.name === name) 
+                ? values.map(item => item.name === name ? {name,value} : item) 
+                : [...values, {name,value}]
+        );
+    };
+
+
     return(
         <>
             {modal && <Modal
@@ -19,18 +37,24 @@ export default function FormAddPost(props:TFormAddPostProps){
                     label='Add new blog'
                 >
                     <Input
-                        label='1'
-                        placeholder='1'
+                        name='image'
+                        label='image'
+                        placeholder='Enter image url'
                         required={true}
                         type='text'
+                        inputHandler={inputHandler}
                     />
                     <Input
-                        label='2'
-                        placeholder='2'
+                        name='title'
+                        label='blog title'
+                        placeholder='Enter post title'
                         required={true}
                         type='text'
+                        inputHandler={inputHandler}
                     />
-                    <TextArea/>
+                    <TextArea
+                        label='blog content'
+                    />
                 </Form>
             </Modal>}
         </>

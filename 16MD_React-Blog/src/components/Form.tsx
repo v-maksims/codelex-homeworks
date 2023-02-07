@@ -12,7 +12,7 @@ export default function Form({children,label}:TFormProps){
             className={style.form}
             onSubmit={(e) => {
                 e.preventDefault();
-                console.log('yes');
+                // console.log(e.currentTarget.);
             }}
         >
             <span className={style.title}>{label}</span>
