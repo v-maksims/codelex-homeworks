@@ -1,0 +1,21 @@
+{
+    "blogs": [
+        {
+            "id": 1,
+            "title": "title",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rhoncus dictum semper. Cras congue neque eu purus accumsan volutpat. Nullam eu mi at ex faucibus feugiat. Fusce quis diam fringilla magna volutpat consectetur. Morbi viverra blandit sem, malesuada pellentesque nulla vulputate at. Suspendisse vitae pulvinar lectus. Duis sit amet lacus pellentesque, molestie mauris at, vehicula nulla. Nullam est ex, convallis vel vestibulum eu, sollicitudin venenatis felis.",
+            "image": "https://goo.su/uZzQ1vz",
+            "comments": [
+                {
+                    "id":1,
+                    "user": {
+                        "firstName": "John",
+                        "lastName": "Doe"
+                    },
+                    "comment": "some comment",
+                    "userImage": "https://goo.su/fIbHn"
+                }
+            ]
+        }
+    ]
+}
