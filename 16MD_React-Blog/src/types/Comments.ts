@@ -1,11 +1,7 @@
-type TUser = {
-    firstName: string,
-    lastName: string
-}
-
 export type TComments = {
-    id: number,
-    user:TUser,
+    id?: number,
+    user:string,
     comment: string,
-    userImage: string
+    userImage: string,
+    blogId?: number
 }

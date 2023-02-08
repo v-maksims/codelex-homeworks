@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {TBlogs} from '../types/Blogs';
+import { TComments } from '../types/Comments';
 
 export default function BlogApi (){
     const dbURL = 'http://localhost:3004';
@@ -11,8 +12,17 @@ export default function BlogApi (){
     };
 
     const blogId = async (id: string) =>{
-        const{data} = await axios.get<TBlogs>(`/blogs/${id}`);
+        const{data} = await axios.get(`/blogs/${id}`);
         return data;
+    };
+
+    const blogCommentsId = async(id:string) => {
+        const {data} = await axios.get(`/comments?blogId=${id}`);
+        return data;
+    };
+
+    const createBlogComment = (data: TComments, id: string) => {
+        return axios.post(`/comments?blogId=${id}`,data);
     };
 
     const createBlog = (data:TBlogs) => {
@@ -22,6 +32,8 @@ export default function BlogApi (){
     return {
         blogAll,
         blogId,
-        createBlog
+        createBlog,
+        blogCommentsId,
+        createBlogComment
     };
 }

@@ -51,6 +51,7 @@ export default function FormAddPost(props:TFormAddPostProps){
                         name='content'
                         required={true}
                         inputHandler={contentHandler}
+                        rows={10}
                     />
                 </Form>
             </Modal>}

@@ -3,7 +3,6 @@ import { TBlogs } from '../types/Blogs';
 
 export default function useNewBlogValues () {
     const [data, setData] = useState<TBlogs>({
-        comments:[],
         content:'',
         image: '',
         title: ''
