@@ -75,11 +75,25 @@
       "blogId": 5
     },
     {
-      "user": "sadasd",
-      "comment": "asdasd12314",
-      "userImage": "123",
+      "comment": "asdasd",
+      "user": "Anonymous",
+      "userImage": "https://goo.su/gafk",
       "blogId": 1,
       "id": 7
+    },
+    {
+      "comment": "asdasdasdasdadad",
+      "user": "Anonymous",
+      "userImage": "https://goo.su/gafk",
+      "blogId": 1,
+      "id": 8
+    },
+    {
+      "comment": "fdgdfgdfg",
+      "user": "Anonymous",
+      "userImage": "https://goo.su/gafk",
+      "blogId": 1,
+      "id": 9
     }
   ]
 }

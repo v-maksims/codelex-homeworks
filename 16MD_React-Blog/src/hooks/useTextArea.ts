@@ -6,8 +6,13 @@ export default function useTextArea(){
     const changeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setValue(e.target.value);
     };
+
+    const clearValue = () => {
+        setValue('');
+    };
     return{
         value,
-        changeHandler
+        changeHandler,
+        clearValue,
     };
 }

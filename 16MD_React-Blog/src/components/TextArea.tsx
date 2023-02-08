@@ -8,6 +8,7 @@ type TTextAreaProps = {
     className?: string,
     rows:number,
     inputHandler:(value: string) => void,
+    com?: boolean
 }
 
 export default function TextArea(props: TTextAreaProps){
@@ -16,10 +17,9 @@ export default function TextArea(props: TTextAreaProps){
         inputHandler,
         name, 
         required,
-        className,
-        rows
+        rows,
     } = props;
-    const {value,changeHandler} = useTextArea();
+    const {value,changeHandler,clearValue} = useTextArea();
     
     return(
         <>
@@ -29,13 +29,12 @@ export default function TextArea(props: TTextAreaProps){
                 {label}:
             </span>
             <textarea
-                className={className || style.area}
+                className={style.area}
                 value={value} 
                 name={name}
                 required={required}
                 onChange={(e) => {
                     changeHandler(e);
-
                     inputHandler(e.currentTarget.value);
                 }} 
                 rows={rows}
