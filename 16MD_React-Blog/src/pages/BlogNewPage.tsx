@@ -21,6 +21,7 @@ export default function BlogNewPage () {
         imageHandler,
         titleHandler,
         data,
+        contents,
     } = useBlogForm();
 
     const { mutate } = useMutation({
@@ -35,27 +36,31 @@ export default function BlogNewPage () {
         <>
             <Form label='New blog'>
                 <Input
-                    initialValue=''
+                    value=''
+                    onChange={ (e) => imageHandler(e.currentTarget.value) }
+                    type='text'
                     label='image'
                     name='image'
                     placeholder='Enter image URL'
                     required={ true }
-                    inputHandler={ imageHandler }
                 />
                 <Input
-                    initialValue=''
+                    value=''
+                    onChange={ (e) => titleHandler(e.currentTarget.value) }
+                    type='text'
                     label='title'
                     name='title'
                     placeholder='Enter blog title'
                     required={ true }
-                    inputHandler={ titleHandler }
                 />
                 <TextArea
+                    onChange={ (e) => contentHandler(e.currentTarget.value) }
+                    placeholder=''
+                    value={ contents }
                     label='content'
                     name='content'
                     required={ true }
                     rows={ 10 }
-                    inputHandler={ contentHandler }
                 />
                 <NavLink to='/blogs'>
                     <Button

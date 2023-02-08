@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TBlogs } from '../types/Blogs';
 
 export default function useBlogForm () {
@@ -8,11 +8,17 @@ export default function useBlogForm () {
         title: '',
     });
 
-    const contentHandler = (value: string) => {
+    const [contents, setContents] = useState('');
+
+    useEffect(() => {
         setData({
             ...data,
-            content: value,
+            content: contents,
         });
+    }, [contents]);
+
+    const contentHandler = (value: string) => {
+        setContents(value);
     };
 
     const imageHandler = (value: string) => {
@@ -28,11 +34,14 @@ export default function useBlogForm () {
             title: value,
         });
     };
+    // console.log(data.title);
+    // console.log(data.content);
 
     return {
         contentHandler,
         imageHandler,
         titleHandler,
         data,
+        contents,
     };
 }

@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useMutation, useQueries } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { queryClient } from '../main';
 import { TComments } from '../types/Comments';
 
@@ -9,34 +8,28 @@ import Comment from '../components/Comment';
 import EditBlogForm from '../components/EditBlogForm';
 
 import useToastSuccess from '../hooks/useToastSuccess';
+import useBlogPageQueries from '../hooks/useBlogPageQueries';
+import useComments from '../hooks/useComments';
+
 import style from '../styles/BlogPage.module.scss';
 import BlogApi from '../api/BlogApi';
 
 export default function BlogPage () {
     const { id } = useParams();
-    const { blogId, blogCommentsId, createBlogComment } = BlogApi();
-    const [value, setValue] = useState('');
+    const { createBlogComment } = BlogApi();
     const { toastHandle } = useToastSuccess();
 
-    const commentHandler = (val: string) => {
-        setValue(val);
-    };
-
-    const [
-        { data: blog, isLoading: loadBlog },
-        { data: comments, isLoading: loadComments },
-    ] = useQueries({
-        queries: [
-            {
-                queryKey: ['blog', { id }],
-                queryFn: () => blogId(String(id)),
-            },
-            {
-                queryKey: ['comments', { id }],
-                queryFn: () => blogCommentsId(String(id)),
-            },
-        ],
-    });
+    const {
+        clearArea,
+        commentHandler,
+        value,
+    } = useComments();
+    const {
+        blog,
+        comments,
+        loadBlog,
+        loadComments,
+    } = useBlogPageQueries(String(id));
 
     const { mutate: mutateComment } = useMutation({
         mutationFn: (data:TComments) => createBlogComment(data, String(id)),
@@ -46,21 +39,13 @@ export default function BlogPage () {
         },
     });
 
-    const createNewComment = (val: string, ID: string) => {
+    const clickHandler = () => {
         mutateComment({
-            comment: val,
+            comment: value,
             user: 'Anonymous',
             userImage: 'https://goo.su/gafk',
-            blogId: +ID,
+            blogId: +String(id),
         });
-    };
-
-    const clearArea = () => {
-        setValue('');
-    };
-
-    const clickHandler = () => {
-        createNewComment(value, id!);
         clearArea();
     };
 
@@ -94,8 +79,10 @@ export default function BlogPage () {
             <div>
                 <span>Users comments({comments.length}):</span>
                 <Comments
-                    commentHandler={ commentHandler }
+                    value={ value }
                     clickHandler={ clickHandler }
+                    commentHandler={ commentHandler }
+
                 >
                     {comments.map(({
                         // eslint-disable-next-line no-shadow

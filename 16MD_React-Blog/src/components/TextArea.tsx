@@ -1,32 +1,30 @@
-import useTextArea from '../hooks/useTextArea';
+import React from 'react';
 import style from '../styles/TextArea.module.scss';
 
 type TTextAreaProps = {
-    label: string,
+    placeholder: string,
     required: boolean,
+    label: string,
     name: string,
-    rows:number,
-    inputHandler:(value: string) => void,
-    initialValue?: string
+    value: string,
+    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void,
+    rows: number,
 }
 
 export default function TextArea (props: TTextAreaProps) {
     const {
         label,
-        inputHandler,
         name,
         required,
         rows,
-        initialValue,
+        onChange,
+        placeholder,
+        value,
     } = props;
-
-    const { value, changeHandler } = useTextArea(initialValue || '');
 
     return (
         <>
-            <span
-                className={ style.text }
-            >
+            <span className={ style.text }>
                 {label}:
             </span>
             <textarea
@@ -34,11 +32,9 @@ export default function TextArea (props: TTextAreaProps) {
                 value={ value }
                 name={ name }
                 required={ required }
-                onChange={ (e) => {
-                    changeHandler(e);
-                    inputHandler(e.currentTarget.value);
-                } }
+                onChange={ onChange }
                 rows={ rows }
+                placeholder={ placeholder }
             ></textarea>
         </>
     );

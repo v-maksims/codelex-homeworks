@@ -1,4 +1,3 @@
-
 export type TBlogs = {
     id?: number,
     title: string,

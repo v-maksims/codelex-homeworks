@@ -1,14 +1,14 @@
-import useInput from '../hooks/useInput';
+import React from 'react';
 import style from '../styles/Input.module.scss';
 
 type TInputProps = {
-    type?: HTMLInputElement['type'],
+    type: HTMLInputElement['type'],
     placeholder: string,
     required: boolean,
     label: string,
     name: string,
-    inputHandler:(value: string) => void
-    initialValue?: string
+    value: string
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export default function Input (props: TInputProps) {
@@ -18,11 +18,9 @@ export default function Input (props: TInputProps) {
         required,
         label,
         name,
-        inputHandler,
-        initialValue,
+        value,
+        onChange,
     } = props;
-
-    const { value, changeHandler } = useInput(initialValue || '');
 
     return (
         <>
@@ -32,10 +30,7 @@ export default function Input (props: TInputProps) {
                 type={ type }
                 placeholder={ placeholder }
                 defaultValue={ value }
-                onChange={ (e) => {
-                    changeHandler(e);
-                    inputHandler(e.target.value);
-                } }
+                onChange={ onChange }
                 required={ required }
                 name={ name }
             />

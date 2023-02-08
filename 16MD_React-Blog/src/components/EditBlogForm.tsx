@@ -38,6 +38,7 @@ export default function EditBlogForm (props: TEditBlogFormProps) {
         imageHandler,
         titleHandler,
         data,
+        contents = content,
     } = useBlogForm();
 
     const { mutate: mutateBlog } = useMutation({
@@ -66,24 +67,27 @@ export default function EditBlogForm (props: TEditBlogFormProps) {
                         name='image'
                         placeholder='Enter image URL'
                         required={ true }
-                        inputHandler={ imageHandler }
-                        initialValue={ image }
+                        onChange={ (e) => imageHandler(e.currentTarget.value) }
+                        type='text'
+                        value={ image }
                     />
                     <Input
                         label='title'
                         name='title'
                         placeholder='Enter blog title'
                         required={ true }
-                        inputHandler={ titleHandler }
-                        initialValue={ title }
+                        onChange={ (e) => titleHandler(e.currentTarget.value) }
+                        type='text'
+                        value={ title }
                     />
                     <TextArea
                         label='content'
                         name='content'
                         required={ true }
                         rows={ 10 }
-                        inputHandler={ contentHandler }
-                        initialValue={ content }
+                        value={ contents || content }
+                        onChange={ (e) => contentHandler(e.target.value) }
+                        placeholder='Enter'
                     />
                     <Button
                         label='edit'

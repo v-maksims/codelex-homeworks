@@ -23,7 +23,7 @@ export default function BlogsPage () {
                 id, image, title, content,
             }) => <BlogCard
                 key={ id }
-                id={ id! }
+                id={ Number(id) }
                 image={ image }
                 title={ title }
                 content={ content }

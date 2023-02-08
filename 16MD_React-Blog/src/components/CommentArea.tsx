@@ -2,23 +2,29 @@ import Button from './Button';
 import TextArea from './TextArea';
 
 type TcommentAreaProps = {
-    commentHandler:(val:string) => void
-    clickHandler:() => void
+    commentHandler: (val: string) => void
+    clickHandler: () => void
+    value: string
 }
 
-export default function CommentArea (props:TcommentAreaProps) {
-    const { clickHandler, commentHandler } = props;
-
+export default function CommentArea (props: TcommentAreaProps) {
+    const {
+        clickHandler,
+        commentHandler,
+        value,
+    } = props;
     return (
         <>
             <div>
-                <TextArea 
-                    required={ true } 
+                <TextArea
+                    placeholder='Comment text'
+                    value={ value }
+                    onChange={ (e) => commentHandler(e.target.value) }
+                    required={ true }
                     label='Type your comment'
                     name='comment'
-                    inputHandler={ commentHandler }
                     rows={ 2 }
-                    />
+                />
                 <Button
                     label='Comment'
                     type='button'
