@@ -7,13 +7,19 @@ type TComments = {
     clickHandler:() => void
 }
 
-export default function Comments ({children,commentHandler,clickHandler}:TComments) {
+export default function Comments (props:TComments) {
+    const {
+        children,
+        clickHandler,
+        commentHandler,
+    } = props;
+
     return (
         <>
             {children}
             <CommentArea
-                commentHandler={commentHandler}
-                clickHandler={clickHandler}
+            commentHandler={ commentHandler }
+                clickHandler={ clickHandler }
             />
         </>
     );

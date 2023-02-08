@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
-export default function useModal(){
-    const [modal,setModal] = useState(false);
+export default function useModal () {
+    const [modal, setModal] = useState(false);
 
-    const clickHandler = () => {
+    const modalHandler = () => {
         setModal(!modal);
     };
 
-    return{
+    return {
         modal,
-        clickHandler
+        modalHandler,
     };
 }

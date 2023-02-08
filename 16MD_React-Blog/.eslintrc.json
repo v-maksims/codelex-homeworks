@@ -6,10 +6,10 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "airbnb-base"
     ],
-    "overrides": [
-    ],
+    "overrides": [],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -20,10 +20,26 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "react/react-in-jsx-scope":"off",
+        "import/no-unresolved": "off",
+        "import/extensions": "off",
+        "no-unused-vars": "off",
+        "no-restricted-syntax": "off",
+        "react/jsx-curly-spacing": [
+            "error",
+            "always"
+        ],
+        "react/react-in-jsx-scope": "off",
         "indent": [
             "error",
             4
+        ],
+        "space-before-function-paren": [
+            "error",
+            "always"
+        ],
+        "object-curly-spacing": [
+            "error",
+            "always"
         ],
         "linebreak-style": [
             "error",

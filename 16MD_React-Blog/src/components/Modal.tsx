@@ -1,18 +1,26 @@
+import React from 'react';
 import style from '../styles/Modal.module.scss';
 
-
-type TModalProps ={
+type TModalProps = {
     children: React.ReactNode
     onClick: () => void
 }
 
-export default function Modal (props:TModalProps){
-    const {children,onClick} = props;
+export default function Modal (props: TModalProps) {
+    const {
+        children,
+        onClick,
+    } = props;
 
-    return(
+    return (
         <div>
-            <div className={style.blackBack} onClick={onClick}></div>
-            {children}
+            <div
+                className={ style.modal }
+                onClick={ onClick }
+            ></div>
+            <div className={ style.form }>
+                {children}
+            </div>
         </div>
     );
 }

@@ -2,40 +2,42 @@ import useInput from '../hooks/useInput';
 import style from '../styles/Input.module.scss';
 
 type TInputProps = {
-    type: HTMLInputElement['type'],
+    type?: HTMLInputElement['type'],
     placeholder: string,
     required: boolean,
     label: string,
     name: string,
-    inputHandler:( value: string) => void
+    inputHandler:(value: string) => void
+    initialValue?: string
 }
 
-export default function Input(props: TInputProps) {
-
-    const {value,changeHandler} = useInput();
+export default function Input (props: TInputProps) {
     const {
-        type='text',
+        type = 'text',
         placeholder,
         required,
         label,
         name,
-        inputHandler
+        inputHandler,
+        initialValue,
     } = props;
 
-    return(
+    const { value, changeHandler } = useInput(initialValue || '');
+
+    return (
         <>
-            <span className={style.text}>{label}:</span>
+            <span className={ style.text }>{label}:</span>
             <input
-                className={style.input} 
-                type={type} 
-                placeholder={placeholder} 
-                value={value} 
-                onChange={(e) => {
+                className={ style.input }
+                type={ type }
+                placeholder={ placeholder }
+                defaultValue={ value }
+                onChange={ (e) => {
                     changeHandler(e);
                     inputHandler(e.target.value);
-                }} 
-                required={required}
-                name={name}
+                } }
+                required={ required }
+                name={ name }
             />
         </>
     );

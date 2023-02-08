@@ -2,8 +2,8 @@
   "blogs": [
     {
       "id": 1,
-      "title": "Cosmos",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rhoncus dictum semper. Cras congue neque eu purus accumsan volutpat. Nullam eu mi at ex faucibus feugiat. Fusce quis diam fringilla magna volutpat consectetur. Morbi viverra blandit sem, malesuada pellentesque nulla vulputate at. Suspendisse vitae pulvinar lectus. Duis sit amet lacus pellentesque, molestie mauris at, vehicula nulla. Nullam est ex, convallis vel vestibulum eu, sollicitudin venenatis felis.",
+      "title": "Cosmos",
       "image": "https://goo.su/uZzQ1vz"
     },
     {
@@ -14,21 +14,33 @@
     },
     {
       "id": 3,
-      "title": "title",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rhoncus dictum semper. Cras congue neque eu purus accumsan volutpat. Nullam eu mi at ex faucibus feugiat. Fusce quis diam fringilla magna volutpat consectetur. Morbi viverra blandit sem, malesuada pellentesque nulla vulputate at. Suspendisse vitae pulvinar lectus. Duis sit amet lacus pellentesque, molestie mauris at, vehicula nulla. Nullam est ex, convallis vel vestibulum eu, sollicitudin venenatis felis.",
+      "title": "phone",
       "image": "https://picsum.photos/id/3/700/700"
     },
     {
       "id": 4,
-      "title": "title",
+      "title": "pen",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rhoncus dictum semper. Cras congue neque eu purus accumsan volutpat. Nullam eu mi at ex faucibus feugiat. Fusce quis diam fringilla magna volutpat consectetur. Morbi viverra blandit sem, malesuada pellentesque nulla vulputate at. Suspendisse vitae pulvinar lectus. Duis sit amet lacus pellentesque, molestie mauris at, vehicula nulla. Nullam est ex, convallis vel vestibulum eu, sollicitudin venenatis felis.",
       "image": "https://picsum.photos/id/4/700/700"
     },
     {
       "id": 5,
-      "title": "title",
+      "title": "desc",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rhoncus dictum semper. Cras congue neque eu purus accumsan volutpat. Nullam eu mi at ex faucibus feugiat. Fusce quis diam fringilla magna volutpat consectetur. Morbi viverra blandit sem, malesuada pellentesque nulla vulputate at. Suspendisse vitae pulvinar lectus. Duis sit amet lacus pellentesque, molestie mauris at, vehicula nulla. Nullam est ex, convallis vel vestibulum eu, sollicitudin venenatis felis.",
       "image": "https://picsum.photos/id/9/700/700"
+    },
+    {
+      "id": 6,
+      "content": "Zebras (subgenus Hippotigris) are African equines with distinctive black-and-white striped coats. There are three living species: the Grévy's zebra (Equus grevyi), plains zebra (E. quagga), and the mountain zebra (E. zebra). Zebras share the genus Equus with horses and asses, the three groups being the only living members of the family Equidae. Zebra stripes come in different patterns, unique to each individual. Several theories have been proposed for the function of these stripes, with most evidence supporting them as a deterrent for biting flies. Zebras inhabit eastern and southern Africa and can be found in a variety of habitats such as savannahs, grasslands, woodlands, shrublands, and mountainous areas.",
+      "title": "zebra",
+      "image": "https://img.freepik.com/premium-photo/zebra-wild-savannah-serengeti-africa_191971-24619.jpg"
+    },
+    {
+      "content": "The giraffe is a large African hoofed mammal belonging to the genus Giraffa. It is the tallest living terrestrial animal and the largest ruminant on Earth. Traditionally, giraffes were thought to be one species, Giraffa camelopardalis, with nine subspecies. Most recently, researchers proposed dividing them into up to eight extant species due to new research into their mitochondrial and nuclear DNA, as well as morphological measurements. Seven other extinct species of Giraffa are known from the fossil record.",
+      "image": "https://www.thesafaricollection.com/wp-content/uploads/2022/07/The-Safari-Collection-Hey-You-Giraffe-Manor-1.jpg",
+      "title": "Giraffe",
+      "id": 7
     }
   ],
   "comments": [
@@ -75,25 +87,60 @@
       "blogId": 5
     },
     {
-      "comment": "asdasd",
+      "comment": "Awesome",
       "user": "Anonymous",
       "userImage": "https://goo.su/gafk",
       "blogId": 1,
       "id": 7
     },
     {
-      "comment": "asdasdasdasdadad",
+      "comment": "fghfgh",
       "user": "Anonymous",
       "userImage": "https://goo.su/gafk",
-      "blogId": 1,
+      "blogId": 2,
       "id": 8
     },
     {
-      "comment": "fdgdfgdfg",
+      "comment": "sadsa",
+      "user": "Anonymous",
+      "userImage": "https://goo.su/gafk",
+      "blogId": 6,
+      "id": 9
+    },
+    {
+      "comment": "Wow! amazing",
+      "user": "Anonymous",
+      "userImage": "https://goo.su/gafk",
+      "blogId": 6,
+      "id": 10
+    },
+    {
+      "comment": "I want this in my home",
+      "user": "Anonymous",
+      "userImage": "https://goo.su/gafk",
+      "blogId": 6,
+      "id": 11
+    },
+    {
+      "comment": "Wow!",
       "user": "Anonymous",
       "userImage": "https://goo.su/gafk",
       "blogId": 1,
-      "id": 9
+      "id": 12
+    },
+    {
+      "comment": "asdas",
+      "user": "Anonymous",
+      "userImage": "https://goo.su/gafk",
+      "blogId": 1,
+      "id": 13
+    },
+    {
+      "comment": "Hmm...",
+      "user": "Anonymous",
+      "userImage": "https://goo.su/gafk",
+      "blogId": 3,
+      "id": 14
     }
   ]
 }

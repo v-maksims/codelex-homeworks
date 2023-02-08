@@ -1,30 +1,34 @@
 import { useState } from 'react';
 import { TBlogs } from '../types/Blogs';
 
-export default function useNewBlogValues () {
+export default function useBlogForm () {
     const [data, setData] = useState<TBlogs>({
-        content:'',
+        content: '',
         image: '',
-        title: ''
+        title: '',
     });
+
     const contentHandler = (value: string) => {
         setData({
             ...data,
-            content: value
+            content: value,
         });
     };
+
     const imageHandler = (value: string) => {
         setData({
             ...data,
-            image: value
+            image: value,
         });
     };
+
     const titleHandler = (value: string) => {
         setData({
             ...data,
-            title: value
+            title: value,
         });
     };
+
     return {
         contentHandler,
         imageHandler,

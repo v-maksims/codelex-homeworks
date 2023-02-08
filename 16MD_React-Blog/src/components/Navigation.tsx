@@ -6,12 +6,18 @@ type TNavigationProps = {
     className: string
 }
 
-export default function Navigation({label,to,className}:TNavigationProps) {
-    return(
+export default function Navigation (props:TNavigationProps) {
+    const {
+        className,
+        label,
+        to,
+    } = props;
+
+    return (
         <>
             <NavLink
-                className={className}
-                to={to}
+                className={ className }
+                to={ to }
             >
                 {label}
             </NavLink>
