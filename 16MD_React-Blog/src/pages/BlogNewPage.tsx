@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { queryClient } from '../main';
 
 import Button from '../components/Button';
@@ -7,34 +7,43 @@ import Form from '../components/Form';
 import Input from '../components/Input';
 import TextArea from '../components/TextArea';
 
-import useToastSuccess from '../hooks/useToastSuccess';
+import useToasts from '../hooks/useToasts';
 import useBlogForm from '../hooks/useBlogForm';
 
 import BlogApi from '../api/BlogApi';
 
 export default function BlogNewPage () {
     const { createBlog } = BlogApi();
-    const { toastHandle } = useToastSuccess();
+    const navigate = useNavigate();
 
+    const {
+        toastSuccesHandler,
+        toastErrorHandler,
+    } = useToasts();
     const {
         contentHandler,
         imageHandler,
         titleHandler,
         data,
         contents,
+        fields,
     } = useBlogForm();
 
     const { mutate } = useMutation({
         mutationFn: createBlog,
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['blogs'] });
-            toastHandle('Blog added!');
+            toastSuccesHandler('Blog added!');
         },
+        onError: () => toastErrorHandler('Error'),
     });
 
     return (
         <>
-            <Form label='New blog'>
+            <Form
+                label='New blog'
+                onSubmit={ () => (navigate('/blogs')) }
+            >
                 <Input
                     value=''
                     onChange={ (e) => imageHandler(e.currentTarget.value) }
@@ -62,13 +71,11 @@ export default function BlogNewPage () {
                     required={ true }
                     rows={ 10 }
                 />
-                <NavLink to='/blogs'>
-                    <Button
-                        label='post'
-                        type='button'
-                        onClick={ () => mutate(data) }
-                    />
-                </NavLink>
+                <Button
+                    label='post'
+                    type='submit'
+                    onClick={ () => { fields && mutate(data); } }
+                />
             </Form>
         </>
     );

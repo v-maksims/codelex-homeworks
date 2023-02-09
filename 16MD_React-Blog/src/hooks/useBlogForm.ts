@@ -9,6 +9,15 @@ export default function useBlogForm () {
     });
 
     const [contents, setContents] = useState('');
+    const [fields, setFields] = useState(false);
+
+    const checkInputValues = () => {
+        const { content, image, title } = data;
+        if (content && image && title) {
+            return true;
+        }
+        return false;
+    };
 
     useEffect(() => {
         setData({
@@ -16,6 +25,10 @@ export default function useBlogForm () {
             content: contents,
         });
     }, [contents]);
+
+    useEffect(() => {
+        setFields(checkInputValues());
+    }, [data]);
 
     const contentHandler = (value: string) => {
         setContents(value);
@@ -34,8 +47,6 @@ export default function useBlogForm () {
             title: value,
         });
     };
-    // console.log(data.title);
-    // console.log(data.content);
 
     return {
         contentHandler,
@@ -43,5 +54,6 @@ export default function useBlogForm () {
         titleHandler,
         data,
         contents,
+        fields,
     };
 }

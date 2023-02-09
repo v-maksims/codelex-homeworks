@@ -5,13 +5,14 @@ export default function useBlogPageQueries (id: string) {
     const { blogId, blogCommentsId } = BlogApi();
 
     const [
-        { data: blog, isLoading: loadBlog },
-        { data: comments, isLoading: loadComments },
+        { data: blog, isLoading: loadBlog, error: errorBlog },
+        { data: comments, isLoading: loadComments, error: errorComments },
     ] = useQueries({
         queries: [
             {
                 queryKey: ['blog', { id }],
                 queryFn: () => blogId(String(id)),
+
             },
             {
                 queryKey: ['comments', { id }],
@@ -25,5 +26,7 @@ export default function useBlogPageQueries (id: string) {
         comments,
         loadBlog,
         loadComments,
+        errorBlog,
+        errorComments,
     };
 }

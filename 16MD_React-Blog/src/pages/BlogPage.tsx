@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { queryClient } from '../main';
 import { TComments } from '../types/Comments';
@@ -7,7 +7,7 @@ import Comments from '../components/Comments';
 import Comment from '../components/Comment';
 import EditBlogForm from '../components/EditBlogForm';
 
-import useToastSuccess from '../hooks/useToastSuccess';
+import useToasts from '../hooks/useToasts';
 import useBlogPageQueries from '../hooks/useBlogPageQueries';
 import useComments from '../hooks/useComments';
 
@@ -17,8 +17,13 @@ import BlogApi from '../api/BlogApi';
 export default function BlogPage () {
     const { id } = useParams();
     const { createBlogComment } = BlogApi();
-    const { toastHandle } = useToastSuccess();
+    const navigate = useNavigate();
 
+    const {
+        toastSuccesHandler,
+        toastErrorHandler,
+        toastWarningHandler,
+    } = useToasts();
     const {
         clearArea,
         commentHandler,
@@ -29,14 +34,17 @@ export default function BlogPage () {
         comments,
         loadBlog,
         loadComments,
+        errorBlog,
+        errorComments,
     } = useBlogPageQueries(String(id));
 
     const { mutate: mutateComment } = useMutation({
         mutationFn: (data:TComments) => createBlogComment(data, String(id)),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['comments'] });
-            toastHandle('Comment added!');
+            toastSuccesHandler('Comment added!');
         },
+        onError: () => toastErrorHandler('Error'),
     });
 
     const clickHandler = () => {
@@ -49,16 +57,14 @@ export default function BlogPage () {
         clearArea();
     };
 
-    if (loadBlog && loadComments) {
+    if (loadBlog || loadComments) {
         return <h1>Loading...</h1>;
     }
 
-    if (!blog) {
-        return <h1>Blog section error...</h1>;
-    }
-
-    if (!comments) {
-        return <h1>Comments section error...</h1>;
+    if (errorBlog || errorComments) {
+        navigate('/');
+        toastWarningHandler('Something went wrong');
+        return null;
     }
 
     const { title, image, content } = blog;

@@ -10,7 +10,7 @@ import Modal from '../components/Modal';
 
 import useModal from '../hooks/useModal';
 import useBlogForm from '../hooks/useBlogForm';
-import useToastSuccess from '../hooks/useToastSuccess';
+import useToasts from '../hooks/useToasts';
 
 import BlogApi from '../api/BlogApi';
 
@@ -22,7 +22,7 @@ type TEditBlogFormProps = {
 }
 
 export default function EditBlogForm (props: TEditBlogFormProps) {
-    const { toastHandle } = useToastSuccess();
+    const { toastSuccesHandler, toastErrorHandler } = useToasts();
     const { modal, modalHandler } = useModal();
     const { editBlog } = BlogApi();
 
@@ -45,7 +45,10 @@ export default function EditBlogForm (props: TEditBlogFormProps) {
         mutationFn: (datas: TBlogs) => editBlog(id, datas),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['blog', { id }] });
-            toastHandle('Blog updated!');
+            toastSuccesHandler('Blog updated!');
+        },
+        onError: () => {
+            toastErrorHandler('Something went wrong');
         },
     });
 
@@ -61,7 +64,13 @@ export default function EditBlogForm (props: TEditBlogFormProps) {
     return (
         <>
             {modal && <Modal onClick={ modalHandler }>
-                <Form label='Edit blog'>
+                <Form
+                    label='Edit blog'
+                    onSubmit={ (e) => {
+                        e.preventDefault();
+                        formButtonHandler();
+                    } }
+                >
                     <Input
                         label='image'
                         name='image'
@@ -91,8 +100,7 @@ export default function EditBlogForm (props: TEditBlogFormProps) {
                     />
                     <Button
                         label='edit'
-                        type='button'
-                        onClick={ formButtonHandler }
+                        type='submit'
                     />
                 </Form>
             </Modal>}

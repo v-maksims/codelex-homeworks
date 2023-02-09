@@ -24,6 +24,7 @@
         "import/extensions": "off",
         "no-unused-vars": "off",
         "no-restricted-syntax": "off",
+        "no-unused-expressions": "off",
         "react/jsx-curly-spacing": [
             "error",
             "always"
