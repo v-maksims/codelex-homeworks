@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import bodyparser from "body-parser";
 import cors from "cors";
 import connectionQuery from "./utils/connectionQuery";
+import multer from "multer";
 
 type TComments = {
   comment: string;
@@ -15,6 +16,7 @@ type TBlogs = {
 };
 
 const app = express();
+app.use("/static", express.static("public"));
 app.use(bodyparser.json());
 app.use(cors({ origin: "*" }));
 
@@ -52,9 +54,9 @@ app.get("/blogs/:id", (req: Request, res: Response) => {
 app.put("/blogs/:id", (req: Request<any, any, TBlogs>, res: Response) => {
   const blogId = req.params.id;
   const { content, image, title } = req.body;
-  const updateBlog = `UPDATE blogs SET content="${content}", title="${title}", image="${image}" WHERE blogId=${blogId}`
+  const updateBlog = `UPDATE blogs SET content="${content}", title="${title}", image="${image}" WHERE blogId=${blogId}`;
 
-  connectionQuery(res, updateBlog)
+  connectionQuery(res, updateBlog);
 });
 
 // Comments
@@ -77,11 +79,9 @@ app.post(
   }
 );
 
-
-
-
-
-
+app.post("/send-image", (req: Request, res: Response) => {
+  res.send("image sended");
+});
 
 app.listen(3004, () => {
   console.log("Application started on port 3004!");

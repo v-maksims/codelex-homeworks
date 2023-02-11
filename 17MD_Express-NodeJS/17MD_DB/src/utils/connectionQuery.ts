@@ -12,7 +12,8 @@ const connection = mysql.createConnection({
 const connectionQuery = (res: express.Response, query: string) =>{
     connection.query(query, (err, result) => {
         if (err) {
-          console.log(err);
+          res.status(400)
+          res.send(err)
         }
         if (result) {
           res.json(result);
