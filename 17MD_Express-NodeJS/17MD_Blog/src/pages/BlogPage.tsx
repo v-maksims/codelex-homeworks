@@ -48,7 +48,6 @@ export default function BlogPage () {
     });
 
     const clickHandler = () => {
-        console.log(id);
         mutateComment({
             comment: value,
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

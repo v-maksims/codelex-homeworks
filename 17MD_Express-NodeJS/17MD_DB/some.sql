@@ -89,4 +89,6 @@ INSERT INTO
     comments (blog_id, comment)
 VALUES (3, "some comment"), (3, "Nice blog i like this"), (4, "some comment"), (5, "some comment"), (6, "some comment");
 
-SELECT * FROM comments WHERE blog_id = 3
+SELECT * FROM comments WHERE blog_id = 3;
+
+UPDATE blogs SET content="1", title="2", image="3" WHERE `blogId`=13 ;
