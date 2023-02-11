@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap');
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 25px 15px;
+}
+
+.navigation {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.navigation__items {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 15px
+}
+
+.navigation__item {
+  color: aliceblue;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 2.5rem;
+  text-transform: capitalize;
+  transition: all .2s;
+
+  &.active {
+    color: #820000;
+    scale: 90%;
+  }
+}
+
+.navigation__btn {
+  display: flex;
+  justify-content: flex-end;
+}

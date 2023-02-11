@@ -1,0 +1,6 @@
+.cardsWrap {
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    gap: 20px;
+    justify-content: space-between;
+}

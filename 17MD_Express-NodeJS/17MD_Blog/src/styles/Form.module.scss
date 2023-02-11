@@ -1,0 +1,23 @@
+.form {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1001;
+    top: 10%;
+    max-width: 500px;
+    width: 100%;
+    background-color: #BAD7E9;
+    padding: 15px;
+    border-radius: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.title{
+    color: #820000;
+    font-size: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+}

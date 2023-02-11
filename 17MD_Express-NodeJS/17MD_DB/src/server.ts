@@ -21,12 +21,18 @@ connection.connect((err) => {
   console.log("connected");
 });
 
+const query = "SELECT * FROM comments";
+
+const getComments = connection.query(query, (err, result, field) => {
+ return err
+});
+
 const app = express();
 app.use(bodyparser.json());
 app.use(cors({ origin: "*" }));
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Application works!");
+  res.send('1');
 });
 
 app.listen(3004, () => {
