@@ -12,7 +12,7 @@ export default function BlogApi () {
     };
 
     const blogId = async (id: string) => {
-        const { data } = await axios.get(`/blogs/${id}`);
+        const { data } = await axios.get<TBlogs[]>(`/blogs/${id}`);
         return data;
     };
 
@@ -21,11 +21,11 @@ export default function BlogApi () {
     const editBlog = (id: string, data: TBlogs) => axios.put(`/blogs/${id}`, data);
 
     const blogCommentsId = async (id:string) => {
-        const { data } = await axios.get(`/comments?blogId=${id}`);
+        const { data } = await axios.get(`/comments/${id}`);
         return data;
     };
 
-    const createBlogComment = (data: TComments, id: string) => axios.post(`/comments?blogId=${id}`, data);
+    const createBlogComment = (data: TComments, id: string) => axios.post(`/comments/${id}`, data);
 
     return {
         blogAll,

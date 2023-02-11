@@ -48,11 +48,11 @@ export default function BlogPage () {
     });
 
     const clickHandler = () => {
+        console.log(id);
         mutateComment({
             comment: value,
-            user: 'Anonymous',
-            userImage: 'https://goo.su/gafk',
-            blogId: +String(id),
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            blogId: +id!,
         });
         clearArea();
     };
@@ -67,7 +67,12 @@ export default function BlogPage () {
         return null;
     }
 
-    const { title, image, content } = blog;
+    // console.log(blog.);
+    if (!blog) {
+        return null;
+    }
+
+    const { title, image, content } = blog[0];
 
     return (
         <>
@@ -79,8 +84,8 @@ export default function BlogPage () {
             />
             <div>
                 <img className={ style.image } src={ image }/>
-                <h1 className={ style.title }>{title}</h1>
-                <p className={ style.text }>{content}</p>
+                <h1 className={ style.title }>{ title}</h1>
+                <p className={ style.text }>{ content}</p>
             </div>
             <div>
                 <span>Users comments({comments.length}):</span>
@@ -92,12 +97,10 @@ export default function BlogPage () {
                 >
                     {comments.map(({
                         // eslint-disable-next-line no-shadow
-                        id, comment, userImage, user,
+                        id, comment,
                     }: TComments) => <Comment
                         key={ id }
-                        image={ userImage }
                         comment={ comment }
-                        name={ user }
                     />)}
                 </Comments>
             </div>

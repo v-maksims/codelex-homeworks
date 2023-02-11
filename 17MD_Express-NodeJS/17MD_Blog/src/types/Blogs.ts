@@ -1,5 +1,5 @@
 export type TBlogs = {
-    id?: number,
+    blogId?: number,
     title: string,
     content: string,
     image: string,

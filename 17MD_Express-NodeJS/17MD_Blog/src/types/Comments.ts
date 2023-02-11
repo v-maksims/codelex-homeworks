@@ -1,7 +1,5 @@
 export type TComments = {
-    id?: number,
-    user:string,
+    id?:number,
     comment: string,
-    userImage: string,
-    blogId?: number
+    blogId: number
 }
