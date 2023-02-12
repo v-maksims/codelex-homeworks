@@ -7,8 +7,8 @@ type TInputProps = {
     required: boolean,
     label: string,
     name: string,
-    value: string
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+    value: string,
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
 }
 
 export default function Input (props: TInputProps) {

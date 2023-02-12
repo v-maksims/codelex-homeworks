@@ -13,10 +13,11 @@ import useComments from '../hooks/useComments';
 
 import style from '../styles/BlogPage.module.scss';
 import BlogApi from '../api/BlogApi';
+import Button from '../components/Button';
 
 export default function BlogPage () {
     const { id } = useParams();
-    const { createBlogComment } = BlogApi();
+    const { createBlogComment, deleteBlog } = BlogApi();
     const navigate = useNavigate();
 
     const {
@@ -45,6 +46,16 @@ export default function BlogPage () {
             toastSuccesHandler('Comment added!');
         },
         onError: () => toastErrorHandler('Error'),
+    });
+
+    const { mutate: deletePost } = useMutation({
+        mutationFn: () => deleteBlog(String(id)),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['blog', id] });
+            toastSuccesHandler('Blog deleted!');
+            navigate('/blogs');
+        },
+        onError: () => toastErrorHandler('Blog didnt deleted'),
     });
 
     const clickHandler = () => {
@@ -80,6 +91,11 @@ export default function BlogPage () {
                 image={ image }
                 content={ content }
                 id={ String(id) }
+            />
+            <Button
+                label='delete post'
+                type='button'
+                onClick={ () => deletePost() }
             />
             <div>
                 <img className={ style.image } src={ image }/>

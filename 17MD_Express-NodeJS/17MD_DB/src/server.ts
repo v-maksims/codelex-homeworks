@@ -36,7 +36,7 @@ app.get("/blogs", (req: Request, res: Response) => {
 // new blog post
 app.post("/blogs", (req: Request<null, null, TBlogs>, res: Response) => {
   const { content, image, title } = req.body;
-  const postBlog = `INSERT into blogs (title, content, image) VALUES (${title}, ${content}, ${image})`;
+  const postBlog = `INSERT into blogs (title, content, image) VALUES ("${title}", "${content}", "${image}")`;
 
   connectionQuery(res, postBlog);
 });
@@ -79,10 +79,13 @@ app.post(
   }
 );
 
-app.post("/send-image", (req: Request, res: Response) => {
-  res.send("image sended");
-});
-
 app.listen(3004, () => {
   console.log("Application started on port 3004!");
+});
+
+// Delete blog
+app.delete("/blogs/:id", (req: Request<any, any, TBlogs>, res: Response) => {
+  const blogId = req.params.id;
+  const deleteBlog = `DELETE FROM blogs WHERE blogId=${blogId}`;
+  connectionQuery(res, deleteBlog);
 });

@@ -9,6 +9,12 @@ CREATE TABLE
         PRIMARY KEY(blogID)
     );
 
+ALTER TABLE comments DROP FOREIGN KEY comments_ibfk_1;
+
+ALTER TABLE comments
+ADD
+    FOREIGN KEY (blog_id) REFERENCES blogs(blogId) ON DELETE CASCADE;
+
 CREATE TABLE
     comments (
         id INT NOT NULL AUTO_INCREMENT,
@@ -91,4 +97,19 @@ VALUES (3, "some comment"), (3, "Nice blog i like this"), (4, "some comment"), (
 
 SELECT * FROM comments WHERE blog_id = 3;
 
-UPDATE blogs SET content="1", title="2", image="3" WHERE `blogId`=13 ;
+UPDATE blogs
+SET
+    content = "1",
+    title = "2",
+    image = "3"
+WHERE `blogId` = 13;
+
+DELETE FROM comments WHERE blog_id = 15;
+
+DELETE FROM blogs WHERE `blogId`=15 ;
+
+SELECT * FROM blogs JOIN comments ON blogs.`blogId` = comments.blog_id WHERE;
+
+-- JOIN comments ON blogs.`blogId` = comments.blog_id;
+
+SET @@sql_mode = PIPES_AS_CONCAT;

@@ -27,6 +27,7 @@ export default function BlogApi () {
 
     const createBlogComment = (data: TComments, id: string) => axios.post(`/comments/${id}`, data);
 
+    const deleteBlog = (id: string) => axios.delete(`/blogs/${id}`);
     return {
         blogAll,
         blogId,
@@ -34,5 +35,6 @@ export default function BlogApi () {
         blogCommentsId,
         createBlogComment,
         editBlog,
+        deleteBlog,
     };
 }

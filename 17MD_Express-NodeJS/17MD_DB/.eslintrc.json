@@ -5,7 +5,7 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        // "project": ["../tsconfig.json"],
+        "project": ["./17MD_Express-NodeJS/17MD_DB/tsconfig.json"],
         "createDefaultProgram": true
       },
       "extends": ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
