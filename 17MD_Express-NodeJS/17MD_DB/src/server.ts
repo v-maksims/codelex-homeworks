@@ -3,7 +3,6 @@ import { Request, Response } from "express";
 import bodyparser from "body-parser";
 import cors from "cors";
 import connectionQuery from "./utils/connectionQuery";
-import multer from "multer";
 
 type TComments = {
   comment: string;
