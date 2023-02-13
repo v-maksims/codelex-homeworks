@@ -54,7 +54,13 @@ export default function BlogNewPage () {
                     (navigate('/blogs'));
                 } }
             >
-                <input ref={ inputRef } type="file" name='image'required />
+                <input
+                    ref={ inputRef }
+                    type="file"
+                    name='image'
+                    required
+                    accept='images/*,.jpeg,.jpg,.png'
+                />
                 <Input
                     value=''
                     onChange={ (e) => titleHandler(e.currentTarget.value) }
