@@ -30,7 +30,7 @@ export default function BlogsPage () {
             }) => <BlogCard
                 key={ blogId }
                 blogId={ blogId! }
-                image={ image }
+                image={ image! }
                 title={ title }
                 content={ content }
             />)}

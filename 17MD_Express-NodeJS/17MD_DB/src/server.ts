@@ -3,6 +3,8 @@ import { Request, Response } from "express";
 import bodyparser from "body-parser";
 import cors from "cors";
 import connectionQuery from "./utils/connectionQuery";
+import multer from "multer";
+import path from "path";
 
 type TComments = {
   comment: string;
@@ -13,6 +15,18 @@ type TBlogs = {
   content: string;
   image: string;
 };
+
+// Multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+
+const upload = multer({ storage: storage });
 
 const app = express();
 app.use("/static", express.static("public"));
@@ -32,11 +46,23 @@ app.get("/blogs", (req: Request, res: Response) => {
   connectionQuery(res, allBlogs);
 });
 
+// new blog image
+app.post(
+  "/upload-image",
+  upload.single("image"),
+  (req: Request, res: Response) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const allFrom = `UPDATE blogs SET image ='/static/${req.file.filename}' ORDER BY blogId DESC LIMIT 1`;
+
+    connectionQuery(res, allFrom);
+  }
+);
+
 // new blog post
 app.post("/blogs", (req: Request<null, null, TBlogs>, res: Response) => {
-  const { content, image, title } = req.body;
-  const postBlog = `INSERT into blogs (title, content, image) VALUES ("${title}", "${content}", "${image}")`;
-
+  const { content, title } = req.body;
+  const postBlog = `INSERT into blogs (title, content) VALUES ("${title}", "${content}")`;
   connectionQuery(res, postBlog);
 });
 
@@ -49,13 +75,19 @@ app.get("/blogs/:id", (req: Request, res: Response) => {
 });
 
 // update blog info
-
 app.put("/blogs/:id", (req: Request<any, any, TBlogs>, res: Response) => {
   const blogId = req.params.id;
-  const { content, image, title } = req.body;
-  const updateBlog = `UPDATE blogs SET content="${content}", title="${title}", image="${image}" WHERE blogId=${blogId}`;
+  const { content, title } = req.body;
+  const updateBlog = `UPDATE blogs SET content="${content}", title="${title}" WHERE blogId=${blogId}`;
 
   connectionQuery(res, updateBlog);
+});
+
+// Delete blog
+app.delete("/blogs/:id", (req: Request<any, any, TBlogs>, res: Response) => {
+  const blogId = req.params.id;
+  const deleteBlog = `DELETE FROM blogs WHERE blogId=${blogId}`;
+  connectionQuery(res, deleteBlog);
 });
 
 // Comments
@@ -80,11 +112,4 @@ app.post(
 
 app.listen(3004, () => {
   console.log("Application started on port 3004!");
-});
-
-// Delete blog
-app.delete("/blogs/:id", (req: Request<any, any, TBlogs>, res: Response) => {
-  const blogId = req.params.id;
-  const deleteBlog = `DELETE FROM blogs WHERE blogId=${blogId}`;
-  connectionQuery(res, deleteBlog);
 });

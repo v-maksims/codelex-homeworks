@@ -28,6 +28,9 @@ export default function BlogApi () {
     const createBlogComment = (data: TComments, id: string) => axios.post(`/comments/${id}`, data);
 
     const deleteBlog = (id: string) => axios.delete(`/blogs/${id}`);
+
+    const uploadBlogImage = (formData: FormData) => axios.post('/upload-image', formData);
+
     return {
         blogAll,
         blogId,
@@ -36,5 +39,6 @@ export default function BlogApi () {
         createBlogComment,
         editBlog,
         deleteBlog,
+        uploadBlogImage,
     };
 }

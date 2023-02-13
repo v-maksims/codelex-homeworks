@@ -88,7 +88,6 @@ export default function BlogPage () {
         <>
             <EditBlogForm
                 title={ title }
-                image={ image }
                 content={ content }
                 id={ String(id) }
             />
@@ -98,7 +97,7 @@ export default function BlogPage () {
                 onClick={ () => deletePost() }
             />
             <div>
-                <img className={ style.image } src={ image }/>
+                <img className={ style.image } src={ `http://localhost:3004${image}` }/>
                 <h1 className={ style.title }>{ title}</h1>
                 <p className={ style.text }>{ content}</p>
             </div>

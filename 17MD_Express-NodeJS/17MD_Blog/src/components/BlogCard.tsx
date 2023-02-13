@@ -20,7 +20,8 @@ export default function BlogCard (props: TBlogCardProps) {
     return (
         <Link to={ `/blogs/${blogId}` }>
             <div className={ style.cardWrap }>
-                <img className={ style.image } src={ image } />
+                <img className={ style.image } src={ `http://localhost:3004${image}` } />
+                {/* <img className={ style.image } src={ image } /> */}
                 <span className={ style.title }>{title}</span>
                 <span className={ style.content }>{content}</span>
                 <span className={ style.readMore }>read more</span>

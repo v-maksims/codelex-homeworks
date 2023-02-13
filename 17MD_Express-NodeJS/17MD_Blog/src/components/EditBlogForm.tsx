@@ -16,7 +16,6 @@ import BlogApi from '../api/BlogApi';
 
 type TEditBlogFormProps = {
     title: string
-    image: string
     content: string
     id: string
 }
@@ -28,14 +27,12 @@ export default function EditBlogForm (props: TEditBlogFormProps) {
 
     const {
         content,
-        image,
         title,
         id,
     } = props;
 
     const {
         contentHandler,
-        imageHandler,
         titleHandler,
         data,
         contents = content,
@@ -56,7 +53,6 @@ export default function EditBlogForm (props: TEditBlogFormProps) {
         mutateBlog({
             content: data.content ? data.content : content,
             title: data.title ? data.title : title,
-            image: data.image ? data.image : image,
         });
         modalHandler();
     };
@@ -71,15 +67,6 @@ export default function EditBlogForm (props: TEditBlogFormProps) {
                         formButtonHandler();
                     } }
                 >
-                    <Input
-                        label='image'
-                        name='image'
-                        placeholder='Enter image URL'
-                        required={ true }
-                        onChange={ (e) => imageHandler(e.currentTarget.value) }
-                        type='text'
-                        value={ image }
-                    />
                     <Input
                         label='title'
                         name='title'

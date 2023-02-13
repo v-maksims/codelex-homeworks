@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 import { queryClient } from '../main';
 
 import Button from '../components/Button';
@@ -13,8 +14,10 @@ import useBlogForm from '../hooks/useBlogForm';
 import BlogApi from '../api/BlogApi';
 
 export default function BlogNewPage () {
-    const { createBlog } = BlogApi();
+    const { createBlog, uploadBlogImage } = BlogApi();
     const navigate = useNavigate();
+
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const {
         toastSuccesHandler,
@@ -22,7 +25,6 @@ export default function BlogNewPage () {
     } = useToasts();
     const {
         contentHandler,
-        imageHandler,
         titleHandler,
         data,
         contents,
@@ -42,17 +44,17 @@ export default function BlogNewPage () {
         <>
             <Form
                 label='New blog'
-                onSubmit={ () => (navigate('/blogs')) }
+                onSubmit={ (e) => {
+                    e.preventDefault();
+                    const formData = new FormData();
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    formData.append('image', inputRef.current.files[0]);
+                    uploadBlogImage(formData);
+                    (navigate('/blogs'));
+                } }
             >
-                <Input
-                    value=''
-                    onChange={ (e) => imageHandler(e.currentTarget.value) }
-                    type='text'
-                    label='image'
-                    name='image'
-                    placeholder='Enter image URL'
-                    required={ true }
-                />
+                <input ref={ inputRef } type="file" name='image'required />
                 <Input
                     value=''
                     onChange={ (e) => titleHandler(e.currentTarget.value) }

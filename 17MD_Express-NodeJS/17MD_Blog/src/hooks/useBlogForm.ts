@@ -4,7 +4,6 @@ import { TBlogs } from '../types/Blogs';
 export default function useBlogForm () {
     const [data, setData] = useState<TBlogs>({
         content: '',
-        image: '',
         title: '',
     });
 
@@ -12,8 +11,8 @@ export default function useBlogForm () {
     const [fields, setFields] = useState(false);
 
     const checkInputValues = () => {
-        const { content, image, title } = data;
-        if (content && image && title) {
+        const { content, title } = data;
+        if (content && title) {
             return true;
         }
         return false;
@@ -34,13 +33,6 @@ export default function useBlogForm () {
         setContents(value);
     };
 
-    const imageHandler = (value: string) => {
-        setData({
-            ...data,
-            image: value,
-        });
-    };
-
     const titleHandler = (value: string) => {
         setData({
             ...data,
@@ -50,7 +42,6 @@ export default function useBlogForm () {
 
     return {
         contentHandler,
-        imageHandler,
         titleHandler,
         data,
         contents,
