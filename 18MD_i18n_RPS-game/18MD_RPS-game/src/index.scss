@@ -17,9 +17,16 @@
   margin: 0  auto;
 }
 
-.navigation-wrap{
+.header-wrap{
   display: flex;
   gap: 25px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-item{
+  display: flex;
+  gap: 15px;
 }
 
 .navigation{

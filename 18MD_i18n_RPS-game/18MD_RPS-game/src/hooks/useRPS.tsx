@@ -2,6 +2,7 @@ import { IconType } from 'react-icons/lib';
 import { useState } from 'react';
 import { GiRock, GiPaper, GiScissors } from 'react-icons/gi';
 import useToasts from '../hooks/useToasts';
+import useTranslateText from './useTranslateText';
 
 type TElements = {
     [key: string]: {
@@ -15,6 +16,8 @@ type setIcons = {
 }
 
 export default function useRPS () {
+    const { t } = useTranslateText();
+
     const [userChoice, setUserChoice] = useState('rock');
     const [computerChoice, setComputerChoice] = useState('rock');
     const [userScore, setUserScore] = useState(0);
@@ -47,15 +50,15 @@ export default function useRPS () {
     const checkWinner = (user:string, computer:string) => {
         if (elements[user].beats.includes(computer)) {
             setWinner('user');
-            toastSuccesHandler('You win!', 800, 'bottom-center');
+            toastSuccesHandler(t('userWin'), 800, 'bottom-center');
             return 1;
         }
         if (elements[computer].beats.includes(user)) {
             setWinner('computer');
-            toastErrorHandler('Computer win', 800, 'bottom-center');
+            toastErrorHandler(t('computerWin'), 800, 'bottom-center');
             return -1;
         }
-        toastWarningHandler('Draw', 800, 'bottom-center');
+        toastWarningHandler(t('draw'), 800, 'bottom-center');
         setWinner('draw');
         return 0;
     };

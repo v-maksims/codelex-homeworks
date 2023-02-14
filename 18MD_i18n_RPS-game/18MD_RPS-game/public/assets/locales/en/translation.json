@@ -1,0 +1,16 @@
+{
+    "RPS": "Rock Paper Scissors",
+    "nameEnter": "Your Name",
+    "underInputName": "You can just enter the name without pressing anything",
+    "homePageText": "Are you looking for a fun and exciting game to pass the time? Look no further than our cyber paper, cyber rock, cyber scissors game! Our game is easy to play and suitable for all ages. Simply choose your move, and see if you can beat computer. Whether you are looking for a quick distraction or a fun challenge, our game is sure to provide hours of entertainment. So why wait? Click on the Game to start playing now!",
+    "score": "score",
+    "choice": "Choice",
+    "moveCount": "Move count",
+    "startGame": "start game",
+    "home": "home",
+    "game": "game",
+    "userWin": "You won!",
+    "computerWin": "Computer won!",
+    "draw": "draw",
+    "inputName": "Enter name..."
+}

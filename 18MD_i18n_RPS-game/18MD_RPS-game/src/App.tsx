@@ -4,27 +4,52 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import GamePage from './pages/GamePage';
 import HomePage from './pages/HomePage';
+import Button from './components/Button';
+import useTranslateText from './hooks/useTranslateText';
 
 function App () {
     const [playerName, setPlayerName] = useState('');
+    const { changeLanguage } = useTranslateText();
+    const { t } = useTranslateText();
+
     const playerNameHandler = (name:string) => {
         setPlayerName(name);
     };
+
     return (
         <div className="container">
-            <div className='navigation-wrap'>
-                <NavLink
-                    to='/'
-                    className='navigation'
-                >
-                    home
-                </NavLink>
-                <NavLink
-                    to='/game'
-                    className='navigation'
-                >
-                    game
-                </NavLink>
+            <div className='header-wrap'>
+                <div className='header-item'>
+                    <NavLink
+                        to='/'
+                        className='navigation'
+                    >
+                        {t('home')}
+                    </NavLink>
+                    <NavLink
+                        to='/game'
+                        className='navigation'
+                    >
+                        {t('game')}
+                    </NavLink>
+                </div>
+                <div className='header-item'>
+                    <Button
+                        type='button'
+                        label='LV'
+                        onClick={ () => changeLanguage('lv') }
+                    />
+                    <Button
+                        type='button'
+                        label='RU'
+                        onClick={ () => changeLanguage('ru') }
+                    />
+                    <Button
+                        type='button'
+                        label='ENG'
+                        onClick={ () => changeLanguage('en') }
+                    />
+                </div>
             </div>
             <Routes>
                 <Route path='/' element={ <HomePage playerNameHandler={ playerNameHandler } name={ playerName }/> } />

@@ -1,3 +1,4 @@
+import useTranslateText from '../hooks/useTranslateText';
 import style from '../styles/Card.module.scss';
 
 type TCardProps ={
@@ -9,6 +10,7 @@ type TCardProps ={
 }
 
 export default function Card (props:TCardProps) {
+    const { t } = useTranslateText();
     const {
         playerName,
         score,
@@ -22,7 +24,7 @@ export default function Card (props:TCardProps) {
             <div className={ style.underline }/>
             <div className={ playerName === 'Computer' ? style.computerElement : '' }>{choiceIco(choice)}</div>
             <div className={ style.underline }/>
-            <span className={ style.score }>score: {score}</span>
+            <span className={ style.score }>{t('score')}: {score}</span>
         </div>
     );
 }

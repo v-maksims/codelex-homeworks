@@ -6,12 +6,15 @@ import style from '../styles/GamePage.module.scss';
 import useRPS from '../hooks/useRPS';
 import Button from '../components/Button';
 import gameInfo from '../api/gameInfo';
+import useTranslateText from '../hooks/useTranslateText';
 
 type TGamePageProps = {
     name: string
 }
 
 export default function GamePage ({ name }:TGamePageProps) {
+    const { t } = useTranslateText();
+
     const {
         setIcon,
         userChoice,
@@ -42,7 +45,7 @@ export default function GamePage ({ name }:TGamePageProps) {
             {!started
                 && <div className={ style.start }>
                     <Button
-                        label='start game'
+                        label={ t('startGame') }
                         type='button'
                         onClick={ startHandler }
                     />
@@ -66,7 +69,7 @@ export default function GamePage ({ name }:TGamePageProps) {
                             choiceIco={ setIcon }
                         />
                     </div>
-                    <span className={ style.text }>Choice:</span>
+                    <span className={ style.text }>{t('choice')}:</span>
                     <div className={ style.btnWrap }>
                         <GameButton
                             choice='rock'
@@ -84,7 +87,7 @@ export default function GamePage ({ name }:TGamePageProps) {
                             gameIco={ <GiScissors size='4rem'/> }
                         />
                     </div>
-                    <span className={ style.text }>Move count: {count}</span>
+                    <span className={ style.text }>{t('moveCount')}: {count}</span>
                 </div>
             </div>}
         </>
