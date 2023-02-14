@@ -1,12 +1,16 @@
-.button{
-    border: 1px solid #FFF9D7;
-    background-color: #810955;
-    border-radius: 50%;
+.button {
+    font-size: 2rem;
+    text-transform: capitalize;
+    font-weight: 700;
     padding: 10px;
+    border-radius: 10px;
+    border: 0;
+    background-color: #610C63;
+    color: #FFF9D7;
     cursor: pointer;
-    transition: scale .2s;
+    transition: scale .3s;
 
-    &:hover{
-        scale: 85%;
+    &:hover {
+        scale: 1.5;
     }
 }

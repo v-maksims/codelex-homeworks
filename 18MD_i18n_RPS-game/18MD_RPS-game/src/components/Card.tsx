@@ -10,7 +10,7 @@ type TCardProps ={
 
 export default function Card (props:TCardProps) {
     const {
-        playerName = 'Cyber Capybara',
+        playerName,
         score,
         choiceIco,
         choice,
@@ -18,7 +18,7 @@ export default function Card (props:TCardProps) {
 
     return (
         <div className={ style.element }>
-            <span className={ style.elementPlayer }>{playerName}</span>
+            <span className={ style.elementPlayer }>{playerName || 'Cyber Capybara'}</span>
             <div className={ style.underline }/>
             <div className={ playerName === 'Computer' ? style.computerElement : '' }>{choiceIco(choice)}</div>
             <div className={ style.underline }/>

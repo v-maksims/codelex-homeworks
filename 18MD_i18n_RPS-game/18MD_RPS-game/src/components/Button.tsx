@@ -1,24 +1,25 @@
-import { IconType } from 'react-icons/lib';
 import style from '../styles/Button.module.scss';
 
 type TButtonProps = {
-    choice: string,
-    onClick: (choice: string) => void,
-    gameIco: IconType,
+    type: 'button' | 'submit'
+    label: string
+    onClick: () => void
 }
 
-export default function Button (props:TButtonProps) {
-    const { gameIco, onClick, choice } = props;
+export default function Button (props: TButtonProps) {
+    const {
+        type,
+        label,
+        onClick,
+    } = props;
     return (
         <>
             <button
                 className={ style.button }
-                type='button'
-                onClick={ () => onClick(choice) }
+                type={ type }
+                onClick={ onClick }
             >
-                <>
-                    {gameIco}
-                </>
+                {label}
             </button>
         </>
     );

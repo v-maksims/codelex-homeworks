@@ -2,6 +2,14 @@ import express from "express";
 import { Request, Response } from "express";
 import bodyparser from "body-parser";
 import cors from "cors";
+import mysql from "mysql2";
+
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "123456",
+  database: "18MD",
+});
 
 const app = express();
 app.use("/static", express.static("public"));

@@ -16,3 +16,22 @@
   padding: 25px 15px;
   margin: 0  auto;
 }
+
+.navigation-wrap{
+  display: flex;
+  gap: 25px;
+}
+
+.navigation{
+  text-transform: capitalize;
+  color: aliceblue;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: all .2s;
+  &.active{
+    color: #610C63;
+    text-decoration: underline;
+    scale: 130%;
+  }
+}

@@ -20,6 +20,7 @@ export default function useRPS () {
     const [userScore, setUserScore] = useState(0);
     const [computerScore, setComputerScore] = useState(0);
     const { toastErrorHandler, toastSuccesHandler, toastWarningHandler } = useToasts();
+    const [started, setStarted] = useState(false);
 
     const elements:TElements = {
         rock: {
@@ -81,6 +82,10 @@ export default function useRPS () {
         return (<Icon size='8rem'/>);
     };
 
+    const startHandler = () => {
+        setStarted(true);
+    };
+
     return {
         userScore,
         userChoice,
@@ -88,5 +93,7 @@ export default function useRPS () {
         computerChoice,
         computerScore,
         setChoice,
+        started,
+        startHandler,
     };
 }
