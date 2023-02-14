@@ -1,9 +1,11 @@
 import { GiRock, GiPaper, GiScissors } from 'react-icons/gi';
+import { useEffect } from 'react';
 import GameButton from '../components/GameButton';
 import Card from '../components/Card';
 import style from '../styles/GamePage.module.scss';
 import useRPS from '../hooks/useRPS';
 import Button from '../components/Button';
+import gameInfo from '../api/gameInfo';
 
 type TGamePageProps = {
     name: string
@@ -19,7 +21,21 @@ export default function GamePage ({ name }:TGamePageProps) {
         setChoice,
         started,
         startHandler,
+        count,
+        winner,
     } = useRPS();
+
+    const { computerInfo, userInfo, winnerInfo } = gameInfo();
+
+    useEffect(() => {
+        const date = new Date();
+        const time = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} - ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+        if (count) {
+            computerInfo({ computerChoice, time });
+            userInfo({ name: name || 'Cyber Capybara', time, userChoice });
+            winnerInfo({ winner });
+        }
+    }, [count]);
 
     return (
         <>
@@ -50,7 +66,7 @@ export default function GamePage ({ name }:TGamePageProps) {
                             choiceIco={ setIcon }
                         />
                     </div>
-                    <span className={ style.btnText }>Choice:</span>
+                    <span className={ style.text }>Choice:</span>
                     <div className={ style.btnWrap }>
                         <GameButton
                             choice='rock'
@@ -68,6 +84,7 @@ export default function GamePage ({ name }:TGamePageProps) {
                             gameIco={ <GiScissors size='4rem'/> }
                         />
                     </div>
+                    <span className={ style.text }>Move count: {count}</span>
                 </div>
             </div>}
         </>

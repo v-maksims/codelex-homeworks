@@ -21,6 +21,8 @@ export default function useRPS () {
     const [computerScore, setComputerScore] = useState(0);
     const { toastErrorHandler, toastSuccesHandler, toastWarningHandler } = useToasts();
     const [started, setStarted] = useState(false);
+    const [count, setCount] = useState(0);
+    const [winner, setWinner] = useState('');
 
     const elements:TElements = {
         rock: {
@@ -44,14 +46,17 @@ export default function useRPS () {
 
     const checkWinner = (user:string, computer:string) => {
         if (elements[user].beats.includes(computer)) {
+            setWinner('user');
             toastSuccesHandler('You win!', 800, 'bottom-center');
             return 1;
         }
         if (elements[computer].beats.includes(user)) {
+            setWinner('computer');
             toastErrorHandler('Computer win', 800, 'bottom-center');
             return -1;
         }
         toastWarningHandler('Draw', 800, 'bottom-center');
+        setWinner('draw');
         return 0;
     };
 
@@ -70,6 +75,7 @@ export default function useRPS () {
         setUserChoice(choice);
         setComputerChoice(newComputer);
         changeScore(checkWinner(choice, newComputer));
+        setCount(count + 1);
     };
 
     const setIcon = (element:string) => {
@@ -95,5 +101,7 @@ export default function useRPS () {
         setChoice,
         started,
         startHandler,
+        count,
+        winner,
     };
 }
