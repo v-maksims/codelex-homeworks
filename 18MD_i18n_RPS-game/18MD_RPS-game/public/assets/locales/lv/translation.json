@@ -1,7 +1,7 @@
 {
     "RPS": "Akmens Šķēres Papīrs",
     "nameEnter": "Jusu lietotājvārds",
-    "underInputName": "Ievadīt var neko nenospiežot viss notiks automatiski",
+    "underInputName": "Ievadot var neko nenospiežot viss notiks automatiski",
     "homePageText": "Vai meklējat jautru un aizraujošu spēli laika pavadīšanai? Nemeklējiet tālāk par mūsu kiberpapīra, kiberakmeņa , kiberšķēru spēli! Mūsu spēle ir viegli spēlējama un piemērota visu vecumu cilvēkiem. Pārbaudiet, vai varat pārspēt datoru.Neatkarīgi no tā, vai meklējat ātru uzmanību vai jautru izaicinājumu, mūsu spēle noteikti sniegs stundām ilgi izklaides. Tad kāpēc gaidīt? Noklikšķiniet uz 'Spēle', lai sāktu spēlēt tūlīt!",
     "score": "rezultāts",
     "choice": "Izvēlieties",
@@ -12,5 +12,6 @@
     "userWin": "Tu uzvarēji!",
     "computerWin": "Dators uzvarēja!",
     "draw": "Neizšķirts",
-    "inputName": "Ievadiet vārdu..."
+    "inputName": "Ievadiet vārdu...",
+    "static": "statistika"
 }

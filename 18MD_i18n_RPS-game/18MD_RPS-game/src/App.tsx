@@ -6,6 +6,7 @@ import GamePage from './pages/GamePage';
 import HomePage from './pages/HomePage';
 import Button from './components/Button';
 import useTranslateText from './hooks/useTranslateText';
+import StaticPage from './pages/StaticPage';
 
 function App () {
     const [playerName, setPlayerName] = useState('');
@@ -32,6 +33,12 @@ function App () {
                     >
                         {t('game')}
                     </NavLink>
+                    <NavLink
+                        to='/static'
+                        className='navigation'
+                    >
+                        {t('static')}
+                    </NavLink>
                 </div>
                 <div className='header-item'>
                     <Button
@@ -54,6 +61,7 @@ function App () {
             <Routes>
                 <Route path='/' element={ <HomePage playerNameHandler={ playerNameHandler } name={ playerName }/> } />
                 <Route path='/game' element={ <GamePage name={ playerName }/> } />
+                <Route path='/static' element={ <StaticPage/> } />
             </Routes>
             <ToastContainer/>
         </div>

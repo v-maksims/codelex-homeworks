@@ -1,0 +1,11 @@
+.textWrap{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+}
+
+.text{
+    display: inline-block;
+    font-weight: 700;
+    font-size: 2rem;
+}

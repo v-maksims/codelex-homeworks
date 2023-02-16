@@ -12,5 +12,6 @@
     "userWin": "You won!",
     "computerWin": "Computer won!",
     "draw": "draw",
-    "inputName": "Enter name..."
+    "inputName": "Enter name...",
+    "static": "static"
 }

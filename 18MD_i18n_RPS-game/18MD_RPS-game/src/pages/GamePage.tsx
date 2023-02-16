@@ -34,9 +34,9 @@ export default function GamePage ({ name }:TGamePageProps) {
         const date = new Date();
         const time = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} - ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
         if (count) {
-            computerInfo({ computerChoice, time });
-            userInfo({ name: name || 'Cyber Capybara', time, userChoice });
             winnerInfo({ winner });
+            userInfo({ name: name || 'Cyber Capybara', time, userChoice });
+            computerInfo({ computerChoice, time });
         }
     }, [count]);
 
