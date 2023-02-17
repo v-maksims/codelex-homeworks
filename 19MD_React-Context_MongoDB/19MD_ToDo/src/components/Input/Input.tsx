@@ -17,6 +17,7 @@ export default function Input (props: TInputProps) {
         type,
         value,
     } = props;
+
     return (
         <>
             <input

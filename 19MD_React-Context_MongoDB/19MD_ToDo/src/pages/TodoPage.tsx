@@ -1,5 +1,5 @@
 import Button from '../components/Button/Button';
-import useTodoAdd from '../components/hooks/useTodoAdd';
+import useTodoAdd from '../hooks/useTodoAdd';
 import Input from '../components/Input/Input';
 import TodoList from '../components/Todo/components/TodoList/TodoList';
 import style from '../styles/TodoPage.module.scss';

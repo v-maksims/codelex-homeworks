@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import TodoPage from './pages/TodoPage';
 import { TodoAddContext } from './context/TodoAddContext';
 import { TodoGetContext } from './context/TodoGetContext';
-import useTodoGetAll from './components/hooks/useTodoGetAll';
+import useTodoGetAll from './hooks/useTodoGetAll';
 import 'react-toastify/dist/ReactToastify.css';
 
 export type TTodos = {
@@ -12,7 +12,7 @@ export type TTodos = {
     content: string;
     isDone: boolean;
     date: string;
-    __v:0;
+    __v: number;
 }
 
 export type TTodoTextState = {

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '../../../Button/Button';
 import style from './TodoItem.module.scss';
-import useTodoItemMutate from '../../../hooks/useTodoItemMutate';
+import useTodoItemMutate from '../../../../hooks/useTodoItemMutate';
 
 type TTodoItemProps = {
     content:string;
@@ -13,7 +13,9 @@ type TTodoItemProps = {
 
 export default function TodoItem (props: TTodoItemProps) {
     const [open, setOpen] = useState(false);
+
     const { mutateCheck, mutateDelete } = useTodoItemMutate();
+
     const {
         content,
         date,

@@ -1,11 +1,12 @@
 import { useMutation } from '@tanstack/react-query';
-import TodoAPI from '../../API/TodoAPI';
-import { queryClient } from '../../main';
+import TodoAPI from '../API/TodoAPI';
+import { queryClient } from '../main';
 import useToasts from './useToasts';
 
 export default function useTodoItemMutate () {
     const { updateIsDone, deleteTodo } = TodoAPI();
     const { toastSuccesHandler, toastErrorHandler } = useToasts();
+
     const { mutate: mutateCheck } = useMutation({
         mutationFn: updateIsDone,
         onSuccess: () => {

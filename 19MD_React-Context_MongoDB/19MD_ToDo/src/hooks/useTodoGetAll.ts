@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import TodoAPI from '../../API/TodoAPI';
+import TodoAPI from '../API/TodoAPI';
 
 export default function useTodoGetAll () {
     const { getTodo } = TodoAPI();

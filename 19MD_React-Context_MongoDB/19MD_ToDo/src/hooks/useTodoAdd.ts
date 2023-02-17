@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
-import TodoAPI from '../../API/TodoAPI';
-import { useTodoAddContext } from '../../context/TodoAddContext';
-import { queryClient } from '../../main';
+import TodoAPI from '../API/TodoAPI';
+import { useTodoAddContext } from '../context/TodoAddContext';
+import { queryClient } from '../main';
 import useToasts from './useToasts';
 
 export default function useTodoAdd () {
