@@ -1,5 +1,3 @@
-import style from './SelectorItem.module.scss';
-
 type TSelectorItemProps = {
     label: string;
 }

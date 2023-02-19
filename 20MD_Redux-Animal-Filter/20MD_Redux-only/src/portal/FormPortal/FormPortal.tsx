@@ -42,6 +42,14 @@ export default function FormPortal ({ openHandler }:TFormPortalProps) {
         setSpeciesInput(!speciesInput);
     };
 
+    const onSubmitHundler = () => {
+        if (!species.includes(spec)) {
+            dispatch(addNewSpecies(spec));
+        }
+        dispatch(addNewAnimal(animalData));
+        openHandler();
+    };
+
     return (
         <div className={style.formPortalWrap}>
             <FormPortalFirst target={document.body}>
@@ -50,13 +58,7 @@ export default function FormPortal ({ openHandler }:TFormPortalProps) {
                 >
                     <Form
                         text='add animal'
-                        onSubmit={() => {
-                            if (!species.includes(spec)) {
-                                dispatch(addNewSpecies(spec.toLowerCase()));
-                            }
-                            dispatch(addNewAnimal(animalData));
-                            openHandler();
-                        }}
+                        onSubmit={onSubmitHundler}
                     >
                         <label className={style.formItem}>
                             <span>Name:</span>
@@ -98,7 +100,7 @@ export default function FormPortal ({ openHandler }:TFormPortalProps) {
                                     value={spec}
                                     onChange={(e) => setAnimalData({
                                         ...animalData,
-                                        spec: e.currentTarget.value,
+                                        spec: e.currentTarget.value.toLowerCase(),
                                     })}
                                     placeholder='Enter new spec...'
                                     required={true}

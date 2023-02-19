@@ -1,0 +1,12 @@
+.speciesItemWrap{
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: aliceblue;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: scale .3s;
+
+    &:hover{
+        scale: 85%;
+    }
+}
