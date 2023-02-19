@@ -13,7 +13,7 @@ type TAnimalState = {
 
 const initialState: TAnimalState = {
     allAnimal: [],
-    species: ['lion', 'dog'],
+    species: [],
 };
 
 export const animalSlice = createSlice({

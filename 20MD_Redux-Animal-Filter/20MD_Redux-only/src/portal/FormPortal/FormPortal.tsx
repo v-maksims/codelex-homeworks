@@ -41,7 +41,6 @@ export default function FormPortal ({ openHandler }:TFormPortalProps) {
     const specTextHandler = () => {
         setSpeciesInput(!speciesInput);
     };
-    console.log(species);
 
     return (
         <div className={style.formPortalWrap}>
