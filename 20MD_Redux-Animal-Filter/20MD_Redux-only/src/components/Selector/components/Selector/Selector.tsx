@@ -1,7 +1,13 @@
+import React from 'react';
 import style from './Selector.nodule.scss';
 
-export default function Selector () {
+type TSelectorProps = {
+    children: React.ReactNode
+}
+
+export default function Selector (props: TSelectorProps) {
+    const { children } = props;
     return (
-        <select name="" id=""></select>
+        <select>{children}</select>
     );
 }

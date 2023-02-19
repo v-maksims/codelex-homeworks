@@ -1,9 +1,14 @@
+import React from 'react';
 import style from './Modal.module.scss';
 
-export default function Modal () {
+type TModalProps = {
+    children: React.ReactNode
+}
+
+export default function Modal ({ children }: TModalProps) {
     return (
-        <>
-            modal
-        </>
+        <div className={style.modal}>
+            {children}
+        </div>
     );
 }

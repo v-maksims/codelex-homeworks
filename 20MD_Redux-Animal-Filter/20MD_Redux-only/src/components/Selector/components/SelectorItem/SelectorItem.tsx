@@ -1,7 +1,12 @@
 import style from './SelectorItem.module.scss';
 
-export default function SelectorItem () {
+type TSelectorItemProps = {
+    label: string;
+}
+
+export default function SelectorItem (props: TSelectorItemProps) {
+    const { label } = props;
     return (
-        <option value=""></option>
+        <option>{label}</option>
     );
 }

@@ -1,7 +1,20 @@
 import style from './Button.module.scss';
 
-export default function Button () {
+type TButtonProps = {
+    type: 'button' | 'submit';
+    onClick: () => void;
+    label: string;
+}
+
+export default function Button (props: TButtonProps) {
+    const { label, onClick, type } = props;
     return (
-        <button></button>
+        <button
+            className={style.button}
+            onClick={onClick}
+            type={type}
+        >
+            {label}
+        </button>
     );
 }

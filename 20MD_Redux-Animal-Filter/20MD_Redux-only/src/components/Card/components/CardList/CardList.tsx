@@ -1,9 +1,14 @@
+import React from 'react';
 import style from './CardList.module.scss';
 
-export default function CardList () {
+type TCardListProps = {
+    children: React.ReactNode
+}
+
+export default function CardList ({ children }:TCardListProps) {
     return (
-        <>
-            cardList
-        </>
+        <div className={style.list}>
+            {children}
+        </div>
     );
 }

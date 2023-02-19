@@ -1,7 +1,30 @@
+import { HTMLInputTypeAttribute } from 'react';
 import style from './Input.module.scss';
 
-export default function Input () {
+type TInputProps = {
+    value: string;
+    type: HTMLInputTypeAttribute;
+    onChange: () => void;
+    placeholder: string;
+    required: boolean;
+}
+
+export default function Input (props: TInputProps) {
+    const {
+        onChange,
+        placeholder,
+        required,
+        type,
+        value,
+    } = props;
     return (
-        <input type="text" />
+        <input
+            className={style.input}
+            value={value}
+            type={type}
+            placeholder={placeholder}
+            required={required}
+            onChange={onChange}
+        />
     );
 }
