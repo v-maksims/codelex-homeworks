@@ -1,10 +1,10 @@
-import { HTMLInputTypeAttribute } from 'react';
+import React, { HTMLInputTypeAttribute } from 'react';
 import style from './Input.module.scss';
 
 type TInputProps = {
     value: string;
     type: HTMLInputTypeAttribute;
-    onChange: () => void;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
     required: boolean;
 }
@@ -17,6 +17,7 @@ export default function Input (props: TInputProps) {
         type,
         value,
     } = props;
+
     return (
         <input
             className={style.input}

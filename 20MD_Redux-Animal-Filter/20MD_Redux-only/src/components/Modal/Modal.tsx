@@ -1,14 +1,23 @@
 import React from 'react';
+import Button from '../Button/Button';
 import style from './Modal.module.scss';
 
 type TModalProps = {
-    children: React.ReactNode
+    children: React.ReactNode;
+    openHandler: () => void
 }
 
-export default function Modal ({ children }: TModalProps) {
-    return (
-        <div className={style.modal}>
-            {children}
+const Modal = ({ children, openHandler }: TModalProps) => (
+    <div className={style.modal}>
+        <div className={style.modalClose}>
+            <Button
+                label='X'
+                type='button'
+                onClick={openHandler}
+            />
         </div>
-    );
-}
+        {children}
+    </div>
+);
+
+export default Modal;

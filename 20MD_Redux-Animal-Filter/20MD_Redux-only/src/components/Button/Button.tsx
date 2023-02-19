@@ -2,7 +2,7 @@ import style from './Button.module.scss';
 
 type TButtonProps = {
     type: 'button' | 'submit';
-    onClick: () => void;
+    onClick?: () => void;
     label: string;
 }
 
