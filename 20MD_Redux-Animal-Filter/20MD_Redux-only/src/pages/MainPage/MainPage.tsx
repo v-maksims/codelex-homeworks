@@ -49,6 +49,7 @@ export default function MainPage () {
                         image={image}
                         name={name}
                         species={spec}
+                        id={i}
                     />
                 ))}
             </CardList>) : (
@@ -59,6 +60,7 @@ export default function MainPage () {
                             image={image}
                             name={name}
                             species={spec}
+                            id={i}
                         />
                     ))}
                 </CardList>

@@ -36,9 +36,17 @@ export const animalSlice = createSlice({
                 state.sortedAnimals = state.allAnimal;
             }
         },
+        deleteAnimal: (state, action: PayloadAction<number>) => {
+            state.allAnimal = state.allAnimal.filter((animal, i) => i !== action.payload);
+        },
     },
 });
 
-export const { addNewAnimal, addNewSpecies, sortBySpecies } = animalSlice.actions;
+export const {
+    addNewAnimal,
+    addNewSpecies,
+    sortBySpecies,
+    deleteAnimal,
+} = animalSlice.actions;
 
 export default animalSlice.reducer;
