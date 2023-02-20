@@ -1,0 +1,13 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.text{
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 2rem;
+    text-align: center;
+}

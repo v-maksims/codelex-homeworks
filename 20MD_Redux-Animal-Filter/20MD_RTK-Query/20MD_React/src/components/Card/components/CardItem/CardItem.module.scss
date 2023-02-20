@@ -1,0 +1,25 @@
+.cardWrap{
+    max-width: 350px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 10px;
+    background-color: rgb(100, 100, 100);
+}
+
+.image{
+    width: 100%;
+    max-height: 250px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.text{
+    text-transform: capitalize;
+    color: aliceblue;
+    font-weight: 700;
+    font-size: 1.5rem;
+}

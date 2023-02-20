@@ -16,6 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["src", "../20MD_RTK-Query/20MD_React/src/store/apiAnimals.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

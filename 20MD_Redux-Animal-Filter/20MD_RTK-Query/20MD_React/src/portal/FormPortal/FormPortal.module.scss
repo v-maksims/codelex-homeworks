@@ -1,0 +1,32 @@
+.formPortalWrap{
+    position: fixed;
+    background-color: rgba(0,0,0,.3);
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.formItem{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.selectAdd{
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color .3s;
+
+    &:hover{
+        color: white;
+    }
+}
+
+.error{
+    color: rgb(224, 2, 2);
+    font-weight: 400;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+}
