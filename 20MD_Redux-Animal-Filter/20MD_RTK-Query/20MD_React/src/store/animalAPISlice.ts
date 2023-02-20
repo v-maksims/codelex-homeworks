@@ -41,12 +41,6 @@ export const animalAPISlice = createApi({
         }),
         getBySpecies: builder.query<TAnimal[], string>({
             query: (species) => `/animals/${species}`,
-            providesTags: (result) => (result
-                ? [
-                    ...result.map(({ _id: id }) => ({ type: 'Animals' as const, id })),
-                    { type: 'Animals', id: 'LIST' },
-                ]
-                : [{ type: 'Animals', id: 'LIST' }]),
 
         }),
     }),
