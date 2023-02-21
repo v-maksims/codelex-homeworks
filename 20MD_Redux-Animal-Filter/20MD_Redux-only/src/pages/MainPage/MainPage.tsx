@@ -43,24 +43,28 @@ export default function MainPage () {
             {allAnimal.length === 0 && (<span className={style.text}>No animals added yet</span>)}
 
             {filtred ? (<CardList>
-                {sortedAnimals.map(({ image, name, spec }, i) => (
+                {sortedAnimals.map(({
+                    image, name, spec, id,
+                }) => (
                     <CardItem
-                        key={i}
+                        key={id}
                         image={image}
                         name={name}
                         species={spec}
-                        id={i}
+                        id={id}
                     />
                 ))}
             </CardList>) : (
                 <CardList>
-                    {allAnimal.map(({ image, name, spec }, i) => (
+                    {allAnimal.map(({
+                        image, name, spec, id,
+                    }) => (
                         <CardItem
-                            key={i}
+                            key={id}
                             image={image}
                             name={name}
                             species={spec}
-                            id={i}
+                            id={id}
                         />
                     ))}
                 </CardList>

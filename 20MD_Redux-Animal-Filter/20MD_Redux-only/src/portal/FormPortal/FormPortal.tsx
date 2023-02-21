@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom';
 import React, { useState } from 'react';
+import { nanoid } from 'nanoid';
 import Modal from '../../components/Modal/Modal';
 import style from './FormPortal.module.scss';
 import Form from '../../components/Form/Form';
@@ -30,7 +31,7 @@ export default function FormPortal ({ openHandler }:TFormPortalProps) {
 
     const [speciesInput, setSpeciesInput] = useState(false);
 
-    const [animalData, setAnimalData] = useState<TAnimal>({
+    const [animalData, setAnimalData] = useState<Omit<TAnimal, 'id'>>({
         image: '',
         name: '',
         spec: '',
@@ -46,7 +47,10 @@ export default function FormPortal ({ openHandler }:TFormPortalProps) {
         if (!species.includes(spec)) {
             dispatch(addNewSpecies(spec));
         }
-        dispatch(addNewAnimal(animalData));
+        dispatch(addNewAnimal({
+            ...animalData,
+            id: nanoid(),
+        }));
         openHandler();
     };
 

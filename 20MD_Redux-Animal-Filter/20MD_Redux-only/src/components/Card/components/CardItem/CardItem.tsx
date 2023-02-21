@@ -7,7 +7,7 @@ type TCardItemProps = {
     image: string;
     name: string;
     species: string;
-    id: number
+    id: string
 }
 
 export default function CardItem (props: TCardItemProps) {

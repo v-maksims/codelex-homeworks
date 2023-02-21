@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type TAnimal = {
+    id: string;
     image: string;
     name: string;
     spec: string;
@@ -36,8 +37,14 @@ export const animalSlice = createSlice({
                 state.sortedAnimals = state.allAnimal;
             }
         },
-        deleteAnimal: (state, action: PayloadAction<number>) => {
-            state.allAnimal = state.allAnimal.filter((animal, i) => i !== action.payload);
+        deleteAnimal: (state, action: PayloadAction<string>) => {
+            state.allAnimal = state.allAnimal.filter(({ id }) => id !== action.payload);
+            state.species = [];
+            state.allAnimal.forEach(({ spec }) => {
+                if (!state.species.includes(spec)) {
+                    state.species.push(spec);
+                }
+            });
         },
     },
 });
