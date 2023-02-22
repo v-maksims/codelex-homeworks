@@ -1,56 +1,56 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
-  "extends": [
-    "next/core-web-vitals",
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "airbnb-base"
-  ],
-  "overrides": [],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module"
-  },
-  "plugins": [
-    "react",
-    "@typescript-eslint"
-  ],
-  "rules": {
-    "import/no-unresolved": "off",
-    "import/extensions": "off",
-    "no-unused-vars": "off",
-    "no-restricted-syntax": "off",
-    "no-unused-expressions": "off",
-    "react/react-in-jsx-scope": "off",
-    "no-param-reassign": "off",
-    "indent": [
-      "error",
-      4
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "next",
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "airbnb-base"
     ],
-    "space-before-function-paren": [
-      "error",
-      "always"
+    "overrides": [],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
     ],
-    "object-curly-spacing": [
-      "error",
-      "always"
-    ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "semi": [
-      "error",
-      "always"
-    ]
-  }
+    "rules": {
+        "import/no-unresolved": "off",
+        "import/extensions": "off",
+        "no-unused-vars": "off",
+        "no-restricted-syntax": "off",
+        "no-unused-expressions": "off",
+        "react/react-in-jsx-scope": "off",
+        "no-param-reassign": "off",
+        "indent": [
+            "error",
+            4
+        ],
+        "space-before-function-paren": [
+            "error",
+            "always"
+        ],
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
+    }
 }
