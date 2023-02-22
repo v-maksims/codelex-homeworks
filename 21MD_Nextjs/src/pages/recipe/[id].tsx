@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import MainLayout from '@/layouts/MainLayout/MainLayout';
 import { useGetByIDRecipeQuery } from '@/slices/recipesSlice';
+import style from '../../styles/RecipePage.module.scss';
 
 export default function Recipe () {
     const { query } = useRouter();
@@ -29,8 +30,18 @@ export default function Recipe () {
         <MainLayout
             title='Recipe'
         >
-            <h1>recipes item {query.id}</h1>
-            <img src={image} />
+            <div className={style.recipesWrap}>
+                <Image
+                    src={image}
+                    alt={title}
+                    width={500}
+                    height={500}
+                />
+                <div>
+                    <div className={style.ingredients}></div>
+                    <div className={style.recipe}></div>
+                </div>
+            </div>
         </MainLayout>
     );
 }

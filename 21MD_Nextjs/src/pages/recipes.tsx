@@ -19,11 +19,10 @@ export default function Recipes () {
         <MainLayout
             title='Recipes'
         >
-            <h1>recepies list</h1>
             <RecipesList>
-                {data.map(({ _id }) => (
+                {data.map(({ _id, image, title }) => (
                     <Link key={_id} href={'/recipe/[recipeId]'} as={`/recipe/${_id}`}>
-                        <RecipesItem key={_id} />
+                        <RecipesItem key={_id} image={image} title={title}/>
                     </Link>
                 ))}
             </RecipesList>

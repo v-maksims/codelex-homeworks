@@ -9,8 +9,8 @@ export default function RecipesList (props: TRecipesListProps) {
     const { children } = props;
 
     return (
-        <>
+        <div className={style.listWrap}>
             {children}
-        </>
+        </div>
     );
 }
