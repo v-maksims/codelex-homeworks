@@ -1,0 +1,15 @@
+.button {
+    font-size: 1.25rem;
+    padding: 5px;
+    border-radius: 5px;
+    border: 0;
+    background-color: aliceblue;
+    color: #820000;
+    font-weight: 700;
+    cursor: pointer;
+    transition: scale .3s;
+
+    &:hover {
+        scale: 85%;
+    }
+}

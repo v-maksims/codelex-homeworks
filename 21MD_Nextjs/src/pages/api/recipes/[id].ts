@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { ObjectId } from 'mongoose';
 import connectToMongo from '@/utils/connectionToMongo';
 import Recipe from '@/schemas/recipesSchema';
 
