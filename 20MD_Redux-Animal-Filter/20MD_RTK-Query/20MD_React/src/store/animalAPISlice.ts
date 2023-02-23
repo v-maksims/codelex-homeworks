@@ -37,6 +37,7 @@ export const animalAPISlice = createApi({
         }),
         getBySpecies: builder.query<TAnimal[], string>({
             query: (species) => `/animals/${species}`,
+            providesTags: ['Animals', 'Species'],
         }),
     }),
 });
