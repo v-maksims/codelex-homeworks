@@ -13,11 +13,7 @@ export default function MainPage () {
     const [filter, setFilter] = useState('all');
 
     const { isLoading: areAnenimalsLoad, data: animalsData } = useGetAllAnimalsQuery();
-    const { isLoading: areSpeciesLoad, data: speciesData, refetch } = useGetSpeciesQuery();
-
-    useEffect(() => {
-        refetch();
-    }, [animalsData?.length]);
+    const { isLoading: areSpeciesLoad, data: speciesData } = useGetSpeciesQuery();
 
     const { isLoading: areFiltredLoad, data: filtredData } = useGetBySpeciesQuery(filter);
 

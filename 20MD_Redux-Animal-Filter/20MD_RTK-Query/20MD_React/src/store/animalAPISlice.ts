@@ -14,12 +14,7 @@ export const animalAPISlice = createApi({
     endpoints: (builder) => ({
         getAllAnimals: builder.query<TAnimal[], void>({
             query: () => '/animals',
-            providesTags: (result) => (result
-                ? [
-                    ...result.map(({ _id: id }) => ({ type: 'Animals' as const, id })),
-                    { type: 'Animals', id: 'LIST' },
-                ]
-                : [{ type: 'Animals', id: 'LIST' }]),
+            providesTags: ['Animals', 'Species'],
         }),
         createAnimal: builder.mutation<unknown, Omit<TAnimal, '_id'> >({
             query: (body) => ({
@@ -27,21 +22,21 @@ export const animalAPISlice = createApi({
                 method: 'POST',
                 body,
             }),
-            invalidatesTags: [{ type: 'Animals', id: 'LIST' }],
+            invalidatesTags: ['Animals', 'Species'],
         }),
         deleteAnimal: builder.mutation<unknown, string>({
             query: (id) => ({
                 url: `/animals/${id}`,
                 method: 'delete',
             }),
-            invalidatesTags: [{ type: 'Animals', id: 'LIST' }],
+            invalidatesTags: ['Animals', 'Species'],
         }),
         getSpecies: builder.query<string[], void>({
             query: () => '/animals-species',
+            providesTags: ['Species'],
         }),
         getBySpecies: builder.query<TAnimal[], string>({
             query: (species) => `/animals/${species}`,
-
         }),
     }),
 });
