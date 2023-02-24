@@ -15,6 +15,7 @@ const RecipesItem = (props: TRecipesItemProps) => {
                 src={image}
                 alt={title}
                 fill
+                style={{ objectFit: 'inherit' }}
             />
             <span
                 className={styles.title}

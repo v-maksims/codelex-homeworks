@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import Button from '../components/Button/Button';
 import RecipesItem from './components/RecipesItem/RecipesItem';
 import RecipesList from './components/RecipesList/RecipesList';
+import styles from './RecipesPage.module.scss';
 
 export type Trecipe = {
     _id: string;
@@ -26,7 +28,13 @@ const RecipesPage = async () => {
     const recipes = await getRecipes();
 
     return (
-        <>
+        <div className={styles.recipesWrap}>
+            <Link href='/recipes/add'>
+                <Button
+                    label='Create new recipe'
+                    type='button'
+                />
+            </Link>
             <RecipesList>
                 {recipes.map(({ _id, image, title }) => (
                     <Link key={_id} href={`/recipes/${_id}`}>
@@ -38,7 +46,7 @@ const RecipesPage = async () => {
                     </Link>
                 ))}
             </RecipesList>
-        </>
+        </div>
     );
 };
 

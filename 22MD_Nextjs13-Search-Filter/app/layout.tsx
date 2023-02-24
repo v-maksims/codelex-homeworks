@@ -36,7 +36,9 @@ export default function RootLayout ({ children }: TRootLayoutProps) {
                         </Link>
                     </nav>
                 </header>
-                {children}
+                <main className={styles.mainWrap}>
+                    {children}
+                </main>
             </body>
         </html>
     );
