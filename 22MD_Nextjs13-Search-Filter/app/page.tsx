@@ -1,13 +1,16 @@
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
-import styles from './page.module.css';
+import styles from './page.module.scss';
 
-const inter = Inter({ subsets: ['latin'] });
+const Home = () => (
+    <main>
+        <h1 className={styles.title} >
+                home page
+        </h1>
+        <p className={styles.paragraph} >
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Animi earum ab voluptatibusassumenda reiciendis architecto
+                fugit laboriosam eaque alias distinctio.
+        </p>
+    </main>
+);
 
-export default function Home () {
-    return (
-        <main className={styles.main}>
-
-        </main>
-    );
-}
+export default Home;
