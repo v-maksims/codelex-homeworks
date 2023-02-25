@@ -14,6 +14,7 @@ const Button = (props: TButtonProps) => {
         type,
         disabled,
     } = props;
+
     return (
         <>
             <button

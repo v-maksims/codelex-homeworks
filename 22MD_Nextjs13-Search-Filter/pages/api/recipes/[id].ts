@@ -5,8 +5,6 @@ import Recipe from '@/pages/utils/recipeSchema';
 export default function recipeIdHandler (req: NextApiRequest, res: NextApiResponse) {
     const { query, method } = req;
 
-    console.log('id method:', method);
-
     connectToMongo();
 
     if (method === 'GET') {

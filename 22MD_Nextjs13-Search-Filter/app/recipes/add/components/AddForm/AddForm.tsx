@@ -14,8 +14,12 @@ type TRecipeData = {
     recipe: string[];
 }
 
+type TRecipeKeys = 'recipe' | 'ingredients';
+
+type TChangeEvent = ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+
 const AddForm = () => {
-    const { push } = useRouter();
+    const { push, refresh } = useRouter();
 
     const [recipeData, setRecipeData] = useState<TRecipeData>({
         title: '',
@@ -31,34 +35,20 @@ const AddForm = () => {
         title,
     } = recipeData;
 
-    const ingredientFieldHandler = (e: ChangeEvent<HTMLInputElement>, i: number) => {
-        const values = [...ingredients];
+    const fieldHandler = (e: TChangeEvent, i: number, data: TRecipeKeys) => {
+        const values = [...recipeData[data]];
         values[i] = e.currentTarget.value;
-        setRecipeData({ ...recipeData, ingredients: values });
+        setRecipeData({ ...recipeData, [data]: values });
     };
 
-    const recipeFieldHandler = (e: ChangeEvent<HTMLTextAreaElement>, i: number) => {
-        const values = [...recipe];
-        values[i] = e.currentTarget.value;
-        setRecipeData({ ...recipeData, recipe: values });
+    const handleAddField = (data: TRecipeKeys) => {
+        setRecipeData({ ...recipeData, [data]: [...recipeData[data], ''] });
     };
 
-    const handleAddIngredientField = () => {
-        setRecipeData({ ...recipeData, ingredients: [...ingredients, ''] });
-    };
-
-    const handleAddRecipeField = () => {
-        setRecipeData({ ...recipeData, recipe: [...recipe, ''] });
-    };
-
-    const handleRemoveIngredientField = (pos:number) => {
-        const fields = ingredients.filter((field, i) => i !== pos);
-        setRecipeData({ ...recipeData, ingredients: fields });
-    };
-
-    const handleRemoveRecipeField = (pos:number) => {
-        const fields = recipe.filter((field, i) => i !== pos);
-        setRecipeData({ ...recipeData, recipe: fields });
+    const handleRemoveField = (pos: number, data: TRecipeKeys) => {
+        const fields: string[] = [...recipeData[data]];
+        fields.splice(pos, 1);
+        setRecipeData({ ...recipeData, [data]: fields });
     };
 
     const submitHandler = async () => {
@@ -67,6 +57,7 @@ const AddForm = () => {
             body: JSON.stringify({ recipeData }),
         });
         push('/recipes');
+        refresh();
     };
 
     return (
@@ -105,7 +96,7 @@ const AddForm = () => {
                     <Button
                         label='add ingredient'
                         type='button'
-                        onClick={handleAddIngredientField}
+                        onClick={() => handleAddField('ingredients')}
                     />
                 </div>
 
@@ -122,7 +113,7 @@ const AddForm = () => {
                         <div className={styles.inputWeight}>
                             <Input
                                 value={ingridient}
-                                onChange={(e) => ingredientFieldHandler(e, i)}
+                                onChange={(e) => fieldHandler(e, i, 'ingredients')}
                                 name='ingridient'
                                 placeholder={`Ingredient ${i + 1}`}
                                 required={true}
@@ -132,7 +123,8 @@ const AddForm = () => {
                         <Button
                             label='X'
                             type='button'
-                            onClick={() => handleRemoveIngredientField(i)}
+                            onClick={() => handleRemoveField(i, 'ingredients')}
+                            disabled={!(ingredients.length > 1)}
                         />
                     </div>
                 ))}
@@ -141,7 +133,7 @@ const AddForm = () => {
                     <Button
                         label='add recipe step'
                         type='button'
-                        onClick={handleAddRecipeField}
+                        onClick={() => handleAddField('recipe')}
                     />
                 </div>
                 {recipe.map((step, i) => (
@@ -157,7 +149,7 @@ const AddForm = () => {
                         <textarea
                             className={styles.textArea}
                             value={step}
-                            onChange={(e) => recipeFieldHandler(e, i)}
+                            onChange={(e) => fieldHandler(e, i, 'recipe')}
                             placeholder={`Step ${i + 1}`}
                             required={true}
                             cols={45}
@@ -166,7 +158,8 @@ const AddForm = () => {
                         <Button
                             label='X'
                             type='button'
-                            onClick={() => handleRemoveRecipeField(i)}
+                            onClick={() => handleRemoveField(i, 'recipe')}
+                            disabled={!(recipe.length > 1)}
                         />
                     </div>
                 ))}

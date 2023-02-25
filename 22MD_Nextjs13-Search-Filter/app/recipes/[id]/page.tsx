@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Button from '@/app/components/Button/Button';
 import { Trecipe } from '../page';
 import PostDelete from './components/PostDelete/PostDelete';
 import styles from './RecipePage.module.scss';
@@ -31,47 +30,46 @@ const RecipePage = async ({ params }: TRecipePageProps) => {
 
     return (
         <div className={styles.recipesWrap}>
+            <Link href={'/recipes'}>
+                <PostDelete id={params.id}/>
+            </Link>
             <h2 className={styles.header} >{title}</h2>
-            <Image
-                src={image}
-                alt={title}
-                width={500}
-                height={500}
-            />
-            <div>
-                <div className={styles.ingredientsWrap}>
-                    <h4 className={styles.title}>Ingridients:</h4>
-                    <ul className={styles.list}>
+            <div className={styles.imageWrap}>
+                <Image
+                    className={styles.image}
+                    src={image}
+                    alt={title}
+                    fill
+                />
+            </div>
+            <div className={styles.informationWrap}>
+                <div className={styles.information}>
+                    <h4 className={styles.informationTitle}>Ingridients:</h4>
+                    <ul>
                         {ingredients.map((item, i) => (
                             <li
                                 key={i}
-                                className={styles.listItem}
+                                className={styles.ingridientItem}
                             >
                                 {item}
                             </li>
                         ))}
                     </ul>
                 </div>
-                <div className={styles.recipeWrap}>
-                    <h4 className={styles.title}>Recipe:</h4>
-                    <ol>
+                <div className={styles.information}>
+                    <h4 className={styles.informationTitle}>Recipe:</h4>
+                    <ol className={styles.informationRecipe}>
                         {recipe.map((step, i) => (
-                            <li key={i}>
+                            <li
+                                key={i}
+                                className={styles.recipeItem}
+                            >
                                 {step}
                             </li>
                         ))}
                     </ol>
                 </div>
             </div>
-            <Link href={'/recipes'}>
-                <PostDelete id={params.id}/>
-            </Link>
-            <Link href={'/recipes'}>
-                <Button
-                    label='back to recipes'
-                    type='button'
-                />
-            </Link>
         </div>
     );
 };
