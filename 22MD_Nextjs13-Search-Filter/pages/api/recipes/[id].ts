@@ -9,18 +9,15 @@ export default function recipeIdHandler (req: NextApiRequest, res: NextApiRespon
 
     connectToMongo();
 
-    switch (method) {
-    case 'GET':
+    if (method === 'GET') {
         Recipe.findOne({ _id: query.id })
             .then((data) => res.status(200).json(data))
             .catch((error) => res.status(400).send(error));
-        break;
-    case 'DELETE':
+    } else if (method === 'DELETE') {
         Recipe.findByIdAndDelete(query.id)
             .then(() => res.status(200).json('Recipe deleted success'))
             .catch((error) => res.status(400).send(error));
-        break;
-    default:
+    } else {
         res.setHeader('Allow', ['GET', 'DELETE']);
         res.status(405).end(`Method ${method} Not Allowed`);
     }

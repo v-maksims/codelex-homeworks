@@ -1,0 +1,55 @@
+.formWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: aliceblue;
+}
+
+.addWrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+    border-top: 1px solid grey;
+    padding: 15px 0;
+}
+
+.addText {
+    display: inline-block;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    font-weight: 900;
+    color: white;
+}
+
+.ingredientWrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.recipeWrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.recipeText,
+.ingredientText {
+    font-size: 1.5rem;
+}
+
+.textArea {
+    font-size: 1.5rem;
+    resize: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.inputWeight{
+    width: 100%;
+}

@@ -4,7 +4,13 @@ const nextConfig = {
         appDir: true,
     },
     images: {
-        domains: ['images.immediate.co.uk'],
+        domains: ['*'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: '**',
+            },
+        ],
     },
 };
 

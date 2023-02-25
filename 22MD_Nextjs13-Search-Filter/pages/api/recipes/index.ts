@@ -3,24 +3,25 @@ import connectToMongo from '@/pages/utils/connectionToMongo';
 import Recipe from '@/pages/utils/recipeSchema';
 
 export default function recipesHandler (req: NextApiRequest, res: NextApiResponse) {
-    const { method } = req;
-    console.log('method:', method);
-
+    const { method, body } = req;
     connectToMongo();
 
     if (method === 'GET') {
-        Recipe.find().then((data) => {
-            // res.revalidate('/recipes');
-            res.status(200).json(data);
-        });
+        Recipe.find()
+            .then((data) => res.status(200).json(data))
+            .catch((error) => res.status(400).send(error));
+    } else if (method === 'POST') {
+        const bodyData = JSON.parse(body).recipeData;
+        Recipe.create({
+            title: bodyData.title,
+            ingredients: bodyData.ingredients,
+            recipe: bodyData.recipe,
+            image: bodyData.image,
+        })
+            .then((data) => res.status(200).json(data))
+            .catch((error) => res.status(400).send(error));
+    } else {
+        res.setHeader('Allow', ['GET', 'POST']);
+        res.status(405).end(`Method ${method} Not Allowed`);
     }
-
-    // switch (method) {
-    // case 'GET':
-    //     Recipe.find().then((data) => res.json(data));
-    //     break;
-    // default:
-    //     res.setHeader('Allow', ['GET']);
-    //     res.status(405).end(`Method ${method} Not Allowed`);
-    // }
 }

@@ -3,19 +3,16 @@ import mongoose, { models, Schema } from 'mongoose';
 const recipeSchema = new Schema({
     title: {
         type: String,
-        minLength: 5,
-        maxLength: 100,
         required: true,
     },
     ingredients: [{
         type: String,
         required: true,
     }],
-    recipe: {
+    recipe: [{
         type: String,
-        minLength: 5,
         maxLength: 1000,
-    },
+    }],
     image: {
         type: String,
         required: true,

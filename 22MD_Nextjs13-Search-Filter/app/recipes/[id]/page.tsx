@@ -54,7 +54,13 @@ const RecipePage = async ({ params }: TRecipePageProps) => {
                 </div>
                 <div className={styles.recipeWrap}>
                     <h4 className={styles.title}>Recipe:</h4>
-                    <span className={styles.recipe}>{recipe}</span>
+                    <ol>
+                        {recipe.map((step, i) => (
+                            <li key={i}>
+                                {step}
+                            </li>
+                        ))}
+                    </ol>
                 </div>
             </div>
             <Link href={'/recipes'}>

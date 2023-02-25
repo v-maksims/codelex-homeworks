@@ -8,7 +8,7 @@ export type Trecipe = {
     _id: string;
     title: string;
     ingredients: string[];
-    recipe: string;
+    recipe: string[];
     image: string;
 }
 
