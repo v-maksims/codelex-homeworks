@@ -3,6 +3,8 @@ import './globals.scss';
 import { Roboto } from 'next/font/google';
 import Link from 'next/link';
 import styles from './layout.module.scss';
+import Input from './components/Input/Input';
+import Search from './components/Search/Search';
 
 const roboto = Roboto({
     weight: ['400', '700', '900'],
@@ -20,7 +22,7 @@ export default function RootLayout ({ children }: TRootLayoutProps) {
             <body
                 className='container'
             >
-                <header>
+                <header className={styles.header}>
                     <nav className={styles.navigationWrap}>
                         <Link
                             href='/'
@@ -35,6 +37,7 @@ export default function RootLayout ({ children }: TRootLayoutProps) {
                             recipes
                         </Link>
                     </nav>
+                    <Search/>
                 </header>
                 <main className={styles.mainWrap}>
                     {children}

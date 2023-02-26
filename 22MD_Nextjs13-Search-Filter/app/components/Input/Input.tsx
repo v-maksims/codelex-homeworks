@@ -33,6 +33,7 @@ const Input = (props:TInputProps) => {
                 onChange={ onChange }
                 required={ required }
                 name={ name }
+                autoComplete='off'
             />
         </div>
     );
