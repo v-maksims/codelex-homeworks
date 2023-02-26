@@ -3,7 +3,6 @@ import './globals.scss';
 import { Roboto } from 'next/font/google';
 import Link from 'next/link';
 import styles from './layout.module.scss';
-import Input from './components/Input/Input';
 import Search from './components/Search/Search';
 
 const roboto = Roboto({

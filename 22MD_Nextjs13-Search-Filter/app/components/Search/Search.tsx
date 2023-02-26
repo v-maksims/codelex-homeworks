@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { Trecipe } from '@/pages/api/recipes';
+import { Trecipe } from '@/app/types/recipe';
 import Input from '../Input/Input';
 import styles from './Search.module.scss';
 
@@ -72,7 +72,7 @@ const Search = () => {
                         ))}
                     </ol>
                 )}
-                {(value.length > 1 && searchResult.length === 0) && (
+                {(value.length > 0 && searchResult.length === 0) && (
                     <ol className={styles.searchList}>
                         <li>
                             <span className={styles.searchItem}>

@@ -2,30 +2,41 @@
 
 import { ChangeEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Select, { SingleValue } from 'react-select';
+import { v4 as uuidv4 } from 'uuid';
 import Form from '@/app/components/Form/Form';
 import Input from '@/app/components/Input/Input';
 import Button from '@/app/components/Button/Button';
 import styles from './AddForm.module.scss';
-
-type TRecipeData = {
-    title: string;
-    image: string;
-    ingredients: string[];
-    recipe: string[];
-}
+import { TCategory, Trecipe } from '@/app/types/recipe';
 
 type TRecipeKeys = 'recipe' | 'ingredients';
 
 type TChangeEvent = ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
 
+type TOption = {
+    value: string;
+    label: string;
+}
+
+type TRecipeData = Omit<Trecipe, '_id'>
+
 const AddForm = () => {
     const { push, refresh } = useRouter();
+
+    const options:TOption[] = [
+        { value: 'appetizers', label: 'Appetizers' },
+        { value: 'breakfasts', label: 'Breakfasts' },
+        { value: 'desserts', label: 'Desserts' },
+        { value: 'main courses', label: 'Main courses' },
+    ];
 
     const [recipeData, setRecipeData] = useState<TRecipeData>({
         title: '',
         image: '',
         ingredients: [''],
         recipe: [''],
+        category: '',
     });
 
     const {
@@ -34,6 +45,13 @@ const AddForm = () => {
         recipe,
         title,
     } = recipeData;
+
+    const selectHandler = (e: SingleValue<TOption>) => {
+        setRecipeData({
+            ...recipeData,
+            category: e?.value as TCategory,
+        });
+    };
 
     const fieldHandler = (e: TChangeEvent, i: number, data: TRecipeKeys) => {
         const values = [...recipeData[data]];
@@ -91,6 +109,13 @@ const AddForm = () => {
                     required={true}
                     type='text'
                 />
+                <Select
+                    id={uuidv4()}
+                    className={styles.select}
+                    options={options}
+                    required
+                    onChange={(e) => selectHandler(e)}
+                />
                 <div className={styles.addWrap}>
                     <span className={styles.addText}>ingredients:</span>
                     <Button
@@ -99,7 +124,6 @@ const AddForm = () => {
                         onClick={() => handleAddField('ingredients')}
                     />
                 </div>
-
                 {ingredients.map((ingridient, i) => (
                     <div
                         key={i}

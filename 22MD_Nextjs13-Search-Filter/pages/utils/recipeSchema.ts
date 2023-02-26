@@ -17,6 +17,9 @@ const recipeSchema = new Schema({
         type: String,
         required: true,
     },
+    category: {
+        type: String,
+    },
 });
 
 const Recipe = models.Recipe || mongoose.model('Recipe', recipeSchema);

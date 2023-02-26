@@ -2,12 +2,13 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import connectToMongo from '@/pages/utils/connectionToMongo';
 import Recipe from '@/pages/utils/recipeSchema';
 
-export type Trecipe = {
+type Trecipe = {
     _id: string;
     title: string;
     ingredients: string[];
     recipe: string[];
     image: string;
+    category: string;
 }
 
 export default function recipesHandler (req: NextApiRequest, res: NextApiResponse) {
@@ -20,7 +21,7 @@ export default function recipesHandler (req: NextApiRequest, res: NextApiRespons
             .catch((error) => res.status(400).send(error));
     } else if (method === 'POST') {
         const {
-            image, ingredients, recipe, title,
+            image, ingredients, recipe, title, category,
         }:Trecipe = JSON.parse(body).recipeData;
 
         Recipe.create({
@@ -28,6 +29,7 @@ export default function recipesHandler (req: NextApiRequest, res: NextApiRespons
             ingredients,
             recipe,
             image,
+            category,
         })
             .then((data) => res.status(200).json(data))
             .catch((error) => res.status(400).send(error));

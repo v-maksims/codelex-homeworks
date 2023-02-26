@@ -4,3 +4,10 @@
     gap: 20px;
     padding: 20px;
 }
+
+.recipesActions{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}

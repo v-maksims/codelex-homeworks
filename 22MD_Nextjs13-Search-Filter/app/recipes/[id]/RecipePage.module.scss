@@ -61,7 +61,30 @@
     list-style-position: inside;
 }
 
-.recipeItem{
+.recipeItem {
     font-size: 1.3rem;
     padding-bottom: 10px;
+}
+
+.actionWrap {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.categoryLink {
+    text-decoration: none;
+}
+
+.linkItem {
+    color: white;
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 1.25rem;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }

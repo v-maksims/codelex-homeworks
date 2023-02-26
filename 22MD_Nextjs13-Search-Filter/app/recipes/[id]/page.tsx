@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Trecipe } from '../page';
+import { Trecipe } from '@/app/types/recipe';
 import PostDelete from './components/PostDelete/PostDelete';
 import styles from './RecipePage.module.scss';
 
@@ -8,7 +8,7 @@ type TRecipePageProps = {
     params: {id: string}
 }
 
-async function getRecipe (id:string): Promise<Trecipe> {
+const getRecipe = async (id:string): Promise<Trecipe> => {
     const res = await fetch(`http://localhost:3000/api/recipes/${id}`, {
         next: { revalidate: 0 },
     });
@@ -18,7 +18,7 @@ async function getRecipe (id:string): Promise<Trecipe> {
     }
 
     return res.json();
-}
+};
 
 const RecipePage = async ({ params }: TRecipePageProps) => {
     const {
@@ -26,13 +26,24 @@ const RecipePage = async ({ params }: TRecipePageProps) => {
         ingredients,
         recipe,
         title,
+        category,
     } = await getRecipe(params.id);
 
     return (
         <div className={styles.recipesWrap}>
-            <Link href={'/recipes'}>
-                <PostDelete id={params.id}/>
-            </Link>
+            <div className={styles.actionWrap}>
+                <Link href={'/recipes'}>
+                    <PostDelete id={params.id}/>
+                </Link>
+                <Link
+                    href={`/recipes/category/${category}`}
+                    className={styles.categoryLink}
+                >
+                    <span className={styles.linkItem}>
+                        {category}
+                    </span>
+                </Link>
+            </div>
             <h2 className={styles.header} >{title}</h2>
             <div className={styles.imageWrap}>
                 <Image

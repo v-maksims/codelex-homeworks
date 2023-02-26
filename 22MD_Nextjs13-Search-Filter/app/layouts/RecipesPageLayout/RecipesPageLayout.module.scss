@@ -1,0 +1,46 @@
+.recipesWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.recipesActions {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.categoryItem {
+    color: white;
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 1.25rem;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+
+.link {
+    text-decoration: none;
+}
+
+.categoryTitle{
+    color: #820000;
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.categoryEmpty{
+    display: inline-block;
+    text-transform: capitalize;
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: center;
+    color: aliceblue;
+}
