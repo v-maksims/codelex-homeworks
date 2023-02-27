@@ -4,7 +4,7 @@ import styles from './Input.module.scss';
 type TInputProps = {
     type: HTMLInputTypeAttribute,
     placeholder: string,
-    required: boolean,
+    required?: boolean,
     label?: string,
     name: string,
     value: string,

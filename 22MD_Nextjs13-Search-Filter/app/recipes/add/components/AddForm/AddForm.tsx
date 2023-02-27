@@ -1,9 +1,10 @@
 'use client';
 
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Select, { SingleValue } from 'react-select';
 import { v4 as uuidv4 } from 'uuid';
+import { z } from 'zod';
 import Form from '@/app/components/Form/Form';
 import Input from '@/app/components/Input/Input';
 import Button from '@/app/components/Button/Button';
@@ -23,6 +24,21 @@ type TRecipeData = Omit<Trecipe, '_id'>
 
 const AddForm = () => {
     const { push, refresh } = useRouter();
+    const [errors, setErrors] = useState<z.ZodFormattedError<{
+        title: string;
+        image: string;
+        category: string;
+        ingredients: string[];
+        recipe: string[];
+    }, string>>({ _errors: [] });
+
+    const recipeDataSchema = z.object({
+        title: z.string().min(5).max(100),
+        image: z.string().url(),
+        category: z.string().min(1, { message: 'Select one of category' }),
+        ingredients: z.array(z.string().min(5).max(100)),
+        recipe: z.array(z.string().min(50).max(800)),
+    });
 
     const options:TOption[] = [
         { value: 'appetizers', label: 'Appetizers' },
@@ -70,12 +86,20 @@ const AddForm = () => {
     };
 
     const submitHandler = async () => {
-        await fetch('http://localhost:3000/api/recipes', {
+        const validationResult = recipeDataSchema.safeParse(recipeData);
+
+        if (!validationResult.success) {
+            const error = validationResult.error.format();
+            return setErrors(error);
+        }
+
+        const res = await fetch('http://localhost:3000/api/recipes', {
             method: 'POST',
             body: JSON.stringify({ recipeData }),
         });
         push('/recipes');
         refresh();
+        return res.json();
     };
 
     return (
@@ -94,9 +118,13 @@ const AddForm = () => {
                     })}
                     name='recipe name'
                     placeholder='Recipe name...'
-                    required={true}
                     type='text'
                 />
+                {errors.title?._errors && (
+                    <span className={styles.errorMessage}>
+                        {errors.title?._errors[0]}
+                    </span>
+                )}
                 <Input
                     label='recipe image'
                     value={image}
@@ -106,16 +134,24 @@ const AddForm = () => {
                     })}
                     name='recipe imagee'
                     placeholder='Image URL... '
-                    required={true}
                     type='text'
                 />
+                {errors.image?._errors && (
+                    <span className={styles.errorMessage}>
+                        {errors.image?._errors[0]}
+                    </span>
+                )}
                 <Select
                     id={uuidv4()}
                     className={styles.select}
                     options={options}
-                    required
                     onChange={(e) => selectHandler(e)}
                 />
+                {errors.category?._errors && (
+                    <span className={styles.errorMessage}>
+                        {errors.category?._errors[0]}
+                    </span>
+                )}
                 <div className={styles.addWrap}>
                     <span className={styles.addText}>ingredients:</span>
                     <Button
@@ -126,30 +162,42 @@ const AddForm = () => {
                 </div>
                 {ingredients.map((ingridient, i) => (
                     <div
-                        key={i}
-                        className={styles.ingredientWrap}
+                        key={uuidv4()}
+                        className={styles.list}
                     >
-                        <span
-                            className={styles.ingredientText}
+                        <div
+                            key={i}
+                            className={styles.ingredientWrap}
                         >
+                            <span
+                                className={styles.ingredientText}
+                            >
                             #{i + 1}
-                        </span>
-                        <div className={styles.inputWeight}>
-                            <Input
-                                value={ingridient}
-                                onChange={(e) => fieldHandler(e, i, 'ingredients')}
-                                name='ingridient'
-                                placeholder={`Ingredient ${i + 1}`}
-                                required={true}
-                                type='text'
+                            </span>
+                            <div className={styles.inputWeight}>
+                                <Input
+                                    value={ingridient}
+                                    onChange={(e) => fieldHandler(e, i, 'ingredients')}
+                                    name='ingridient'
+                                    placeholder={`Ingredient ${i + 1}`}
+                                    type='text'
+                                />
+                            </div>
+                            <Button
+                                label='X'
+                                type='button'
+                                onClick={() => handleRemoveField(i, 'ingredients')}
+                                disabled={!(ingredients.length > 1)}
                             />
                         </div>
-                        <Button
-                            label='X'
-                            type='button'
-                            onClick={() => handleRemoveField(i, 'ingredients')}
-                            disabled={!(ingredients.length > 1)}
-                        />
+                        {errors.ingredients?.[i]?._errors && (
+                            <span
+                                key={uuidv4()}
+                                className={styles.errorMessage}
+                            >
+                                {errors.ingredients[i]._errors[0]}
+                            </span>
+                        )}
                     </div>
                 ))}
                 <div className={styles.addWrap}>
@@ -162,29 +210,41 @@ const AddForm = () => {
                 </div>
                 {recipe.map((step, i) => (
                     <div
-                        key={i}
-                        className={styles.recipeWrap}
+                        key={uuidv4()}
+                        className={styles.list}
                     >
-                        <span
-                            className={styles.recipeText}
+                        <div
+                            key={i}
+                            className={styles.recipeWrap}
                         >
-                            {`Step ${i + 1}`}
-                        </span>
-                        <textarea
-                            className={styles.textArea}
-                            value={step}
-                            onChange={(e) => fieldHandler(e, i, 'recipe')}
-                            placeholder={`Step ${i + 1}`}
-                            required={true}
-                            cols={45}
-                            rows={5}
-                        />
-                        <Button
-                            label='X'
-                            type='button'
-                            onClick={() => handleRemoveField(i, 'recipe')}
-                            disabled={!(recipe.length > 1)}
-                        />
+                            <span
+                                className={styles.recipeText}
+                            >
+                                {`Step ${i + 1}`}
+                            </span>
+                            <textarea
+                                className={styles.textArea}
+                                value={step}
+                                onChange={(e) => fieldHandler(e, i, 'recipe')}
+                                placeholder={`Step ${i + 1}`}
+                                cols={45}
+                                rows={5}
+                            />
+                            <Button
+                                label='X'
+                                type='button'
+                                onClick={() => handleRemoveField(i, 'recipe')}
+                                disabled={!(recipe.length > 1)}
+                            />
+                        </div>
+                        {errors.recipe?.[i]?._errors && (
+                            <span
+                                key={uuidv4()}
+                                className={styles.errorMessage}
+                            >
+                                {errors.recipe[i]._errors[0]}
+                            </span>
+                        )}
                     </div>
                 ))}
                 <Button

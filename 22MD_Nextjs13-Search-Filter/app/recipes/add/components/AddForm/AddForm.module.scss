@@ -50,10 +50,20 @@
     border-radius: 5px;
 }
 
-.inputWeight{
+.inputWeight {
     width: 100%;
 }
 
-.select{
+.select {
     color: #820000;
+}
+
+.errorMessage {
+    color: red;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
