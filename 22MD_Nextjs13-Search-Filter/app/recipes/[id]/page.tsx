@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Trecipe } from '@/app/types/recipe';
 import PostDelete from './components/PostDelete/PostDelete';
 import styles from './RecipePage.module.scss';
+import Button from '@/app/components/Button/Button';
 
 type TRecipePageProps = {
     params: {id: string}
@@ -34,6 +35,12 @@ const RecipePage = async ({ params }: TRecipePageProps) => {
             <div className={styles.actionWrap}>
                 <Link href={'/recipes'}>
                     <PostDelete id={params.id}/>
+                </Link>
+                <Link href={`/recipes/edit?id=${params.id}`}>
+                    <Button
+                        label='edit'
+                        type='button'
+                    />
                 </Link>
                 <Link
                     href={`/recipes/category/${category}`}

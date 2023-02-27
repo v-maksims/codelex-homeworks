@@ -25,7 +25,7 @@ export default function recipesHandler (req: NextApiRequest, res: NextApiRespons
         }:Trecipe = JSON.parse(body).recipeData;
 
         Recipe.create({
-            title: title.toLocaleLowerCase(),
+            title: title.toLowerCase(),
             ingredients,
             recipe,
             image,
