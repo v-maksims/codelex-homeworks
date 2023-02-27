@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Select, { SingleValue } from 'react-select';
 import { v4 as uuidv4 } from 'uuid';

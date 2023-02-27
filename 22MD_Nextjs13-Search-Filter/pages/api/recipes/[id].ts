@@ -15,8 +15,10 @@ export default function recipeIdHandler (req: NextApiRequest, res: NextApiRespon
         Recipe.findByIdAndDelete(query.id)
             .then(() => res.status(200).json('Recipe deleted success'))
             .catch((error) => res.status(400).send(error));
+    } else if (method === 'PUT') {
+
     } else {
-        res.setHeader('Allow', ['GET', 'DELETE']);
+        res.setHeader('Allow', ['GET', 'DELETE', 'PUT']);
         res.status(405).end(`Method ${method} Not Allowed`);
     }
 }

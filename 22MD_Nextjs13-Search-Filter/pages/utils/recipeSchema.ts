@@ -4,14 +4,19 @@ const recipeSchema = new Schema({
     title: {
         type: String,
         required: true,
+        minLength: 5,
+        maxLength: 100,
     },
     ingredients: [{
         type: String,
         required: true,
+        minLength: 5,
+        maxLength: 100,
     }],
     recipe: [{
         type: String,
-        maxLength: 1000,
+        minLength: 50,
+        maxLength: 800,
     }],
     image: {
         type: String,
@@ -19,6 +24,7 @@ const recipeSchema = new Schema({
     },
     category: {
         type: String,
+        minLength: 1,
     },
 });
 
