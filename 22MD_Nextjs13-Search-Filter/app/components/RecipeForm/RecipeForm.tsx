@@ -84,6 +84,9 @@ const RecipeForm = (props:TRecipeFormProps) => {
                     {errors.image?._errors[0]}
                 </span>
             )}
+            <span className={styles.formText}>
+                Select category:
+            </span>
             <Select
                 id={uuidv4()}
                 className={styles.select}
@@ -96,7 +99,7 @@ const RecipeForm = (props:TRecipeFormProps) => {
                 </span>
             )}
             <div className={styles.addWrap}>
-                <span className={styles.addText}>
+                <span className={styles.formText}>
                     ingredients:
                 </span>
                 <Button
@@ -138,7 +141,9 @@ const RecipeForm = (props:TRecipeFormProps) => {
                 </div>
             ))}
             <div className={styles.addWrap}>
-                <span className={styles.addText}>Recipe steps:</span>
+                <span className={styles.formText}>
+                    Recipe steps:
+                </span>
                 <Button
                     label='add recipe step'
                     type='button'
