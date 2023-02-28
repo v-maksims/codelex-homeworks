@@ -25,6 +25,7 @@ export default function recipeIdHandler (req: NextApiRequest, res: NextApiRespon
             category,
             _id,
         }:Trecipe = JSON.parse(body).recipeData;
+
         Recipe.updateOne({ _id }, {
             $set: {
                 title: title.toLowerCase(),

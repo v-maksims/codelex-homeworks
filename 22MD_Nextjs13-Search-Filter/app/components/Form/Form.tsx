@@ -15,6 +15,7 @@ const Form = (props:TFormProps) => {
         text,
         className,
     } = props;
+
     return (
         <form
             className={className}

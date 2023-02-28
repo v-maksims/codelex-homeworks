@@ -96,7 +96,9 @@ const RecipeForm = (props:TRecipeFormProps) => {
                 </span>
             )}
             <div className={styles.addWrap}>
-                <span className={styles.addText}>ingredients:</span>
+                <span className={styles.addText}>
+                    ingredients:
+                </span>
                 <Button
                     label='add ingredient'
                     type='button'
@@ -108,13 +110,9 @@ const RecipeForm = (props:TRecipeFormProps) => {
                     key={i}
                     className={styles.list}
                 >
-                    <div
-                        className={styles.ingredientWrap}
-                    >
-                        <span
-                            className={styles.ingredientText}
-                        >
-                    #{i + 1}
+                    <div className={styles.ingredientWrap}>
+                        <span className={styles.ingredientText}>
+                            #{i + 1}
                         </span>
                         <div className={styles.inputWeight}>
                             <Input
@@ -133,9 +131,7 @@ const RecipeForm = (props:TRecipeFormProps) => {
                         />
                     </div>
                     {errors.ingredients?.[i]?._errors && (
-                        <span
-                            className={styles.errorMessage}
-                        >
+                        <span className={styles.errorMessage}>
                             {errors.ingredients[i]._errors[0]}
                         </span>
                     )}
@@ -154,12 +150,8 @@ const RecipeForm = (props:TRecipeFormProps) => {
                     key={i}
                     className={styles.list}
                 >
-                    <div
-                        className={styles.recipeWrap}
-                    >
-                        <span
-                            className={styles.recipeText}
-                        >
+                    <div className={styles.recipeWrap}>
+                        <span className={styles.recipeText}>
                             {`Step ${i + 1}`}
                         </span>
                         <textarea
@@ -178,9 +170,7 @@ const RecipeForm = (props:TRecipeFormProps) => {
                         />
                     </div>
                     {errors.recipe?.[i]?._errors && (
-                        <span
-                            className={styles.errorMessage}
-                        >
+                        <span className={styles.errorMessage}>
                             {errors.recipe[i]._errors[0]}
                         </span>
                     )}

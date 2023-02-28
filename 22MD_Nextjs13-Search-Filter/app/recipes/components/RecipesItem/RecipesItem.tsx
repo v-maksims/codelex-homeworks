@@ -17,9 +17,7 @@ const RecipesItem = (props: TRecipesItemProps) => {
                 fill
                 style={{ objectFit: 'cover' }}
             />
-            <span
-                className={styles.title}
-            >
+            <span className={styles.title}>
                 {title}
             </span>
         </div>
