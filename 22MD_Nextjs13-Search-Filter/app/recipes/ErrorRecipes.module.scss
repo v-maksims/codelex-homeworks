@@ -1,0 +1,19 @@
+.errorWrap {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.errorText {
+    color: aliceblue;
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+.errorMessage{
+    color: aliceblue;
+    font-size: 2rem;
+    text-align: center;
+}

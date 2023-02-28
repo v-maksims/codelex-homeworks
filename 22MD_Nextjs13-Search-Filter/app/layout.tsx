@@ -1,9 +1,13 @@
+'use client';
+
 import React from 'react';
 import './globals.scss';
 import { Roboto } from 'next/font/google';
 import Link from 'next/link';
+import { ToastContainer } from 'react-toastify';
 import styles from './layout.module.scss';
 import Search from './components/Search/Search';
+import 'react-toastify/dist/ReactToastify.css';
 
 const roboto = Roboto({
     weight: ['400', '700', '900'],
@@ -40,6 +44,7 @@ export default function RootLayout ({ children }: TRootLayoutProps) {
                 </header>
                 <main className={styles.mainWrap}>
                     {children}
+                    <ToastContainer/>
                 </main>
             </body>
         </html>

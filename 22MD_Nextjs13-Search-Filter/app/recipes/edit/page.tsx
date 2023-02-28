@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import EditForm from './components/EditForm/EditForm';
 import styles from './EditRecipePage.module.scss';
 

@@ -105,11 +105,10 @@ const RecipeForm = (props:TRecipeFormProps) => {
             </div>
             {ingredients.map((ingridient, i) => (
                 <div
-                    key={uuidv4()}
+                    key={i}
                     className={styles.list}
                 >
                     <div
-                        key={i}
                         className={styles.ingredientWrap}
                     >
                         <span
@@ -135,7 +134,6 @@ const RecipeForm = (props:TRecipeFormProps) => {
                     </div>
                     {errors.ingredients?.[i]?._errors && (
                         <span
-                            key={uuidv4()}
                             className={styles.errorMessage}
                         >
                             {errors.ingredients[i]._errors[0]}
@@ -153,11 +151,10 @@ const RecipeForm = (props:TRecipeFormProps) => {
             </div>
             {recipe.map((step, i) => (
                 <div
-                    key={uuidv4()}
+                    key={i}
                     className={styles.list}
                 >
                     <div
-                        key={i}
                         className={styles.recipeWrap}
                     >
                         <span
@@ -182,7 +179,6 @@ const RecipeForm = (props:TRecipeFormProps) => {
                     </div>
                     {errors.recipe?.[i]?._errors && (
                         <span
-                            key={uuidv4()}
                             className={styles.errorMessage}
                         >
                             {errors.recipe[i]._errors[0]}
