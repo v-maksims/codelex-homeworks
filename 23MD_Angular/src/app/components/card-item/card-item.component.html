@@ -1,0 +1,10 @@
+<!-- *ngIf="selected ? priceService.add(+price) : priceService.subtract(+price)" -->
+<div 
+    class="card-item__wrap" 
+    (click)="selected = !selected"
+    [ngStyle]="selected ? {'background-color': '#32943a'} : {'background-color': '#fd6868'}"
+>
+
+    <span class="card-item__title">{{ title | titlecase }}</span>
+    <span class="card-item__price">{{ price | currency }}</span>
+</div>
