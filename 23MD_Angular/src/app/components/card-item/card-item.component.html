@@ -1,7 +1,7 @@
 <!-- *ngIf="selected ? priceService.add(+price) : priceService.subtract(+price)" -->
 <div 
     class="card-item__wrap" 
-    (click)="selected = !selected"
+    (click)="clickHandler()"
     [ngStyle]="selected ? {'background-color': '#32943a'} : {'background-color': '#fd6868'}"
 >
 

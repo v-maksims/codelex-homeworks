@@ -7,10 +7,19 @@ import { PriceService } from 'src/app/services/price.service';
   styleUrls: ['./card-item.component.scss']
 })
 export class CardItemComponent {
-  constructor(public priceService:PriceService){}
-  
+  constructor(public priceService: PriceService) { }
+
   @Input() title: string
   @Input() price: string
 
   selected = false
+
+  clickHandler() {
+    this.selected = !this.selected
+    if (this.selected) {
+      return this.priceService.add(+this.price)
+    }
+    this.priceService.subtract(+this.price)
+
+  }
 }

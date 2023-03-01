@@ -4,3 +4,17 @@
     margin: 0 auto;
     padding: 10px;
 }
+
+.services__total-wrap{
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid grey;
+    padding-top: 10px;
+}
+.services__total-text,
+.services__total-price{
+    color: aliceblue;
+    font-weight: 900;
+    font-size: 2rem;
+    text-transform: capitalize;
+}

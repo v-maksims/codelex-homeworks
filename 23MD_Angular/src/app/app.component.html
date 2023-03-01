@@ -4,5 +4,9 @@
     <app-card-item title="design" price="400"></app-card-item>
     <app-card-item title="integration" price="250"></app-card-item>
     <app-card-item title="training" price="220"></app-card-item>
+    <div class="services__total-wrap">
+      <span class="services__total-text">total:</span>
+      <span class="services__total-price">{{priceService.price$ | async | currency}}</span>
+    </div>
   </app-card-list>
 </div>
