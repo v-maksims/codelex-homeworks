@@ -3,7 +3,8 @@
     <app-card-item 
       *ngFor="let service of services" 
       [title]="service.title" 
-      [price]="service.price"></app-card-item>
+      [price]="service.price"
+    ></app-card-item>
     <div class="services__total-wrap">
       <span class="services__total-text">total:</span>
       <span class="services__total-price">{{priceService.price$ | async | currency}}</span>
