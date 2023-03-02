@@ -1,9 +1,9 @@
 <div class="container">
-  <app-card-list title="services">
-    <app-card-item title="web development" price="300"></app-card-item>
-    <app-card-item title="design" price="400"></app-card-item>
-    <app-card-item title="integration" price="250"></app-card-item>
-    <app-card-item title="training" price="220"></app-card-item>
+  <app-card-list title="services" >
+    <app-card-item 
+      *ngFor="let service of services" 
+      [title]="service.title" 
+      [price]="service.price"></app-card-item>
     <div class="services__total-wrap">
       <span class="services__total-text">total:</span>
       <span class="services__total-price">{{priceService.price$ | async | currency}}</span>

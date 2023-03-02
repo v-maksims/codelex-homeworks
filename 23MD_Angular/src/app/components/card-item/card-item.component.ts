@@ -10,7 +10,7 @@ export class CardItemComponent {
   constructor(public priceService: PriceService) { }
 
   @Input() title: string
-  @Input() price: string
+  @Input() price: number
 
   selected = false
 
