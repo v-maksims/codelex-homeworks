@@ -1,0 +1,40 @@
+<form class="form__wrapper" [formGroup]="animalForm" (ngSubmit)="submit()">
+    <label class="form__field-wrap">
+        <input 
+            class="form__input" 
+            type="text" 
+            formControlName="name"
+            placeholder="Animal name..."
+        >
+        <span 
+            *ngIf="getControl('name')?.invalid && getControl('name')?.touched" 
+            class="form__field-invalid"
+        >
+            Minimum 3 characters
+        </span>
+    </label>
+    <label class="form__field-wrap">
+        <select class="form__select" formControlName="category">
+            <option value="" disabled selected>select category</option>
+            <option 
+                *ngFor="let category of categories" 
+                [value]="category"
+            >
+                {{category}}
+            </option>
+        </select>
+        <span 
+            *ngIf="getControl('category')?.invalid && getControl('category')?.touched" 
+            class="form__field-invalid"
+        >
+            Select one of category
+        </span>
+    </label>
+    <button 
+        type="submit" 
+        class="form__button" 
+        [disabled]="animalForm.invalid"
+    >
+        add
+    </button>
+</form>

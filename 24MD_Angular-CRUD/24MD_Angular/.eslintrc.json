@@ -25,6 +25,7 @@
         "class-methods-use-this": "off",
         "import/extensions": "off",
         "no-return-assign": "off",
+        "@typescript-eslint/no-empty-function": "off",
         "@angular-eslint/directive-selector": [
           "error",
           {

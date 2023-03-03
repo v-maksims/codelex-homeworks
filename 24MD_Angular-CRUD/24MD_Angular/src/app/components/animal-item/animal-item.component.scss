@@ -1,0 +1,25 @@
+.animal-item__wrap {
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid black;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f0cf72;
+}
+
+.animal-item__category {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: #f0b23f;
+    cursor: default;
+}
+
+.animal-item__icon {
+    cursor: pointer;
+}
