@@ -20,7 +20,7 @@ export class FormComponent {
 
     @Output() animalSubmitted:EventEmitter<Omit<TAnimal, '_id'>> = new EventEmitter();
 
-    submit () {
+    submitForm () {
         this.animalSubmitted.emit({
             category: String(this.animalForm.value.category),
             name: String(this.animalForm.value.name),

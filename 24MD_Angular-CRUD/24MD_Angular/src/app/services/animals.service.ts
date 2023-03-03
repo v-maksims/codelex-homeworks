@@ -19,12 +19,6 @@ export class AnimalsService {
       private errorService: ErrorService,
     ) {}
 
-    getAllAnimals () {
-        return this.http
-            .get<TAnimal[]>('http://localhost:3004/animals')
-            .pipe(catchError(this.errorHandler.bind(this)));
-    }
-
     deleteAnimal (id: string) {
         return this.http
             .delete(`http://localhost:3004/animals/${id}`)
@@ -34,6 +28,12 @@ export class AnimalsService {
     postAnimal (data:Omit<TAnimal, '_id'>) {
         return this.http
             .post<TAnimal>('http://localhost:3004/animals', data)
+            .pipe(catchError(this.errorHandler.bind(this)));
+    }
+
+    getAnimalByCategory (category: string) {
+        return this.http
+            .get<TAnimal[]>(`http://localhost:3004/animals/category/${category}`)
             .pipe(catchError(this.errorHandler.bind(this)));
     }
 

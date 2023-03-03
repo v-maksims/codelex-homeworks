@@ -14,9 +14,11 @@ export class AppComponent implements OnInit {
 
     loading = false;
 
+    category = 'cat';
+
     ngOnInit () {
         this.loading = true;
-        this.animals$ = this.animalsService.getAllAnimals().pipe(
+        this.animals$ = this.animalsService.getAnimalByCategory(this.category).pipe(
             tap(() => this.loading = false),
         );
     }
@@ -27,5 +29,10 @@ export class AppComponent implements OnInit {
 
     postAnimal (data:Omit<TAnimal, '_id'>) {
         this.animalsService.postAnimal(data).subscribe(() => this.ngOnInit());
+    }
+
+    categoryHandler (switchValue: boolean) {
+        this.category = switchValue ? 'cat' : 'dog';
+        this.ngOnInit();
     }
 }

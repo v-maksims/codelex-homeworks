@@ -29,6 +29,14 @@ app.get("/animals", (req: Request, res: Response) => {
     .catch((err) => res.send(err));
 });
 
+app.get("/animals/category/:category", (req: Request, res: Response) => {
+  const animalCategory = req.params.category;
+  animals
+    .find({ category: animalCategory })
+    .then((data) => res.json(data))
+    .catch((err) => res.send(err));
+});
+
 app.delete("/animals/:id", (req: Request, res: Response) => {
   const animalID = req.params.id;
   animals
