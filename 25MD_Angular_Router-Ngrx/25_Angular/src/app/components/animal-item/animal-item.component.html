@@ -1,0 +1,5 @@
+<div class="animal-item__wrap">
+    <span class="animal-item__category">{{ category | uppercase }}</span>
+    <span>{{ name | uppercase }}</span>
+    <mat-icon (click)="deleteHandler.emit()" class="animal-item__icon">delete_forever</mat-icon>
+</div>

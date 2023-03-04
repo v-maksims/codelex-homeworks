@@ -1,0 +1,12 @@
+<div class="switch__wrap">
+    <span class="switch__text">Show {{isChecked ? 'cats' : 'dogs'}}</span>
+    <label class="switch">
+        <input 
+            class="switch__input" 
+            type="checkbox" 
+            [checked]="isChecked" 
+            (change)="switchHandler()"
+        >
+        <span class="switch__slider"></span>
+    </label>
+</div>
