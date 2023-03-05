@@ -21,6 +21,10 @@ import { todoReducer } from './store/todo/todo.reducer';
 import { ListComponent } from './components/list/list.component';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { TodoFormComponent } from './components/todo-form/todo-form.component';
+import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { MovieItemComponent } from './components/movie-item/movie-item.component';
+import { MovieFormComponent } from './components/movie-form/movie-form.component';
+import { movieReducer } from './store/movie/movie.reducer';
 
 @NgModule({
     declarations: [
@@ -37,6 +41,9 @@ import { TodoFormComponent } from './components/todo-form/todo-form.component';
         ListComponent,
         TodoItemComponent,
         TodoFormComponent,
+        MovieListComponent,
+        MovieItemComponent,
+        MovieFormComponent,
     ],
     imports: [
         BrowserModule,
@@ -45,7 +52,10 @@ import { TodoFormComponent } from './components/todo-form/todo-form.component';
         BrowserAnimationsModule,
         MatIconModule,
         ReactiveFormsModule,
-        StoreModule.forRoot({ todo: todoReducer }),
+        StoreModule.forRoot({
+            todo: todoReducer,
+            movie: movieReducer,
+        }),
         FormsModule,
     ],
     providers: [],

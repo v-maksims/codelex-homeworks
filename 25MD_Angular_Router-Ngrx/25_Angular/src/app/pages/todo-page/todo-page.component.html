@@ -1,4 +1,4 @@
-<div *ngIf="todo$ | async as todos">
+<div *ngIf="todos$ | async as todos">
     <div class="todo-page__todos">
         <app-todo-form (todoSubmitted)="create($event)"/>
         <app-list>
@@ -13,7 +13,7 @@
                 *ngIf="todos.length === 0"
             >
                 <span class="todo-page__empty">
-                    empty
+                    empty todo list
                 </span>
             </div>
         </app-list>

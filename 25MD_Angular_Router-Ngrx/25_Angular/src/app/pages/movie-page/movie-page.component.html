@@ -1,1 +1,8 @@
-<p>movie-page works!</p>
+<div *ngIf="movies$ | async as movies">
+    <app-movie-list>
+        <app-movie-item 
+            *ngFor="let movie of movies"
+            [movie]="movie"
+        />
+    </app-movie-list>
+</div>

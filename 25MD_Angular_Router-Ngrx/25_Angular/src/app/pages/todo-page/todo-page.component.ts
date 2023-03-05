@@ -10,10 +10,10 @@ import { create, deleteTodo } from '../../store/todo/todo.actions';
     styleUrls: ['./todo-page.component.scss'],
 })
 export class TodoPageComponent {
-    todo$: Observable<TTodo[]>;
+    todos$: Observable<TTodo[]>;
 
     constructor (private store: Store<{ todo: TTodo[] }>) {
-        this.todo$ = store.select('todo');
+        this.todos$ = store.select('todo');
     }
 
     create (title: string) {
