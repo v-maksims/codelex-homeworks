@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { AnimalsService, TAnimal } from 'src/app/services/animals.service';
 
@@ -7,7 +7,7 @@ import { AnimalsService, TAnimal } from 'src/app/services/animals.service';
     templateUrl: './animals-page.component.html',
     styleUrls: ['./animals-page.component.scss'],
 })
-export class AnimalsPageComponent {
+export class AnimalsPageComponent implements OnInit {
     constructor (private animalsService: AnimalsService) {}
 
     animals$: Observable<TAnimal[]>;

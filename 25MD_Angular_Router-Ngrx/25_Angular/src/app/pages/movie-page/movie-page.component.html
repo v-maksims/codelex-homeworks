@@ -1,3 +1,6 @@
+<app-modal *ngIf="modalService.isVisible$ | async">
+    <app-movie-form (movieSubmit)="create($event)"></app-movie-form>
+</app-modal>
 <div *ngIf="movies$ | async as movies">
     <app-movie-list>
         <app-movie-item 
@@ -6,3 +9,8 @@
         />
     </app-movie-list>
 </div>
+<button
+    class="movie-page__button"
+    (click)="modalService.open()"
+>+</button>
+    

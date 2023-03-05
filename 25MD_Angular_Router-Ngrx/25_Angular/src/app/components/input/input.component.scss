@@ -1,0 +1,20 @@
+.input__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.input__label {
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding-left: 15px;
+}
+
+.input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    font-size: 1.25rem;
+}
