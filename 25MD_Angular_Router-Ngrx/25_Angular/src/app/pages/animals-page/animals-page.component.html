@@ -1,14 +1,14 @@
 <div>
-    <div class="list__wrap">
-        <app-animal-list>
-          <app-switch (switchValue)="categoryHandler($event)"></app-switch>
-          <app-form (animalSubmitted)="postAnimal($event)" ></app-form>
-          <app-animal-item 
-            *ngFor="let animal of animals$ | async" 
-            (deleteHandler)="deleteAnimal(animal._id)"
-            [category]="animal.category" 
-            [name]="animal.name"
-          ></app-animal-item>
-        </app-animal-list>
-      </div>
+  <div class="list__wrap">
+    <app-list>
+      <app-switch (switchValue)="categoryHandler($event)"></app-switch>
+      <app-animal-form (animalSubmitted)="postAnimal($event)"></app-animal-form>
+      <app-animal-item 
+        *ngFor="let animal of animals$ | async" 
+        (deleteHandler)="deleteAnimal(animal._id)"
+        [category]="animal.category" 
+        [name]="animal.name"
+      ></app-animal-item>
+    </app-list>
+  </div>
 </div>

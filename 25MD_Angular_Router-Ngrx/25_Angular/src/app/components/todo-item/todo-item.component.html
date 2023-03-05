@@ -1,0 +1,8 @@
+<div class="todo-item__wrap">
+    <div>
+        <input class="todo-item__checkbox" [id]="id" type="checkbox" [checked]="completed">
+        <label class="todo-item__checkbox-fake" [for]="id"></label>
+    </div>
+    <span class="todo-item__text">{{ todo }}</span>
+    <mat-icon (click)="deleteHandler.emit()" class="todo-item__icon">highlight_off</mat-icon>
+</div>

@@ -1,1 +1,21 @@
-<p>todo-page works!</p>
+<div *ngIf="todo$ | async as todos">
+    <div class="todo-page__todos">
+        <app-todo-form (todoSubmitted)="create($event)"/>
+        <app-list>
+            <app-todo-item
+                *ngFor="let todo of todos, index as i"
+                (deleteHandler)="delete(i)"
+                [todo]="todo.title"
+                [completed]="todo.completed"
+                [id]="i"
+            ></app-todo-item>
+            <div 
+                *ngIf="todos.length === 0"
+            >
+                <span class="todo-page__empty">
+                    empty
+                </span>
+            </div>
+        </app-list>
+    </div>
+</div>

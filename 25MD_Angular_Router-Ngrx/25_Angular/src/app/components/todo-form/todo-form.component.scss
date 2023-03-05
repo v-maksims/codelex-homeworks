@@ -1,0 +1,52 @@
+.form__wrapper {
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.form__input,
+.form__button {
+    border: 1px solid grey;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 1.25rem;
+
+    &.ng-invalid.ng-touched {
+        border: 1px solid red;
+    }
+}
+
+.form__input {
+    background-color: #d5e1c7;
+    max-width: 200px;
+    width: 100%;
+}
+
+
+.form__button {
+    background-color: #4da8bc;
+    text-transform: uppercase;
+    transition: scale .2s;
+    cursor: pointer;
+
+    &:hover {
+        scale: .85;
+    }
+
+    &:disabled{
+        scale: 100%;
+        cursor: not-allowed;
+    }
+}
+
+.form__field-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form__field-invalid{
+    color: red;
+    font-size: 1.25rem;
+}
