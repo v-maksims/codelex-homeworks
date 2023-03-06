@@ -30,11 +30,8 @@
             Select one of category
         </span>
     </label>
-    <button 
-        type="submit" 
-        class="form__button" 
+    <app-button
         [disabled]="animalForm.invalid"
-    >
-        add
-    </button>
+        label="add"
+    />
 </form>

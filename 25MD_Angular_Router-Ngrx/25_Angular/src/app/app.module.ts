@@ -6,6 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SwitchComponent } from './components/switch/switch.component';
@@ -28,6 +29,7 @@ import { movieReducer } from './store/movie/movie.reducer';
 import { ModalComponent } from './components/modal/modal.component';
 import { InputComponent } from './components/input/input.component';
 import { ButtonComponent } from './components/button/button.component';
+import { MovieEffects } from './store/movie/movie.effects';
 
 @NgModule({
     declarations: [
@@ -63,6 +65,7 @@ import { ButtonComponent } from './components/button/button.component';
             movie: movieReducer,
         }),
         FormsModule,
+        EffectsModule.forRoot([MovieEffects]),
     ],
     providers: [],
     bootstrap: [AppComponent],

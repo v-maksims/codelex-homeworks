@@ -13,11 +13,8 @@
             Minimum 3 characters
         </span>
     </label>
-    <button 
-        type="submit" 
-        class="form__button" 
+    <app-button
         [disabled]="todoForm.invalid"
-    >
-        add
-    </button>
+        label="add"
+    />
 </form>

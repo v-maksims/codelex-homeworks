@@ -29,6 +29,7 @@
         "@angular-eslint/use-lifecycle-interface": "off",
         "no-underscore-dangle": "off",
         "no-useless-escape": "off",
+        "guard-for-in": "off",
         "@angular-eslint/directive-selector": [
           "error",
           {
