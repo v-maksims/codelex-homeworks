@@ -1,0 +1,17 @@
+.global-error__wrap{
+    width: 100%;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    padding: 5px;
+}
+
+.global-error__text{
+    font-size: 1.25rem;
+}
+
+.global-error__icon{
+    cursor: pointer;
+}

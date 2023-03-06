@@ -1,3 +1,4 @@
-<div>
-    <span>{{errorService.error$ | async}}</span>
+<div class="global-error__wrap" *ngIf="errorService.error$ | async as error">
+    <span class="global-error__text">{{error}}</span>
+    <mat-icon class="global-error__icon" (click)="errorService.clear()">highlight_off</mat-icon>
 </div>

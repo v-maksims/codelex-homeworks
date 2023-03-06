@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AnimalsService, TAnimal } from 'src/app/services/animals.service';
 
 @Component({
@@ -12,15 +12,10 @@ export class AnimalsPageComponent implements OnInit {
 
     animals$: Observable<TAnimal[]>;
 
-    loading = false;
-
     category = 'cat';
 
     ngOnInit () {
-        this.loading = true;
-        this.animals$ = this.animalsService.getAnimalByCategory(this.category).pipe(
-            tap(() => this.loading = false),
-        );
+        this.animals$ = this.animalsService.getAnimalByCategory(this.category);
     }
 
     deleteAnimal (id: string) {

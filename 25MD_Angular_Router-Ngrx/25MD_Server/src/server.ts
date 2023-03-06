@@ -5,17 +5,8 @@ import cors from "cors";
 import mongoose from "mongoose";
 import animals from "./schema/animals";
 import movies from "./schema/movies";
-
-type TAnimal = {
-  image: string;
-  category: string;
-};
-
-type TMovie = {
-  title: string;
-  image: string;
-  year: number;
-};
+import { TAnimal } from "./types/animal";
+import { TMovie } from "./types/movie";
 
 mongoose.set("strictQuery", false);
 mongoose.connect("mongodb://localhost:27017/angular-25md");
@@ -49,25 +40,25 @@ app.post("/movies", (req: Request<any, any, TMovie>, res: Response) => {
 // Animals
 
 app.get("/animals/category/:category", (req: Request, res: Response) => {
-  const animalCategory = req.params.category;
+  const { params } = req;
   animals
-    .find({ category: animalCategory })
+    .find({ category: params.category })
     .then((data) => res.json(data))
     .catch((err) => res.send(err));
 });
 
 app.delete("/animals/:id", (req: Request, res: Response) => {
-  const animalID = req.params.id;
+  const { params } = req;
   animals
-    .deleteOne({ _id: animalID })
+    .deleteOne({ _id: params.id })
     .then(() => res.json("success delete"))
     .catch((err) => res.send(err));
 });
 
 app.post("/animals", (req: Request<any, any, TAnimal>, res: Response) => {
-  const animalBody = req.body;
+  const { body } = req;
   animals
-    .create(animalBody)
+    .create(body)
     .then((data) => res.json(data))
     .catch((err) => res.send(err));
 });

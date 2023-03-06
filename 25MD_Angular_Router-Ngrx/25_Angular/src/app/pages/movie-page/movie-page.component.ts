@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ModalService } from 'src/app/services/modal.service';
-import { MovieService } from 'src/app/services/movie.service';
 import { createMovie, loadMovies } from 'src/app/store/movie/movie.actions';
 import { TMovie } from 'src/app/types/movie';
 
@@ -17,7 +16,6 @@ export class MoviePageComponent implements OnInit {
     constructor (
       private store: Store<{movie: TMovie[]}>,
       public modalService: ModalService,
-      private movieService: MovieService,
     ) {}
 
     ngOnInit () {

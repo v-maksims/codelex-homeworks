@@ -6,8 +6,7 @@
 </h1>
 <p class="movie-page__paragraph">
     Below you will find a selection of movies that we highly recommend for your viewing pleasure. Each movie is accompanied by its title and year of issue, as well as a striking image to give you a sneak peek of what to expect.
-    <br>
-    It is also possible to add a movie
+    It is also possible to add a new movie
 </p>
 <div *ngIf="movies$ | async as movies">
     <app-movie-list>
@@ -16,9 +15,17 @@
             [movie]="movie"
         />
     </app-movie-list>
+    <span 
+        class="movie-page__empty"
+        *ngIf="!movies.length"
+    >
+        No movies yet, you can add
+    </span>
 </div>
 <button
     class="movie-page__button"
     (click)="modalService.open()"
->+</button>
+>
+    +
+</button>
     

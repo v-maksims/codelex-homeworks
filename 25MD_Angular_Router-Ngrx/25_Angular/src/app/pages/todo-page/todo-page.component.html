@@ -10,7 +10,7 @@
                 [id]="i"
             ></app-todo-item>
             <div 
-                *ngIf="todos.length === 0"
+                *ngIf="!todos.length"
             >
                 <span class="todo-page__empty">
                     empty todo list

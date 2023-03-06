@@ -3,7 +3,10 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, mergeMap } from 'rxjs/operators';
 import { MovieService } from 'src/app/services/movie.service';
 import {
-    createMovie, createMovieSuccess, loadMovies, loadMoviesSuccess,
+    createMovie,
+    createMovieSuccess,
+    loadMovies,
+    loadMoviesSuccess,
 } from './movie.actions';
 
 @Injectable()
