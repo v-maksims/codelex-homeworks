@@ -6,7 +6,7 @@ import { FormControl } from '@angular/forms';
     templateUrl: './input.component.html',
     styleUrls: ['./input.component.scss'],
 })
-export class InputComponent implements OnInit {
+export class InputComponent {
   @Input() inputId = '';
 
   @Input() control = new FormControl();
@@ -15,7 +15,5 @@ export class InputComponent implements OnInit {
 
   @Input() type = 'text';
 
-  ngOnInit () {
-      throw new Error('Method not implemented.');
-  }
+  @Input() placeholder = '';
 }

@@ -26,7 +26,7 @@ export class MovieFormComponent {
         ]),
         image: new FormControl('', [
             Validators.required,
-            Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?'),
+            Validators.pattern(/https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)/g),
         ]),
     });
 
@@ -40,9 +40,5 @@ export class MovieFormComponent {
             year: Number(this.movieForm.value.year),
         });
         this.movieForm.reset();
-    }
-
-    getControl (control: string) {
-        return this.movieForm.get(control);
     }
 }

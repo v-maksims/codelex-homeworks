@@ -1,14 +1,30 @@
 <div class="movie-form__wrap">
     <h4 class="movie-form__title">add movie</h4>
-    <form 
-        class="movie-form__form"
-        [formGroup]="movieForm"
-        (ngSubmit)="onSubmit()"
-    >
-    <app-input [control]="movieForm.controls.title" label="title" inputId="1" type="text" controlText="title"></app-input>
-    <app-input [control]="movieForm.controls.year" label="year" inputId="2" type="number" controlText="year"></app-input>
-    <app-input [control]="movieForm.controls.image" label="image" inputId="3" type="text" controlText="image"></app-input>
-    
-    <button class="movie-form__button" [disabled]="movieForm.invalid">add</button>
+    <form class="movie-form__form" [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+        <app-input 
+            label="title" 
+            [control]="movieForm.controls.title" 
+            inputId="1" 
+            type="text"
+            placeholder="Movie title..."
+        />
+        <app-input 
+            label="year" 
+            [control]="movieForm.controls.year" 
+            inputId="2" 
+            type="number"
+            placeholder="Year of issue..."
+        />
+        <app-input 
+            label="image" 
+            [control]="movieForm.controls.image" 
+            inputId="3" 
+            type="text"
+            placeholder="Movie image URL..."
+        />
+        <app-button 
+            label="create" 
+            [disabled]="movieForm.invalid"
+        />
     </form>
 </div>

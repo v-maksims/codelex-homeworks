@@ -22,24 +22,4 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    align-items: center;
-}
-
-.movie-form__button{
-    text-transform: uppercase;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid grey;
-    font-size: 1.25rem;
-    transition: scale .2s;
-    background-color: rgb(132, 132, 240);
-    cursor: pointer;
-
-    &:hover{
-        scale: .80;
-    }
-
-    &:disabled{
-        cursor: not-allowed;
-    }
 }

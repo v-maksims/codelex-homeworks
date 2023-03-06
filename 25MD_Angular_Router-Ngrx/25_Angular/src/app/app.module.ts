@@ -27,6 +27,7 @@ import { MovieFormComponent } from './components/movie-form/movie-form.component
 import { movieReducer } from './store/movie/movie.reducer';
 import { ModalComponent } from './components/modal/modal.component';
 import { InputComponent } from './components/input/input.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
     declarations: [
@@ -48,6 +49,7 @@ import { InputComponent } from './components/input/input.component';
         MovieFormComponent,
         ModalComponent,
         InputComponent,
+        ButtonComponent,
     ],
     imports: [
         BrowserModule,
