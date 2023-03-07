@@ -1,18 +1,16 @@
 <template>
     <div class="mt-5 mb-5">
         <h1 class="text-white text-center fw-bold text-capitalize">Random programming jokes</h1>
-        <div class="row">
-            <div v-for="joke in jokes">
-                <JokeItem :joke="joke" />
-            </div>
-        </div>
-        <button type="button" class="btn btn-primary mt-2 text-capitalize" @click="fetchJokes">New jokes</button>
+        <JokeList :jokes="jokes">
+            <button type="button" class="btn btn-secondary col-2 text-capitalize" @click="onClick">add to favorite</button>
+        </JokeList>
+        <button type="button" class="btn btn-primary mt-2 text-capitalize" @click="getJokes">New jokes</button>
     </div>
 </template>
 
 <script lang="ts">
 import axios from 'axios';
-import JokeItem from '@/components/JokeItem/JokeItem.vue';
+import JokeList from '@/components/JokeList/JokeList.vue';
 
 type TFlags = {
     nsfw: boolean;
@@ -23,7 +21,7 @@ type TFlags = {
     explicit: boolean;
 }
 
-export type TJoke = {
+type TJoke = {
     category: string;
     type: string;
     joke: string;
@@ -39,12 +37,19 @@ type TFetchJokes = {
     error: boolean;
 }
 
+
+type TPostJoke = {
+    joke: string;
+    category: string;
+}
+
+
 export default {
     components: {
-        JokeItem
+        JokeList
     },
     mounted (){
-        this.fetchJokes();
+        this.getJokes();
     },
     data () {
         return{
@@ -52,10 +57,16 @@ export default {
         };
     },
     methods:{
-        fetchJokes () {
+        getJokes () {
             axios.get<TFetchJokes>('https://v2.jokeapi.dev/joke/Programming?type=single&amount=10')
                 .then(({ data }) => this.jokes = data.jokes)
                 .catch((err) => console.log(err));
+        },
+        postJokes (joke: TPostJoke) {
+            axios.post('http://localhost:3004/jokes', joke);
+        },
+        onClick () {
+            console.log('tap');
         }
     }
 };

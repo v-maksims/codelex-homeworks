@@ -4,7 +4,7 @@
         <div class="card col-7">
             <span>{{ joke.joke }}</span>
         </div>
-        <button type="button" class="btn btn-secondary col-2 text-capitalize" @click="onClick">add to favorite</button>
+        <slot></slot>
     </div>
 </template>
 
@@ -44,9 +44,7 @@ export default {
         };
     },
     methods: {
-        onClick () {
-            console.log(this.joke.id);
-        }
+        
     }
 };
 
