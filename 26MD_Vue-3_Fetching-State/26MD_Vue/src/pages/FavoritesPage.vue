@@ -6,12 +6,7 @@
 <script lang="ts">
 import axios from 'axios';
 import JokeList from '@/components/JokeList/JokeList.vue';
-
-type TFavoriteJoke = {
-    category: string;
-    joke: string;
-    _id: string;
-}
+import { TFavoriteJoke } from '@/pages/JokesPage.vue';
 
 export default {
     components: {
@@ -48,5 +43,4 @@ export default {
         }
     }
 };
-
 </script>

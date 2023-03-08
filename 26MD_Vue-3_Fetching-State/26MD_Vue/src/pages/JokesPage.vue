@@ -19,6 +19,12 @@ type TFlags = {
     explicit: boolean;
 }
 
+type TFetchJokes = {
+    amount: number;
+    jokes: TJoke[];
+    error: boolean;
+}
+
 export type TJoke = {
     category: string;
     type: string;
@@ -30,19 +36,11 @@ export type TJoke = {
     _id?: string;
 }
 
-type TFetchJokes = {
-    amount: number;
-    jokes: TJoke[];
-    error: boolean;
-}
-
-
 export type TFavoriteJoke = {
     joke: string;
     category: string;
     _id?: string;
 }
-
 
 export default {
     components: {
