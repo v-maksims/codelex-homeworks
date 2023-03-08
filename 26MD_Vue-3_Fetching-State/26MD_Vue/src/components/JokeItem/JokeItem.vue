@@ -9,34 +9,9 @@
 </template>
 
 <script lang="ts">
-
 import { PropType } from 'vue';
-
-type TFavoriteJoke = {
-    category: string;
-    joke: string;
-    _id: string;
-}
-
-type TFlags = {
-    nsfw: boolean;
-    religious: boolean;
-    political: boolean;
-    racist: boolean;
-    sexist: boolean;
-    explicit: boolean;
-}
-
-type TJoke = {
-    category: string;
-    type: string;
-    joke: string;
-    flags: TFlags;
-    id: number;
-    safe: boolean;
-    lang: string;
-    _id?: string
-}
+import { TJoke } from '@/pages/JokesPage.vue';
+import { TFavoriteJoke } from '@/pages/JokesPage.vue';
 
 export default {
     props: {

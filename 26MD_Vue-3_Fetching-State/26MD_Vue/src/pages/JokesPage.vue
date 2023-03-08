@@ -19,7 +19,7 @@ type TFlags = {
     explicit: boolean;
 }
 
-type TJoke = {
+export type TJoke = {
     category: string;
     type: string;
     joke: string;
@@ -27,6 +27,7 @@ type TJoke = {
     id: number;
     safe: boolean;
     lang: string;
+    _id?: string;
 }
 
 type TFetchJokes = {
@@ -36,7 +37,7 @@ type TFetchJokes = {
 }
 
 
-type TPostJoke = {
+export type TFavoriteJoke = {
     joke: string;
     category: string;
     _id?: string;
@@ -61,7 +62,7 @@ export default {
                 .then(({ data }) => this.jokes = data.jokes)
                 .catch((err) => console.log(err));
         },
-        addTofavorite (joke: TPostJoke) {
+        addTofavorite (joke: TFavoriteJoke) {
             axios
                 .post<{joke: string, categoty: string}>('http://localhost:3004/jokes', joke)
                 .then(({ status }) => status === 201 && console.log('Joke success added to your favorites'))

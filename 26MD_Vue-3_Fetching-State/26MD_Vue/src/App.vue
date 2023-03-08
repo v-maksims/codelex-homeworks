@@ -1,28 +1,22 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
   <header>
-    <nav class="navbar navbar-expand-lg bg-secondary">
-      <div class="container-xxl">
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <RouterLink class="nav-link fs-4 fw-bold" to="/">Home</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink class="nav-link fs-4 fw-bold" to="/jokes">Jokes</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink class="nav-link fs-4 fw-bold" to="/favorites">Favorites</RouterLink>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <NavigationList/>
   </header>
   <main class="container">
       <RouterView />
   </main>
 </template>
+
+<script lang="ts">
+import NavigationList from '@/components/NavigationList/NavigationList.vue';
+
+export default {
+    components: {
+        NavigationList
+    }
+};
+</script>

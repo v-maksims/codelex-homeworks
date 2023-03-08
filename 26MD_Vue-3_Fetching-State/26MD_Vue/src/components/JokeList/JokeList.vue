@@ -8,31 +8,10 @@
 
 <script lang="ts">
 import { PropType } from 'vue';
+import { TJoke } from '@/pages/JokesPage.vue';
+import { TFavoriteJoke } from '@/pages/JokesPage.vue';
+
 import JokeItem from '../JokeItem/JokeItem.vue';
-type TFavoriteJoke = {
-    category: string;
-    joke: string;
-    _id: string;
-}
-
-type TFlags = {
-    nsfw: boolean;
-    religious: boolean;
-    political: boolean;
-    racist: boolean;
-    sexist: boolean;
-    explicit: boolean;
-}
-
-type TJoke = {
-    category: string;
-    type: string;
-    joke: string;
-    flags: TFlags;
-    id: number;
-    safe: boolean;
-    lang: string;
-}
 
 export default {
     components: {
@@ -49,7 +28,7 @@ export default {
         }
     },
     methods: {
-        onClick (joke: {joke: string, categoty: string, _id: string}) {
+        onClick (joke: TFavoriteJoke) {
             this.$emit('joke', joke);
         }
     }
