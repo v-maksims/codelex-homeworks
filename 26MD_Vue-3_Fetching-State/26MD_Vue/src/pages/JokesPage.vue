@@ -1,9 +1,7 @@
 <template>
     <div class="mt-5 mb-5">
         <h1 class="text-white text-center fw-bold text-capitalize">Random programming jokes</h1>
-        <JokeList :jokes="jokes">
-            <button type="button" class="btn btn-secondary col-2 text-capitalize" @click="onClick">add to favorite</button>
-        </JokeList>
+        <JokeList :label="'add to favorite'" :jokes="jokes" @joke="addTofavorite"/>  
         <button type="button" class="btn btn-primary mt-2 text-capitalize" @click="getJokes">New jokes</button>
     </div>
 </template>
@@ -41,6 +39,7 @@ type TFetchJokes = {
 type TPostJoke = {
     joke: string;
     category: string;
+    _id?: string;
 }
 
 
@@ -62,11 +61,17 @@ export default {
                 .then(({ data }) => this.jokes = data.jokes)
                 .catch((err) => console.log(err));
         },
-        postJokes (joke: TPostJoke) {
-            axios.post('http://localhost:3004/jokes', joke);
-        },
-        onClick () {
-            console.log('tap');
+        addTofavorite (joke: TPostJoke) {
+            axios
+                .post<{joke: string, categoty: string}>('http://localhost:3004/jokes', joke)
+                .then(({ status }) => status === 201 && console.log('Joke success added to your favorites'))
+                .catch(({ request }) => {
+                    if(request.status === 409){
+                        console.log('Joke exist in your favorites');
+                        return;
+                    }
+                    console.log('Something went wrong');
+                });
         }
     }
 };

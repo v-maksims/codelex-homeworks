@@ -1,9 +1,7 @@
 <template>
     <div class="row">
         <div v-for="joke in jokes">
-            <JokeItem :joke="joke">
-                <slot></slot>
-            </JokeItem>
+            <JokeItem :label="label" :joke="joke" @joke="onClick"/>
         </div>
     </div>
 </template>
@@ -11,6 +9,11 @@
 <script lang="ts">
 import { PropType } from 'vue';
 import JokeItem from '../JokeItem/JokeItem.vue';
+type TFavoriteJoke = {
+    category: string;
+    joke: string;
+    _id: string;
+}
 
 type TFlags = {
     nsfw: boolean;
@@ -37,8 +40,17 @@ export default {
     },
     props: {
         jokes: {
-            type: Object as PropType<TJoke[]>,
+            type: Object as PropType<TJoke[] | TFavoriteJoke[]>,
             required: true,
+        },
+        label: {
+            type: String,
+            required: true
+        }
+    },
+    methods: {
+        onClick (joke: {joke: string, categoty: string, _id: string}) {
+            this.$emit('joke', joke);
         }
     }
 };

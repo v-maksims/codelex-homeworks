@@ -4,13 +4,19 @@
         <div class="card col-7">
             <span>{{ joke.joke }}</span>
         </div>
-        <slot></slot>
+        <button type="button" class="btn btn-secondary col-2 text-capitalize" @click="onClick">{{ label }}</button>
     </div>
 </template>
 
 <script lang="ts">
 
 import { PropType } from 'vue';
+
+type TFavoriteJoke = {
+    category: string;
+    joke: string;
+    _id: string;
+}
 
 type TFlags = {
     nsfw: boolean;
@@ -29,13 +35,18 @@ type TJoke = {
     id: number;
     safe: boolean;
     lang: string;
+    _id?: string
 }
 
 export default {
     props: {
-        joke :{
-            type: Object as PropType<TJoke>,
+        joke: {
+            type: Object as PropType<TJoke | TFavoriteJoke>,
             required: true,
+        },
+        label: {
+            type: String,
+            required: true
         }
     },
     data (){
@@ -44,7 +55,9 @@ export default {
         };
     },
     methods: {
-        
+        onClick () {
+            this.$emit('joke', { joke: this.joke.joke, category: this.joke.category, _id: this.joke._id });
+        }
     }
 };
 

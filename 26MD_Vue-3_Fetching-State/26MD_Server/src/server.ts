@@ -22,13 +22,36 @@ app.use(cors({ origin: "*" }));
 app.get("/jokes", (req: Request, res: Response) => {
   favoriteJokes
     .find()
-    .then((data) => res.json(data))
-    .catch((err) => res.send(err));
+    .then((data) => res.status(200).json(data))
+    .catch((err) => res.status(500).send(err));
 });
 
 app.post("/jokes", (req: Request<any, any, TPostJoke>, res: Response) => {
   const { body } = req;
-  console.log(body);
+
+  favoriteJokes
+    .findOne({ joke: body.joke })
+    .then((data) => {
+      if (!data) {
+        favoriteJokes
+          .create(body)
+          .then((data) => res.status(201).json(data))
+          .catch((err) => res.status(500).send(err));
+        return;
+      }
+      res.status(409).send("Joke already exists in MongoDB");
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+});
+
+app.delete("/jokes/:id", (req: Request, res: Response) => {
+  const { id } = req.params;
+  favoriteJokes
+    .deleteOne({ _id: id })
+    .then(() => res.status(200).send("Joke deleted success"))
+    .catch((err) => res.status(500).send(err));
 });
 
 app.listen(3004, () => {
