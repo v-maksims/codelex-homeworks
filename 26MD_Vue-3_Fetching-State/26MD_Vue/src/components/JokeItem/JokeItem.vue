@@ -1,8 +1,8 @@
 <template>
     <div class="mb-2 p-2 text-center row align-items-center column-gap-3 justify-content-center">
         <span class="text-white col-2 border border-primary-subtle rounded-pill fw-bold">{{ joke.category }}</span>
-        <div class="card col-7">
-            <span>{{ joke.joke }}</span>
+        <div class="card col-7 justify-content-center " style="height: 125px;">
+            <span >{{ joke.joke }}</span>
         </div>
         <button type="button" class="btn btn-secondary col-2 text-capitalize" @click="onClick">{{ label }}</button>
     </div>
@@ -24,14 +24,18 @@ export default {
             required: true
         }
     },
-    data (){
+    data () {
         return {
-        
+            jokeData: { 
+                joke: this.joke.joke, 
+                category: this.joke.category, 
+                _id: this.joke._id
+            }
         };
     },
     methods: {
         onClick () {
-            this.$emit('joke', { joke: this.joke.joke, category: this.joke.category, _id: this.joke._id });
+            this.$emit('joke', this.jokeData);
         }
     }
 };

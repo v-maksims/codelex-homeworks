@@ -31,7 +31,7 @@ export default {
                 })
                 .catch((err) => console.log(err));
         },
-        deleteFavoriteJoke (joke: {joke: string, categoty: string, _id: string}) {
+        deleteFavoriteJoke (joke: TFavoriteJoke) {
             axios.delete(`http://localhost:3004/jokes/${joke._id}`)
                 .then(({ status }) => {
                     if(status === 200){
