@@ -1,20 +1,50 @@
 <template>
-    <div class="form-floating">
-        <select v-model="category" @change="getJokes(category)" class="form-select" id="floatingSelect" aria-label="Floating label select example">
-            <option v-for="category in categories">{{ category }}</option>
-        </select>
-        <label for="floatingSelect">Choice joke category</label>
+    <div class="row">
+        <div class="form-floating mt-4 col-3">
+            <select 
+                v-model="category" 
+                @change="getJokes(category)" 
+                class="form-select " 
+                id="floatingSelect" 
+                aria-label="Floating label select example"
+            >
+                <option 
+                    v-for="category in categories" 
+                    class="text-center"
+                >
+                    {{ category }}
+                </option>
+            </select>
+            <label for="floatingSelect" class="text-center">Choice Joke Category</label>
+        </div>
     </div>
     <div class="mt-5 mb-5">
         <h1 class="text-white text-center fw-bold text-capitalize">Random {{ category }} jokes</h1>
-        <JokeList :label="'add to favorite'" :jokes="jokes" @joke="addTofavorite" />
-        <button type="button" class="btn btn-primary mt-2 text-capitalize" @click="getJokes(category)">New jokes</button>
+        <JokeList 
+            :label="'add to favorite'" 
+            :jokes="jokes" 
+            @joke="addTofavorite" 
+        />
+        <button 
+            type="button" 
+            class="btn btn-primary mt-2 text-capitalize"
+            @click="getJokes(category)"
+        >
+            New Jokes
+        </button>
     </div>
 </template>
 
 <script lang="ts">
 import axios from 'axios';
 import JokeList from '@/components/JokeList/JokeList.vue';
+import { createToaster } from '@meforma/vue-toaster';
+
+const toaster = createToaster({ 
+    duration: 1000,
+    position:'top-right',
+    max: 3 
+});
 
 type TFlags = {
     nsfw: boolean;
@@ -70,14 +100,16 @@ export default {
         },
         addTofavorite (joke: TFavoriteJoke) {
             axios
-                .post<{ joke: string, categoty: string }>('http://localhost:3004/jokes', joke)
-                .then(({ status }) => status === 201 && console.log('Joke success added to your favorites'))
+                .post<TFavoriteJoke>('http://localhost:3004/jokes', joke)
+                .then(({ status }) => status === 201 && 
+                    toaster.success('Joke success added to your favorites')
+                )
                 .catch(({ request }) => {
                     if (request.status === 409) {
-                        console.log('Joke exist in your favorites');
+                        toaster.error('Joke exist in your favorites');
                         return;
                     }
-                    console.log('Something went wrong');
+                    toaster.error('Something went wrong');
                 });
         }
     }

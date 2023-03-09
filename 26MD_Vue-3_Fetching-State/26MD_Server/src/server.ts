@@ -28,7 +28,6 @@ app.get("/jokes", (req: Request, res: Response) => {
 
 app.post("/jokes", (req: Request<any, any, TPostJoke>, res: Response) => {
   const { body } = req;
-
   favoriteJokes
     .findOne({ joke: body.joke })
     .then((data) => {

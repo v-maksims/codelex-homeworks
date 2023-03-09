@@ -1,7 +1,11 @@
 <template>
     <div class="row">
-        <div v-for="joke in jokes">
-            <JokeItem :label="label" :joke="joke" @joke="onClick"/>
+        <div v-for="joke in jokes" :key="joke.joke">
+            <JokeItem 
+                :label="label" 
+                :joke="joke" 
+                @joke="onClick"
+            />
         </div>
     </div>
 </template>

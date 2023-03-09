@@ -1,10 +1,20 @@
 <template>
     <div class="mb-2 p-2 text-center row align-items-center column-gap-3 justify-content-center">
-        <span class="text-white col-2 border border-primary-subtle rounded-pill fw-bold">{{ joke.category }}</span>
+        <span 
+            class="text-white col-2 border border-primary-subtle rounded-pill fw-bold"
+        >
+            {{ joke.category }}
+        </span>
         <div class="card col-7 justify-content-center " style="height: 125px;">
             <span >{{ joke.joke }}</span>
         </div>
-        <button type="button" class="btn btn-secondary col-2 text-capitalize" @click="onClick">{{ label }}</button>
+        <button 
+            type="button" 
+            class="btn btn-secondary col-2 text-capitalize" 
+            @click="onClick"
+        >
+            {{ label }}
+        </button>
     </div>
 </template>
 

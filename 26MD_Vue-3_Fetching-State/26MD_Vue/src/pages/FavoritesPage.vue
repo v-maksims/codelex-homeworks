@@ -1,12 +1,24 @@
 <template>
-    <h1 class="text-white" >Favorites page</h1>
-    <JokeList :jokes="favorites" :label="'delete from favorites'" @joke="deleteFavoriteJoke"/>
+    <h1 class="text-white text-center fw-bold" >Your favorites jokes:</h1>
+    <JokeList 
+        :label="'delete from favorites'" 
+        :jokes="favorites" 
+        @joke="deleteFavoriteJoke"
+    />
 </template>
 
 <script lang="ts">
+import { TFavoriteJoke } from '@/pages/JokesPage.vue';
+import { createToaster } from '@meforma/vue-toaster';
+
 import axios from 'axios';
 import JokeList from '@/components/JokeList/JokeList.vue';
-import { TFavoriteJoke } from '@/pages/JokesPage.vue';
+
+const toaster = createToaster({ 
+    duration: 1000,
+    position:'top-right',
+    max: 3 
+});
 
 export default {
     components: {
@@ -36,6 +48,7 @@ export default {
                 .then(({ status }) => {
                     if(status === 200){
                         console.log('Joke success deleted from your favorites');
+                        toaster.success('Joke success deleted from your favorites');
                         this.getFavoriteJokes();
                     }
                 })
