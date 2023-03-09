@@ -1,5 +1,11 @@
 <template>
     <h1 class="text-white text-center fw-bold" >Your favorites jokes:</h1>
+    <h6 
+        class="text-white text-center fw-bold text-center fs-5 mt-5" 
+        v-if="!favorites.length"
+    >
+        Empty list of favorite jokes!
+    </h6>
     <JokeList 
         :label="'delete from favorites'" 
         :jokes="favorites" 
