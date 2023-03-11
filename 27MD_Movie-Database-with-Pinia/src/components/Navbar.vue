@@ -1,13 +1,13 @@
-<script setup lang="ts">
-import { RouterLink } from 'vue-router';
-</script>
-
 <template>
     <nav class="navigation__wrap">
         <RouterLink to="/" class="navigation">Home</RouterLink>
         <RouterLink to="/movies" class="navigation">Movies</RouterLink>
     </nav>
 </template>
+
+<script lang="ts">
+
+</script>
 
 <style scoped>
     .navigation__wrap{
