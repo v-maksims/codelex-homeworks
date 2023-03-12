@@ -2,7 +2,7 @@
     <div class="pagination">
         <MyButton 
             @click="prevPage" 
-            :disabled="currentPage  < 2"
+            :disabled="currentPage < 2"
         >
             prev
         </MyButton>

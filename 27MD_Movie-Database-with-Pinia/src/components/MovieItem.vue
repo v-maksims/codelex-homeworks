@@ -16,7 +16,6 @@ import type { TMoviesShort } from '@/stores/movieStore';
 import type { PropType } from 'vue';
 
 export default {
-
     props: {
         movie: {
             type: Object as PropType<TMoviesShort>,

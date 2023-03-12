@@ -40,9 +40,4 @@ export default {
         gap: 10px;
         justify-content: end;
     }
-
-    .search-bar__text{
-        font-size: 1.4rem;
-        text-transform: capitalize;
-    }
 </style>

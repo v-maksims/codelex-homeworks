@@ -43,7 +43,7 @@ export type TMoviesShort = {
     imdbID: string;
 }
 
-type TMovieResponse = {
+type TMovieResponseShort = {
     Response: string;
     Search: TMoviesShort[];
     totalResults: string;
@@ -73,7 +73,7 @@ export const useMovieStore = defineStore('counter', {
         loadMovies (search: string, page = 1) {
             this.isLoading = true;
             axios
-                .get<TMovieResponse>(`http://www.omdbapi.com/?s=${search}&page=${page}&apikey=79ee6448`)
+                .get<TMovieResponseShort>(`http://www.omdbapi.com/?s=${search}&page=${page}&apikey=79ee6448`)
                 .then(({ data }) => {
                     this.moviesList = data.Search;
                     this.movieResult = Number(data.totalResults);
@@ -83,12 +83,10 @@ export const useMovieStore = defineStore('counter', {
         loadMovie (id: string) {
             this.isLoading = true;
             axios
-                .get(`http://www.omdbapi.com/?i=${id}&apikey=79ee6448`)
+                .get<TMovieFull>(`http://www.omdbapi.com/?i=${id}&apikey=79ee6448`)
                 .then(({ data }) => {
-                    console.log('store',this.isLoading);
                     this.movieById = data;
                     this.isLoading = false;
-                    console.log('store',this.isLoading);
                 });
         }
     },

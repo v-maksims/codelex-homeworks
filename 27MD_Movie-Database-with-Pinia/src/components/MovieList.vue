@@ -1,6 +1,10 @@
 <template>
     <div class="movie-list">
-        <MovieItem v-for="movie in movies" :key="movie.imdbID" :movie="movie"/>
+        <MovieItem 
+            v-for="movie in movies" 
+            :key="movie.imdbID" 
+            :movie="movie"
+        />
     </div>
 </template>
 

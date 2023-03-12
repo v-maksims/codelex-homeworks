@@ -1,61 +1,60 @@
 <template>
     <MyLoader v-if="isLoading" class="loader__wrap"/>
     <div v-else>
-        <div>
-            <h1 class="title">{{ movie.Title }}</h1>
-            <div class="header">
-                <img 
+        <h1 class="title">{{ movie.Title }}</h1>
+        <div class="header">
+            <img 
                 class="header__image"
                 :src="movie.Poster" 
                 :alt="movie.Title"
-                >
-                <div class="header__content">
-                    <div class="header__rating">
-                        <span class="header__title">Raitings:</span>
-                        <div class="header__item-wrap">
-                            <div
+            >
+            <div class="header__content">
+                <div class="header__rating">
+                    <span class="header__title">Raitings:</span>
+                    <div class="header__item-wrap">
+                        <div
                             class="header__rating-item"
                             v-for="rating in movie.Ratings" 
                             :key="rating.Source"
-                            >
-                            <span class="header__rating-item-source">{{ rating.Source }}</span>
-                            <span class="header__rating-item-value">{{  rating.Value }}</span>
-                        </div>
-                        <div class="header__rating-item">
-                            <span class="header__rating-item-source">Metascore</span>
-                            <span class="header__rating-item-value">{{ movie.Metascore }}</span>
-                        </div>
+                        >
+                        <span class="header__rating-item-source">{{ rating.Source }}</span>
+                        <span class="header__rating-item-value">{{  rating.Value }}</span>
+                    </div>
+                    <div class="header__rating-item">
+                        <span class="header__rating-item-source">Metascore</span>
+                        <span class="header__rating-item-value">{{ movie.Metascore }}</span>
                     </div>
                 </div>
-                <div class="header__item-wrap">
-                    <span class="item-title">Date of release: </span>
-                    <span class="item-text">{{ movie.Released }}</span>
-                </div>
-                <div class="header__item-wrap">
-                    <span class="item-title">Run time: </span>
-                    <span class="item-text">{{ movie.Runtime }}</span>
-                </div>
-                <div class="header__item-wrap">
-                    <span class="item-title">Genres: </span>
-                    <span class="item-text">{{ movie.Genre }}</span>
-                </div>
-                <div class="header__item-wrap">
-                    <span class="item-title">Languages: </span>
-                    <span class="item-text">{{ movie.Language }}</span>
-                </div>
-                <div class="header__item-wrap" v-if="movie.BoxOffice">
-                    <span class="item-title">Box office: </span>
-                    <span class="item-text">{{ movie.BoxOffice }}</span>
-                </div>
-                <div class="header__item-wrap">
-                    <span class="item-title">Awards: </span>
-                    <span class="item-text">{{ movie.Awards }}</span>
-                </div>
-                <div class="header__item-wrap" v-if="movie.totalSeasons">
-                    <span class="item-title">Total seasons: </span>
-                    <span class="item-text">{{ movie.totalSeasons }}</span>
-                </div>
             </div>
+            <div class="header__item-wrap">
+                <span class="item-title">Date of release: </span>
+                <span class="item-text">{{ movie.Released }}</span>
+            </div>
+            <div class="header__item-wrap">
+                <span class="item-title">Run time: </span>
+                <span class="item-text">{{ movie.Runtime }}</span>
+            </div>
+            <div class="header__item-wrap">
+                <span class="item-title">Genres: </span>
+                <span class="item-text">{{ movie.Genre }}</span>
+            </div>
+            <div class="header__item-wrap">
+                <span class="item-title">Languages: </span>
+                <span class="item-text">{{ movie.Language }}</span>
+            </div>
+            <div class="header__item-wrap" v-if="movie.BoxOffice">
+                <span class="item-title">Box office: </span>
+                <span class="item-text">{{ movie.BoxOffice }}</span>
+            </div>
+            <div class="header__item-wrap">
+                <span class="item-title">Awards: </span>
+                <span class="item-text">{{ movie.Awards }}</span>
+            </div>
+            <div class="header__item-wrap" v-if="movie.totalSeasons">
+                <span class="item-title">Total seasons: </span>
+                <span class="item-text">{{ movie.totalSeasons }}</span>
+            </div>
+        </div>
         </div>
         <div class="main">
             <div class="main__item-wrap">
@@ -77,12 +76,12 @@
             </div>
         </div>
     </div>
-</div>
 </template>
 
 <script lang="ts">
 import { useMovieStore } from '@/stores/movieStore';
 import { computed } from 'vue';
+
 import MyLoader from '@/components/UI/MyLoader.vue';
 
 
@@ -100,7 +99,6 @@ export default {
     },
     mounted (){
         this.loadMovie(this.movieId);
-        console.log(this.isLoading);
     },
     data () {
         return {
