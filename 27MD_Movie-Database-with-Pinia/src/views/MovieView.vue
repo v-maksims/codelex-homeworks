@@ -1,22 +1,23 @@
 <template>
-    <span v-if="movie.imdbID !== movieId"> Loading... </span>
-    <div v-else >
-        <h1 class="title">{{ movie.Title }}</h1>
-        <div class="header">
-            <img 
+    <MyLoader v-if="isLoading" class="loader__wrap"/>
+    <div v-else>
+        <div>
+            <h1 class="title">{{ movie.Title }}</h1>
+            <div class="header">
+                <img 
                 class="header__image"
                 :src="movie.Poster" 
                 :alt="movie.Title"
-            >
-            <div class="header__content">
-                <div class="header__rating">
-                    <span class="header__title">Raitings:</span>
-                    <div class="header__item-wrap">
-                        <div
+                >
+                <div class="header__content">
+                    <div class="header__rating">
+                        <span class="header__title">Raitings:</span>
+                        <div class="header__item-wrap">
+                            <div
                             class="header__rating-item"
                             v-for="rating in movie.Ratings" 
                             :key="rating.Source"
-                        >
+                            >
                             <span class="header__rating-item-source">{{ rating.Source }}</span>
                             <span class="header__rating-item-value">{{  rating.Value }}</span>
                         </div>
@@ -76,22 +77,30 @@
             </div>
         </div>
     </div>
+</div>
 </template>
 
 <script lang="ts">
 import { useMovieStore } from '@/stores/movieStore';
 import { computed } from 'vue';
+import MyLoader from '@/components/UI/MyLoader.vue';
+
 
 export default {
     setup  () {
         const movieStore = useMovieStore();
         return {
             movie: computed(() => movieStore.movieById),
-            loadMovie: movieStore.loadMovie
+            loadMovie: movieStore.loadMovie,
+            isLoading: computed(() => movieStore.isLoading)
         };
+    },
+    components: {
+        MyLoader
     },
     mounted (){
         this.loadMovie(this.movieId);
+        console.log(this.isLoading);
     },
     data () {
         return {

@@ -72,18 +72,24 @@ export const useMovieStore = defineStore('counter', {
     actions: {
         loadMovies (search: string, page = 1) {
             this.isLoading = true;
-            axios.get<TMovieResponse>(`http://www.omdbapi.com/?s=${search}&page=${page}&apikey=79ee6448`).then(({ data }) => {
-                this.moviesList = data.Search;
-                this.movieResult = Number(data.totalResults);
-                this.isLoading = false;
-            });
+            axios
+                .get<TMovieResponse>(`http://www.omdbapi.com/?s=${search}&page=${page}&apikey=79ee6448`)
+                .then(({ data }) => {
+                    this.moviesList = data.Search;
+                    this.movieResult = Number(data.totalResults);
+                    this.isLoading = false;
+                });
         },
         loadMovie (id: string) {
             this.isLoading = true;
-            axios.get(`http://www.omdbapi.com/?i=${id}&apikey=79ee6448`).then(({ data }) => {
-                this.movieById = data;
-                this.isLoading = false;
-            });
+            axios
+                .get(`http://www.omdbapi.com/?i=${id}&apikey=79ee6448`)
+                .then(({ data }) => {
+                    console.log('store',this.isLoading);
+                    this.movieById = data;
+                    this.isLoading = false;
+                    console.log('store',this.isLoading);
+                });
         }
     },
 });

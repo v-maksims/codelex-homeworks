@@ -1,8 +1,8 @@
 <template>
     <div class="wrapper">
         <SearchBar @search="searchMovies"/>
-        <MyLoader v-if="isLoading" class="loader"/>
-        <div v-else>
+        <MyLoader v-if="isLoading" class="loader__wrap"/>
+        <div v-else >
             <MovieList 
                 :movies="movies"
                 :key="currentPage"
