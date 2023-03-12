@@ -26,6 +26,7 @@ export default {
     },
     methods: {
         searchFn () {
+            this.$router.push({ path: '/movies', query: { param: this.search, page: 1 } });
             this.$emit('search', this.search);
             this.search = '';
         }

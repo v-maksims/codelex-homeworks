@@ -32,6 +32,7 @@ type TMovieFull = {
     Production: string;
     Website: string;
     Response: string;
+    totalSeasons?: number,
 }
 
 export type TMoviesShort = {
@@ -52,17 +53,37 @@ export const useMovieStore = defineStore('counter', {
     state: () => ({ 
         moviesList: [] as TMoviesShort[],
         movieResult: 0,
-        movie: {} as TMovieFull
+        movieById: {} as TMovieFull,
+        currentPage: 1,
+        isLoading: false
     }),
+    getters : {
+        pageCount (): number {
+            const moviesPerPage = 10;
+            const movies = this.movieResult;
+            const pages = Math.ceil(movies / moviesPerPage);
+
+            if (movies % moviesPerPage === 0) {
+                return pages - 1;
+            }
+            return pages;
+        }
+    },
     actions: {
         loadMovies (search: string, page = 1) {
+            this.isLoading = true;
             axios.get<TMovieResponse>(`http://www.omdbapi.com/?s=${search}&page=${page}&apikey=79ee6448`).then(({ data }) => {
-                this.moviesList.splice(0, this.moviesList.length, ...data.Search);
+                this.moviesList = data.Search;
                 this.movieResult = Number(data.totalResults);
+                this.isLoading = false;
             });
         },
         loadMovie (id: string) {
-            axios.get(`http://www.omdbapi.com/?i=${id}&apikey=79ee6448`).then(({ data }) => this.movie = data);
+            this.isLoading = true;
+            axios.get(`http://www.omdbapi.com/?i=${id}&apikey=79ee6448`).then(({ data }) => {
+                this.movieById = data;
+                this.isLoading = false;
+            });
         }
     },
 });

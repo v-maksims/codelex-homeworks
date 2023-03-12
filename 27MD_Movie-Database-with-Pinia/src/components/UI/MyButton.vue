@@ -20,4 +20,10 @@
     .button:hover{
         scale: .9;
     }
+
+    .button:disabled{
+        scale: 100%;
+        cursor: not-allowed;
+        opacity: .5;
+    }
 </style>

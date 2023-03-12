@@ -16,15 +16,10 @@ export default {
     },
     props: {
         movies: {
-            type: [] as PropType<TMoviesShort[]>,
+            type: Array as PropType<TMoviesShort[]>,
             required: true
         }
     },
-    data () {
-        return {
-
-        };
-    }
 };
 </script>
 

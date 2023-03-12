@@ -39,8 +39,8 @@ export default {
         background-color: grey;
         border-radius: 10px;
         overflow: hidden;
-        max-height: 300px;
         height: 100%;
+        max-height: 300px;
     }
     
     .movie__image{

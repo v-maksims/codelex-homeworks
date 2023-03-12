@@ -5,7 +5,7 @@ import { RouterView } from 'vue-router';
 <template>
     <header>
         <div class="container--fluid">
-            <NavBar />
+            <Navbar />
         </div>
     </header>
     <main class="container">
@@ -14,11 +14,11 @@ import { RouterView } from 'vue-router';
 </template>
 
 <script lang="ts">
-import NavBar from '@/components/Navbar.vue';
+import Navbar from '@/components/Navbar.vue';
 
 export default {
     components: {
-        NavBar
+        Navbar
     }
 };
 </script>
