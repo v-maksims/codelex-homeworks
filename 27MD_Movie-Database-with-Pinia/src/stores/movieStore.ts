@@ -55,7 +55,9 @@ export const useMovieStore = defineStore('counter', {
         movieResult: 0,
         movieById: {} as TMovieFull,
         currentPage: 1,
-        isLoading: false
+        isLoading: false,
+        isError: false,
+        errorMessage: ''
     }),
     getters : {
         pageCount (): number {
@@ -78,6 +80,11 @@ export const useMovieStore = defineStore('counter', {
                     this.moviesList = data.Search;
                     this.movieResult = Number(data.totalResults);
                     this.isLoading = false;
+                })
+                .catch(({ response }) => {
+                    this.isLoading = false;
+                    this.isError = true;
+                    this.errorMessage = response.data.Error;
                 });
         },
         loadMovie (id: string) {
@@ -88,7 +95,16 @@ export const useMovieStore = defineStore('counter', {
                     console.log('store',data);
                     this.movieById = data;
                     this.isLoading = false;
+                })
+                .catch(({ response }) => {
+                    this.isLoading = false;
+                    this.isError = true;
+                    this.errorMessage = response.data.Error;
                 });
+        },
+        clearError () {
+            this.isError = false;
+            this.errorMessage = '';
         }
     },
 });

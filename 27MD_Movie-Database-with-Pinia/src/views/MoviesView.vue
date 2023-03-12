@@ -15,7 +15,7 @@
                 No movies found! 
             </span>
             <Pagination 
-                v-if="page"
+                v-if="pageCount > 0"
                 :currentPage="currentPage" 
                 :pageCount="pageCount"
                 @nextPage="nextPage"
@@ -44,6 +44,7 @@ export default {
             pageCount: computed(() => movie.pageCount),
             currentPage: movie.currentPage,
             isLoading: computed(() => movie.isLoading),
+            isError: computed(() => movie.isError),
         };
     },
     components: {

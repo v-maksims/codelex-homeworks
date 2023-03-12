@@ -4,6 +4,7 @@ import { RouterView } from 'vue-router';
 
 <template>
     <header>
+        <Error/>
         <div class="container--fluid">
             <Navbar />
         </div>
@@ -15,10 +16,11 @@ import { RouterView } from 'vue-router';
 
 <script lang="ts">
 import Navbar from '@/components/Navbar.vue';
+import Error from './components/Error.vue';
 
 export default {
     components: {
-        Navbar
+        Navbar, Error
     }
 };
 </script>
