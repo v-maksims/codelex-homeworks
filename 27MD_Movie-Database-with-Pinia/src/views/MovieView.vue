@@ -1,6 +1,6 @@
 <template>
     <MyLoader v-if="isLoading" class="loader__wrap"/>
-    <div v-else>
+    <div v-else class="movie__wrap">
         <h1 class="title">{{ movie.Title }}</h1>
         <div class="header">
             <img 
@@ -10,7 +10,7 @@
             >
             <div class="header__content">
                 <div class="header__rating">
-                    <span class="header__title">Raitings:</span>
+                    <span class="item-title">Raitings:</span>
                     <div class="header__item-wrap">
                         <div
                             class="header__rating-item"
@@ -75,6 +75,7 @@
                 <span class="item-text">{{ movie.Actors }}</span>
             </div>
         </div>
+        <MyButton @click="returnBack">Return back</MyButton>
     </div>
 </template>
 
@@ -83,7 +84,7 @@ import { useMovieStore } from '@/stores/movieStore';
 import { computed } from 'vue';
 
 import MyLoader from '@/components/UI/MyLoader.vue';
-
+import MyButton from '@/components/UI/MyButton.vue';
 
 export default {
     setup  () {
@@ -95,7 +96,7 @@ export default {
         };
     },
     components: {
-        MyLoader
+        MyLoader, MyButton
     },
     mounted (){
         this.loadMovie(this.movieId);
@@ -104,11 +105,20 @@ export default {
         return {
             movieId: this.$route.params.id as string
         };
+    },
+    methods: {
+        returnBack () {
+            window.history.back();
+        }
     }
 };
 </script>
 
 <style scoped>
+
+    .movie__wrap{
+        margin-bottom: 50px;
+    }
 
     .title{
         font-size: 3rem;

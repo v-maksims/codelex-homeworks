@@ -70,7 +70,7 @@ export const useMovieStore = defineStore('counter', {
         }
     },
     actions: {
-        loadMovies (search: string, page = 1) {
+        loadMovies (search: string, page: number) {
             this.isLoading = true;
             axios
                 .get<TMovieResponseShort>(`http://www.omdbapi.com/?s=${search}&page=${page}&apikey=79ee6448`)
@@ -85,6 +85,7 @@ export const useMovieStore = defineStore('counter', {
             axios
                 .get<TMovieFull>(`http://www.omdbapi.com/?i=${id}&apikey=79ee6448`)
                 .then(({ data }) => {
+                    console.log('store',data);
                     this.movieById = data;
                     this.isLoading = false;
                 });
