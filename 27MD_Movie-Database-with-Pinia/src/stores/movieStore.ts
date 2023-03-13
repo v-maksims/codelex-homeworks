@@ -47,6 +47,7 @@ type TMovieResponseShort = {
     Response: string;
     Search: TMoviesShort[];
     totalResults: string;
+    Error?: string;
 }
 
 export const useMovieStore = defineStore('counter', {
@@ -77,14 +78,22 @@ export const useMovieStore = defineStore('counter', {
             axios
                 .get<TMovieResponseShort>(`http://www.omdbapi.com/?s=${search}&page=${page}&apikey=79ee6448`)
                 .then(({ data }) => {
-                    this.moviesList = data.Search;
-                    this.movieResult = Number(data.totalResults);
                     this.isLoading = false;
+
+                    if(data.Response === 'True'){
+                        this.moviesList = data.Search;
+                        this.movieResult = Number(data.totalResults);
+                        return;
+                    }
+
+                    this.isError = true;
+                    this.errorMessage = String(data.Error);
                 })
                 .catch(({ response }) => {
                     this.isLoading = false;
                     this.isError = true;
                     this.errorMessage = response.data.Error;
+                    console.log('error');
                 });
         },
         loadMovie (id: string) {
@@ -92,7 +101,6 @@ export const useMovieStore = defineStore('counter', {
             axios
                 .get<TMovieFull>(`http://www.omdbapi.com/?i=${id}&apikey=79ee6448`)
                 .then(({ data }) => {
-                    console.log('store',data);
                     this.movieById = data;
                     this.isLoading = false;
                 })

@@ -15,7 +15,7 @@
                 No movies found! 
             </span>
             <Pagination 
-                v-if="page && searchParam"
+                v-if="movies.length && page && searchParam"
                 :currentPage="currentPage" 
                 :pageCount="pageCount"
                 @nextPage="nextPage"
