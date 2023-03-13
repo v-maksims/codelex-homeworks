@@ -1,0 +1,14 @@
+@import './base.scss';
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 25px 15px;
+    margin: 0 auto;
+
+    &--fluid{
+        width: 100vw;
+        padding: 0 15px;
+        margin-top: 15px;
+    }
+}

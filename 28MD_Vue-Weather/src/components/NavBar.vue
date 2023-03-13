@@ -1,0 +1,25 @@
+<template>
+    <nav class="navigation__wrap">
+        <RouterLink to="/" class="navigation">Home</RouterLink>
+        <RouterLink to="/weather" class="navigation">Weather</RouterLink>
+    </nav>
+</template>
+
+<style scoped>
+    .navigation__wrap{
+        display: flex;
+        gap: 10px;
+    }
+
+    .navigation{
+        text-decoration: none;
+        color: aliceblue;
+        font-size: 2rem;
+        font-weight: 600;
+        transition: color .2s;
+    }
+
+    .navigation:hover{
+        color: rgb(1, 80, 7);
+    }
+</style>
