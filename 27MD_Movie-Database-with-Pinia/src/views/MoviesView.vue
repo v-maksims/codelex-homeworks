@@ -15,7 +15,7 @@
                 No movies found! 
             </span>
             <Pagination 
-                v-if="pageCount > 0"
+                v-if="page && searchParam"
                 :currentPage="currentPage" 
                 :pageCount="pageCount"
                 @nextPage="nextPage"
@@ -36,15 +36,14 @@ import MyLoader from '@/components/UI/MyLoader.vue';
 
 export default {
     setup () {
-        const movie = useMovieStore();
+        const movieStore = useMovieStore();
         return {
-            movies: computed(() => movie.moviesList),
-            loadMovies: movie.loadMovies,
-            moviesCount: computed(() => movie.movieResult),
-            pageCount: computed(() => movie.pageCount),
-            currentPage: movie.currentPage,
-            isLoading: computed(() => movie.isLoading),
-            isError: computed(() => movie.isError),
+            movies: computed(() => movieStore.moviesList),
+            loadMovies: movieStore.loadMovies,
+            moviesCount: computed(() => movieStore.movieResult),
+            pageCount: computed(() => movieStore.pageCount),
+            currentPage: movieStore.currentPage,
+            isLoading: computed(() => movieStore.isLoading),
         };
     },
     components: {
@@ -64,7 +63,6 @@ export default {
         pageButtonHandler () {
             this.$router.push({ path: '/movies', query: { param: this.searchParam, page: this.currentPage } });
             this.loadMoviesFn();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         },
         nextPage (){
             this.currentPage++;
