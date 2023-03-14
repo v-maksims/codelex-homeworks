@@ -1,5 +1,6 @@
 <template>
-    <div class="weather__wrap">
+    <WeatherSkeleton v-if="isLoading"/>
+    <div class="weather__wrap" v-else>
         <div class="weather__main">
             <form 
                 class="weather__main-search"
@@ -9,6 +10,12 @@
                 v-model:value="city"
                 placeholder="Search for city"
                 />
+                <button 
+                    class="weather__main-search-btn"
+                    :disabled="!city"
+                >
+                    Search
+                </button>
             </form>
             <span class="weather__main-city">{{ weather.city_name }}</span>
             <img 
@@ -63,6 +70,7 @@
 import axios from 'axios';
 import MyInput from '@/components/UI/MyInput.vue';
 import WeatherCard from '@/components/WeatherCard.vue';
+import WeatherSkeleton from '@/components/WeatherSkeleton.vue';
 
 type TWeatherParams = {
     code: number;
@@ -130,7 +138,7 @@ export default {
         };
     },
     components: {
-        MyInput, WeatherCard
+        MyInput, WeatherCard,WeatherSkeleton
     },
     methods: {
         getWeatherByCity (city: string) {
