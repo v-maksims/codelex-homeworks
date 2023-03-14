@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import HomeView from '@/views/HomeView.vue';
-import WeatherView from '@/views/WeatherView.vue';
+import WeatherView from '@/views/WatherView/WeatherView.vue';
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
