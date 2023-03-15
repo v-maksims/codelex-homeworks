@@ -1,0 +1,46 @@
+// Colors
+:root {
+  --c-white: #ffffff;
+  --c-dark-green: #252823;
+  --c-soft-green: #514C30;
+  --c-medium-green: #473E25;
+  --c-light-green: #8E906F;
+  --c-brown: #6B4628;
+}
+
+:root {
+  --color-background-dark: var(--c-dark-green);
+  --color-background-soft: var(--c-soft-green);
+
+  --color-heading: var(--c-brown);
+  --color-text-white: var(--c-white);
+  --color-text-green: var(--c-light-green);
+
+  --text-size-normal: 1.25rem;
+  --text-size-medium: 1.75rem;
+  --text-size-title: 3rem;
+
+  --text-weight-normal: 400;
+  --text-weight-bold: 900
+}
+
+
+body {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: var(--text-weight-normal);
+  background-color: var(--color-background-dark);
+}
+
+.container{
+  width: 100%;
+  max-width: 1200px;
+  padding: 15px;
+  margin: 0 auto;
+
+  &--fluid{
+    width: 100%;
+    padding: 10px 15px;
+  }
+}
+
