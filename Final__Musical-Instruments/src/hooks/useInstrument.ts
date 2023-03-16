@@ -1,38 +1,33 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import { useAppSelector } from '../store/storeHooks';
 
 const useInstrument = (keyDown: string) => {
+    const { volume } = useAppSelector((store) => store.instruments);
+
     const audioRef = useRef<HTMLAudioElement>(null);
 
     const [active, setActive] = useState(false);
 
-    const activeHandler = () => {
-        setActive(!active);
-    };
-
     const playAudio = () => {
         if (audioRef.current) {
-            activeHandler();
+            audioRef.current.volume = volume / 100;
+            setActive(true);
             audioRef.current.play();
             audioRef.current.currentTime = 0;
         }
     };
 
-    useEffect(() => {
-        if (audioRef.current) {
-            audioRef.current.volume = 0.05;
+    document.addEventListener('keyup', (e: KeyboardEvent) => {
+        if (e.key === keyDown) {
+            playAudio();
         }
-        document.addEventListener('keyup', (e: KeyboardEvent) => {
-            if (e.key === keyDown) {
-                playAudio();
-            }
-        });
-    }, []);
+    });
 
     return {
         audioRef,
         playAudio,
         active,
-        activeHandler,
+        setActive,
     };
 };
 

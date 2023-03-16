@@ -6,7 +6,8 @@ type TKey = {
     note: string;
     audio: string;
     keyDown: string;
-    setPianoClassName: (note: string, active: boolean) => 'keyBlack--active' | 'keyBlack' | 'key--active' | 'key'
+    disabled: boolean;
+    setPianoClassName: (note: string, active: boolean, disabled: boolean) => string;
 }
 
 const PianoKey = (props:TKey) => {
@@ -15,13 +16,14 @@ const PianoKey = (props:TKey) => {
         keyDown,
         note,
         setPianoClassName,
+        disabled,
     } = props;
 
     const {
         audioRef,
         playAudio,
         active,
-        activeHandler,
+        setActive,
     } = useInstrument(keyDown);
 
     return (
@@ -29,14 +31,15 @@ const PianoKey = (props:TKey) => {
             <audio
                 ref={audioRef}
                 src={audio}
-                onEnded={activeHandler}
+                onEnded={() => setActive(false)}
             />
             <div
                 className={active
-                    ? styles[setPianoClassName(note, active)]
-                    : styles[setPianoClassName(note, active)]
+                    ? styles[setPianoClassName(note, active, disabled)]
+                    : styles[setPianoClassName(note, active, disabled)]
                 }
-                onClick={playAudio}
+                style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}
+                onClick={() => !disabled && playAudio()}
             >
                 <span>{keyDown}</span>
             </div>

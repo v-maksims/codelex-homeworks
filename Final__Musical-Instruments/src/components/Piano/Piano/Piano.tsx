@@ -1,12 +1,21 @@
-import PianoKey from '../components/PianoKey/PianoKey';
 import { PIANO } from '../../../global/constants';
+
+import PianoKey from '../components/PianoKey/PianoKey';
 import styles from './Piano.module.scss';
 
-const Piano = () => {
-    const setPianoClassName = (note: string, active: boolean) => {
+type TPianoProps = {
+    isAutoPlay: boolean;
+}
+
+const Piano = ({ isAutoPlay }:TPianoProps) => {
+    const setPianoClassName = (note: string, active: boolean, disabled: boolean) => {
         if (note.length > 1) {
             if (active) {
                 return 'keyBlack--active';
+            }
+
+            if (disabled) {
+                return 'keyBlack--disabled';
             }
 
             return 'keyBlack';
@@ -14,6 +23,10 @@ const Piano = () => {
 
         if (active) {
             return 'key--active';
+        }
+
+        if (disabled) {
+            return 'key--disabled';
         }
 
         return 'key';
@@ -29,6 +42,7 @@ const Piano = () => {
                         keyDown={keyDown}
                         key={i}
                         setPianoClassName={setPianoClassName}
+                        disabled={isAutoPlay}
                     />
                 ))}
             </div>

@@ -28,6 +28,8 @@
         "react/react-in-jsx-scope": "off",
         "import/prefer-default-export": "off",
         "@typescript-eslint/ban-types": "off",
+        "no-param-reassign": "off",
+        "max-len": "off",
         "indent": [
             "error",
             4

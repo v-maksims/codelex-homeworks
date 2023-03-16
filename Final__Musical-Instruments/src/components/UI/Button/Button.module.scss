@@ -1,0 +1,22 @@
+.button{
+    text-transform: capitalize;
+    font-size: var(--text-size-medium);
+    background-color: var(--color-background-soft);
+    border: 0;
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--color-text-white);
+    cursor: pointer;
+    transition: scale .2s;
+
+    &:hover{
+        scale: .85;
+    }
+
+    &:disabled{
+        opacity: .7;
+        scale: 100%;
+        cursor: not-allowed;
+    }
+
+}

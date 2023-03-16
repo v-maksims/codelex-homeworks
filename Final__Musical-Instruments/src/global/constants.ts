@@ -4,6 +4,12 @@ type TInstrument = {
     audio: string;
 }
 
+type TDemoSound = {
+    name: string;
+    keys: string[];
+    delay: number;
+}
+
 const PIANO: TInstrument[] = [
     { note: 'a', keyDown: 'z', audio: './public/Instruments/piano/piano-a.wav' },
     { note: 'bb', keyDown: 's', audio: './public/Instruments/piano/piano-bb.wav' },
@@ -19,6 +25,24 @@ const PIANO: TInstrument[] = [
     { note: 'g', keyDown: 'm', audio: './public/Instruments/piano/piano-g.wav' },
 ];
 
+const PIANO_DEMO_SOUNDS: TDemoSound[] = [
+    {
+        name: 'tan-tan',
+        keys: ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
+        delay: 1000,
+    },
+    {
+        name: 'Tin-tan-ton',
+        keys: ['n', 'm', 'h', 'n', 'm', 'h', 'n', 'm', 'h', 'n', 'm', 'h', 'n', 'm', 'h', 'n', 'm', 'h', 's'],
+        delay: 250,
+    },
+    {
+        name: 'medium sound',
+        keys: ['c', 'v', 'g', 'f', 'd', 'x', 'c', 'v', 'g', 'f', 'd', 'x', 'n', 'm', 'z'],
+        delay: 500,
+    },
+];
+
 export {
-    PIANO,
+    PIANO, PIANO_DEMO_SOUNDS,
 };
