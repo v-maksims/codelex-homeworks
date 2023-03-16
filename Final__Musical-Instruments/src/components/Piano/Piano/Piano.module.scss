@@ -1,0 +1,12 @@
+.keyList{
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    background-color: var(--color-background-green);
+    border-radius: 20px;
+}
+
+.keyWrap{
+    display: flex;
+    justify-content: center;
+}

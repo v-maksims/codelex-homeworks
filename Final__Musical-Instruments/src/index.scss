@@ -1,6 +1,7 @@
 // Colors
 :root {
   --c-white: #ffffff;
+  --c-black: #000000;
   --c-dark-green: #252823;
   --c-soft-green: #514C30;
   --c-medium-green: #473E25;
@@ -11,6 +12,8 @@
 :root {
   --color-background-dark: var(--c-dark-green);
   --color-background-soft: var(--c-soft-green);
+  --color-background-green: var(--c-medium-green);
+  --color-background-white: var(--c-white);
 
   --color-heading: var(--c-brown);
   --color-text-white: var(--c-white);
@@ -21,7 +24,7 @@
   --text-size-title: 3rem;
 
   --text-weight-normal: 400;
-  --text-weight-bold: 900
+  --text-weight-bold: 900;
 }
 
 
@@ -32,15 +35,20 @@ body {
   background-color: var(--color-background-dark);
 }
 
-.container{
+.container {
   width: 100%;
   max-width: 1200px;
   padding: 15px;
   margin: 0 auto;
 
-  &--fluid{
+  &--fluid {
     width: 100%;
     padding: 10px 15px;
   }
 }
 
+.active {
+  color: var(--color-text-green);
+  scale: .9;
+  transition: scale .2s, color .2s;
+}

@@ -7,7 +7,10 @@ type TNavItemProps = {
 }
 
 const NavItem = ({ label, to }:TNavItemProps) => (
-    <NavLink to={to}>
+    <NavLink
+        to={to}
+        className={styles.link}
+    >
         {label}
     </NavLink>
 );
