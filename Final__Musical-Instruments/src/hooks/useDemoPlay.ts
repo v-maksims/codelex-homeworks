@@ -9,6 +9,7 @@ const useDemoPlay = () => {
             setTimeout(() => {
                 playNote(note);
             }, delay);
+
             delay += delayNum;
         });
     };

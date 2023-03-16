@@ -21,7 +21,7 @@ const PianoKey = (props:TKey) => {
         audioRef,
         playAudio,
         active,
-        setActive,
+        activeHandler,
     } = useInstrument(keyDown);
 
     return (
@@ -29,7 +29,7 @@ const PianoKey = (props:TKey) => {
             <audio
                 ref={audioRef}
                 src={audio}
-                onEnded={() => setActive(false)}
+                onEnded={activeHandler}
             />
             <div
                 className={active

@@ -1,11 +1,10 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import InstrumentItem from '../../components/InstrumentItem/InstrumentItem';
+import styles from './InstrumentPage.module.scss';
 
-const InstrumentPage = () => {
-    const [one, setOne] = useState(null);
-    return (
-        <NavLink to='/piano'>Piano</NavLink>
-    );
-};
+const InstrumentPage = () => (
+    <div className={styles.instrumentsWrap}>
+        <InstrumentItem label='piano' image='.\public\Instruments\logo\piano.png' to='/piano'/>
+    </div>
+);
 
 export default InstrumentPage;

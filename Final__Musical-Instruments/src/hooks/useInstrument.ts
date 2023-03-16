@@ -2,11 +2,16 @@ import { useEffect, useRef, useState } from 'react';
 
 const useInstrument = (keyDown: string) => {
     const audioRef = useRef<HTMLAudioElement>(null);
+
     const [active, setActive] = useState(false);
+
+    const activeHandler = () => {
+        setActive(!active);
+    };
 
     const playAudio = () => {
         if (audioRef.current) {
-            setActive(true);
+            activeHandler();
             audioRef.current.play();
             audioRef.current.currentTime = 0;
         }
@@ -27,7 +32,7 @@ const useInstrument = (keyDown: string) => {
         audioRef,
         playAudio,
         active,
-        setActive,
+        activeHandler,
     };
 };
 

@@ -8,11 +8,14 @@ const Piano = () => {
             if (active) {
                 return 'keyBlack--active';
             }
+
             return 'keyBlack';
         }
+
         if (active) {
             return 'key--active';
         }
+
         return 'key';
     };
 
