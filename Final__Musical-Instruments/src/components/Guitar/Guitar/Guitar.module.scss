@@ -1,0 +1,75 @@
+.guitar {
+    display: flex;
+    justify-content: center;
+}
+
+.guitarBody {
+    display: flex;
+    align-items: center;
+}
+
+.box1 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    background-color: #998235;
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 15px;
+        height: 70px;
+        border-radius: 10px;
+        top: 65px;
+        left: 65px;
+        background-color: #1a4341;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 170px;
+        height: 170px;
+        border-radius: 50%;
+        bottom: 20px;
+        left: 105px;
+        z-index: 9;
+        background-color: #998235;
+    }
+}
+
+.box2 {
+    position: relative;
+    width: 190px;
+    height: 55px;
+    margin-left: 40px;
+    background-color: #1a4341;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        left: -80px;
+        top: -7px;
+        z-index: 9;
+        box-shadow: 0 0 0 5px #f3ac3c;
+        background-color: #1a4341;
+    }
+}
+
+.box3 {
+    width: 80px;
+    height: 65px;
+    border-radius: 10px;
+    margin-left: -5px;
+    z-index: 99;
+    position: relative;
+    background-color: #998235;
+}
+
+.stringWrap {
+    position: relative;
+}

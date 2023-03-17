@@ -1,4 +1,39 @@
-.navBar{
+.navBar {
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    gap: 5px;
+}
+
+.volumeWrap {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.icon {
+    color: var(--c-brown);
+    font-size: var(--text-size-medium);
+    cursor: pointer;
+}
+
+.icon:hover+.volume {
+    top: 85px;
+    left: -50px;
+
+}
+
+.volume {
+    position: absolute;
+    left: 100px;
+    transform: rotate(-90deg);
+
+    &:hover {
+        top: 85px;
+        left: -50px;
+    }
 }

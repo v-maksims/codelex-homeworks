@@ -25,6 +25,15 @@ const PIANO: TInstrument[] = [
     { note: 'g', keyDown: 'm', audio: './public/Instruments/piano/piano-g.wav' },
 ];
 
+const GUITAR: TInstrument[] = [
+    { note: 'bb', keyDown: 'w', audio: '/public/Instruments/guitar/guitar-bb.wav' },
+    { note: 'cb', keyDown: 's', audio: '/public/Instruments/guitar/guitar-cb.wav' },
+    { note: 'db', keyDown: 'x', audio: '/public/Instruments/guitar/guitar-db.wav' },
+    { note: 'eb', keyDown: 'e', audio: '/public/Instruments/guitar/guitar-eb.wav' },
+    { note: 'fb', keyDown: 'd', audio: '/public/Instruments/guitar/guitar-fb.wav' },
+    { note: 'gb', keyDown: 'c', audio: '/public/Instruments/guitar/guitar-gb.wav' },
+];
+
 const PIANO_DEMO_SOUNDS: TDemoSound[] = [
     {
         name: 'tan-tan',
@@ -43,6 +52,22 @@ const PIANO_DEMO_SOUNDS: TDemoSound[] = [
     },
 ];
 
+const GUITAR_DEMO_SOUNDS: TDemoSound[] = [
+    {
+        name: 'ta-ta',
+        keys: ['w', 's', 'x', 'e', 'd', 'c'],
+        delay: 1000,
+    },
+    {
+        name: 'Some music',
+        keys: ['w', 'w', 's', 'x', 'd', 'w', 'w', 's', 'x', 'd', 'w', 'w', 's', 'x', 'd', 'c'],
+        delay: 250,
+    },
+];
+
 export {
-    PIANO, PIANO_DEMO_SOUNDS,
+    PIANO,
+    PIANO_DEMO_SOUNDS,
+    GUITAR,
+    GUITAR_DEMO_SOUNDS,
 };

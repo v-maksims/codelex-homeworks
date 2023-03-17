@@ -2,7 +2,7 @@
 import styles from './PianoKey.module.scss';
 import useInstrument from '../../../../hooks/useInstrument';
 
-type TKey = {
+type TPianoKeyProps = {
     note: string;
     audio: string;
     keyDown: string;
@@ -10,7 +10,7 @@ type TKey = {
     setPianoClassName: (note: string, active: boolean, disabled: boolean) => string;
 }
 
-const PianoKey = (props:TKey) => {
+const PianoKey = (props:TPianoKeyProps) => {
     const {
         audio,
         keyDown,
