@@ -5,6 +5,7 @@ import InstrumentPage from './pages/InstrumentPage/InstrumentPage';
 import NavigationBar from './components/Navigation/NavigationBar/NavigationBar';
 import PianoPage from './pages/PianoPage/PianoPage';
 import GuitarPage from './pages/GuitarPage/GuitarPage';
+import TrianglePage from './pages/TrianglePage/TrianglePage';
 
 const App = () => (
     <>
@@ -17,6 +18,7 @@ const App = () => (
                 <Route path='/instruments' element={<InstrumentPage />} />
                 <Route path='/piano' element={<PianoPage />} />
                 <Route path='/guitar' element={<GuitarPage />} />
+                <Route path='/triangle' element={<TrianglePage />} />
             </Routes>
         </div>
     </>

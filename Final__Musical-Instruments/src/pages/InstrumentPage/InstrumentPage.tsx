@@ -7,6 +7,7 @@ const InstrumentPage = () => (
         <div className={styles.instrumentsWrap}>
             <InstrumentItem label='piano' image='.\Instruments\logo\piano.png' to='/piano'/>
             <InstrumentItem label='guitar' image='.\Instruments\logo\guitar.jpg' to='/guitar'/>
+            <InstrumentItem label='triangle' image='.\Instruments\logo\triangle.jpg' to='/triangle'/>
         </div>
     </>
 );

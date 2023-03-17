@@ -1,0 +1,28 @@
+.key,
+.key--active,
+.key--disabled {
+    font-weight: var(--text-weight-bold);
+    font-size: var(--text-size-medium);
+    padding: 5px;
+    background-color: var(--c-white);
+    min-width: 50px;
+    text-align: center;
+    text-transform: capitalize;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: scale .2s, background-color .2s, color .2s;
+
+    &--active {
+        background-color: var(--color-background-green);
+        color: var(--color-text-white);
+    }
+
+    &:hover {
+        scale: .85
+    }
+
+    &--disabled:hover{
+        cursor: not-allowed;
+        scale: 100%;
+    }
+}
