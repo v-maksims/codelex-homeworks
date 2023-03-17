@@ -5,4 +5,9 @@
 
     text-decoration: none;
     text-transform: capitalize;
+    transition: scale .2s;
+
+    &:hover{
+        scale: .90;
+    }
 }
