@@ -3,8 +3,9 @@
 .key--disabled {
     font-weight: var(--text-weight-bold);
     font-size: var(--text-size-medium);
-    padding: 5px;
     background-color: var(--c-white);
+    
+    padding: 5px;
     min-width: 50px;
     text-align: center;
     text-transform: capitalize;

@@ -7,10 +7,10 @@ import useAutoPlay from '../../hooks/useAutoPlay';
 import InstrumentPage from '../../components/InstrumentPage/InstrumentPage';
 
 const PianoPage = () => {
+    const { handleAutoPlay } = useAutoPlay();
+
     const { isAutoPlay } = useAppSelector((store) => store.instruments);
     const dispatch = useAppDispatch();
-
-    const { handleAutoPlay } = useAutoPlay();
 
     const demoBtnHandler = (keys: string[], delay: number) => {
         handleAutoPlay(keys, delay);

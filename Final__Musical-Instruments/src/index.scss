@@ -29,10 +29,11 @@
 
 
 body {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
   font-weight: var(--text-weight-normal);
   background-color: var(--color-background-dark);
+  
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
   overflow-x: hidden;
 }
 
@@ -50,6 +51,7 @@ body {
 
 .active {
   color: var(--color-text-green);
+
   scale: .9;
   transition: scale .2s, color .2s;
 }

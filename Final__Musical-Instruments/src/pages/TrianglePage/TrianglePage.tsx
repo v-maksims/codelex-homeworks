@@ -5,12 +5,14 @@ import { setAutoPlay } from '../../store/instrumentsSlice';
 import InstrumentPage from '../../components/InstrumentPage/InstrumentPage';
 import Triangle from '../../components/Triangle/Triangle';
 import useAutoPlay from '../../hooks/useAutoPlay';
+import useInstrumentClass from '../../hooks/useInstrumentClass';
 
 const TrianglePage = () => {
+    const { setClassName } = useInstrumentClass('key');
+    const { handleAutoPlay } = useAutoPlay();
+
     const { isAutoPlay } = useAppSelector((store) => store.instruments);
     const dispatch = useAppDispatch();
-
-    const { handleAutoPlay } = useAutoPlay();
 
     const demoBtnHandler = (keys: string[], delay: number) => {
         handleAutoPlay(keys, delay);
@@ -24,7 +26,11 @@ const TrianglePage = () => {
             onDemoClick={demoBtnHandler}
             soundsDemo={TRIANGLE_DEMO_SOUNDS}
         >
-            <Triangle isAutoPlay={isAutoPlay} notes={TRIANGLE}/>
+            <Triangle
+                isAutoPlay={isAutoPlay}
+                notes={TRIANGLE}
+                setClassName={setClassName}
+            />
         </InstrumentPage>
     );
 };

@@ -5,7 +5,7 @@ type TTriangleItemProps = {
     audio: string;
     keyDown: string;
     disabled: boolean;
-    setTriangleClassName: (active: boolean, disabled: boolean) => 'key--active' | 'key--disabled' | 'key'
+    setClassName: (active: boolean, disabled: boolean) => string;
 }
 
 const TriangleItem = (props: TTriangleItemProps) => {
@@ -13,7 +13,7 @@ const TriangleItem = (props: TTriangleItemProps) => {
         audio,
         keyDown,
         disabled,
-        setTriangleClassName,
+        setClassName,
     } = props;
 
     const {
@@ -26,7 +26,7 @@ const TriangleItem = (props: TTriangleItemProps) => {
     return (
         <>
             <span
-                className={styles[setTriangleClassName(active, disabled)]}
+                className={styles[setClassName(active, disabled)]}
                 onClick={() => !disabled && playAudio()}
             >
                 {keyDown}

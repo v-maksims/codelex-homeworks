@@ -4,9 +4,9 @@ import { useAppSelector } from '../store/storeHooks';
 const useInstrument = (keyDown: string) => {
     const { volume } = useAppSelector((store) => store.instruments);
 
-    const audioRef = useRef<HTMLAudioElement>(null);
-
     const [active, setActive] = useState(false);
+
+    const audioRef = useRef<HTMLAudioElement>(null);
 
     const playAudio = () => {
         if (audioRef.current) {

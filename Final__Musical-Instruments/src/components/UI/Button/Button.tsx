@@ -4,7 +4,7 @@ type TButtonProps = {
     label: string;
     onClick: () => void;
     disabled?: boolean;
-    type: 'button' | 'submit'
+    type: 'button' | 'submit';
 }
 
 const Button = (props: TButtonProps) => {
