@@ -5,9 +5,10 @@ import GuitarString from '../components/GuitarString/GuitarString';
 
 type TGuitarProps = {
     isAutoPlay: boolean;
+    isVisible: boolean;
 }
 
-const Guitar = ({ isAutoPlay }:TGuitarProps) => {
+const Guitar = ({ isAutoPlay, isVisible }:TGuitarProps) => {
     const setGuitarClassName = (active: boolean, disabled: boolean) => {
         if (active) {
             return 'string--active';
@@ -19,6 +20,7 @@ const Guitar = ({ isAutoPlay }:TGuitarProps) => {
 
         return 'string';
     };
+
     return (
         <>
             <div className={styles.guitar}>
@@ -39,6 +41,21 @@ const Guitar = ({ isAutoPlay }:TGuitarProps) => {
                     </div>
                 </div>
             </div>
+            {isVisible && (
+                <div className={styles.keysWrap}>
+                    <span className={styles.keyTitle}>Keys:</span>
+                    <div className={styles.keys}>
+                        {GUITAR.map(({ keyDown }, i) => (
+                            <span
+                                className={styles.key}
+                                key={i}
+                            >
+                                {keyDown}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            )}
         </>
     );
 };

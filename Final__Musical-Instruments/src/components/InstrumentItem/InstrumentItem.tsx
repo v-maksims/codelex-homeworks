@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+
 import styles from './InstrumentItem.module.scss';
 
 type TInstrumentItemProps = {
@@ -11,7 +12,7 @@ const InstrumentItem = ({ image, label, to }:TInstrumentItemProps) => (
     <NavLink to={to} >
         <div className={styles.wrapper}>
             <img className={styles.image} src={image} alt={label} />
-            <span className={styles.instrument}>{ label }</span>
+            <span className={styles.instrument}>{label}</span>
         </div>
     </NavLink>
 );

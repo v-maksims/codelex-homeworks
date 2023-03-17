@@ -26,12 +26,19 @@ const PIANO: TInstrument[] = [
 ];
 
 const GUITAR: TInstrument[] = [
-    { note: 'bb', keyDown: 'w', audio: '/Instruments/guitar/guitar-bb.wav' },
-    { note: 'cb', keyDown: 's', audio: '/Instruments/guitar/guitar-cb.wav' },
-    { note: 'db', keyDown: 'x', audio: '/Instruments/guitar/guitar-db.wav' },
-    { note: 'eb', keyDown: 'e', audio: '/Instruments/guitar/guitar-eb.wav' },
-    { note: 'fb', keyDown: 'd', audio: '/Instruments/guitar/guitar-fb.wav' },
-    { note: 'gb', keyDown: 'c', audio: '/Instruments/guitar/guitar-gb.wav' },
+    { note: 'bb', keyDown: 'w', audio: './Instruments/guitar/guitar-bb.wav' },
+    { note: 'cb', keyDown: 's', audio: './Instruments/guitar/guitar-cb.wav' },
+    { note: 'db', keyDown: 'x', audio: './Instruments/guitar/guitar-db.wav' },
+    { note: 'eb', keyDown: 'e', audio: './Instruments/guitar/guitar-eb.wav' },
+    { note: 'fb', keyDown: 'd', audio: './Instruments/guitar/guitar-fb.wav' },
+    { note: 'gb', keyDown: 'c', audio: './Instruments/guitar/guitar-gb.wav' },
+];
+
+const TRIANGLE: TInstrument[] = [
+    { note: 'a', keyDown: 'a', audio: './Instruments/triangle/triangle-a.mp3' },
+    { note: 'b', keyDown: 's', audio: './Instruments/triangle/triangle-b.mp3' },
+    { note: 'c', keyDown: 'd', audio: './Instruments/triangle/triangle-c.mp3' },
+    { note: 'd', keyDown: 'f', audio: './Instruments/triangle/triangle-d.mp3' },
 ];
 
 const PIANO_DEMO_SOUNDS: TDemoSound[] = [
@@ -67,7 +74,8 @@ const GUITAR_DEMO_SOUNDS: TDemoSound[] = [
 
 export {
     PIANO,
-    PIANO_DEMO_SOUNDS,
     GUITAR,
+    TRIANGLE,
+    PIANO_DEMO_SOUNDS,
     GUITAR_DEMO_SOUNDS,
 };

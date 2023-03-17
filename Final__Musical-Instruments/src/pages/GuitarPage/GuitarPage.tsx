@@ -1,12 +1,16 @@
+import { GoEyeClosed, GoEye } from 'react-icons/go';
+import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/storeHooks';
 import { GUITAR_DEMO_SOUNDS } from '../../global/constants';
+import { setAutoPlay } from '../../store/instrumentsSlice';
 
 import Guitar from '../../components/Guitar/Guitar/Guitar';
 import useAutoPlay from '../../hooks/useAutoPlay';
-import { setAutoPlay } from '../../store/instrumentsSlice';
 import InstrumentPage from '../../components/InstrumentPage/InstrumentPage';
+import styles from './GuitarPage.module.scss';
 
 const GuitarPage = () => {
+    const [isVisible, setIsVisible] = useState(false);
     const { isAutoPlay } = useAppSelector((store) => store.instruments);
     const { handleAutoPlay } = useAutoPlay();
 
@@ -24,7 +28,11 @@ const GuitarPage = () => {
             onDemoClick={demoBtnHandler}
             soundsDemo={GUITAR_DEMO_SOUNDS}
         >
-            <Guitar isAutoPlay={isAutoPlay} />
+            <Guitar isAutoPlay={isAutoPlay} isVisible={isVisible}/>
+            {isVisible
+                ? <GoEyeClosed className={styles.icon} onClick={() => setIsVisible(!isVisible)} />
+                : <GoEye className={styles.icon} onClick={() => setIsVisible(!isVisible)} />
+            }
         </InstrumentPage>
     );
 };

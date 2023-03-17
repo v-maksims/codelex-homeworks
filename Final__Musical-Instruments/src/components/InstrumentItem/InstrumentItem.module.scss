@@ -35,12 +35,13 @@
 }
 
 .instrument {
-    width: 100%;
-    position: absolute;
-    top: 50%;
     font-weight: var(--text-weight-bold);
     color: var(--color-text-white);
     font-size: var(--text-size-medium);
+
+    width: 100%;
+    position: absolute;
+    top: 50%;
     text-align: center;
     z-index: 2;
     opacity: 0;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { TDemoSound } from '../../global/constants';
+
 import Button from '../UI/Button/Button';
 import styles from './InstrumentPage.module.scss';
 

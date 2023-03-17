@@ -1,9 +1,10 @@
 .string,
 .string--active,
 .string--disabled {
+    border: 1px solid var(--c-black);
+    
     width: 390px;
     position: absolute;
-    border: 1px solid var(--c-black);
     z-index: 100;
     position: absolute;
     cursor: pointer;
@@ -22,7 +23,6 @@
     &--disabled:hover {
         cursor: not-allowed;
         border-color: var(--c-black);
-
     }
 
     &:nth-child(1) {

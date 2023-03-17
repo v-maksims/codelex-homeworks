@@ -1,11 +1,12 @@
 .button{
-    text-transform: capitalize;
     font-size: var(--text-size-medium);
     background-color: var(--color-background-soft);
+    color: var(--color-text-white);
+    
+    text-transform: capitalize;
     border: 0;
     padding: 10px;
     border-radius: 10px;
-    color: var(--color-text-white);
     cursor: pointer;
     transition: scale .2s;
 
