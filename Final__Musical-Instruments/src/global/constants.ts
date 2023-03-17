@@ -4,7 +4,7 @@ type TInstrument = {
     audio: string;
 }
 
-type TDemoSound = {
+export type TDemoSound = {
     name: string;
     keys: string[];
     delay: number;
